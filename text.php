@@ -1,0 +1,2 @@
+<?php
+exit("x".time());

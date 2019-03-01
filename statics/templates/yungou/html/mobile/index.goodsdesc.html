@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>{wc:$key}</title>
+
+
+<meta content="app-id=518966501" name="apple-itunes-app" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<style type="text/css">
+#divRecordList img,#divRecordList embed{
+width:100% !important;
+height:auto !important;
+}
+#divRecordList p{
+	/*font-size: 0px;*/
+}
+#divRecordList{
+margin-left: 5px !important;
+margin-right: 5px !important;
+border-left: none !important;
+}
+</style>
+
+
+
+
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile/goods.css" rel="stylesheet" type="text/css" />
+<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/BuyRecord.js" language="javascript" type="text/javascript"></script></head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+    
+
+    <input name="hidCodeID" type="hidden" id="hidCodeID" value="18101" />
+    <input name="hidIsEnd" type="hidden" id="hidIsEnd" value="1" />
+
+    <!-- 参与记录 -->
+    <section id="buyRecordPage" class="goodsCon">
+        <div id="divRecordList" class="recordCon z-minheight" style="display:block; margin-top: 0!important;">
+            {wc:$desc['content']}
+        </div>
+        
+    </section>
+
+    
+<script language="javascript" type="text/javascript">
+    var sss = $('#divRecordList p').length;
+    $('#divRecordList p img').parent("p").css('font-size','0px');
+</script>
+
+</div>
+  {wc:templates "mobile/index","footer"}
+</body>
+</html>

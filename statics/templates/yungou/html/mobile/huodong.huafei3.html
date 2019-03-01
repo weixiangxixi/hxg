@@ -1,0 +1,1709 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>摇一摇，赢奖品！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <link href="/statics/public/recharge/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/statics/public/public/js/jquery-1.10.2.js" language="javascript" type="text/javascript"></script>
+	<script src="/statics/public/recharge/js/layer.js?v=2.0" language="javascript" type="text/javascript"></script>
+	<script src="/statics/public/recharge/js/RcmusicAutoPlay.js?v=7.0" language="javascript" type="text/javascript"></script>
+	<link href="/statics/public/recharge/css/font_569197_mtneazjg2lprdx6r.css" rel="stylesheet" type="text/css">
+	<link type="text/css" href="/statics/templates/yungou/css/mobile/style2.css" rel="stylesheet" />
+	<script type="text/javascript" src="/statics/templates/yungou/js/mobile/jquery2.js"></script>
+	<script type="text/javascript" src="/statics/templates/yungou/js/mobile/scroll.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.list_lh li:even').addClass('lieven');
+	})
+	$(function(){
+		$("div.list_lh").myScroll({
+			speed:40, 
+			rowHeight:30 
+		});
+	});
+	</script>
+	<style>
+	body{
+		overflow-x: hidden;
+		background: linear-gradient(to right,#fe3d50 0%,#ff3156 100%);
+	}
+
+	.lotteryList ul li
+	{
+		font-size: 12px;
+	}
+	.lucky_header{
+		width: 100%;
+		max-width: 640px;
+		margin: 0 auto;
+		overflow: hidden;
+		max-height: 320px;
+		background-image: url("");
+		background-size: 100% 100%;
+		background-position: top center;
+		background-repeat: no-repeat;
+		position: relative;
+		display: block;
+		height: 0;
+		padding-bottom: calc(297/ 640 * 100%);
+	}
+	.linkBox{
+		position: fixed;
+		width: 100%;
+		z-index: 1001;
+	}
+	.vlink{
+		height: 40px;
+	}
+	.link{
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		background: #3e3e3e;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+		position: relative;
+	}
+	.closeLink{
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		right: 10px;
+		font-size: 22px;
+		top: 0px;
+		line-height: 40px;
+		transform: rotateZ(225deg);
+		cursor: pointer;
+	}
+	.linkLogo{
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		left: 10px;
+		top: 8px;
+	}
+	.qrCodeBox {
+		width: 60%;
+		position: fixed;
+		top: 20%;
+		left: 20%;
+		z-index: 10070;
+		border-radius: 10%;
+		opacity: 0;
+		display: none;
+	}
+	.innerBox{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	*{
+		margin:0;
+		padding:0;
+	}
+	html,body{
+		height: 100%;
+		width: 100%;
+		background:#c40202 ;
+		overflow: hidden;
+	}
+	.Header{
+		width:100%;
+	}
+	.Header .HeaderImg{
+		width: 100%;
+		height: auto;
+	}
+	.MainHeader{
+		position: relative;
+		height: 1.7rem;
+		margin-top: -.7rem;
+	}
+	.MainHeader .leave{
+		background: url("http://yyygbh-static.oss-cn-shenzhen.aliyuncs.com/images/mobile/active/tip.png");
+		background-size:100% 100%;
+		background-position: center top;
+		height: 1rem;
+		width: 7rem;
+		position: absolute;
+		top: 0.1rem;
+		left: calc(50% - 3.5rem);
+		line-height: 1rem;
+	}
+	.leave{
+		font-size: .45rem;
+	}
+	.leaveP{
+		width: 4rem;
+		height: 1rem;
+		text-align: center;
+		margin-left: 1.4rem;
+		line-height: .9rem;
+	}
+	.leaveP2{
+		width: 6rem;
+		height: 1rem;
+		text-align: center;
+		margin-left: 2rem;
+		line-height: .9rem;
+	    position: absolute;
+	    top: 2.5rem;
+	    color:#f9e3ca;
+	    font-size: 0.6rem;
+	}
+	.leaveP3{
+		width: 7rem;
+		height: 1rem;
+		text-align: center;
+		margin-left: 14%;
+		line-height: .9rem;
+	    position: absolute;
+	    top: 3rem;
+	    color:#f9e3ca;
+	    font-size: 0.8rem;
+	}
+	.leaveP2 span{
+		/*color:#f9e3ca;*/
+		font-size: 1rem;
+	}
+	.leave .red{
+		color: #f00;
+		font-weight: bold;
+	}
+	.MainHeader .deng{
+		position: absolute;
+		left: .2rem;
+		z-index: 1001;
+		width: 1.8rem;
+		height: 1.7rem;
+	}
+	.RedBagBack{
+		background: url("http://yyygbh-static.oss-cn-shenzhen.aliyuncs.com/images/mobile/active/content.png");
+		background-size:100% 100%;
+		background-position: center top;
+		height: 4rem;
+		width: 8rem;
+		margin-left: 1rem;
+		margin-top: -.6rem;
+		position: relative;
+	}
+	.RedBagBack .lion{
+		position: absolute;
+		bottom: -.2rem;
+		right: -.9rem;
+		width: 1.8rem;
+		height: 1.6rem;
+	}
+	.RedBagBack .RedBagBox{
+		position: absolute;
+		width: 70%;
+		height: 80%;
+		left: 15%;
+		top: 10%;
+		cursor: pointer;
+		transform-origin:50% 100%;
+		-webkit-transform-origin:50% 100%;
+	}
+	.RedBagBack .RedBagBoxInner{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.RedBagBack .RedBag{
+		width: 100%;
+		height: 100%;
+	}
+	.RedBagBack .icon{
+		width: 1.4rem;
+		height: 1.4rem;
+		position: absolute;
+		top: 0.8rem;
+		left: calc(50% - .7rem);
+	}
+	.MainFooter .nextTime{
+		width: 100%;
+		font-size: .4rem;
+		color: #fff;
+		text-align: center;
+	}
+	.Footer .qrCode{
+		width: 1.5rem;
+		height: 1.5rem;
+		display: block;
+		margin:0 auto;
+	}
+	.Footer .tip{
+		font-size: .4rem;
+		width: 100%;
+		color: #fff;
+		text-align: center;
+	}
+	.nextTime,.Footer .tip{
+		margin:.1rem 0;
+	}
+	.OtherBox{
+		position: relative;
+		width: 100%;
+	}
+	.OtherBox .OtherButton{
+		width: 2.4rem;
+		height: 0.8rem;
+		background: #FFE275;
+		color:#f00;
+		border:none;
+		border-radius: 1rem;
+		text-align: center;
+		line-height: .8rem;
+		font-weight: bold;
+		cursor: pointer;
+		font-size: .4rem;
+		position: absolute;
+		bottom: 0.6rem;
+	}
+	.OtherLeft{
+		left: .4rem;
+	}
+	.OtherRight{
+		right: .4rem;
+	}
+	.RedBagRota{
+		animation: Regrotate .5s;
+		animation-timing-function: linear;
+		-moz-animation-timing-function: linear;
+		-webkit-animation-timing-function: linear;
+	}
+	@keyframes Regrotate
+	{
+		0% {transform: rotate(0deg)}
+		10% {transform: rotate(-3deg)}
+		20% {transform: rotate(0deg)}
+		30% {transform: rotate(3deg)}
+		40% {transform: rotate(0deg)}
+		50% {transform: rotate(-3deg)}
+		60% {transform: rotate(0deg)}
+		70% {transform: rotate(3deg)}
+		80% {transform: rotate(0deg)}
+		90% {transform: rotate(-3deg)}
+		100% {transform: rotate(0deg)}
+	}
+	.ruleBox{
+		position: fixed;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		z-index:1002;
+		transition: all 1s;
+	}
+	.ruleInnerBox{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		padding-top: 2rem;
+	}
+	.ruleList{
+		font-size: .4rem;
+		color: #fff;
+		z-index: 10000;
+		position: absolute;
+		display: block;
+		height: auto;
+		overflow: auto;
+		line-height: 150%;
+		width: 80%;
+		left: 10%;
+	}
+	.prizeBox{
+		cursor: pointer;
+		position: fixed;
+		top: 0;
+		right: -100%;
+		width: 100%;
+		height: 100%;
+		z-index:1002;
+		transition: all 1s;
+	}
+	.prizeInnerBox{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		padding-top: 2rem;
+	}
+	.prizeList{
+		font-size: .5rem;
+		color: #fff;
+		z-index: 10000;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+	.prizeList table{
+		border-collapse:collapse;
+		margin: 0 auto;
+		border: 1px #ddd solid;
+	}
+	.prizeList th,.prizeList tr{
+		border: 1px solid #fff;
+		font-size: .3rem;
+		padding: .1rem .05rem;
+	}
+	.shadow{
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: #000;
+		opacity: .8;
+		width: 100%;
+		height: 100%;
+	}
+	.closeRule,.closePrize{
+		position: absolute;
+		width: 1rem;
+		height: 1rem;
+		color: #fff;
+		top: .6rem;
+		font-size: 0.8rem;
+		text-align: center;
+		line-height: 1rem;
+		cursor: pointer;
+	}
+	.iconfont {
+		font-size: 25px;
+	}
+	.closePrize{
+		 left:.4rem;
+	 }
+	.closeRule{
+		right: .4rem;
+	}
+	.showPrize{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: all 1s;
+		z-index: 1003;
+		transform: scale(0);
+	}
+	.showPrizeInner{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.showPrize .getBox{
+		width: 8rem;
+		height: 12.6rem;;
+		position: relative;
+		z-index: 1003;
+		top: 2rem;
+		left: 1.8rem;
+	}
+	.showPrize .getBox .get{
+		width: 80%;
+		height: 60%;
+		margin-top: 2rem;
+		/*margin-top: 1rem;
+		margin-left: -3.5rem;*/
+	}
+	.showPrize .getBox .onlyMoney{
+		font-size: 1rem;
+		color: #f00;
+		position: absolute;
+		top: 34%;
+		left: 25%;
+		width: 4rem;
+		height: 1rem;
+		text-align: center;
+	}
+	.showPrize .getBox .onlytime{
+		font-size: 1rem;
+		color: #fff;
+		position: absolute;
+		top: 61%;
+		left: 25%;
+		width: 4rem;
+		height: 1rem;
+		text-align: center;
+	}
+	.showPrize .getBox .fare{
+		font-size: .8rem;
+		color: #f00;
+		position: absolute;
+		top: 3.3rem;
+		left: 2rem;
+		width: 1.8rem;
+		height: 1rem;
+		text-align: center;
+	}
+	.showPrize .getBox .fMoney{
+		font-size: .8rem;
+		color: #f00;
+		position: absolute;
+		top: 3.3rem;
+		right: 1.6rem;
+		width: 1.8rem;
+		height: 1rem;
+		text-align: center;
+	}
+	.showPrize .getBox .msg{
+		font-size: .5rem;
+		color: #fff;
+		position: absolute;
+		top: 5.6rem;
+	/*	right: 1.6rem;*/
+		width: 100%;
+		height: 1rem;
+		text-align: center;
+	}
+	.iconRotate{
+		animation: animitaIcon 2s;
+		animation-iteration-count:infinite;
+	}
+	@keyframes animitaIcon{
+		0%{
+			transform: rotateX(0deg);
+		}
+		25%{
+			transform: rotateX(360deg);
+		}
+		50%{
+			transform: rotateX(720deg);
+		}
+		75%{
+			transform: rotateX(1080deg);
+		}
+		100%{
+			transform: rotateX(1440deg);
+		}
+	}
+
+	.table thead tr {
+		display:block;
+
+	}
+	.table tbody {
+		display: block;
+		height: auto;
+		overflow: auto;
+	}
+	.layui-m-layerbtn {
+		width: 30%;
+		margin: 0 auto;
+		border-radius: 10px;
+		line-height: 30px;
+		height: 30px;
+		margin-bottom: 10px;
+		background: #ff6b6b;
+		color: #fff;
+	}
+	.layui-m-layerbtn span[yes] {
+		color: #FFF;
+	}
+	.OtherBox  .display{
+		width: 100%;
+		font-size: .4rem;
+		color: #fff;
+		text-align: center;
+		padding-top: 5px;
+	}
+	.footer {
+		text-align: center;
+		position: relative;
+		padding-bottom: 0px;
+	}
+	#shownum {
+	    position: absolute;
+	    bottom: 0;
+	    left: 50%;
+	    width: 220px;
+	    height: 30px;
+	    background: #75c8da;
+	    margin-left: -110px;
+	    text-align: center;
+	    box-sizing: border-box;
+	    line-height: 30px;
+	    border-radius: 10px;
+	    opacity: 0;
+	    z-index: 100010000055;
+	    top: 23%;
+	}
+
+	#shownum2,#shownum3,#shownum4 {
+	    position: absolute;
+	    bottom: 0;
+	    left: 50%;
+	    width: 220px;
+	    height: 30px;
+	    background: #75c8da;
+	    margin-left: -110px;
+	    text-align: center;
+	    box-sizing: border-box;
+	    line-height: 30px;
+	    border-radius: 10px;
+	    opacity: 0;
+	    z-index: 100010;
+	    top: 12%;
+	}
+
+	.zz{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+    	top: 0;
+    	right: 0;
+    	z-index: 11111;
+    	transition: all 1s;
+    	background: #ccc;
+    	opacity: 0.8;
+	}
+	.jiazai{
+		position: absolute;
+		top: 30%;
+		text-align: center;
+    	width: 100%;
+		font-size: 24px;
+		z-index: 222222;
+		color: #ff0000;
+	}
+	.fxt{
+		position: absolute;
+    	top: 15%;
+    	width: 100%;
+    	text-align: center;
+    	z-index: 222222;
+	}
+	.fxt img{
+		width: 80%;
+	}
+	.fxt p{
+		border: 1px solid #ccc;
+	    margin: 20px;
+	    border-radius: 5px;
+	    background-color: #eaeaea;
+	    font-weight: bold;
+	    color: #000;
+	}
+	.closePrize{
+		z-index: 999999;
+	}
+	#buylog tr:not(:first-child) th:first-child {
+		font-size: 12px;
+	}
+
+</style>
+</head>
+<body>
+<!-- <div class="layui-layer-shade" id="layui-layer-shade1" times="1" style="z-index: 19891014; background-color: rgb(0, 0, 0); opacity: 0.3;"></div>
+<div class="layui-layer layui-layer-dialog" id="layui-layer1" type="dialog" times="1" showtime="0" contype="string" style="z-index: 19891015; top: 238.5px; left: 77px;">
+	<div class="layui-layer-title" style="cursor: move;">信息</div>
+	<div id="" class="layui-layer-content">
+		<div id="dialog">
+			<div class="addAddressArea">
+				<span class="title" style="color:#828282">选择您的地址:</span>
+				<a class="addAddress" href="/index.php/mobile/home/address?swap=exchange">+</a>
+			</div>
+			<div class="addressList">
+				<ul>
+					<li id="dizhi">
+						<table>
+							<tbody>
+								<tr><td><p>手动阀&nbsp;&nbsp;18140372616</p><p>广东省&nbsp;&nbsp;广州市&nbsp;&nbsp;越秀区&nbsp;&nbsp;铝扣板</p></td>
+									<td align="right"><input class="address_id" type="radio" checked="checked" name="address_id" id="address_id_0" value="4"><label for="address_id_0" class="labelForAddress"></label></td>
+								</tr>
+							</tbody>
+						</table>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<span class="layui-layer-setwin">
+			<a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;"></a>
+		</span>
+		<div class="layui-layer-btn layui-layer-btn-">
+			<a class="layui-layer-btn0">兑换</a>
+			<a class="layui-layer-btn1">取消</a>
+		</div>
+		<span class="layui-layer-resize"></span>
+	</div>
+</div> -->
+{wc:php:start}if($sycs <= 0){{wc:php:end}
+<div class="Content">
+	<div class="Header">
+		<img class="HeaderImg" src="/statics/public/recharge/images/header.jpg" />
+		<div class="leave">
+			<p class="leaveP3"><!-- 活动火热进行中 -->活动已结束</p>
+		</div>
+		<div id="shownum">
+			<p style="color:#fff;font-size: 14px;font-weight: bold"><!-- 您今天剩余{wc:$sycs}次 -->活动已结束</p>
+		</div>
+	</div>
+	<div class="Main">
+		<div class="MainHeader">
+			<img class="deng" src="/statics/public/recharge/images/deng.png" />
+			<div class="leave">
+				<p class="leaveP">
+					<!-- 您今天剩余{wc:$sycs}次 -->活动已结束
+				</p>
+			</div>
+		</div>
+		<div class="RedBagBack">
+			<div class="RedBagBox">
+				<div class="RedBagBoxInner">
+					<img class="RedBag" src="/statics/public/recharge/images/redBag.png" />
+					<img class="icon" src="/statics/public/recharge/images/icon.png" />
+				</div>
+			</div>
+			<img class="lion" src="/statics/public/recharge/images/lion.png" />
+		</div>
+		<!-- <div class="MainFooter">
+			<p class="nextTime">
+				下一波红包发放时间:2018-02-13 21:00:00			</p>
+		</div> -->
+	</div>
+	<div class="Footer">
+		<!--        <p class="tip">
+                    关注惠享客服朋友圈,第一时间获取抢红包入口
+                </p>-->
+		<div class="OtherBox">
+			<img class="qrCode" src="/statics/templates/yungou/images/mobile/w5.jpg" />
+			<p class="display">
+				<!-- 添加惠享客服，咨询问题 -->
+			</p>
+			<button class="OtherButton OtherLeft" id="rule">活动规则</button>
+			<button class="OtherButton OtherRight" id="prize">获奖记录</button>
+		</div>
+	</div>
+</div>
+<div class="ruleBox">
+	<div class="ruleInnerBox">
+		<div class="shadow"></div>
+		<div class="closeRule">
+			<i class="icon-close iconfont " ></i>
+		</div>
+		<div class="ruleList">
+			<p>	1、活动期间，所有在惠享专享近3天有充值记录的会员，点击相应活动链接即可参与摇一摇活动，每天最多摇两次。用同一个微信账号或支付宝账号进行充值的会员最多只能有两个账号参与活动，谢谢合作；
+			
+			</p><br>
+			<p>	2、幸运摇出奖品的用户需在获奖记录处将获得商品二维码分享至好友，由两位好友扫码注册并参与摇一摇即可获得奖品，获得福分则自动充入您的账户中；
+			</p><br>
+
+			<p>	3、已获得的奖品需在规定时间完善收货地址，逾期作废，谢谢合作；
+			</p><br>
+			<p>	4、通过恶意注册或其他不正当手段等参与本活动的，将取消其参与及领奖资格，且有权收回其通过本活动获得的奖品，并保留追究恶意刷奖者的法律责任的权利！
+			</p>	<br>	</p>5、惠享购对本次活动在法律范围内拥有最终解释权。</p>
+		</div>
+	</div>
+</div>
+<div class="prizeBox">
+	<div class="prizeInnerBox">
+		<div class="shadow"></div>
+		<div class="closePrize">
+			<i class="icon-close iconfont " ></i>
+		</div>
+		<div class="prizeList">
+			<table class="table">
+				<tbody id="buylog">
+				<tr>
+				</tr>
+				</tbody>
+			</table>
+			<!-- <div style="margin-top: 20px;text-align: center;">点击右上角分享到朋友圈即可将红包充值到余额</div> -->
+		</div>
+	</div>
+	<div class="zz" style="display: none"></div>
+	<div class="jiazai" style="display: none">正在生成二维码,请勿刷新页面<img src="" style="width: 200px"></div>
+	<div class="fxt" style="display: none"><img src=""><p>保存图片分享到朋友圈，2位以上好友扫描参与，您即可进行实物领取哦！（扫码好友必须先登录惠享购）</p></div>
+</div>
+<div class="showPrize">
+	<div class="showPrizeInner">
+		<!-- <div class="shadow"></div>
+		<div  class="closePrize colseGetBox" style="left:0px;right:.4rem;">
+			<i class="icon-close iconfont " ></i>
+		</div> -->
+		<div class="getBox">
+			<img class="get" src=""/>
+		</div>
+	</div>
+</div>
+<div class="box">
+	<div class="bcon">
+		<h1><b style="margin-left: 0.1rem">中奖名单</b><b style="float: right;margin-right: 0.1rem">中奖物品</b></h1>
+		<div class="list_lh">
+			<ul>
+				{wc:php:start}foreach($brr as $key=>$val){{wc:php:end}
+				<li>
+					<p style="margin-left: 0.35rem"><a class="a_blue">{wc:php:start}if(!empty($val['username'])){echo $val['username'];}else{echo $val['phone'];}{wc:php:end}</a><span style="margin-right: 0.5rem">{wc:php:start}echo $val['shopname'];{wc:php:end}</span></p>
+				</li>
+				{wc:php:start}}{wc:php:end}
+			</ul>
+		</div>
+	</div>
+</div>
+<script src="https://s11.cnzz.com/z_stat.php?id=1259931418&web_id=1259931418" language="JavaScript" type="hidden"></script>
+<style>
+    .footer .u-ft-nav{
+        z-index:100009;
+    }
+</style>
+{wc:templates "mobile/index","footer"}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript">
+	//分享
+    var shareData = {
+        title:"摇一摇，惠享送你红包！", // 分享标题
+        desc: "摇一摇，惠享送你红包！", // 分享描述
+        link: '/index.php/mobile/huodong2/recharge111', // 分享链接
+        imgUrl: '/statics/public/recharge/images/wxshare2.jpg', // 分享图标
+
+        trigger: function (res) {
+            $.getJSON("http://m.weimicm.com/index.php/mobile/huodong2/share",{data:1},function(json){
+                    if(json.status==0){
+                        // var url='http://m.weimicm.com/index.php/mobile/huodong2/recharge';
+                        // setTimeout(function(){
+                        // showMsg(json.resultMessage,url);
+                        // },1000);
+                    }else if(json.status==1){
+                        // var url='http://m.weimicm.com/index.php/mobile/home/userrecharge';
+                        // setTimeout(function(){
+                        // showMsg(json.resultMessage,url);
+                        // },1000);
+				    }else{
+						// setTimeout(function(){
+      //                       showMsg(json.resultMessage);
+      //                   },1000);
+                    }
+            })
+      		//alert('分享到朋友圈');  
+        },
+        success: function (res) {    
+            // $.ajax({
+            // 	url:"/index.php/mobile/huodong2/sure_money",
+            // 	success:function(data){
+            // 		if(data == 1){
+            // 			alert('充值成功');
+            // 		}else if(data == 0){
+            // 			alert('充值失败');
+            // 		}
+            // 	}
+            // })   
+        }, 
+        cancel: function (res) {
+        	alert('您已取消,充值失败');
+        }
+
+    };
+    wx.config({
+        debug:false,
+        appId: "wx4974d1b8daeca416",
+    	timestamp: {wc:php:start} echo $signPackage["timestamp"];{wc:php:end},
+    	nonceStr: '{wc:php:start} echo $signPackage["nonceStr"];{wc:php:end}',
+    	signature: '{wc:php:start} echo $signPackage["signature"];{wc:php:end}',
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+    });
+    wx.ready(function(){
+        wx.onMenuShareTimeline(shareData);
+        wx.onMenuShareAppMessage(shareData);
+
+	/*	/!*IOS端音频自动播放*!/*/
+        audio.play();
+        audio.loop = true;
+    });
+
+    function showMsg(msg,url){
+        var btns="OK";
+        layer.open({
+            style:"border:none;background:#fff;color:#000",
+            content:msg,
+            btn:btns,
+            shadeClose:false,
+            yes:function(index){
+                if(typeof url != 'undefined'){
+					window.location.href=url;
+					//http://1yygzy.com/index.php/mobile/home/user_recharge
+				}
+				layer.close(index);
+            }
+        })
+    }
+   
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    	djs_time();
+        var btnclick=true;
+        var cssEl = document.createElement('style');
+        document.documentElement.firstElementChild.appendChild(cssEl);
+        var height=$(window).height()/100*70;
+        $(".ruleList").height(height);
+        setPxPerRem();
+        getNumber();//获取红包数量
+        function setPxPerRem(){
+            var dpr = 1;
+            //把viewport分成10份的rem，html标签的font-size设置为1rem的大小;
+            var pxPerRem = document.documentElement.clientWidth * dpr / 10;
+            cssEl.innerHTML = 'html{font-size:' + pxPerRem + 'px!important;}';
+        }
+        $(document).ready(function(){
+            $("#rule").click(function(){
+                $(".ruleBox").css("left",0);
+                $('#shownum').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+                $('#shownum2').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+                $('#shownum3').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+            })
+
+            $(".closeRule").click(function(){
+                $(".ruleBox").css("left","-100%");
+            })
+             // 获取中奖记录
+            $("#prize").click(function(){
+            	$('#shownum').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+                $('#shownum2').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+                $('#shownum3').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+                $.ajax({
+                    url:"/index.php/mobile/huodong2/BuyLog",
+                    type:"post",
+                    dataType:'json',
+                    data:{code:86462},
+                    async:false,
+                    success:function (data) {
+                    
+                        var html="<tr><th>获取红包时间</th> <th>获得商品</th><th>需好友辅助</th><th>已辅助</th><th>二维码</th><th>操作</th></tr>";
+                        if(data.total>0){
+                            var log=data.log;
+                            for(var k in log ){
+                            	if(log[k].amount < 5){
+                            		m = "<th>已完成</th>";
+                            	}else{
+                            		m = "<th><a onclick='ewm("+log[k].id+")'>查看</a></th>";
+                            	}
+                            	if(parseInt(log[k].friends_yes) >= parseInt(log[k].friends) && parseInt(log[k].amount) > 4){
+                            		if(log[k].dizhi_id != 0){
+                            			n = "<th><a href='/index.php/mobile/huodong2/swapOrderDetail/"+log[k].id+"'>查看物流</a></th>";
+                            		}else{
+                            			n = "<th><a href='/index.php/mobile/huodong2/wsdz/"+log[k].id+"'>完善地址</a></th>";
+                            		}
+                            		
+                            	}else{
+                            		n = "<th></th>";
+                            	}
+                                html += "<tr><th >" + log[k].updated_at + "</th><th >" + log[k].name + "</th><th >" + log[k].friends + "</th><th >" + log[k].friends_yes + "</th>"+ m + n +"</tr>";
+							}
+		
+							if(log.length>10){
+                                var height=$(window).height()/100*70; 
+                                $("#buylog").height(height);
+							}
+						}else{
+                            html+="<tr><th colspan='3'>没有记录</th></tr>";
+						}
+						$("#buylog").html(html);
+                    }
+                })
+                $(".prizeBox").css("right",0);
+            })
+
+            $(".closePrize").click(function(){
+                $(".prizeBox").css("right","-100%");
+                $('.zz,.jiazai,.fxt').hide();
+            })
+		
+	    });
+
+       
+        function  getNumber() {
+            $.ajax({
+                url:"/index.php/mobile/huodong2/GetNumber",
+                type:"post",
+                dataType:'json',
+                data:{code:86462},
+                success:function (data) {
+                	//settime();
+                    //$(".leaveP .red").html(window.clearInterval(10));
+                }
+            })
+        }
+    })
+
+
+</script>
+
+{wc:php:start}}else{{wc:php:end}
+<div class="Content">
+	<div class="Header">
+		<img class="HeaderImg" src="/statics/public/recharge/images/header.jpg" />
+		<div class="leave">
+			<p class="leaveP3"><!-- 活动火热进行中 -->活动已结束</p>
+		</div>
+		<div id="shownum">
+			<p style="color:#fff;font-size: 14px;font-weight: bold"><!-- {wc:if !$user}您未登录{wc:else}您今天剩余{wc:$sycs}次{wc:if:end} -->活动已结束</p>
+		</div>
+		<div id="shownum2">
+			<!-- <p style="color:#fff;font-size: 14px;font-weight: bold">辅助好友成功</p> -->
+		</div>
+		<div id="shownum3">
+			<!-- <p style="color:#fff;font-size: 14px;font-weight: bold">辅助好友失败</p> -->
+		</div>
+		<div id="shownum4">
+			<!-- <p style="color:#fff;font-size: 14px;font-weight: bold">已辅助过该好友</p> -->
+		</div>
+	</div>
+	<div class="Main">	
+		<div class="MainHeader">
+			<img class="deng" src="/statics/public/recharge/images/deng.png" />
+			<div class="leave">
+				<p class="leaveP">
+					摇一摇赢<span class="red">iphone xs max</span>
+				</p>
+			</div>
+		</div>
+		<div class="RedBagBack">
+			<div class="RedBagBox">
+				<div class="RedBagBoxInner">
+					<img class="RedBag" src="/statics/public/recharge/images/redBag.png" />
+					<img class="icon" src="/statics/public/recharge/images/icon.png" />
+				</div>
+			</div>
+			<img class="lion" src="/statics/public/recharge/images/lion.png" />
+		</div>
+		<!-- <div class="MainFooter">
+			<p class="nextTime">
+				下一波红包发放时间:2018-02-13 21:00:00			</p>
+		</div> -->
+	</div>
+	<div class="Footer">
+		<!--        <p class="tip">
+                    关注惠享客服朋友圈,第一时间获取抢红包入口
+                </p>-->
+		<div class="OtherBox">
+			<img class="qrCode" src="/statics/templates/yungou/images/mobile/w5.jpg" />
+			<p class="display">
+				<!-- 添加惠享客服，咨询问题 -->
+			</p>
+			<button class="OtherButton OtherLeft" id="rule">活动规则</button>
+			<button class="OtherButton OtherRight" id="prize">获奖记录</button>
+		</div>
+	</div>
+</div>
+<div class="ruleBox">
+	<div class="ruleInnerBox">
+		<div class="shadow"></div>
+		<div class="closeRule">
+			<i class="icon-close iconfont " ></i>
+		</div>
+		<div class="ruleList">
+			<p>	1、活动期间，每天24小时，所有在惠享专享近3天有充值记录的会员，点击相应活动链接即可参与抢红包活动。每次开红包后获得惠享专享现金红包，当天充值额外赠送一次摇奖机会。用同一个微信账号或支付宝账号进行充值的会员最多只能有两个账号参与活动，谢谢合作；
+			
+			</p><br>
+			<p>	2、每天活动有效期24小时，隔天重新开启下一期，请等待下一次活动准时参与；
+			</p><br>
+
+			<p>	3、获得惠享专享现金红包，将自动充入您的专享账户中；
+			</p><br>
+			<p>	4、通过恶意注册或其他不正当手段等参与本活动的，将取消其参与及领奖资格，且有权收回其通过本活动获得的奖品，并保留追究恶意刷奖者的法律责任的权利！
+			</p>	<br>	</p>5、惠享专享对本次活动在法律范围内拥有最终解释权。</p>
+		</div>
+	</div>
+</div>
+<div class="prizeBox">
+	<div class="prizeInnerBox">
+		<div class="shadow"></div>
+		<div class="closePrize">
+			<i class="icon-close iconfont " ></i>
+		</div>
+		<div class="prizeList">
+			<table class="table">
+				<tbody id="buylog">
+				<tr>
+				</tr>
+				</tbody>
+			</table>
+			<!-- <div style="margin-top: 20px;text-align: center;">点击右上角分享到朋友圈即可将红包充值到余额</div> -->
+		</div>
+	</div>
+	<div class="zz" style="display: none"></div>
+	<div class="jiazai" style="display: none">正在生成二维码,请勿刷新页面<img src="" style="width: 200px"></div>
+	<div class="fxt" style="display: none"><img src=""><p>保存图片分享到朋友圈，2位以上好友扫描参与，您即可进行实物领取哦！（扫码好友必须先登录惠享购）</p></div>
+</div>
+<div class="showPrize">
+	<div class="showPrizeInner">
+		<div class="getBox">
+			<img class="get" src=""/>
+		</div>
+	</div>
+</div>
+
+<div class="box">
+	<div class="bcon">
+		<h1><b style="margin-left: 0.1rem">中奖名单</b><b style="float: right;margin-right: 0.1rem">中奖物品</b></h1>
+		<div class="list_lh">
+			<ul>
+				{wc:php:start}foreach($brr as $key=>$val){{wc:php:end}
+				<li>
+					<p style="margin-left: 0.35rem"><a class="a_blue">{wc:php:start}if(!empty($val['username'])){echo $val['username'];}else{echo $val['phone'];}{wc:php:end}</a><span style="margin-right: 0.5rem">{wc:php:start}echo $val['shopname'];{wc:php:end}</span></p>
+				</li>
+				{wc:php:start}}{wc:php:end}
+			</ul>
+		</div>
+	</div>
+</div>
+<style>
+    .footer .u-ft-nav{
+        z-index:100009;
+    }
+
+    .record{
+    	width: 60%;
+    	text-align: center;
+    	overflow: hidden;
+    	margin: 10px auto;
+    }
+    .record .item{
+    	width: 80%;
+    	margin: 0 auto;
+    	overflow: hidden;
+    	height: 22px;
+    }
+    .record p{
+    	line-height: 22px;
+    	color: #fff;
+    }
+</style>
+{wc:templates "mobile/index","footer"}
+
+<!--开启全站微信分享自定义-->
+<!--<script type="text/javascript" src="http://m.mm0768.xyz/statics/templates/ffxiang/js/jquery.cookie.js"></script>
+-->
+<!--end--></body>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript">
+	//分享
+    var shareData = {
+        title:"摇一摇，惠享送你红包！", // 分享标题
+        desc: "摇一摇，惠享送你红包！", // 分享描述
+        link: '/index.php/mobile/huodong2/recharge111', // 分享链接
+        imgUrl: '/statics/public/recharge/images/wxshare2.jpg', // 分享图标
+
+        trigger: function (res) {
+            $.getJSON("http://m.weimicm.com/index.php/mobile/huodong2/share",{data:1},function(json){
+                    if(json.status==0){
+                        // var url='http://m.weimicm.com/index.php/mobile/huodong2/recharge';
+                        // setTimeout(function(){
+                        // showMsg(json.resultMessage,url);
+                        // },1000);
+                    }else if(json.status==1){
+                        // var url='http://m.weimicm.com/index.php/mobile/home/userrecharge';
+                        // setTimeout(function(){
+                        // showMsg(json.resultMessage,url);
+                        // },1000);
+				    }else{
+						// setTimeout(function(){
+      //                       showMsg(json.resultMessage);
+      //                   },1000);
+                    }
+            })
+      		//alert('分享到朋友圈');  
+        },
+        success: function (res) {    
+            // $.ajax({
+            // 	url:"/index.php/mobile/huodong2/sure_money",
+            // 	success:function(data){
+            // 		if(data == 1){
+            // 			alert('充值成功');
+            // 		}else if(data == 0){
+            // 			alert('充值失败');
+            // 		}
+            // 	}
+            // })   
+        }, 
+        cancel: function (res) {
+        	alert('您已取消,充值失败');
+        }
+
+    };
+    wx.config({
+        debug:false,
+        appId: "wx4974d1b8daeca416",
+    	timestamp: {wc:php:start} echo $signPackage["timestamp"];{wc:php:end},
+    	nonceStr: '{wc:php:start} echo $signPackage["nonceStr"];{wc:php:end}',
+    	signature: '{wc:php:start} echo $signPackage["signature"];{wc:php:end}',
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+    });
+    wx.ready(function(){
+        wx.onMenuShareTimeline(shareData);
+        wx.onMenuShareAppMessage(shareData);
+
+	/*	/!*IOS端音频自动播放*!/*/
+        audio.play();
+        audio.loop = true;
+    });
+
+    function showMsg(msg,url){
+        var btns="OK";
+        layer.open({
+            style:"border:none;background:#fff;color:#000",
+            content:msg,
+            btn:btns,
+            shadeClose:false,
+            yes:function(index){
+                if(typeof url != 'undefined'){
+					window.location.href=url;
+				}
+				layer.close(index);
+            }
+        })
+    }
+
+    //中奖轮播
+	var addData = function(){
+		$('.winning').find('.record').each(function(){
+			$(this).find('.item p:first').animate({marginTop: -22}, 1000);
+		});
+	}
+	var ff = function(){
+		$('.winning').find('.record').each(function(){
+			var html = '<p>4</p>';
+			$(this).find('.item p:last').after(html);
+			$(this).find('.item p:first').remove();
+		});
+		addData();
+	}
+	addData();
+	setInterval(ff, 3000);
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+								                    	
+    	djs_time();
+        var btnclick=true;
+        var cssEl = document.createElement('style');
+        document.documentElement.firstElementChild.appendChild(cssEl);
+        var height=$(window).height()/100*70;
+        $(".ruleList").height(height);
+        setPxPerRem();
+        getNumber();//获取红包数量
+        function setPxPerRem(){
+            var dpr = 1;
+            //把viewport分成10份的rem，html标签的font-size设置为1rem的大小;
+            var pxPerRem = document.documentElement.clientWidth * dpr / 10;
+            cssEl.innerHTML = 'html{font-size:' + pxPerRem + 'px!important;}';
+        }
+        $(document).ready(function(){
+
+            $(".closeRule").click(function(){
+                $(".ruleBox").css("left","-100%");
+            })
+             // 获取中奖记录
+            $("#prize").click(function(){
+            	$('#shownum').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+                $('#shownum2').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+                $('#shownum3').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+            	$.ajax({
+            		url:"/index.php/mobile/huodong2/user",
+            		success:function(data){
+            			if(data == 0){
+            				var url = "http://m.weimicm.com/mobile/user/login";
+							showMsg("请先登陆",url);
+            			}else if(data == 1){
+            				var url = "";
+							showMsg("活动未开始,每天晚上20:00~24:00",url);
+            			}else{
+            				$.ajax({
+			                    url:"/index.php/mobile/huodong2/BuyLog",
+			                    type:"post",
+			                    dataType:'json',
+			                    data:{code:86462},
+			                    async:false,
+			                    success:function (data) {
+			                        var html="<tr><th>获取红包时间</th> <th>获得物品</th><th>需好友辅助</th><th>已辅助</th><th>二维码</th><th>操作</th></tr>";
+			                        if(data.total>0){
+			                            var log=data.log;
+
+			                            for(var k in log ){
+			                            	if(log[k].amount < 5){
+			                            		m = "<th>已完成</th>";
+			                            	}else{
+			                            		m = "<th><a onclick='ewm("+log[k].id+")'>查看</a></th>";
+			                            	}
+			                            	if(parseInt(log[k].friends_yes) >= parseInt(log[k].friends) && parseInt(log[k].amount) > 4){
+			                            		if(log[k].dizhi_id != 0){
+			                            			n = "<th><a href='/index.php/mobile/huodong2/swapOrderDetail/"+log[k].id+"'>查看物流</a></th>";
+			                            		}else{
+			                            			n = "<th><a href='/index.php/mobile/huodong2/wsdz/"+log[k].id+"'>完善地址</a></th>";
+			                            		}
+			                            		
+			                            	}else{
+			                            		n = "<th></th>";
+			                            	}
+
+			                                html += "<tr><th >" + log[k].updated_at + "</th><th >" + log[k].name + "</th><th >" + log[k].friends + "</th><th >" + log[k].friends_yes + "</th>"+ m + n +"</tr>";
+										}
+		
+										if(log.length>10){
+			                                var height=$(window).height()/100*70;
+			                                $("#buylog").height(height);
+										}
+									}else{
+			                            html+="<tr><th colspan='3'>没有记录</th></tr>";
+									}
+									$("#buylog").html(html);
+			                    }
+			                })
+		                	$(".prizeBox").css("right",0);
+            			}
+            		}
+		        });
+                
+            })
+
+
+
+            $(".closePrize").click(function(){
+                $(".prizeBox").css("right","-100%");
+                $('.zz,.jiazai,.fxt').hide();
+            })
+            
+            var RedBagBox=$(".RedBagBox");
+            var num=0;
+            shade(RedBagBox,num);
+
+            var hnb = true;
+            var code,money,mymoney,msg,uid;
+        	var total = '';
+            if(btnclick){
+            	$(".showPrize").css("transform","scale(0)");
+	            var shake=5000,   
+	            last_update=0,   
+	            count=0,  
+	            x=y=z=last_x=last_y=last_z=0;  
+		        if(window.DeviceMotionEvent){  
+		             window.addEventListener("devicemotion",deviceMotionHandler,false);  
+		        }else{  
+		          alert("本设备不支持devicemotion事件");  
+		        }  
+		        //console.log(new Date().valueOf()); 
+		        var flag=true; 
+		        var tr = true;
+		        var m = true;
+		        var n = true;
+		        function deviceMotionHandler(eventData){  
+		            var acceleration = eventData.accelerationIncludingGravity,  
+	                currTime=new Date().valueOf(),  
+	                diffTime=currTime-last_update;  
+	                if(diffTime>100){  
+	                    last_update=currTime;  
+	                    x=acceleration.x;  
+	                    y=acceleration.y;  
+	                    z=acceleration.z;  
+	                    var speed=Math.abs(x+y+z-last_x-last_y-last_z)/diffTime*10000  
+	                    var status=document.getElementById("status");  
+	                    
+	                    if(speed>shake){ 
+
+	                    	$.ajax({
+	                    		url:"/index.php/mobile/huodong2/activity_time",
+			            		success:function(data){
+			   
+			            			if(data == 0){
+			            				var url = "http://m.weimicm.com/mobile/user/login";
+			            				if(hnb == true){
+			            					showMsg("请先登陆",url);
+			            					hnb = false;
+			            				}
+			            			}else if(data == 1){
+			            				var url = "";
+			            				if(hnb == true){
+				            				showMsg("活动未开始,每天晚上20:00~24:00",url);
+				            				hnb = false;
+				            			}
+			            			}else if(data == 2){
+			            				var url = "";
+			            				if(hnb == true){
+			            					showMsg("活动未开始,每天晚上20:00~24:00",url);
+			            					hnb = false;
+			            				}
+										
+			            			}else if(data == 4){
+			            				var url = "http://m.weimicm.com/index.php/mobile/home/recharge";
+			            				if(hnb == true){
+			            					showMsg("近3天未充值过，请先充值",url);
+			            					hnb = false;
+			            				}
+			            				
+			            			}else if(data == 5){
+			            				var url = "";
+			            				if(hnb == true){
+			            					showMsg("用同一个微信账号或支付宝账号进行充值的会员最多只能有两个账号参与活动，谢谢合作",url);
+			            					hnb = false;
+			            				}
+			            			}else if(data == 6){
+			            				var url = "";
+			            				if(hnb == true){
+			            					showMsg("活动已结束，请尽快填写地址，谢谢！",url);
+			            					hnb = false;
+			            				}
+			            			}else if(data == 7){
+			            				var url = "";
+			            				if(hnb == true){
+			            					//showMsg("当天抽奖已达上线",url);
+			            					hnb = false;
+			            				}
+			            			}else{
+			            				
+					                    //animitaIcon();
+					    
+					                    if(flag){
+					                    	//settime();
+					                    	flag = false;
+					                    }
+					                   	if(tr){
+					                   		if($(".icon").hasClass("iconRotate")){
+								                return true;
+								            }
+								            $(".icon").addClass("iconRotate");
+								            $.ajax({
+												url:"/index.php/mobile/huodong2/inrecharge",
+												type:"post",
+												dataType:'json',
+												data:{code:86462},
+								                success:function (data) {
+								                	window.removeEventListener("devicemotion",deviceMotionHandler,false);
+								                	$(".getBox p").remove("");
+								                    $(".icon").removeClass("iconRotate");
+								                     code=data.status;
+													 money=data.money;
+													 mymoney=data.yemoney;
+								                     msg=data.resultMessage;
+								                     uid=data.uid;
+								                
+								                     img=data.img;
+
+								                    
+								                    if(code==3){
+								                    	setTimeout(function(){
+								                    		RedBagBox.addClass("dontShade"); //停止摇晃的动
+										                    btnclick=false;
+								                    		$(".getBox .get").attr('src',"/statics/public/recharge/images/"+img);
+								                        	// $(".getBox").append('<p class="onlyMoney">'+money+'</p>');
+								                    		$(".showPrize").css("transform","scale(1)")
+								                    	},1000);
+								                    }else if(code==2){
+								                        $(".getBox .get").attr('src',"/statics/public/recharge/images/double2.png");
+								                        $(".getBox").append('<p class="fare">'+money+'</p><p class="fMoney">'+mymoney+'</p>');
+								                    }else if(code==0){
+								                        alert(money);
+								                    }else if(code>2){
+								               
+								                        if(code==4) {
+								                            var url = "http://m.weimicm.com/mobile/user/login";
+								                        }
+								                        if(code==5) {
+								                            var url = "http://m.weimicm.com/index.php/mobile/home/userrecharge";
+								                        }
+								                        showMsg(msg,url);
+								                        btnclick=true;
+								        
+								                        return;
+								                    }
+
+								                    btnclick=true;
+								                   
+
+								                }
+											});
+				                   			
+					                   		tr = false;
+					                   	}
+			            			}
+			            		}
+	                    	}); 
+	
+	                    }  
+	                    last_x = x;  
+	                    last_y = y;  
+	                    last_z = z;  
+	                }  
+		        }
+		    }
+
+		
+	    });
+
+        function shade(here,num){ //红包摇动画
+            if(here.hasClass("RedBagRota")||here.hasClass("dontShade")){ //防止用户多次点击,num红包最多摇的次数
+                return true;
+            }
+            here.addClass("RedBagRota"); //添加摇晃的动画
+            var timer=null;
+            clearTimeout(timer);
+            timer=setTimeout(function(){
+                here.removeClass("RedBagRota");//移除动画
+                num++; //摇晃次数++
+                timer=setTimeout(function(){
+                    shade(here,num);//回调自身摇晃动画
+                },500);
+            },500)
+        }
+
+        function animitaIcon(){
+            if($(".icon").hasClass("iconRotate")){
+                return true;
+            }
+            $(".icon").addClass("iconRotate");
+            getPrize();
+            // setTimeout(function(){
+            //     getPrize();
+            // },300)
+        }
+		//获取话费红包
+
+        function getPrize(){
+            $.ajax({
+				url:"/index.php/mobile/huodong2/inrecharge"   ,
+				type:"post",
+				dataType:'json',
+				data:{code:86462},
+                success:function (data) {
+                	$(".getBox p").remove("");
+                    $(".icon").removeClass("iconRotate");
+                     code=data.status;
+                     if(code==1 || code==2){
+                         getNumber();//重新获取红包数量
+					 }
+					 money=data.money;
+					 mymoney=data.yemoney;
+                     msg=data.resultMessage;
+                     uid=data.uid;
+                     //money = Math.round(Math.random()*10);
+                     if(total == ''){
+                     	total = money;
+                     }else{
+                     	total = total + ',' + money;
+                     }
+                   
+                    if(code==3){
+                        $(".getBox .get").attr('src',"/statics/public/recharge/images/only2.png");
+                        $(".getBox").append('<p class="onlyMoney">'+money+'</p>');
+
+                    }else if(code==2){
+                        $(".getBox .get").attr('src',"/statics/public/recharge/images/double2.png");
+                        $(".getBox").append('<p class="fare">'+money+'</p><p class="fMoney">'+mymoney+'</p>');
+                    }else if(code==0){
+                        $(".getBox .get").attr('src',"/statics/public/recharge/images/nothing2.png");
+                        $(".getBox").append('<p class="msg">'+msg+'</p>');
+                    }else if(code>2){
+                    	if(code==1) {
+                            var url = "http://m.weimicm.com/index.php/mobile/huodong2/recharge";
+                        }
+                        if(code==4) {
+                            var url = "http://m.weimicm.com/mobile/user/login";
+                        }
+                        if(code==5) {
+                            var url = "http://m.weimicm.com/index.php/mobile/home/userrecharge";
+                        }
+                        showMsg(msg,url);
+                        btnclick=true;
+        
+                        return;
+                    }
+                    $(".getBox").append('<p class="onlytime">'+"05:00"+'</p>');
+                    $(".showPrize").css("transform","scale(1)")
+
+                    btnclick=true;
+                   
+
+                }
+			});
+        }
+
+        var countdown=60; 
+        var second = 5;
+	    function settime() {  
+	    	if(second == 0){
+	    		$(".showPrize .getBox .onlytime").html("00:00");
+	    	}else if (countdown == 0) { 
+	        	countdown = 60; 
+	        	second--;
+	        	$(".showPrize .getBox .onlytime").html("0" + second + ":" + countdown);
+	        	settime();
+	        	//$(".leaveP .red").html("结束");
+	            //window.removeEventListener("devicemotion",deviceMotionHandler,false);
+	        } else {  
+	            countdown--; 
+	            if(countdown < 10){
+	            	$(".showPrize .getBox .onlytime").html("0"+ second + ":0" + countdown);
+	            }else{
+	            	$(".showPrize .getBox .onlytime").html("0"+ second + ":" + countdown);
+	            }
+	             
+	            setTimeout(function() {  
+	                settime();
+	            },1000/60);  
+	        }  
+	  
+	    }
+
+        function  getNumber() {
+            $.ajax({
+                url:"/index.php/mobile/huodong2/GetNumber",
+                type:"post",
+                dataType:'json',
+                data:{code:86462},
+                success:function (data) {
+                	//settime();
+                    //$(".leaveP .red").html(window.clearInterval(10));
+                }
+            })
+        }
+
+
+        $(".colseGetBox,.showPrizeInner").click(function(){
+            $(".getBox p").remove("");
+            $(".showPrize").css("transform","scale(0)");
+		})
+
+        $(".link").click(function(){
+            $(".qrCodeBox").show(100,function(){
+                $(".qrCodeBox").animate({opacity:"0.9"},1000);
+            });
+        })
+
+        $(".qrCodeBox .close").click(function(){
+            $(".qrCodeBox").animate({opacity:"0"},1000,function(){
+                $(".qrCodeBox").hide();
+            });
+        })
+
+        $(".closeLink").click(function(event){
+            event.stopPropagation();    //  阻止事件冒泡
+            $(".link").animate({opacity:"0"},1000,function(){
+                $(".link").hide(1000);
+                $(".vlink").hide(1000)
+            });
+        })
+    })
+
+
+</script>
+{wc:php:start}}{wc:php:end}
+<script type="text/javascript">
+	$(function(){
+
+		var fz_status = '{wc:php:start}echo $fz_status;{wc:php:end}';
+		if(fz_status == 1){
+			setTimeout(function(){
+		    	$('#shownum2').css({"transition":"all 1s ease 0s","opacity": "1","transform": "rotateX(720deg)"});
+		    	setTimeout(function(){
+		    		$('#shownum2').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+		    	},3000);
+		    },500);
+		}else if(fz_status == 2){
+			setTimeout(function(){
+		    	$('#shownum3').css({"transition":"all 1s ease 0s","opacity": "1","transform": "rotateX(720deg)"});
+		    	setTimeout(function(){
+		    		$('#shownum3').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+		    	},3000);
+		    },500);
+		}else if(fz_status == 3){
+			setTimeout(function(){
+		    	$('#shownum4').css({"transition":"all 1s ease 0s","opacity": "1","transform": "rotateX(720deg)"});
+		    	setTimeout(function(){
+		    		$('#shownum4').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+		    	},3000);
+		    },500);
+		}
+	})
+	$(function(){
+		setTimeout(function(){
+	    	$('#shownum').css({"transition":"all 1s ease 0s","opacity": "1","transform": "rotateX(720deg)"});
+	    	setTimeout(function(){
+	    		$('#shownum').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+	    	},3000);
+	    },500);
+	})
+    
+	function ewm(id){
+		$('.zz').show();
+		$('.jiazai').show();
+		$.ajax({
+			url: "/index.php/mobile/huodong2/ewm/"+id,
+			success:function(msg){
+				$('.jiazai').hide();
+				var msg = JSON.parse(msg);
+				var uid = msg.uid;
+				var sid = msg.sid;
+				if(msg.status == 1){
+					$('.fxt img').attr('src',"/yao.php?uid="+uid+"&sid="+sid);
+					$('.fxt').show();
+				}else if(msg.status == 2){
+					showMsg("您未登录,即将前往登录",'/index.php/mobile/user/login');
+				}else if(msg.status == 3){
+					showMsg("已充值到账户",'');
+				}else{
+					showMsg("大爷您走错地方了",'');
+				}
+			}
+		})
+	}
+	$(".fxt").click(function(){
+		$('.zz').hide();
+		$('.fxt').hide();
+	})
+
+	$(".showPrize").click(function(){
+		window.location.reload();
+	})
+
+	function djs_time(){
+	    	var timestamp=Math.round(new Date().getTime()/1000);
+
+	    	var t_t = timestamp-1519833600;
+	    	var h1 = parseInt(t_t/86400);
+	    	var h2 = t_t-h1*86400;
+	    	var h3 = parseInt(h2/3600);
+	    	var h4 = h2-h3*3600;
+	    	var h5 = 1519833600+h1*86400+86400-timestamp;
+	    	var h6 = 1519833600+h1*86400+72000-timestamp;
+
+	    	var h = parseInt(h6/3600) ;
+	    	if(h < 10){
+	    		h = "0" + h;
+	    	}
+	    	var i = parseInt((h6-3600*h)/60);
+	    	if(i < 10){
+	    		i = "0" + i;
+	    	}
+	    	var s = h6-3600*h-60*i;
+	    	if(s < 10){
+	    		s = "0" + s;
+	    	}
+	    	setTimeout(function(){
+	    		if(h2 >= 72000 && h2 <=86399){
+	    			$('.leaveP2').text("活动进行中");
+	    			setTimeout(function(){
+	    				djs_time();
+	    			},h5);
+	    		}else{
+	    			$('.leaveP2').text('距离下波活动开始');
+	    			$('.leaveP2').append("<span></span>");
+	    			$('.leaveP2 span').text(h+":"+i+":"+s);
+	    			djs_time();
+	    		}
+	    	},1000);
+	    }  
+</script>
+</html>

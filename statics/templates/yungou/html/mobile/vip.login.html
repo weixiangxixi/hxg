@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>VIP登录</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" />
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <script src="/geetest/static/gt.js"></script>
+</head>
+
+<body style="background: #f4f4f4;">
+    <div class="h5-1yyg-v1" id="content">
+        <!-- 栏目页面顶部 -->
+        <!-- 内页顶部 -->
+        <header class="header" style="position: fixed;width: 100%;z-index: 99999999;">
+            <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+				<span style="display: block;height: 49px;line-height: 49px;">
+					<a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">VIP登陆</a>
+				</span>
+
+				<!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+				-->
+				<!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+				-->
+			</h1>
+            <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+                <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png"></a>
+            <div class="fr head-r" style="position: absolute;right: 6px;top: 10px;">
+                <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+			-->
+                <a href="{WEB_PATH}/mobile/mobile" class="z-shop" style="background-position: 2px -73px;"></a>
+            </div>
+            <style type="text/css">
+                #id{
+                    width: 75%;
+                    height: 40px;
+                    background: #fff;
+                    border: 1px solid #ddd;
+                    color: #ccc;
+                    padding: 9px 0px 8px 0px;
+                    display: inline-block;
+                    -webkit-box-sizing: border-box;
+                    position: relative;
+                    font-size: 16px;
+                    margin-top: 10px;
+                    line-height: 34px;
+                    text-indent: 3em;
+                }
+            </style>
+        </header>
+        <style type="text/css">
+        	.getyzm{
+        		position: absolute;
+        		right: 0;
+        		top: 20px;
+        		padding: 0 6px;
+        		border: none;
+        		background: none;
+        		color: #10aee8;
+        		border-left: 1px solid #97d6e7;
+        	}
+        </style>
+        <script type="text/javascript">
+         
+        var InterValObj; //timer变量，控制时间
+        var count = 120; //间隔函数，1秒执行
+        var curCount;//当前剩余秒数
+         
+        function sendMessage() {
+            if ($('#txtAccount').val() =='' || $('#txtPassword').val() =='') {
+                alert('手机号码或者密码没有填写');
+                return false;
+            }
+            if(!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test($('#txtAccount').val()))){ 
+              alert("手机号码格式不正确"); 
+              return false; 
+            } 
+             var validata = captchaObj.getValidate();
+            if (!validata) {
+                captchaObj.verify();
+                return;
+            }else{
+             　curCount = count;
+            　　//设置button效果，开始计时
+               $("#btnSendCode").attr("disabled", "true");
+               $("#btnSendCode").val( curCount + "秒内有效");
+               InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+            　　 //向后台发送处理数据
+
+               $.ajax({
+               　　type: "POST", //用POST方式传输
+               　　dataType: "text", //数据格式:JSON
+               　　url: '/index.php/mobile/ajax/abcd_code', //目标地址
+              　　 data: {mobile : $('#txtAccount').val() , pwd : $('#txtPassword').val() },
+              　　 error: function (XMLHttpRequest, textStatus, errorThrown) { },
+               　　success: function (msg){ 
+                        alert(msg);
+                   }
+               });
+           }
+        }
+         
+        //timer处理函数
+        function SetRemainTime() {
+              if (curCount == 0) {        
+                window.clearInterval(InterValObj);//停止计时器
+                $("#btnSendCode").removeAttr("disabled");//启用按钮
+                $("#btnSendCode").val("重新发送");
+              }
+              else {
+                curCount--;
+                $("#btnSendCode").val( curCount + "秒内有效");
+              }
+            }
+            function login(){
+                if ($('#txtAccount').val() =='' || $('#txtPassword').val() =='' || $('#smscode').val() =='') {
+                    alert('手机号码,密码或者验证码没有填写');
+                    return false;
+                }
+                $.ajax({
+               　　type: "POST", //用POST方式传输
+               　　dataType: "json", //数据格式:JSON
+               　　url: '/index.php/mobile/ajax/abcd_login', //目标地址
+              　　 data: {mobile : $('#txtAccount').val() , pwd : $('#txtPassword').val() ,code : $('#smscode').val()  },
+              　　 error: function (XMLHttpRequest, textStatus, errorThrown) { },
+               　　success: function (msg){ 
+                //console.log(msg);
+                        if (msg['status']==0) {
+                            alert(msg['msg']);
+                        }else{
+                            window.location.href = '/index.php/mobile/abcd/html7';
+                        }
+                   }
+               });
+            }
+
+            var handlerEmbed = function (captchaObj) {
+                window.captchaObj=captchaObj;
+                captchaObj.onSuccess(function () {
+                    var validata = captchaObj.getValidate();
+                    if (!validata) {
+                        captchaObj.reset();
+                        $.PageDialog.fail("安全验证失败，请重新验证")
+                    } else {
+                        curCount = count;
+                    　　//设置button效果，开始计时
+                       $("#btnSendCode").attr("disabled", "true");
+                       $("#btnSendCode").val( curCount + "秒内有效");
+                       InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+                    　　 //向后台发送处理数据
+
+                       $.ajax({
+                       　　type: "POST", //用POST方式传输
+                       　　dataType: "text", //数据格式:JSON
+                       　　url: '/index.php/mobile/ajax/abcd_code', //目标地址
+                      　　 data: {mobile : $('#txtAccount').val() , pwd : $('#txtPassword').val() },
+                      　　 error: function (XMLHttpRequest, textStatus, errorThrown) { },
+                       　　success: function (msg){ 
+                                alert(msg);
+                           }
+                       });
+                    }
+                });
+                
+                captchaObj.appendTo('#btnSendCode');
+            };
+
+            $.ajax({
+                // 获取id，challenge，success（是否启用failback）
+                url: "/geetest/web/StartCaptchaServlet.php?t=" + (new Date()).getTime(), // 加随机数防止缓存
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    // 使用initGeetest接口
+                    // 参数1：配置参数
+                    // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+                    initGeetest({
+                        gt: data.gt,
+                        challenge: data.challenge,
+                        new_captcha: data.new_captcha,
+                        product: "bind", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                        offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+
+                        // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+                    }, handlerEmbed);
+                }
+            });
+        </script>
+        <input id="txtAccount2" type="text" placeholder="请输入您的手机号码" class="lEmail" style="display: none">
+        <input style="border-top: 1px solid #ddd;" type="password" id="txtPassword2" class="lPwd" placeholder="密码" style="display: none">
+        <section>
+            <div class="registerCon" style="padding-top: 49px;">
+                <ul>
+                    <li class="accAndPwd" style="float: none;height: auto;">
+                        <dl>
+                            <input id="txtAccount" type="text" placeholder="请输入您的手机号码" class="lEmail">
+                            <s class="rs4"></s>
+                        </dl>
+                        <dl>
+                            <input style="border-top: 1px solid #ddd;" type="password" id="txtPassword" class="lPwd" placeholder="密码">
+                            <s class="rs3"></s>
+                        </dl>
+                        <dl style="position: relative;">
+                            <input type="text" id="smscode" placeholder="短信验证码" >
+                            <span class="fog"></span>
+                            <s class="rs3"></s>
+                            <input type="button" class="getyzm" id="btnSendCode" onclick="sendMessage()" value="获取验证码">
+                        </dl>
+                    </li>
+                    <li style="float: none;">
+                        <a href="javascript:;" id="btnLogin" class="nextBtn orgBtn" style="width:100%;text-align: center;display: block;margin: 0 auto;height: 50px;line-height: 55px;" onclick="login();">登&nbsp&nbsp&nbsp录</a>
+                        <!-- <a href="{WEB_PATH}/api/wxlogin" class="nextBtn orgBtn" style="width:100%;text-align: center;display: block;margin: 0 auto;height: 50px;line-height: 55px;margin-top: 10px;background-color: #00b220;">微&nbsp&nbsp&nbsp信&nbsp&nbsp&nbsp登&nbsp&nbsp&nbsp录</a> -->
+                        <input name="hidLoginForward" type="hidden" id="hidLoginForward" value="{WEB_PATH}/mobile/home" />
+                    </li>
+                    </li>
+                   <!--  <li style="margin-top: 30px;text-align: center;">
+                        <a style="height: 20px;line-height: 20px;color: #999!important;background: none;display: inline;font-size: 14px;margin-right: 10%;" href="{WEB_PATH}/mobile/user/step1" class="nextBtn orgBtn" style="width:40%; float:right;">忘记密码?</a> |
+                        <a style="height: 20px;line-height: 20px;color: #999!important;background: none;display: inline;font-size: 14px;margin-left: 10%;" href="{WEB_PATH}/mobile/user/register" class="nextBtn orgBtn">免费注册</a>
+                    </li> -->
+                </ul>
+                <div class="fastLogin" style="padding-top: 30px;">
+                    {wc:php:start} $conn_cfg = System::load_app_config("connect",'','api'); {wc:php:end}
+                    <h2>
+				<!-- <span class="line_l"></span>
+				一键登录
+				<span class="line_r"></span> -->
+			</h2>
+                    <!-- <div class="fastInfo" style="margin-top: 20px;">
+                        <a href="{WEB_PATH}/api/qqlogin">
+					{wc:if $conn_cfg['qq']['off']}
+					<img src="{G_TEMPLATES_IMAGE}/mobile/qq.png" alt="" class="user_login_q">{wc:if:end}</a>
+                        <a href="{WEB_PATH}/api/wxlogin">
+					{wc:if $conn_cfg['weixin']['off']}
+					<img src="{G_TEMPLATES_IMAGE}/mobile/wx.png" alt="" class="user_login_w">{wc:if:end}</a>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        {wc:templates "mobile/index","footer"}
+        <script language="javascript" type="text/javascript">
+    
+        var Path = new Object();
+
+        Path.Skin = "{G_TEMPLATES_STYLE}";
+
+        Path.Webpath = "{WEB_PATH}";
+
+
+
+        var Base = {
+            head: document.getElementsByTagName("head")[0] || document.documentElement,
+            Myload: function(B, A) {
+                this.done = false;
+                B.onload = B.onreadystatechange = function() {
+                    if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                        this.done = true;
+                        A();
+                        B.onload = B.onreadystatechange = null;
+                        if (this.head && B.parentNode) {
+                            this.head.removeChild(B)
+                        }
+                    }
+                }
+            },
+            getScript: function(A, C) {
+                var B = function() {};
+                if (C != undefined) {
+                    B = C
+                }
+                var D = document.createElement("script");
+                D.setAttribute("language", "javascript");
+                D.setAttribute("type", "text/javascript");
+                D.setAttribute("src", A);
+                this.head.appendChild(D);
+                this.Myload(D, B)
+            },
+            getStyle: function(A, B) {
+                var B = function() {};
+                if (callBack != undefined) {
+                    B = callBack
+                }
+                var C = document.createElement("link");
+                C.setAttribute("type", "text/css");
+                C.setAttribute("rel", "stylesheet");
+                C.setAttribute("href", A);
+                this.head.appendChild(C);
+                this.Myload(C, B)
+            }
+        }
+
+        function GetVerNum() {
+            var D = new Date();
+            return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+        }
+
+        Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v=' + GetVerNum());
+
+        var checkcode = document.getElementById('checkcode');
+
+        checkcode.src = checkcode.src + new Date().getTime();
+
+        var src = checkcode.src;
+
+        checkcode.onclick = function() {
+
+            this.src = src + '/' + new Date().getTime();
+
+        }
+        </script>
+    </div>
+</body>
+
+</html>

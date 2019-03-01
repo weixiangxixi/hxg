@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="icon" href="http://f.weimicm.com/photo/member.jpg@!thumb_200_200" type="image/x-icon">
+    <title>{wc:$webname}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+	<script src="/statics/templates/yungou/js/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<link rel="stylesheet" href="/statics/templates/yungou/css/material/diejia/swiper.min.css">
+    <link rel="stylesheet" href="/statics/templates/yungou/css/material/diejia/certify.css">
+    <script src="/statics/templates/yungou/js/material/diejia/swiper.min.js"></script>
+	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+		}
+		#body{
+			overflow: hidden;
+		    background:#fff url(/statics/templates/yungou/images/mobile/act_share.jpg) no-repeat left top;
+	
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    z-index: -10;
+		    zoom: 1;
+		    background-color: #fff;
+		    background-repeat: no-repeat;
+		    background-size: cover;
+		    -webkit-background-size: cover;
+		    -o-background-size: cover;
+		    background-position: center 0;
+		}
+		.list{
+			margin-top: 84px;
+			text-align: center;
+			font-size: 18px;
+			color: #fff;
+		}
+
+		.list2{
+			margin-top: 10px;
+			text-align: center;
+			font-size: 18px;
+			color: #fff;
+		}
+		.line {
+		    display: inline-block;
+		    width: 50px;
+		    border-top: 1px solid #ccc ;
+		    margin-bottom: 0.3rem;
+		    margin-left: 0.5rem;
+		    margin-right: 0.5rem;
+		}
+		.three{
+			height: 150px;
+			width: 80%;
+			border: 1px solid #fff;
+			margin-top: 1rem;
+			margin-left: 10%;
+			border-radius: 5px;
+			background-color: #fff;
+		}
+		.three span{
+			text-align: center;
+		    width: 25px;
+		    height: 25px;
+		    border-radius: 50%;
+		    font-size: 18px;
+		    display: inline-block;
+		    color:#f60;
+		    font-weight: bold;
+		    border: 1px solid #f60;
+		}
+		.three em{
+			display: inline-block;
+		    width: 25%;
+		    border-top: 1px solid #ccc ;
+		    margin-bottom: 0.4rem;
+		}
+		.bz{
+			font-size: 18px;
+			color: #f60;
+			float: left;
+			width: 33.3%;
+		}
+		.two{
+			height: 150px;
+			width: 80%;
+			border: 1px solid #fff;
+			margin-top: 1rem;
+			margin-left: 10%;
+			border-radius: 5px;
+			background-color: #fff;
+		}
+	
+		.two span{
+			color:#f60;
+		}
+		.two div{
+			margin-top: 5%;
+			text-align: center;
+			float: left;
+		}
+		.two button{
+			padding: 5px 20px;
+			border-radius: 20px;
+			background-color: #fff;
+			border: 1px solid #f60;
+			margin-top: 20px;
+			color: #f60;
+		}
+		.share_img{
+			display: block;
+		    position: absolute;
+		    margin-top: -20px;
+		}
+		.share_img img{
+			width: 100%;
+		}
+		.dh img{
+			width: 30px;
+			display: block;
+			float: left;
+		}
+		.dh span{
+			color: #fbdb3e;
+		}
+		.dh{
+			position: absolute;
+			margin-top: 10px;
+			width: 100%;
+		}
+		.dh em{
+			line-height: 30px;
+		}
+		.dh .right{
+			float: right;
+			margin-right: 20px;
+		}
+		.ruleBox{
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			z-index:1002;
+			transition: all 1s;
+		}
+		.ruleInnerBox{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			padding-top: 2rem;
+		}
+		.ruleList{
+			color: #fff;
+			z-index: 10000;
+			position: absolute;
+			display: block;
+			height: auto;
+			overflow: auto;
+			line-height: 150%;
+			width: 80%;
+			left: 10%;
+			margin-top: 40px;
+		}
+		.shadow{
+			position: absolute;
+			left: 0;
+			top: 0;
+			background: #000;
+			opacity: .8;
+			width: 100%;
+			height: 100%;
+		}
+		.closeRule{
+			position: absolute;
+			width: 1rem;
+			height: 1rem;
+			color: #fff;
+			top: .6rem;
+			font-size: 0.8rem;
+			text-align: center;
+			line-height: 1rem;
+			cursor: pointer;
+			right: 1.4rem;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div style="height: 100%">
+		<div id="body">
+			<div class="dh">
+				<span class="left"><img src="/statics/templates/yungou/images/mobile/back_sy.png"><em>首页</em></span>
+				<span class="right" id="rule"><em>活动规则</em></span>
+			</div>
+			<div id="certify">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						{wc:loop $shop $val}
+						<div class="swiper-slide"><img src="http://f.weimicm.com/{wc:$val['img']}@!thumb_200_200" /><p>{wc:$val['title']}</p></div>
+						{wc:loop:end}
+						
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+			<div class="share_img">
+				<img src="/statics/templates/yungou/images/mobile/share.jpg">
+			</div>
+			<div class="list">
+				<span class="line"></span>简单三步 立得奖励<span class="line"></span>
+				<div class="three">
+					<div style="margin-top: 5%"><span>1</span><em></em><span>2</span><em></em><span>3</span></div>
+					<div style="margin-top: 5%">
+						<div class="bz">分享好友</div><div class="bz">好友参与</div><div class="bz">获得奖励</div>
+					</div>
+				</div>
+			</div>
+			<div class="list2">
+				<span class="line"></span>我的战绩<span class="line"></span>
+				<div class="two">
+					<div style="width: 50%"><span>0</span><br/><span style="font-size: 14px">邀请好友成功个数</span></div>
+					<div style="width: 49%;border-left: 1px solid #f60"><span>0</span><br/><span style="font-size: 14px">好友在路上(个)</span></div>
+					<button id="detials">查看详情 <em>></em></button>
+				</div>
+			</div>
+			<div style="height: 20px;"></div>
+		</div>
+		
+	</div>
+
+	<div class="ruleBox">
+		<div class="ruleInnerBox">
+			<div class="shadow"></div>
+			<div class="closeRule">
+				<i class="icon-close iconfont " >
+					<img src="/statics/templates/yungou/images/mobile/close.png" style="width: 20px">
+				</i>
+			</div>
+			<div class="ruleList">
+				<p>	1、每成功邀请相应人数即可获得相应的奖品,被邀请人也能获得到奖品；
+				
+				</p><br>
+				<p>	2、成功邀请的条件是：被邀请人通过邀请人的链接或则二维码进行注册,并且进行充值消费！；
+				</p><br>
+
+				<p>	3、通过恶意注册或其他不正当手段等参与本活动的，将取消其参与及领奖资格，且有权收回其通过本活动获得的奖品，并保留追究恶意刷奖者的法律责任的权利！
+				</p><br>
+
+				<p>4、惠享购对本次活动在法律范围内拥有最终解释权。</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$('#detials').click(function(){
+				window.location.href = '/index.php/mobile/home/act_details';
+			})
+
+			var img_width = $(window).width();
+			var img_height = img_width/2;
+			$('#certify').css('margin-top',img_height)
+		})
+
+		$('.share_img img').click(function(){
+			window.location.href = '/index.php/mobile/home/invite';
+		})
+
+		$('.left').click(function(){
+			window.location.href = '/';
+		})
+
+		$("#rule").click(function(){
+            $(".ruleBox").css("left",0);
+            $('#shownum').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+            $('#shownum2').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+            $('#shownum3').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+        })
+
+        $(".closeRule").click(function(){
+            $(".ruleBox").css("left","-100%");
+        })
+	</script>
+	<script>
+	certifySwiper = new Swiper('#certify .swiper-container', {
+	watchSlidesProgress: true,
+	slidesPerView: 'auto',
+	centeredSlides: true,
+	loop: true,
+	loopedSlides: 5,
+	autoplay: true,
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
+	pagination: {
+		el: '.swiper-pagination',
+		//clickable :true,
+	},
+	on: {
+		progress: function(progress) {
+			for (i = 0; i < this.slides.length; i++) {
+				var slide = this.slides.eq(i);
+				var slideProgress = this.slides[i].progress;
+				modify = 1;
+				if (Math.abs(slideProgress) > 1) {
+					modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
+				}
+				translate = slideProgress * modify * 70 + 'px';
+				scale = 1 - Math.abs(slideProgress) / 5;
+				zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
+				slide.transform('translateX(' + translate + ') scale(' + scale + ')');
+				slide.css('zIndex', zIndex);
+				slide.css('opacity', 1);
+				if (Math.abs(slideProgress) > 3) {
+					slide.css('opacity', 0);
+				}
+			}
+		},
+		setTransition: function(transition) {
+			for (var i = 0; i < this.slides.length; i++) {
+				var slide = this.slides.eq(i)
+				slide.transition(transition);
+			}
+
+		}
+	}
+
+})
+</script>
+</body>
+</html>

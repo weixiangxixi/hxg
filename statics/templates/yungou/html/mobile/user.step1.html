@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>找回密码</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/password.css" rel="stylesheet" type="text/css" />
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <style type="text/css">
+        .title {
+            text-align: center;
+            padding: 15px;
+            font-size: 20px;
+            font-family: "微软雅黑";
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="h5-1yyg-v11" style="margin: 10px 10px">
+        <!-- 栏目页面顶部 -->
+        <!-- 内页顶部 -->
+       <div class="title">找回密码</div>
+        <div class="main-content clearfix">
+            <section>
+                <div class="registerCon" style="background: #fff">
+                    <ul class="form">
+                        <li style="border-bottom: 1px solid #ccc;">
+                            <input name="mobile" type="text" placeholder="请输入您的手机号" value="" style="padding-left: 78px;border:0;font-size: 16px;">
+                            <span style="border: none;height: 34px;width: 80px;background-position: 0 -25px;position: absolute;top: 12px;left: 5px;font-size: 16px;color: #000;">账号</span>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;" id="btnSave" class="nextBtn orgBtn" style="background: #f60;border: 1px solid #ef6000;">下一步</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <script src="/geetest/static/gt.js"></script>
+            <script type="text/javascript">
+            $(function(){
+                var b = function() {
+                    var submiting = false;
+                    var mobile = $('input[name=mobile]');
+                    $('#btnSave').click(function() {
+                        if (submiting) {
+                            return false;
+                        }
+                        var post = {
+                            mobile: mobile.val(),
+                        };
+                        if (post.mobile == '') {
+                            $.PageDialog.fail("用户手机号码不能为空");
+                            return false;
+                        }
+                        var validata = captchaObj.getValidate();
+                        if (!validata) {
+                            captchaObj.verify();
+                            return;
+                        }else{
+                            var the = $(this).text('正在提交');
+                            submiting = true;
+                            $.post("{WEB_PATH}/mobile/user/step1chk", post, function(s) {
+                                if (s == 123) {
+                                    $.PageDialog.ok('验证码发送成功', function() {
+                                        window.location.href = "{WEB_PATH}/mobile/user/step2/" + mobile.val();
+                                    });
+                                } else {
+                                    submiting = false;
+                                    the.text('提交');
+                                    $.PageDialog.fail(s);
+                                }
+                            }, 'text');
+                        }
+                        
+                    });
+                }
+            
+                var a = function() {
+                    Base.getScript(Path.Skin + "/js/mobile/pageDialog.js", b);
+                };
+                Base.getScript(Path.Skin + "/js/mobile/Comm.js", a);
+                var handlerEmbed = function (captchaObj) {
+            
+                    window.captchaObj=captchaObj;
+                    captchaObj.onSuccess(function () {
+                        var validata = captchaObj.getValidate();
+                        if (!validata) {
+                            captchaObj.reset();
+                            $.PageDialog.fail("安全验证失败，请重新验证")
+                        } else {
+                            var mobile = $('input[name=mobile]');
+                            var post = {
+                                mobile: mobile.val(),
+                            };
+                            var the = $("#btnSave").text('正在提交');
+                            var submiting = true;
+                            $.post("{WEB_PATH}/mobile/user/step1chk", post, function(s) {
+                                if (s == 123) {
+                                    $.PageDialog.ok('验证码发送成功', function() {
+                                        window.location.href = "{WEB_PATH}/mobile/user/step2/" + mobile.val();
+                                    });
+                                } else {
+                                    submiting = false;
+                                    the.text('提交');
+                                    $.PageDialog.fail(s);
+                                }
+                            }, 'text');
+                        }
+                    });
+                    
+                    captchaObj.appendTo('#btnSave');
+                };
+
+                $.ajax({
+                    // 获取id，challenge，success（是否启用failback）
+                    url: "/geetest/web/StartCaptchaServlet.php?t=" + (new Date()).getTime(), // 加随机数防止缓存
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        // 使用initGeetest接口
+                        // 参数1：配置参数
+                        // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+                        initGeetest({
+                            gt: data.gt,
+                            challenge: data.challenge,
+                            new_captcha: data.new_captcha,
+                            product: "bind", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                            offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+
+                            // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+                        }, handlerEmbed);
+                    }
+                });
+            })
+            </script>
+        </div>
+        {wc:templates "mobile/index","footer"}
+        <script language="javascript" type="text/javascript">
+        var Path = new Object();
+        Path.Skin = "{G_TEMPLATES_STYLE}";
+        Path.Webpath = "{WEB_PATH}";
+        Path.imgpath = "{G_WEB_PATH}/statics";
+
+        var Base = {
+            head: document.getElementsByTagName("head")[0] || document.documentElement,
+            Myload: function(B, A) {
+                this.done = false;
+                B.onload = B.onreadystatechange = function() {
+                    if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                        this.done = true;
+                        A();
+                        B.onload = B.onreadystatechange = null;
+                        if (this.head && B.parentNode) {
+                            this.head.removeChild(B)
+                        }
+                    }
+                }
+            },
+            getScript: function(A, C) {
+                var B = function() {};
+                if (C != undefined) {
+                    B = C
+                }
+                var D = document.createElement("script");
+                D.setAttribute("language", "javascript");
+                D.setAttribute("type", "text/javascript");
+                D.setAttribute("src", A);
+                this.head.appendChild(D);
+                this.Myload(D, B)
+            },
+            getStyle: function(A, B) {
+                var B = function() {};
+                if (callBack != undefined) {
+                    B = callBack
+                }
+                var C = document.createElement("link");
+                C.setAttribute("type", "text/css");
+                C.setAttribute("rel", "stylesheet");
+                C.setAttribute("href", A);
+                this.head.appendChild(C);
+                this.Myload(C, B)
+            }
+        }
+
+        function GetVerNum() {
+            var D = new Date();
+            return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+        }
+        Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v=' + GetVerNum());
+        </script>
+    </div>
+</body>
+
+</html>

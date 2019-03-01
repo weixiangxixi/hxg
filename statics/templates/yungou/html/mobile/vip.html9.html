@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" /><link href="{G_TEMPLATES_CSS}/mobile/member.css" rel="stylesheet" type="text/css" /><script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <link href="{G_TEMPLATES_CSS}/mobile/vipStyle.css" rel="stylesheet" type="text/css" />	
+    <!-- <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/userbuylist1.js" language="javascript" type="text/javascript"></script> -->
+    <style type="text/css">
+      #kk a{
+        color: #fff;
+        border: 1px solid #f60;
+        background: #f60;
+        padding: 7px;
+        width: 100%;
+        border-radius: 0.2rem;
+      }
+      #kk {
+        padding-top: 15px;
+        padding-bottom: 5px;
+      }
+      #pp{
+        padding-bottom: 15px;
+      }
+    </style>
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+   <header class="header" style="position: fixed;width: 100%;z-index: 99999999;">
+
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">
+                尊贵的{wc:php:start}echo $this->user;{wc:php:end},您好
+            </a>
+        </span>
+
+        <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+        -->
+        <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 6px;top: 10px;">
+
+        <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+    -->
+    <a href="{WEB_PATH}/mobile/abcd/logout" class="z-shop" style="background-position: 2px -73px;"></a>
+
+</div>
+
+</header>
+
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+ 
+</div>
+
+<div class="navbar">
+	<!--导航-->
+	
+	<div class="item">
+    <p><a><span>可用金额</span></a><a>￥{wc:php:start}echo $this->money;{wc:php:end}元</a><a href="/index.php/mobile/abcd/html10">订单真伪</a></p>
+  </div>
+  <div class="item">
+    <p><a href="/index.php/mobile/abcd/html8">vip充值</a><a href="/index.php/mobile/abcd/html3">vip明细</a><a href="">待开发</a></p>
+  </div>   
+  <div class="item">
+    <p><a href="/index.php/mobile/abcd/html7">会员转账</a><a href="/index.php/mobile/abcd/html5">充值明细</a><a href="/index.php/mobile/abcd/html4">撤销充值</a></p>
+    <p><a href="/index.php/mobile/abcd/html6">会员明细</a><a href="/index.php/mobile/abcd/html2">修改密码</a><a href="/index.php/mobile/abcd/html1">撤销明细</a></p>
+    <p><a href="/index.php/mobile/abcd/html9">订单查询</a><!-- <a href="/index.php/mobile/home/recharge_vip">充值(送2%)</a> --><a href="">待开发</a><a href="">待开发</a></p>
+  </div>
+</div>
+<form action="" method="post">
+<div class="filter">
+	<p>
+		<span>账号</span>
+		<select name="mobile">
+			<option value="{wc:php:start}echo $user['mobile'];{wc:php:end}" {wc:if $user['mobile'] == $mobile}selected{wc:if:end}>{wc:php:start}echo $user['mobile'];{wc:php:end}</option>
+      {wc:php:start}foreach($crr as $key=>$val){{wc:php:end}
+          <option value="{wc:php:start}echo $val;{wc:php:end}" {wc:if $val == $mobile}selected{wc:if:end}>{wc:php:start}echo $val;{wc:php:end}</option>
+      {wc:php:start}}{wc:php:end}
+		</select>
+	</p>
+	<p>
+		<span>时间</span>
+		<select name="type">
+			<option value="0" {wc:php:start}if($type == 0){echo "selected";}{wc:php:end}>今日数据</option><option value="1" {wc:php:start}if($type == 1){echo "selected";}{wc:php:end}>昨日数据</option><option value="2" {wc:php:start}if($type == 2){echo "selected";}{wc:php:end}>两日数据</option>
+		</select>
+	</p>
+	<p>
+		<span>操作</span>
+		<input type="submit" name="" id="" value="搜索" />
+	</p>
+	<p>
+		<span>总条数</span>
+		<span>{wc:php:start}echo count($data);{wc:php:end}</span>
+	</p>
+  {wc:if $uid == '73383'}
+  <p>
+    <span>总金额</span>
+    <span style="font-size: 18px;color:red;">{wc:php:start}echo $second_money_total;{wc:php:end}元</span>
+  </p>
+  {wc:if:end}
+</div>
+</form>
+{wc:php:start}foreach($data as $key=>$val){{wc:php:end}
+<div class="result">
+	<p><span>订单号</span><span>{wc:php:start}echo $val['id'];{wc:php:end}</span></p>
+	<p><span>提供者</span><span>{wc:php:start}echo $val['username'];{wc:php:end}</span></p>
+	<p><span>提供者手机号</span><span>{wc:php:start}echo substr($val['phone'],0,3)."****".substr($val['phone'],7);{wc:php:end}</span></p>
+  <p><span>收货人姓名</span><span>{wc:php:start}echo $val['shouhuoren'];{wc:php:end}</span></p>
+	<p><span>商品名称</span><span>{wc:php:start}if($val['dh'] == 1 || $val['hd']){echo '<em style="color:red;font-size: 16px">'.$val['shopqishu'].'</em>'.$val['shopname'];}else if($val['cateid'] == '177'){echo "<em style='color:#f60'>(双十一)</em>(第".$val['shopqishu']."期)".$val['shopname'];}else{echo "(第".$val['shopqishu']."期)".$val['shopname'];}{wc:php:end}</span></p>
+  <p><span>商品价格</span><span>￥{wc:if $uid == '73383'}<em style="color:red;font-size:18px">{wc:php:start}echo sprintf("%.1f",$val['second_money']);{wc:php:end}</em> / {wc:if:end}<em style="color:red;font-size:18px">{wc:php:start}if($val['cateid'] == '177'){$money = sprintf("%.1f",$val['money']*2);echo "原价：<em style='color:#f60;font-size:16px;'>".$money."</em>";}else{echo intval($val['money']);}if($val['dh'] == 1){echo "(共<em style='color: red;font-size: 18px'>".$val['amount']."</em>件)";}{wc:php:end}</em>{wc:if $uid == '73383'}<em style='color: red;font-size: 18px'>({wc:php:start}echo sprintf("%.1f",$val['second_money']*1.01);{wc:php:end})</em>{wc:if:end}</span></p>
+  {wc:if $val['dh'] != 1}<p><span>揭晓时间</span><span style="font-size:18px;color: red">{wc:php:start}if($val['q_end_time'] < 1000){echo "该订单有问题！";}else{echo date("Y-m-d H:i:s",$val['q_end_time']);}{wc:php:end}</span></p>{wc:if:end}
+	<p><span>提交时间</span><span style="color:red;font-size:18px">{wc:php:start}echo date("Y-m-d H:i:s",$val['dizhi_time']);{wc:php:end}</span></p>
+</div>
+{wc:php:start}}{wc:php:end}
+<div style="margin-bottom: 50px"></div>
+</body>
+</html>

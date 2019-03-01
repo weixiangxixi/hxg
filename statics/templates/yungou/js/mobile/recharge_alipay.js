@@ -1,0 +1,1 @@
+Base.getScript("/statics/templates/yungou/js/mobile/RechargeFun_alipay.js?v="+Date.now());

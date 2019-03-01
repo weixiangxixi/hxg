@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class=""><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>惠享购 - 不中全返</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+    <link href="{G_TEMPLATES_CSS}/mobile/panic.css" rel="stylesheet" type="text/css">
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/ajax.js"></script>
+    <style type="text/css">
+    body{padding-bottom:60px;}
+    #header{margin-top:0;}
+    .revCon ul{min-height:270px;border-top:0;}
+    .nav-wrapper{height:44px !important;}
+    .nav-wrapper a{width:50% !important;border-left:0 !important;height:44px !important;}
+    .nav-wrapper a:first-child{border-right:1px solid #eee !important;}
+    .panic_go_box{position:fixed;bottom:0;left:0;width:100%;border-radius:5px 5px 0 0;background:#FFF;padding:20px;box-sizing:border-box;box-shadow:0 -3px 5px #EEE;}
+    .panic_go_box_min,.panic_go_box_add{display:inline-block;background:#f60;width:40px;height:40px;text-align:center;line-height:40px;vertical-align:middle;color:#FFF;border:1px solid #f60;}
+    .panic_go_box_num{display:inline-block;background:#fff;width:90px;height:40px;text-align:center;line-height:40px;vertical-align:middle;color:#333;border-top:1px solid #EEE;border-bottom:1px solid #EEE;}
+    .panic_go_box_nemu{display:inline-block;background:#ccc;width:40px;height:40px;text-align:center;line-height:40px;vertical-align:middle;margin-right:10px;font-size:12px;}
+    .panic_go_box table{margin-bottom:40px;position:relative;}
+    .panic_go_box tr td{padding:10px 0;}
+    .panic_go_btn{height:40px;line-height:40px;text-align:center;line-height:40px;background:#f60;color:#fff;}
+    .panic_go_close{color:#fff;position:absolute;top:10px;right:10px;font-size:18px;display:inline-block;width:30px;height:30px;line-height:30px;text-align:center;background:#C00;border-radius:50%;z-index:999}
+    </style>
+<style type="text/css">.fancybox-margin{margin-right:0px;}</style></head>
+<body>
+    
+    <div style="height:10px;background:#EEE;"></div>
+        <nav class="nav-wrapper" id="goodsNav">
+            <a href="/index.php/mobile/panic/index" class="select-btn {wc:if $this->segment(3)=='index'}current{wc:if:end}">不中包赔</a>
+            <a href="/index.php/mobile/panic/glist" class="select-btn {wc:if $this->segment(3)=='glist'}current{wc:if:end}">最新揭晓</a>
+        </nav>
+    
+    <div class="h5-1yyg-v1" id="loadingPicBlock">
+        <section class="g-main">
+            <article class="clearfix h5-1yyg-w310 m-round m-tj-li">
+                <ul id="ulRecommend" class="clearfix">
+                	
+                    <div id="divGoodsLoading" class="loading" style="display:none;height: 80px;">
+                </ul>
+            </article>
+        </section>
+        <a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;">
+            <i class="jiazai"></i>
+            点击加载更多
+        </a>
+        <a id="btnLoadMore2" class="loading"  style="display:none; padding-top: 0px;">没有了</a>
+        <a id="btnLoadMore3" class="loading"  style="display:none; padding-top: 0px;">已经到底了</a> 
+        <input id="urladdress" value="" type="hidden" />
+        <input id="pagenum" value="" type="hidden" />  		
+        {wc:templates "mobile/index","footer"}
+       
+  
+    </div>
+<script type="text/javascript">
+    window.onload=function(){
+    glist_json("1");
+    //购物车数量
+    $.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+        if(data.num){
+            $("#btnCart").append('<em>'+data.num+'</em>');
+        }
+    });
+    
+}
+
+function glist_json(parm){
+    $("#pagenum").val('');
+    $.getJSON('{WEB_PATH}/mobile/panic/indexajax/'+parm,function(data){
+        $("#divGoodsLoading").css('display','none');        
+        if(data[0].sum){
+            $("#pagenum").val(data[0].page);
+            for(var i=0;i<data.length;i++){ 
+                var bfb = data[i].canyurenshu/data[i].zongrenshu*100;
+                if(data[i].mmm == 1){
+                    var ul='<li><div class="f_bor_tr out"><div class="m-tj-pic"><a href="/index.php/mobile/mobile/item/'+data[i].id+'" class="u-lott-pic "><img src="/statics/uploads/'+data[i].thumb+'" border="0" alt=""></a></div><div class="m-ti-content"><p class="g-name">(第<em>'+data[i].qishu+'</em>期)'+data[i].title+'</p><div class="Progress-bar"><p class="u-progress"><span class="pgbar" style="width: '+bfb+'%;"><span class="pging"></span></span></p><ul class="Pro-bar-li"><li class="P-bar01"><em>'+data[i].canyurenshu+'</em></li><li class="P-bar02"><em>'+data[i].zongrenshu+'</em></li><li class="P-bar03"><em>'+data[i].shenyurenshu+'</em></li></ul></div><table width="100%" border="0"><tbody><tr><td style="color:#f90;text-align:left;padding-left:10px;">¥ '+data[i].yunjiage+'</td><td style="color:#999;text-align:right;padding-right:10px">'+data[i].zongrenshu+'人次</td></tr></tbody></table><div id="btn-wrap"><a href="javascript:;" class="buy-btn" style="background-color: #a2a2a2;border: 1px solid #a2a2a2;">已售罄</a></div></div></div></li>';
+                }else{
+                    var ul='<li><div class="f_bor_tr out"><div class="m-tj-pic"><a href="/index.php/mobile/mobile/item/'+data[i].id+'" class="u-lott-pic "><img src="/statics/uploads/'+data[i].thumb+'" border="0" alt=""></a></div><div class="m-ti-content"><p class="g-name">(第<em>'+data[i].qishu+'</em>期)'+data[i].title+'</p><div class="Progress-bar"><p class="u-progress"><span class="pgbar" style="width: '+bfb+'%;"><span class="pging"></span></span></p><ul class="Pro-bar-li"><li class="P-bar01"><em>'+data[i].canyurenshu+'</em></li><li class="P-bar02"><em>'+data[i].zongrenshu+'</em></li><li class="P-bar03"><em>'+data[i].shenyurenshu+'</em></li></ul></div><table width="100%" border="0"><tbody><tr><td style="color:#f90;text-align:left;padding-left:10px;">¥ '+data[i].yunjiage+'</td><td style="color:#999;text-align:right;padding-right:10px">'+data[i].zongrenshu+'人次</td></tr></tbody></table><div id="btn-wrap"><a href="/index.php/mobile/mobile/item/'+data[i].id+'" class="buy-btn">立即抢购</a></div></div></div></li>';
+                }
+               
+                $("#divGoodsLoading").before(ul);           
+            }
+            if(data[0].page<=data[0].sum){  
+                $("#btnLoadMore").css('display','block');
+                $("#btnLoadMore2").css('display','none');
+                $("#btnLoadMore3").css('display','none');
+            }else if(data[0].page>data[0].sum){
+                $("#btnLoadMore").css('display','none');
+                $("#btnLoadMore2").css('display','none');
+                $("#btnLoadMore3").css('display','block');
+            }
+        }else{
+            $("#btnLoadMore").css('display','none');
+            $("#btnLoadMore2").css('display','block');  
+            $("#btnLoadMore3").css('display','none');           
+        }
+    });
+}
+$(document).ready(function(){
+$("#btnLoadMore").click(function(){     
+            page=$("#pagenum").val();
+        glist_json(page);
+    }); 
+    //自动加载
+    $(window).scroll(function () {   
+        if ($(document).height() - $(this).scrollTop() - $(this).height() < 1 && $('#btnLoadMore').css('display')!='none' ){
+            
+            page=$("#pagenum").val();
+            if(page != ''){
+                glist_json(page);
+            }
+        }
+    });
+})
+</script>
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";
+  Path.Webpath = "{WEB_PATH}";
+
+var Base = {
+    head: document.getElementsByTagName("head")[0] || document.documentElement,
+    Myload: function(B, A) {
+        this.done = false;
+        B.onload = B.onreadystatechange = function() {
+            if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                this.done = true;
+                A();
+                B.onload = B.onreadystatechange = null;
+                if (this.head && B.parentNode) {
+                    this.head.removeChild(B)
+                }
+            }
+        }
+    },
+    getScript: function(A, C) {
+        var B = function() {};
+        if (C != undefined) {
+            B = C
+        }
+        var D = document.createElement("script");
+        D.setAttribute("language", "javascript");
+        D.setAttribute("type", "text/javascript");
+        D.setAttribute("src", A);
+        this.head.appendChild(D);
+        this.Myload(D, B)
+    },
+    getStyle: function(A, B) {
+        var B = function() {};
+        if (callBack != undefined) {
+            B = callBack
+        }
+        var C = document.createElement("link");
+        C.setAttribute("type", "text/css");
+        C.setAttribute("rel", "stylesheet");
+        C.setAttribute("href", A);
+        this.head.appendChild(C);
+        this.Myload(C, B)
+    }
+}
+function GetVerNum() {
+    var D = new Date();
+    return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0': D.getMinutes().toString().substring(0, 1))
+}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+
+
+</script>
+
+</body></html>

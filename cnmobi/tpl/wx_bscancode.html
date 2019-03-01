@@ -1,0 +1,74 @@
+<div id="orderInfo1">
+    <div class="ico_title">商家端微信刷卡测试</div>
+    <div class="form_wrap account">
+        <div class="form_list">
+            <span class="list_title">商品名称</span>
+            <span class="list_val">
+                <input name="name" value="测试商品" maxlength="32"  placeholder="商品名称">
+            </span>
+        </div>
+        <div class="form_list">
+            <span class="list_title">商品价格：</span>
+            <span class="list_val">
+                <input name="total" id="total"  value="1"  placeholder="商品价格单位为分">  <em>商品价格单位为分</em>
+            </span>
+        </div>
+        <div class="form_list">
+            <span class="list_title">微信付款条形码：</span>
+            <span class="list_val">
+                <input name="autoCode" id="autoCode" value="2222" placeholder="微信付款条形码">
+            </span>
+        </div>
+        <div class="form_list">
+            <span class="list_title">商品订单号：</span>
+            <span class="list_val">
+                <input name="orderNo" id="orderNo" value="2017070" maxlength=""  placeholder="商品订单号" readonly="readonly">
+            </span>
+        </div>
+        <div class="form_list">
+            <span class="list_title"></span>
+            <span class="list_val submit btn btn_blue" onclick="submit()">确定</span>
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        $("#orderNo").val(formatDate());
+    })
+
+    function submit() {
+        var data = {
+            orderNo: $('#orderNo').val(),
+            name: "测试商品",
+            total: $("#total").val(),
+            autoCode: $("#autoCode").val()
+        };
+        var mask = $('<div class="mask"></div>');
+        $('body').append(mask);
+        $.ajax({
+                url: '/request.php?method=wxBscancode',
+                type: 'POST',
+                dataType: 'JSON',
+                data: data
+            })
+            .done(function(res) {
+                console.log(res);
+                if (res.code == 1) {
+                    alert("扫码付款成功")
+                } else {
+                    $('body').popUpWin({
+                        content: function() {
+                            return '<p>' + res.msg + '</p> ';
+                        }
+                    });
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+                $('body').find('.mask').remove();
+            });
+    }
+</script>

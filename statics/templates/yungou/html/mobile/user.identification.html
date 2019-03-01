@@ -1,0 +1,154 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>身份验证</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png?v=123456">
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+    <script src="/statics/templates/yungou/js/mobile/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script><style>
+    *{
+        box-sizing: border-box;
+    }
+    .header{
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        height: 36px;
+        line-height: 36px;
+        background: #f7f7f7;
+        border-bottom: 0px;
+    }
+    .input-box{
+        width:100%;
+        height: 36px;
+        margin-top: 10px;
+    }
+    .input-box .password{
+        width: 96%;
+        height: 100%;
+        border:1px solid #dfdfdf;
+        margin-left: 2%;
+        letter-spacing: 10px;
+        padding: 0 10% 0 14%;
+        font-size: 24px;
+    }
+    .input-box .password:focus{
+        border:1px solid #1e9fff;
+    }
+    .forget-box{
+        text-align: right;
+        margin-top: 10px;
+    }
+    .forget-box a{
+        color: #369ffd;
+        margin-right: 2%;
+        cursor: pointer;
+    }
+    #confirm{
+        width: 96%;
+        height: 36px;
+        line-height: 36px;
+        border: none;
+        background: #f60;
+        color: #fff;
+        font-size: 20px;
+        border-radius: 4px;
+        margin-top: 18px;
+        margin-left: 2%;
+        cursor: pointer;
+    }
+    em.psw_type.show_psw {
+        background-image: url(/statics/templates/yungou/images/mobile/eye-open.png);
+    }
+    em.psw_type {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        right: 5%;
+        background: transparent url(/statics/templates/yungou/images/mobile/eye-off.png) no-repeat center / 60% auto;
+    }
+</style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+</head>
+<body>
+<div>
+    <div class="header">
+        请输入您的安全密码
+    </div>
+    <div class="input-box">
+        <input autofocus="" id="code" type="password" class="password">
+        <em id="toggle_psw" class="psw_type"></em>
+    </div>
+    <div class="forget-box">
+        <a href="/index.php/mobile/home/security">忘记安全密码?</a>
+    </div>
+    <button type="button" id="confirm" class="confirm">确认</button>
+</div>
+
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/jquery.cookie.js"></script>
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript" type="text/javascript"></script>
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_ > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    $("#toggle_psw").click(function () {
+        var elm = $(this),
+            inpElm = $("#code"),
+            show = inpElm.attr("type");
+
+        elm.toggleClass("show_psw");
+        show == "password" ? inpElm.attr("type", "text") : inpElm.attr("type", "password")
+    });
+    
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+<script>
+$(document).ready(function(){
+    $(document).on("click","#confirm",function(){
+        var code=$("#code").val();
+        confirmIdent(code)
+    });
+});
+
+function confirmIdent(code){
+    $.getJSON("/index.php/mobile/home/confirmIdent",{"code":code},function(json){
+        showMsg(json.tip);
+        if(json.success){
+            window.location.href="/index.php/mobile/{wc:$str}";
+        }
+    })
+}
+
+function showMsg(msg){
+    layer.open({
+        content: msg
+        ,skin: 'msg'
+        ,time: 2000 //2秒后自动关闭
+    });
+}
+</script>
+
+</body></html>

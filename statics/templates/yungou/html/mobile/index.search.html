@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>{wc:$key} - {wc:$webname}触屏版</title>
+	<meta content="app-id=518966501" name="apple-itunes-app" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/goods.css" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/main.css" rel="stylesheet" type="text/css">
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+-->
+</head>
+
+<body>
+<!-- 栏目页面顶部 -->
+<div id="loadingPicBlock" class="h5-1yyg-v1">
+<style type="text/css">
+    /*搜索*/
+    
+    .head_search {
+        position: relative;
+        margin-top: 10px;
+        padding: 0 10px;
+    }
+    
+    .head_search .init {
+        border: medium none;
+        color: #bbb;
+        float: left;
+        font-family: Arial, "宋体";
+        height: 30px;
+        outline: 0 none;
+        text-indent: 35px;
+        width: 90%;
+        padding: 0 30px 0 0;
+        border-radius: 30px;
+        
+    }
+    
+    .head_search span {
+        display: block;
+        position: absolute;
+        right: 50px;
+        text-align: center;
+        top: -1px;
+    }
+    
+    .head_search span a {
+        background: #eee none repeat scroll 0 0;
+        border-radius: 2px;
+        color: #666;
+        display: block;
+        float: left;
+        height: 25px;
+        line-height: 25px;
+        margin: 8px 7px 0 0;
+        width: 35px;
+    }
+    
+    .head_search .search_submit {
+        background-position: 14px -89px;
+        border: medium none;
+        cursor: pointer;
+        float: left;
+        height: 20px;
+        position: absolute;
+        text-indent: -999em;
+        vertical-align: top;
+        width: 20px;
+        position: absolute;
+        left: 20px;
+        top: 12px;
+    }
+    
+    .head_search .ico_search {
+        background: url("{G_WEB_PATH}/statics/templates/yungou/images/mix-icon.png") no-repeat -120px -100px;
+        display: block;
+        height: 17px;
+        width: 19px;
+        z-index: 1000;
+    }
+    .mod_searchbar_btn {
+	    display: inline-block!important;
+	    width: 50px;
+	    height: 28px;
+	    line-height: 28px;
+	    text-align: center;
+	    font-size: 14px;
+	    border-radius: 2px;
+	    background-color: #e93b3d;
+	    color: #fff;
+	    box-shadow: 0 1px 2px rgba(233,59,61,.2);
+	    position: absolute;
+	    right: 17px;
+	    top: 15px;
+	}
+	.hot-list li {
+	    height: 34px;
+	    line-height: 34px;
+	    float: left;
+	    margin: 0 10px 15px 0;
+	    position: relative;
+	    border-radius: 6px;
+	}
+	.hot-list li .items {
+    position: relative;
+    display: inline-block;
+    height: 34px;
+    padding: 2px 15px;
+    z-index: 1;
+    min-width: 50px;
+    text-align: center;
+    color: #666;
+    background: #f8f8f8;
+}
+
+    </style>
+<header class="header" style="position: fixed; width: 100%;height: 60px;padding:10px 0;z-index: 99999999;background: #fff;border-bottom: 1px solid #d8d8d8;">
+
+        <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+            <div class="head_search b_red" style="position: relative;margin: 0 50px 0 0;">
+                <input style="background: #f7f7f7;margin-top: 5px;" id="txtSearch" class="init" placeholder="输入'iphone'试一试" type="search">
+                <!--
+                <span style="">
+            <a href="{WEB_PATH}/mobile/mobile/search/苹果">苹果</a>
+            <a href="{WEB_PATH}/mobile/mobile/search/购物卡" style="width: 45px;">购物卡</a>
+          </span>
+          -->
+                <a class="search_submit"href="#"> <i class="ico_search"></i>
+            </a>
+            </div>
+            <a class="mod_searchbar_btn" id="butSearch" href="javascript:;" >搜&nbsp索
+            </a>
+            <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+            -->
+            <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+            -->
+        </h1>
+
+        <!-- <a class="daohangguanbi" onclick="history.go(-1)" href="javascript:;"><img width="30" height="30" src="/statics/templates/yungou/images/fanhui1.png"></a> -->
+<!--
+        <div class="fr head-r" style="position: absolute;right: 0px;top: 0px;">
+
+            <a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+        
+            <a href="{WEB_PATH}/mobile/mobile/" class="z-shop" style="background-position: 12px -73px;"></a>
+
+        </div>
+-->
+    </header>
+<script src="{G_TEMPLATES_JS}/mobile/ajax.js"></script>
+	<section class="goodsCon" style="position: relative;top: 70px!important;">
+		<div class="" style="color: #999;padding: 0 0 12px 12px;border-bottom: none!important">
+			<p style="padding-bottom: 10px">热门搜索</p>
+			<ul id="ulSearchHot" class="hot-list">
+                    <li item="iphone">
+                        <a class="items">iphone</a>
+                    </li>
+                    <li item="ipad">
+                        <a class="items">ipad</a>
+                    </li>
+                    <li item="mac">
+                        <a class="items">mac</a>
+                    </li>
+                    <li item="小米">
+                        <a class="items">小米</a>
+                    </li>
+                       <li item="三星">
+                        <a class="items">三星</a>
+                    </li>
+             </ul>
+		</div>
+		<div class="goodsList" style="top: 49px;margin-top: 36px;">
+			<div id="divGoodsLoading" class="loading" style="display:none;height: 80px;">
+				<b></b>
+				正在加载...
+			</div>
+			<a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;">
+				<i class="jiazai"></i>
+				点击加载更多
+			</a>
+			<a id="btnLoadMore2" class="loading"  style="background: #f4f4f4;display:none; padding-top: 0px;">没有找到相关产品</a>
+			<a id="btnLoadMore3" class="loading"  style="display:none; padding-top: 0px;">已经到底了</a>
+		</div>
+	</section>
+	<input id="urladdress" value="" type="hidden" />
+    <input id="pagenum" value="" type="hidden" />
+    <script>
+            document.onkeydown = function(event)
+
+            {
+
+                e = event ? event : (window.event ? window.event : null);
+
+                ss = document.getElementById('txtSearch').value;
+
+                if (e.keyCode == 13 && ss != "") {
+                	$(".goodsList ul").remove();
+                	$('#btnLoadMore3').css('display','none');
+                    var val = $("#txtSearch").val();
+                    glist_json(val);
+
+                }
+
+            }
+
+
+
+            $(function() {
+
+                $("#txtSearch").blur(function() {
+
+                    $(this).attr("placeholder", "输入'iphone'试一试");
+
+                });
+
+                $("#butSearch").click(function() {
+
+                	$(".goodsList ul").remove();
+                	$('#btnLoadMore3').css('display','none');
+
+                    if ($("#txtSearch").val() == "") {  
+                    	var val = "iphone";
+                    	$("#txtSearch").val("iphone");
+                    } else if ($("#txtSearch").val() == $("#txtSearch").val()) {
+                        var val = $("#txtSearch").val();                       
+                    }
+             
+                    glist_json(val);
+
+                });
+
+                $(".hot-list li").click(function(){
+                	var val = $(this).children('a').text();
+                	$(".goodsList ul").remove();
+                	$('#btnLoadMore3').css('display','none');
+                	$("#txtSearch").val(val);
+                	glist_json(val);
+                })
+
+            });
+            </script>
+<script type="text/javascript">
+
+//打开页面加载数据
+window.onload=function(){
+	//glist_json("list/10");
+	//购物车数量
+	$.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+		if(data.num){
+			$("#btnCart").append('<em>'+data.num+'</em>');
+		}
+	});
+	
+}
+//获取数据
+function glist_json(parm){
+	$("#urladdress").val('');
+	$("#pagenum").val('');
+	$.getJSON('{WEB_PATH}/mobile/mobile/searchajax/'+parm,function(data){
+		$("#divGoodsLoading").css('display','none');		
+		if(data[0].sum){
+			var fg=parm.split("/");
+			// if(fg[0] == ''){
+			// 	$("#urladdress").val('');
+			// }else{
+			// 	$("#urladdress").val(fg[0]+'/'+fg[1]);
+			// }
+			//$("#urladdress").val('list/10');
+
+			//console.log(fg);
+			$("#urladdress").val(fg[0]);
+
+			$("#pagenum").val(data[0].page);
+			for(var i=0;i<data.length;i++){			
+			var ul='<ul style="float:none;width:100%;"><li>';
+				ul+='<span id="'+data[i].id+'" class="z-Limg" style="display:inline-block;float:left;"><a href="{WEB_PATH}/mobile/mobile/item/'+data[i].id +'"><img src="{OSS_UPLOAD_PATH}/'+data[i].thumb+'@!thumb_200_200"></a></span>';
+				ul+='<div class="goodsListR" style="margin-left:8.2rem;">';
+				ul+='<h2 id="'+data[i].id+'">'+data[i].title+'</h2>';
+				//ul+='<h2 id="'+data[i].id+'">(第'+data[i].qishu+'期)'+data[i].title+'</h2>';
+				ul+='<div class="pRate">';
+				ul+='<div class="Progress-bar" id="'+data[i].id+'">';				
+				ul+='<p class="u-progress"><span class="pgbar" style="width:'+(data[i].canyurenshu / data[i].zongrenshu)*100+'%;"><span class="pging"></span></span></p>';
+				ul+='<ul class="Pro-bar-li" style="margin-top:0.28rem;">';
+				//ul+='<li class="P-bar01"><em>'+data[i].canyurenshu+'</em>已参与</li>';
+				ul+='<li class="P-bar02" style="color:#acacac;width:60%;text-align:left;">总需:<em style="display:inline-block;">'+data[i].zongrenshu+'</em></li>';
+				ul+='<li class="P-bar03" style="color:#acacac;width:40%;">剩余:<em style="display:inline-block;">'+data[i].shenyurenshu+'</em></li>';
+				ul+='</ul></div>';
+				ul+='<a class="add " codeid="'+data[i].id+'" href="javascript:;"><i></i></a>';
+				ul+='</div></div></li><input type="hidden" name="shoparr" value="'+ data[i].id + '"></ul>';
+				$("#divGoodsLoading").before(ul);			
+			}
+			if(data[0].page<=data[0].sum){
+				$("#btnLoadMore").css('display','block');
+				$("#btnLoadMore2").css('display','none');
+				$("#btnLoadMore3").css('display','none');
+			}else if(data[0].page>data[0].sum){
+				$("#btnLoadMore").css('display','none');
+				$("#btnLoadMore2").css('display','none');
+				$("#btnLoadMore3").css('display','block');
+			}
+		}else{
+			$("#btnLoadMore").css('display','none');
+			$("#btnLoadMore2").css('display','block');	
+			$("#btnLoadMore3").css('display','none');			
+		}
+	});
+}
+$(document).ready(function(){
+	//即将揭晓,人气,最新,价格	
+	$("#divGoodsNav li:not(:last)").click(function(){
+		var l=$(this).index();
+		$("#divGoodsNav li").removeClass().eq(l).addClass('current');
+		var parm=$("#divGoodsNav li").eq(l).attr('order');
+		$("#divGoodsLoading").css('display','block');
+		$(".goodsList ul").remove();
+		var glist=glist_json("list/"+parm);
+	});
+	
+	//商品分类
+	var dl=$("#divGoodsNav dl"),
+		last=$("#divGoodsNav li:last"),
+		first=$("#divGoodsNav dd:first");
+	$("#divGoodsNav li:last a:first").click(function(){		
+		if(dl.css("display")=='none'){
+			dl.show();
+			last.addClass("gSort");
+			first.addClass("sOrange");			
+		}else{
+			dl.hide();
+			last.removeClass("gSort");
+			first.removeClass("sOrange");
+		}
+	});
+	$("#divGoodsNav  dd").click(function(){
+		var s=$(this).index();
+		var t=$("#divGoodsNav .gSort dd a").eq(s).html();
+		var id=$("#divGoodsNav .gSort dd a").eq(s).attr('id');
+		$("#divGoodsNav .gSort a:first").html(t+'<s class="arrowUp"></s>');
+		var l=$("#divGoodsNav .current").index(),
+			parm=$("#divGoodsNav li").eq(l).attr('order');
+		if(id){			
+			$("#divGoodsLoading").css('display','block');
+			$(".goodsList ul").remove();
+			glist_json(id+'/'+parm);
+		}else{
+			glist_json("list/"+parm);
+			$(".goodsList ul").remove();
+		}	
+		dl.hide();
+		last.removeClass("gSort");
+		first.removeClass("sOrange");
+	});
+	//加载更多
+	$("#btnLoadMore").click(function(){		
+		var url=$("#urladdress").val(),
+			page=$("#pagenum").val();
+		glist_json(url+'/'+page);
+	});	
+	//自动加载
+	$(window).scroll(function () {        
+            if ($(document).height() - $(this).scrollTop() - $(this).height() < 1
+                    && $('#btnLoadMore').css('display')!='none' ){
+                var url=$("#urladdress").val(),
+			page=$("#pagenum").val();
+		glist_json(url+'/'+page);
+            }
+        });
+
+	//返回顶部
+	$(window).scroll(function(){
+		if($(window).scrollTop()>50){
+			$("#btnTop").show();
+		}else{
+			$("#btnTop").hide();
+		}
+	});
+	$("#btnTop").click(function(){
+		$("body").animate({scrollTop:0},10);
+	});
+	//添加到购物车
+	$(document).on("click",'.add',function(){
+		var codeid=$(this).attr('codeid');
+		$.getJSON('{WEB_PATH}/mobile/ajax/addShopCart/'+codeid+'/1',function(data){
+			if(data.code==1){
+				addsuccess('添加失败');
+			}else if(data.code==0){
+				addsuccess('添加成功');				
+			}return false;
+		});
+	});
+	function addsuccess(dat){
+		$("#pageDialogBG .Prompt").text("");
+		var w=($(window).width()-255)/2,
+			h=($(window).height()-45)/2;
+		$("#pageDialogBG").css({top:h,left:w,opacity:0.8});
+		$("#pageDialogBG").stop().fadeIn(1000);
+		$("#pageDialogBG .Prompt").append('<s></s>'+dat);
+		$("#pageDialogBG").fadeOut(1000);
+		//购物车数量
+		$.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+			$("#btnCart").append('<em>'+data.num+'</em>');
+		});
+	}
+	//跳转页面
+	var gt='.goodsList span,.goodsList h2,.goodsList .Progress-bar';
+	$(document).on('click',gt,function(){
+		var id=$(this).attr('id');
+		if(id){
+			window.location.href="{WEB_PATH}/mobile/mobile/item/"+id;
+		}			
+	});
+
+});
+
+</script>
+
+{wc:templates "mobile/index","footer"}
+</body>
+
+</html>
+<style>
+#pageDialogBG{-webkit-border-radius:5px; width:255px;height:45px;color:#fff;font-size:16px;text-align:center;line-height:45px;}
+</style>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>

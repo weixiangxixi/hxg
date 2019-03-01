@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+</script>
+</head>
+<body>
+	<input type="test" name="shopid" id="shopid">
+	<button id="test">test</button>
+	<script type="text/javascript">
+		$("#test").click(function(){
+			var shopid = $('#shopid').val();
+			$.ajax({  
+                   type : "POST",  //提交方式  
+                    url : "/index.php/go/autolottery/autolottery_ret_install/",//路径  
+                    data : {  
+                       "shopid" : shopid  
+                    },//数据，这里使用的是Json格式进行传输  
+                   success : function(result) {//返回数据根据结果进行相应的处理  
+                       console.log(result);
+                   }  
+               });  
+		});
+	</script>
+</body>
+</html>

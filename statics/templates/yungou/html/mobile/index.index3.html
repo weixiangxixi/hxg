@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html>  
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>{wc:$webname}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/index.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/reset.css">
+    <link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/animate.css">
+    <link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/style.css">
+    <link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/zdy.css">
+    <link href="{G_TEMPLATES_CSS}/mobile/main1.css" rel="stylesheet" type="text/css">
+    <script src="{G_TEMPLATES_JS}/mobile/jquery.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/js.cookie.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/lodash.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/response.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/swiper.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/jquery-ui.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/countdown.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/simpop.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/jquery.lazyload.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/ajax.js"></script>
+    <!-- <script src="{G_TEMPLATES_JS}/mobile/Index.js"></script> -->
+    <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Index.js" language="javascript" type="text/javascript"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+
+    <script>
+    var DuoBao = {};
+    var __data__ = (function() {
+        return JSON.parse('{}');
+    })();
+    var __user__ = (function() {
+        return JSON.parse('{}');
+
+    })();
+    var __touchorclick__ = (function() {
+        if ('ontouchend' in document)
+            return 'touchend';
+        else
+            return 'click';
+    })();
+    </script>
+</head>
+<style>
+.img-topright {
+    padding-right: 0.8rem;
+    padding-top: 1rem;
+    height: 3.5rem;
+    width: auto;
+    float: right;
+}
+.tabs-wrap .goodsList > ul > li > span >a> img{
+    height: 10rem;
+    margin: 1rem auto;
+    width: 10rem;
+}
+
+.tc{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+    padding:5px 20px 20px;
+    z-index: 99999999999;
+    
+}
+#hah{
+    display:none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000000;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,.2);
+}
+.tc_top{
+    color: #333;
+    font-size: 15px;
+    text-align: center;
+    padding:15px 5px;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+}
+.mask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 800;
+    display: none;
+}
+.buy-txt{
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+.btn_know{
+    width: 118px;
+    height: 60px;
+    background: url(/statics/templates/yungou/images/mobile/btnknow.png) no-repeat center top;
+    background-size: 40%;
+    margin:0 auto;
+    position: relative;
+    bottom: 60px;
+}
+.timeback{
+    text-align: center;
+    color: #fff;
+    background: #23aaff;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 2px;
+}
+.jianback{
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 2px;
+    height: 10px;
+    background:-moz-linear-gradient(top, #91d4ff, #fff);  
+    background:-webkit-gradient(linear, 0 0, 0 bottom, from(#91d4ff), to(#fff));
+}
+
+.zj em{
+    font-size: 1.5rem;line-height: 1;color:#23aaff;padding-left: 0.3rem;
+}
+input[type=radio],input[type=checkbox]{ 
+    background: url("images/check1.png") no-repeat center/0.8rem 0.8rem;//未选中的背景图片 
+    -webkit-appearance: none;//去掉默认样式 
+    height:1rem; width:1rem; border-radius: 0; border: none !important;//去掉边框 
+} 
+form input[checked]{ 
+    -webkit-appearance:none;//去掉默认样式 
+    background: url('images/checked.png') no-repeat center/0.8rem 0.8rem;//选中时的背景图片 
+}
+.banner_top li a em{
+  font-size:12px;
+  color:#999;
+  }
+  .banner_top li{
+    text-align:center;
+    height:66px;
+  }
+</style>
+<style type="text/css">
+    em.cat-lottery {
+    display: block;
+    position: absolute;
+    width: 49px;
+    height: 49px;
+    background: transparent url(/statics/templates/yungou/images/mobile/zx.png) no-repeat 0 0px / 49px 196px;
+    bottom: 0;
+    right: 25%;
+    background-size: 100%;
+}
+.navigation {
+    width: 100%;
+    border-top: 2px solid #d3d3d3;
+    border-bottom: 2px solid #d3d3d3;
+    display: flex;
+}
+.navigation a, .navigation img {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+#partner {
+    border: none;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+    /* border-bottom: 1px solid rgba(246,246,246,0.8); */
+}
+.m-lott-list {
+    overflow: hidden;
+}
+ul {
+    list-style-type: none;
+}
+.m-lott-list li {
+    width: 50%;
+    float: left;
+    border-bottom: 1px solid #f5f5f5;
+    border-right: 1px solid #f5f5f5;
+    padding: 0 5px 5px;
+    box-sizing: border-box;
+}
+li.ptn {
+    width: 20%;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+}
+li.ptn > a {
+    display: block;
+    padding: .2rem 0;
+    color: #999;
+    text-align: center;
+    text-decoration: none;
+    outline: 0;
+}
+li.ptn a img {
+    display: block;
+    margin: auto;
+    width: 60%;
+    height: 60%;
+    margin-bottom: 2px;
+}
+li.ptn a span {
+    text-align: center;
+    font-size: .72rem;
+}
+</style>
+
+<body>
+    <div id="hah">
+        <div class="mask"></div>
+        <div class="tc">
+            <div></div>
+            <div class="btn_know"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(".btn_know").click(function(){
+            $("#hah").hide();
+            localStorage.setItem('show_img',true);
+        })
+    
+        if(localStorage.getItem('show_img')){
+            $("#hah").hide();
+        }
+    </script>
+    <div class="container" style="position: relative;clear: both;">
+        <main class="db-main db-main-index">
+            <!-- 焦点图 -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {wc:loop $shop_ad $ad}
+                    <div class="swiper-slide swiper-slide-active">
+                        <a href="{wc:$ad['link']}">
+                            <img alt="{wc:$ad['title']}" src="{G_UPLOAD_PATH}/{wc:$ad['img']}"></a>
+                    </div>
+                    {wc:loop:end}
+                </div>
+                <div class="swiper-pagination swiper-pagination-clickable">
+                    <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+                    <span class="swiper-pagination-bullet"></span>
+                </div>
+            </div>
+            <script>
+            var mySwiper = new Swiper('.swiper-container', {
+                autoplay: 5000, //可选选项，自动滑动
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
+            })
+            </script>
+            <section class="nva-list">
+                <article id="partner" class="m-round m-lott-list">
+                    <ul>
+                        <li class="ptn">
+                            <a href="/index.php/mobile/home/goPay">
+                                <img src="/statics/templates/yungou/images/mobile/icon/1.gif">
+                                <em>账户充值</em>
+                            </a>
+                        </li>
+                        
+                      <li class="ptn">
+                            <a href="/index.php/mobile/shaidan">
+                                <img src="/statics/templates/yungou/images/mobile/icon/4.gif">
+                                <em>晒单</em>
+                            </a>
+                        </li>
+                        <li class="ptn">
+                            <a href="javascript:service_pic2();">
+                                <img src="/statics/templates/yungou/images/mobile/icon/3.gif">
+                                <em>关注惠享</em>
+                            </a>
+                        </li>
+                
+                      <li class="ptn">
+                            <!--<a href="/index.php/mobile/mobile/fen/168">
+                                <img src="/statics/templates/yungou/images/mobile/doublelogo.gif">
+                                <em>二人专享</em>
+                            </a>-->
+                        	<a href="/index.php/mobile/huodong2/recharge111">
+                                <img src="/statics/templates/yungou/images/mobile/yyy.gif">
+                                <em>摇一摇</em>
+                            </a>
+                        </li>
+                        <li class="ptn">
+                            <a href="/index.php/mobile/invite/mycode3">
+                                <img src="/statics/templates/yungou/images/mobile/icon/9.gif">
+                                <em>分享赚钱</em>
+                            </a>
+                        </li>
+                    </ul>
+                </article>
+                <div class="navigation">
+                    <!-- <a class="one" href="/index.php/mobile/mobile/ssc">
+                        <img src="http://csth.oss-cn-shenzhen.aliyuncs.com/statics/templates/yungou/images/mobile/transparent_small.png@!222">
+                    </a> -->
+                    <!--<a class="one" href="/index.php/mobile/mobile/glist/177">
+                        <img src="/statics/templates/yungou/images/mobile/shuang11.jpg">
+                    </a> -->
+                    <a class="one" href="/index.php/mobile/game/csg">
+                        <img src="/statics/templates/yungou/images/mobile/csg_dt.jpg">
+                    </a>
+                </div>
+            </section>
+<style type="text/css">             
+#service_bg {
+    top: 0;
+    bottom: 0;
+    z-index: 1200;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 999999;
+}
+#service_info {
+    top: 23%;
+    z-index: 140;
+    margin: auto;
+    width: 85%;
+    border-radius: 8px;
+    /*background: #f7ffff;*/
+    z-index: 9999999;
+}
+ #service_bg, #service_info {
+    position: fixed;
+    right: 0;
+    left: 0;
+    /*display: none;*/
+    z-index: 999999999;
+}
+#service_code p {
+    color: #5c5c5c;
+    text-align: center;
+    font-size: 14px;
+    line-height: 45px;
+}
+#service_code img {
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+}
+#service_code {
+    margin-bottom: 20px;
+}
+img {
+    border: 0;
+}
+.itembot{
+    text-align: center;
+    margin: 10px 0 0;
+}
+.copies a{
+    width: 33.3%;
+    color: #999;
+    display: inline-block;
+    text-align: center;
+}
+.copies a:first-of-type{
+    color: #22aaff;
+    text-align: left;
+}
+.copies a:last-of-type{
+    color: #f60;
+    text-align: right;
+}
+.collection{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: cover;
+    float: left;
+    margin-top: 5px;
+}
+.colfalse{
+    background-image: url('/statics/templates/yungou/images/mobile/star.png');
+}
+.coltrue{
+    background-image: url('/statics/templates/yungou/images/mobile/stars.png');
+}
+.itembot a:nth-of-type(2){
+    border: 1px solid #f60;
+    color: #fff;
+    height:26px;
+    border-radius:20px ;
+    line-height: 26px;
+    text-align: center;
+    margin: 0 auto;
+    width: 90px;
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    color: #f60;
+}
+.add_transform{  
+   transform:rotate(90deg);  
+   -ms-transform:rotate(90deg); 
+   -moz-transform:rotate(90deg); 
+   -webkit-transform:rotate(90deg);   
+    -o-transform:rotate(90deg);
+    transition: all 0.2s ease-in-out;  
+    -moz-transition: all 0.2s ease-in-out; 
+    -webkit-transition: all 0.2s ease-in-out; 
+    -o-transition: all 0.2s ease-in-out; 
+}  
+
+.cateChk + label {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background: transparent url(statics/templates/yungou/images/mobile/check1.png) center 49.3px / 170% 480%;
+    text-align: center;
+    line-height: 45px;
+    color: #CCC;
+    margin-top: 0.4rem;
+    margin-left: -1.0rem;
+}
+
+#add_html dd:nth-child(5) .cateChk + label {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background: transparent url(statics/templates/yungou/images/mobile/check1.png) center 49.3px / 170% 480%;
+    text-align: center;
+    line-height: 45px;
+    color: #CCC;
+    margin-top: 0.4rem;
+    margin-left: 0.2rem;
+}
+#sort_list dd {
+    float: left;
+    box-sizing: border-box;
+    width: 33.33%;
+    height: 40px;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+}
+
+#cateAll p {
+    border: 1px solid #f60;
+    border-radius: 3px;
+    margin: 7px auto;
+    color: #FFF;
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    background: #f60;
+}
+
+.point {
+    position: absolute;
+    top: 44%;
+    left: 31%;
+    width: 13px;
+    height: 13px;
+    background: red;
+    border-radius: 50%;
+}
+.ico_search {
+    background: url("{G_WEB_PATH}/statics/templates/yungou/images/mix-icon.png") no-repeat -120px -100px;
+    display: block;
+    height: 17px;
+    width: 19px;
+    z-index: 1000;
+    float: left;
+    margin: 8px 2px;
+}
+.banner_top li a em{
+  font-size:12px;
+  color:#999;
+  position:relative;
+  top:40px;
+  }
+  .banner_top li a{
+    width:80%;
+  }
+  .zxjx_1 i{
+  	position:relative;
+    left:4px;
+  }
+</style>
+<style type="text/css">
+.nav-wrapper {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    height: 44px;
+    position: relative;
+    width: 100%;
+}
+.nav-wrapper .nav-inner {
+    box-sizing: border-box;
+    float: left;
+    height: 44px;
+    padding-left: 6px;
+    width: 60%;
+}
+.nav-wrapper .nav-list {
+    width: 100%;
+}
+.nav-wrapper .nav-inner li {
+    float: left;
+    height: 44px;
+    text-align: center;
+    width: 22%;
+}
+.nav-wrapper .nav-inner a {
+    display: block;
+    font-size: 14px;
+}
+.nav-wrapper .nav-inner li.current span {
+    border-color: #f60;
+    color: #f60;
+}
+.nav-wrapper .select-btn {
+    border-left: 1px solid #eee;
+    box-sizing: border-box;
+    color: #999;
+    float: left;
+    font-size: 14px;
+    height: 44px;
+    line-height: 42px;
+    position: relative;
+    text-align: center;
+    width: 20%;
+}
+.nav-wrapper .select-icon {
+    background-color: #fff;
+    display: inline-block;
+    height: 12px;
+    overflow: hidden;
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+    width: 13px;
+}
+.nav-wrapper .select-icon i:first-child {
+    margin-top: 0;
+}
+.nav-wrapper .select-icon i {
+    background-color: #bbb;
+    display: block;
+    height: 2px;
+    margin-top: 3px;
+    width: 13px;
+}
+#btnsearch {
+    cursor: pointer;
+}
+.nav-wrapper .select-btn {
+    border-left: 1px solid #eee;
+    box-sizing: border-box;
+    color: #999;
+    float: left;
+    font-size: 14px;
+    height: 44px;
+    line-height: 42px;
+    position: relative;
+    text-align: center;
+    width: 20%;
+}
+#btnsearch .select-icon {
+    width: 11px;
+    height: 11px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    background-color: #fff;
+    top: -2px;
+    border: 1px solid #999;
+    border-radius: 50%;
+    overflow: visible;
+}
+#btnsearch .select-icon::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 1px;
+    background-color: #999;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 11px;
+    left: 9px;
+    z-index: 2;
+}
+.nav-wrapper .select-total {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.19);
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 100%;
+    z-index: 4;
+}
+.sort_list {
+    width: 100%;
+}
+.sort_list li {
+    position: relative;
+    overflow: hidden;
+}
+.sort_list li {
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+    box-sizing: border-box;
+    float: left;
+    height: 44px;
+    line-height: 42px;
+    width: 33.3%;
+}
+.special a {
+    color: #1A9DEC !important;
+}
+.sort_list a {
+    color: #666;
+    display: block;
+    font-size: 14px;
+    padding: 0 20px;
+    text-align: left;
+}
+.sort_list li > input {
+    display: none;
+}
+
+.cateChk:checked + label, .cateChk.red:checked + label {
+    background-position-y: -7px;
+    color: #F60;
+}
+.cateChk + label {
+    position: absolute;
+    height: 44px;
+    width: 44px;
+    top: 0;
+    right: -6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 1;
+    background: transparent url(/statics/templates/yungou/images/mobile/check_2.png) center 51px / 130% 390%;
+    text-align: center;
+    line-height: 44px;
+    color: #CCC;
+}
+.sort_list::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+#addAll {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    margin-top: -1px;
+}
+#addAll p {
+    border: 1px solid #F60;
+    border-radius: 3px;
+    width: 33%;
+    margin: 7px auto;
+    height: 28px;
+    color: #FFF;
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    background: #F60;
+}
+#addAll p#catUp {
+    display: none;
+    position: absolute;
+    width: 31%;
+    margin-left: 1%;
+    overflow: hidden;
+    background: #FFF;
+    border: none;
+}
+#addAll p {
+    border: 1px solid #F60;
+    border-radius: 3px;
+    width: 33%;
+    margin: 7px auto;
+    height: 28px;
+    color: #FFF;
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    background: #F60;
+}
+.nav-wrapper .nav-inner li:last-child {
+    width: 31%;
+}
+.nav-wrapper .nav-inner span {
+    border-bottom: 2px solid transparent;
+    color: #999;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 6px;
+}
+.doChk + label {
+    background-position-y: -7px;
+    color: #F60;
+}
+.nav-wrapper .nav-wrapper {
+    position: fixed;
+    max-width: 640px;
+    /* left: 0; */
+    top: 0;
+    border-bottom: 1px solid #eee;
+    z-index: 1;
+}
+#myCollect a,#lottery a {
+    height: 26px;
+    padding: 0;
+    margin: 8px 12px 0;
+    color: #F60;
+    border: 1px solid #F60;
+    line-height: 26px;
+    text-indent: 5px;
+    border-radius: 5px;
+}
+#myCollect a::after,#lottery a::after {
+    content: '\279C';
+    font-size: 1.1rem;
+    display: block;
+    position: absolute;
+    width: 44px;
+    height: 30px;
+    right: 2px;
+    top: 0;
+    line-height: 44px;
+    text-align: center;
+    text-indent: 0;
+}
+.special a {
+    color: #1A9DEC !important;
+}
+#notice { /*首页公告*/
+        position: relative;
+        margin-bottom: 5px;
+        background: #FFF;
+        border-top: 1px solid rgba(246,246,246,0.8)
+    }
+.anouncement {
+        height: 40px;
+        width: calc(100% - 8.2rem);
+        overflow: hidden;
+        margin-left: 15px;
+    }
+
+    .anouncement::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        width: 24px;
+        height: 18px;
+        margin: 11px 0 0;
+        border-right: .5rem solid #FFF;
+        background: #FFF url("/statics/templates/yungou/images/mobile/nt2.png") center center / contain;
+    }
+#anMarquee {
+        color: #F60;
+        line-height: 41px;
+        font-size: 16px;
+    }
+    #notice_log {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        width: 4.6rem;
+        height: 20px;
+        line-height: 17px;
+        color: #F60;
+        font-size: .8rem;
+        text-align: right;
+        background: #FFF;
+        border-left: 1px solid #F60;
+        padding-top: 2px;
+    }
+    pre {
+        font-family: not specified;
+        overflow: hidden;
+    }
+    em.s11-lottery {
+        display: block;
+        position: absolute;
+        width: 49px;
+        height: 49px;
+        background: transparent url(/statics/templates/yungou/images/mobile/cat_mark2.png) no-repeat 0 -197px / 51px 296px;
+        margin-left: 36px;
+        margin-top: -50px;
+    }
+</style>
+<script type="text/javascript">
+    function service_pic1(){
+        var _secode = '/statics/templates/yungou/images/mobile/w5.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };
+
+    function service_pic2(){
+        $('.server_title').html('长按二维码，收藏惠享购');
+        var _secode = '/statics/templates/yungou/images/mobile/index.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };  
+    $(function(){
+        $('#service_bg').click(function(){
+            $('.server_title').html('长按二维码，添加惠享购客服微信');
+            $('#service_bg').css('display','none');
+        });
+    });
+</script>
+<div id="service_bg" {wc:php:start} if(empty($yjwz)){echo 'style="display:block;"';}else{echo 'style="display: none;"';} {wc:php:end}>
+    <div id="service_info" style="display: block;">
+        <div id="service_code">
+          <!-- <p class="server_title">长按二维码，收藏惠享购</p> -->
+            <img src="/statics/templates/yungou/images/mobile/index.jpg" data-src="/statics/templates/yungou/images/mobile/index.jpg">
+        </div>
+    </div>
+</div>
+            <a id="gd" href=""></a>
+            <!-- <div class="zxjx">
+                {wc:getlist sql="select * from `@#_article` where cateid = 142 order by posttime DESC limit 4" return="tiezi"}
+                <div class="zxjx_1" style="position: relative;margin:0;border-radius:0;border:1px solid #fff;border-top:1px solid rgba(246,246,246,0.8);"> <i></i>
+                   <div id="demo">
+                    <div class="marmove" style="margin: 0 auto;padding-right: 14%;overflow: hidden;">
+                        <marquee style="position: relative;color: #f60;font-size:14px;" behavior="scroll" scrollamount="2"  direction="">
+                        {wc:loop $tiezi $tz}
+                        <a style="color: #f04900;" href="{WEB_PATH}/mobile/mobile/gonggaoxq/{wc:$tz['id']}">{wc:$tz['title']}</a>
+                        {wc:loop:end}
+                        </marquee>
+                    </div>
+                   </div>
+                    <div style="position: absolute;right: 3px;top: 6px;background:#fff;padding-left:6px;padding-right:10px;">
+                        <a style="color: #f60;border-left:1px solid #f60;padding-left:4px;" href="{WEB_PATH}/mobile/mobile/gonggao/">历史公告</a>
+                    </div>
+                </div>
+                
+            </div> -->
+            <section class="nva-list">
+                <article id="notice" class="m-lott-list">
+                    <a href="javascript:;">
+                        <div class="anouncement">
+                                {wc:getlist sql="select * from `@#_article` where cateid = 142 order by posttime DESC limit 1" return="tiezi"}
+                                {wc:loop $tiezi $tz}
+                                <pre id="anMarquee" style="margin-left: 500px">{wc:$tz['title']}</pre>                  
+                                {wc:loop:end}
+                      </div>
+                    </a>
+                    <a href="{WEB_PATH}/mobile/mobile/gonggao/">
+                        <div id="notice_log">历史公告</div>
+                    </a>
+                </article>
+            </section>
+            <script type="text/javascript">
+                $(function(){
+                    var parWidth = $(".anouncement").width();
+                    var anlenght = $("#anMarquee")[0].scrollWidth - parWidth / 2;
+                    var anTime = anlenght / 30 * 1000;
+                    function MarqueeAnimate() {
+                        $("#anMarquee").css("margin-left", parWidth + "px");
+                        $("#anMarquee").animate({marginLeft: "-" + anlenght + "px"}, anTime, "linear", MarqueeAnimate);
+                    }
+                    MarqueeAnimate();
+
+                    /*屏幕切换时重新设置滑动条的宽高*/
+                    $(window).resize(function () {
+                        var winwidth = $(window).width();
+                        var liheight = divLottery.find("li").height();
+                        divLottery.parent().css("height", liheight + "px");
+                        divLottery.css("height", liheight + "px");
+                        var liwidth = winwidth / 4;
+                        divLottery.find("li").css("width", liwidth);
+                        divLottery.css("width", 5 * liwidth);
+
+                        //重置通知栏滚动距离
+                        parWidth = $(".anouncement").width();
+                        anlenght = $("#anMarquee")[0].scrollWidth - parWidth / 2;
+                    });
+                    /*滑动条结束*/
+                })
+            </script>
+            <div id="publish">
+            <p>最新揭晓</p>
+            <input type="hidden" id="zx1" value="{wc:$shopqishu[0]['id']}">
+            <ul class="publish">
+                    {wc:loop $shopqishu $k $qishu} 
+
+                       <li id="jx{wc:$k}"><a href="{WEB_PATH}/mobile/mobile/item/{wc:$qishu['id']}"><img style="width:70px;height: 70px;" src="http://csth.oss-cn-shenzhen.aliyuncs.com/statics/uploads/{wc:$qishu['thumb']}@!111" class="lazy_loading_image">{wc:if $qishu['cateid']=='177'}<em class="s11-lottery"></em>{wc:if:end}
+                        <span class="daojs">倒计时</span>
+                        <input type="hidden" name="" id="" value="{wc:fun:ceil($qishu['q_end_time']-time())}" />
+                        <span class="thetime"><small class="minute">00</small>:
+                            <small class="second">00</small>:
+                            <small class="millisecond">00</small>
+                        </span></a>
+                        <em myid="{wc:$qishu['id']}" class="myid"></em>
+                       </li>
+                    {wc:loop:end}
+            </ul>
+            
+            </div>
+            <style>
+                #fldh{position: relative;z-index: 999;width: 100%;}
+            </style>
+            <script type="text/javascript">
+                $(function(){
+                    var html = '';
+                    var ulwid = $('.publish li').width();
+                    $('.publish').css('marginLeft',-ulwid * 8);
+                    $('.publish').animate({marginLeft:-ulwid},3000,function(){
+                         $(".publish li:eq(4)").nextAll().remove();
+                    });
+                });
+                $(function(){
+                    var conwid = $('.container').width();
+                    $('#publish').width(conwid);
+                    var ulwid = $('.publish li').width();
+                    $('.publish').css('marginLeft',-ulwid);
+                    
+                    var getTime = function(){
+                        $('.publish').find('li').each(function(){
+                            var me = $(this);
+                            var thedjs = me.find('input').val();
+                            var minute = me.find('.minute');
+                            var times = thedjs * 100;
+                            var timetag = new Date().getTime();
+                            var remain_sec = 0;
+                            var remain_minute = 0;
+                            var misec = 0;
+
+                            countTime = setInterval(function() {
+                                    times = (times=times-4) < 0 ? 0 : times;
+                                    var hm = Math.floor(times % 100).toString();
+
+                                    if(hm.length <= 1) {
+                                        hm = "0" + hm;
+                                    }
+                                    me.find(".millisecond").html(hm);
+                                    
+                                    
+                            },40);
+                            countTime = setInterval(function(){
+                                var ms = Math.floor(times / 100).toString();
+                        
+                                    if(ms.length <= 1) {
+                                        clearInterval(countTime);
+                                        ms = "0" + ms;
+                                    }
+                                    if(times === 0) {
+                                        
+                                        clearInterval(countTime);
+                                        me.find('.daojs').html('获奖者');
+                                        
+                                        if(me.find('.last').length){
+                                            me.find('.thetime').remove();
+                                        }else{
+                                            minute.parent('span').html('正在计算');
+                                            minute.parent('span').css('font-size','12px');
+                                        }
+                                        
+                                      return;
+                                    }
+                                    me.find("input").val(ms);
+                                    me.find(".second").html(ms);
+                            },1000);
+                            if (me.find('.daojs').html() == "获奖者") {
+                                clearInterval(countTime);
+                                if($(me).find('.last').length == 0){
+                                    $.post("/index.php/mobile/mobile/lottery_info", { id: me.find('.myid').attr('myid') },
+                                        function(data){
+                                            
+                                            var html = '<span class="last">' + data + '</span>';
+                                            me.append(html);
+                                            me.find('.thetime').remove();
+                                        }
+                                    );
+                                }
+                                
+                           }
+                            
+                        });
+                        
+                }
+                    getTime();
+                    var timer = setInterval(function(){
+                        getTime();
+                    },5000);
+
+
+                //     var update = function(info,x,y,html){
+                        
+                //         var djs = parseInt(info.djs);//倒计时的时间
+                //         var zx2 = info.id;
+           
+                //         html += '<li id="' + zx2 + '"><a href="{WEB_PATH}/mobile/mobile/item/' + info.id + '"><img src=" {G_UPLOAD_PATH}/'+ info.thumb +'"/>' + '<span class="daojs">倒计时</span>' + '<input type="hidden" value="' + djs + '" />' + '<span class="thetime"><small class="minute">00</small>:' + '<small class="second"> ' + djs + ' </small>:<small class="millisecond"> ' + 60 + '</small></span>' + '</a><em myid="' + info.id + '" class="myid"></em></li>';
+                        
+                //         if(x-1 == y){
+                //             $('.publish').animate({marginLeft:"0px"},2000,function(){
+                //                 console.log(html);
+                //                 $('.publish li:first').before(html);
+                //                 $('.publish').css('marginLeft',-ulwid);
+                //                 $('.publish li:gt(4)').remove();
+                //             });
+                //         }
+                        
+                //     }
+                //     var scroll = function(){
+                        
+                //             var zx1 = $('#zx1').val(); 
+                //             $.getJSON('{WEB_PATH}/mobile/mobile/lottery_list/' + zx1, function(result) {
+                //                   var code2 = result.code;   
+                //                   var data2 = result.data;
+                //                   var length = data2.length;
+                                  
+                //                   if(code2 == 1){
+                //                     $('#zx1').val(data2[length-1].id);
+                //                     html = '';
+                //                     for(var i = 0;i < length;i++){
+                //                         info = data2[i];
+                //                         var djs = parseInt(info.djs);//倒计时的时间
+                //                         var zx2 = info.id;
+
+                //                         html += '<li id="' + zx2 + '"><a href="{WEB_PATH}/mobile/mobile/item/' + info.id + '"><img src=" {G_UPLOAD_PATH}/'+ info.thumb +'"/>' + '<span class="daojs">倒计时</span>' + '<input type="hidden" value="' + djs + '" />' + '<span class="thetime"><small class="minute">00</small>:' + '<small class="second"> ' + djs + ' </small>:<small class="millisecond"> ' + 60 + '</small></span>' + '</a><em myid="' + info.id + '" class="myid"></em></li>';
+                                        
+                //                         if(i == length-1){
+                //                             $('.publish').animate({marginLeft:ulwid*(length-1)},2000,function(){
+                //                                 $('.publish li:first').before(html);
+                //                                 $('.publish').css('marginLeft',-ulwid);
+                //                                 $('.publish li:gt(4)').remove();
+                //                                 getTime();
+                //                             });
+                //                         }
+                //                     }
+                //                   } 
+                            
+                //         });
+                        
+                        
+                //     }
+                //     setInterval(scroll,5000);
+                    
+                // });
+
+    var div = $('.publish');
+    var update = function(info, key, listLen){
+        var djs = parseInt(info.djs);//倒计时的时间
+        if(info.cateid == '177'){
+            var y = '<em class="s11-lottery"></em>';
+        }else{
+            var y = '';
+        }
+        var html = '<li id="' + info.id + '"><a href="{WEB_PATH}/mobile/mobile/item/' + info.id + '"><img src="http://csth.oss-cn-shenzhen.aliyuncs.com/statics/uploads/'+ info.thumb +'@!111"/>' + y + '<span class="daojs">倒计时</span>' + '<input type="hidden" value="' + djs + '" />' + '<span class="thetime"><small class="minute">00</small>:' + '<small class="second"> ' + djs + ' </small>:<small class="millisecond"> ' + 60 + '</small></span>' + '</a><em myid="' + info.id + '" class="myid"></em></li>';
+
+        var liWidth = div.find("li").outerWidth();
+        var marginLen = -1 * (parseInt(key) + 1) * liWidth;//获取li的宽度
+        var tmpWidth = (parseInt(key) + 5) * liWidth;
+        div.prepend(html);//在divLottery 的头部插入新揭晓的li
+        div.find("li").css("width", liWidth);
+        div.css({
+            "marginLeft" : marginLen,
+            "width" : tmpWidth
+        });
+        if (key == (listLen - 1)) {
+            div.animate({marginLeft:"0px"},2000,function(){//动画效果 并在回调函数中将第五个起的li移除
+                div.css("width", liWidth * 4);
+                div.children("li:gt(3)").remove();
+                setTimeout(thread, 5000);
+            });
+        }
+    };
+
+    var oid = '';
+    var thread = function() {
+        var zx1 = $('#zx1').val(); 
+        $.getJSON('{WEB_PATH}/mobile/mobile/lottery_list/' + zx1, function(infos) {
+            data = infos.data;
+            length = data.length;
+            if(infos.code == 1) {
+                $('#zx1').val(data[length-1].id);
+                var list =  infos.data;
+                oid = list[list.length-1].id;
+                var infoLen = list.length;
+                for (var key in list) {
+                    var info = list[key];
+                    update(info, key, infoLen);
+                }
+                getTime();
+            } else {
+                setTimeout(thread, 5000);
+            }
+
+        });
+    };
+    thread();
+});
+                
+               
+            </script>
+            <div style="margin-top: 5px;" class="">
+                <input type="hidden" id="parm_order" value="20">
+                <input type="hidden" id="parm_cate" value="0">
+                <nav class="nav-wrapper" id="goodsNav">
+                    <div class="nav-inner">
+                        <ul class="nav-list clearfix" id="ulOrder">
+                            <li class="current" order="10"><a href="javascript:;"><span>人气</span></a></li>
+                            <li order="20"><a href="javascript:;"><span>最新</span></a></li>
+                            <li order="30"><a href="javascript:;"><span>价值</span></a></li>
+                            <li order="50"><a href="javascript:;"><span>即将揭晓</span></a></li>
+                        </ul>
+                    </div>
+                    <!--点击添加或移除current-->
+                    <div class="select-btn" id="divSort">
+                            <span class="select-icon">
+                                <i></i><i></i><i></i><i></i>
+                            </span>
+                        分类
+                    </div>
+                    <div class="select-btn" id="btnsearch">
+                        <span class="select-icon"></span>
+                        <span>搜索</span>
+                    </div>
+                    <!--分类-->
+                    <div style="display: none" class="select-total">
+                        <ul class="sort_list">
+                            <li class="special" sortid="0">
+                                <a href="javascript:;">全部商品</a>
+                                <input id="chk0" class="cateChk" type="checkbox" name="0" value="0">
+                                <label for="chk0"></label>
+                            </li>
+                            {wc:getlist sql="select * from `@#_category` where `model`='1' and `cateid` != '170' and `cateid` != '177' and `cateid` != '173' and `cateid` != '168' and `parentid` = '0' order by `order` desc""}
+                            {wc:loop $data $categoryx}
+                            <li sortid="{wc:$categoryx['cateid']}">
+                                <a href="javascript:;">{wc:$categoryx['name']}</a>
+                                <input id="chk{wc:$categoryx['cateid']}" class="cateChk" type="checkbox" name="0" value="0">
+                                <label for="chk{wc:$categoryx['cateid']}"></label>
+                            </li>
+                            {wc:loop:end}
+                            {wc:getlist:end}
+                            <li class="special" sortid="168">
+                                <a href="javascript:;">二人专享</a>
+                                <input id="chk168" class="cateChk" type="checkbox" name="0" value="0">
+                                <label for="chk168"></label>
+                            </li>
+                            <li id="lottery">
+                                <a href="/index.php/mobile/mobile/ssc">透明购</a>
+                            </li>
+                            <li id="myCollect">
+                                <a href="/index.php/mobile/home/collectlist">我的收藏</a>
+                            </li>
+                        </ul>
+                        <div id="addAll">
+                            <p id="catUp"></p>
+                            <p id="addCat" onclick="add_one()">一键添加</p>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="tabs-wrap" style="min-height:1000px;position: relative;">
+                <!-- <div id="fldh" class="zxjx" style="border-bottom: 1px solid #dcdcdc;z-index: 999999;">
+                   
+                    <ul class="lbul" id="divGoodsNav">
+                        <li id="jiexiaos" class="current" order="10">
+                            <a href="javascript:;"><span>人气</span></a>
+                        </li>
+                        <li class="" order="20">
+                            <a href="javascript:;"><span>最快</span></a>
+                        </li>
+                        <li class="" order="30">
+                            <a href="javascript:;"><span>高价</span></a>
+                        </li>
+                        <li class="" order="40">
+                            <a href="javascript:;"><span>低价</span></a>
+                        </li>
+                        <li class="fenlel" style="border-left: 1px solid #dcdcdc;" order="">
+                            <a style="color: #999;" href="javascript:;"><span class="sh"><i></i><i style="margin-top: 3px;"></i><i style="margin-top: 3px;"></i></span><span>分类</span></a>
+
+                            
+                        </li>
+                        <dl id="add_html" style="display:none;background: #fff;">
+                    
+                        </dl>
+                        <li style="border-left: 1px solid #dcdcdc; "><a href="{WEB_PATH}/mobile/mobile/search"><i class="ico_search"></i><span>搜索</span></a></li>
+                    </ul>
+                    <p style="display: none" id="num_flag"></p>
+                </div> -->
+                <!-- <script type="text/javascript">
+                    $('.fenlel').click(function(){
+                        var dd = $("#add_html");
+                        $ddd = dd.css("display");
+
+                        $.getJSON('{WEB_PATH}/mobile/mobile/fenlei_ajax', function(data) {
+                            var xx = '<div class="jiantou"></div>';
+                            xx += '<dd class="a1"><a href="{WEB_PATH}/mobile/mobile/glist">全部分类</a><input id="chk0" class="cateChk" type="checkbox" value="0"><label for="chk0" id="all_cate" onclick="all_cate()"><span class=""></span></label></dd>';
+                            for(var i = 0; i < data.length; i++){
+                                
+                                xx += '<dd class="a1"><a href="{WEB_PATH}/mobile/mobile/fen/'+ data[i]['cateid'] +'"><span>'+data[i]['name']+'</span></a>';
+                                xx += '<input id="chk'+ data[i]['cateid'] +'" class="cateChk" type="checkbox" value="'+ data[i]['cateid'] +'" onclick="add_shop(this)"><label for="chk'+ data[i]['cateid'] +'"></label></dd>';
+                            }
+                            
+                            xx += '<dd class="a1" style="padding-left:13%;padding-top:0.5rem;"><span id="back" onclick="back()" style="position: absolute;width: 40px;top: ;left: ;height: 40px;background: url(/statics/templates/yungou/images/mobile/back.png) center 40px / 100% 100%;"></span></dd>';
+                            xx += '<dd class="a1" id="cateAll" style="padding-left:0px;text-align:center;"><p onclick="add_one()">一键添加</p></dd>';
+                            xx += '<dd class="a1" id="total" style="text-align:center;color: #ccc">已添加<span style="color: red">0</span>件</dd>';
+                            $('#add_html').html(xx);
+                           
+                        })
+                        dd.slideToggle("normal", function () {
+                            if (!$(".add_html").is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+                                var offTop = $("#divGoodsNav").offset().top;
+                                $("html, body").animate({scrollTop: offTop}, 300)
+                            }
+                        });
+
+                    })
+                </script> -->
+                <script type="text/javascript">
+                    function add_shop(bb){
+                        var hh = $(bb).val();
+
+                        if(hh != 0){ 
+                            var id = $(bb).attr('id');
+                            var color = $(bb).next().css('color');
+          
+                            if(color == 'rgb(255, 0, 0)'){
+                                $(bb).next().css('color','rgb(204, 204, 204)');
+                                $(bb).next().css('background','url(/statics/templates/yungou/images/mobile/check1.png) center 49.3px / 170% 480%');
+                            }else{
+                                $(bb).next().css('color','red');
+                                $(bb).next().css('background','url(/statics/templates/yungou/images/mobile/check1.png) center -6.5px / 170% 480%');
+                            }
+                        }
+                        var num = 0;
+                        $('.a1 input').each(function(){
+                            var color2 = $(this).next().css('color');
+                            if(color2 == 'rgb(255, 0, 0)'){
+                                num += Number($(this).next().text());
+                            }
+                        })
+                    
+                        $('#total span').text(num);
+                    }
+                    function all_cate(){
+                        var cla = $('#all_cate span').attr('class');
+                            if(cla == 'point'){
+                                $('#all_cate span').removeClass();
+                                $('.a1 label').css('color','rgb(204, 204, 204)');
+                                $('.a1 label').css('background','url(/statics/templates/yungou/images/mobile/check1.png) center 49.3px / 170% 480%');
+                            }else{
+                                $('#all_cate span').addClass('point');
+                                $('.a1 label').css('color','red');
+                                $('.a1 label').css('background','url(/statics/templates/yungou/images/mobile/check1.png) center -6.5px / 170% 480%');
+                            }
+                            var num = 0;
+                            $('.a1 input').each(function(){
+                                var color2 = $(this).next().css('color');
+                                if(color2 == 'rgb(255, 0, 0)'){
+                                    num += Number($(this).next().text());
+                                }
+                            })
+                            
+                            $('#total span').text(num); 
+                    }
+                    
+                    function add_one(){
+                        var arr = [];
+                        var j = 0;
+                        
+                        $(".sort_list input:not(':first')").each(function(){
+                            var x = $(this).attr('class');
+                            if(x != "cateChk"){
+                                arr[j] = $(this).parent().attr("sortid");
+                                j++;
+                            }
+                   
+                        })
+  
+                        if(arr == ''){
+                            $.PageDialog.fail("<s></s>请选择商品分类");return false;
+                        }
+                    
+                        var tx = $('#total span:eq(0)').text();
+                        var num = $('#total span:eq(1)').text();
+                        if(tx == "最多可添加" || num == "0000"){
+                            window.location.href = "/index.php/mobile/cart/cartlist";
+                        }else{
+                            $.ajax({
+                                type: 'POST',
+                                data: {item: arr},
+                                url: '/index.php/mobile/ajax/shopCartAll',
+                                success: function(data){
+                                    var brr = JSON.parse(data);
+                                    $.ajax({
+                                        type: 'post',
+                                        url: '/index.php/mobile/ajax/addShopCartAll',
+                                        data: {item: brr},
+                                        dataType: 'json',
+                                        success: function (data) { 
+                                            if (data==0) {
+                                                $.PageDialog.fail("成功添加"+brr.length+"件商品,跳转中...");
+                                                setTimeout(function () {
+                                                    window.location.href = "/index.php/mobile/cart/cartlist";
+                                                },2000);
+                       
+                                            }         
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                        var brr = [];
+                           
+                    }
+
+
+                    $("#goodsNav").on('click', 'li[sortid]', function (e) {
+                        var t = $(this),
+                            n = t.children('a').text();
+                        var id = parseInt(t.attr('sortid'));
+                        if (id < 0 || isNaN(id))return;
+                        $("#parm_cate").val(id);
+                        $("#divGoodsLoading").attr("data-page", "1").attr("data-isload", "yes");
+                        $("#goods_list").children().remove();
+
+                        parm=$(".order_list .current").attr('order');
+            
+                        if(id){         
+                            $("#divGoodsLoading").css('display','block');
+                            $(".goodsList ul").remove();
+                            window.location.href = "/index.php/mobile/mobile/glist/"+id;
+                        }else{
+                            window.location.href = "/index.php/mobile/mobile/glist/"+id;
+                            $(".goodsList ul").remove();
+                        }
+
+                        $("#divSort").children(':last').html(n);
+                        if (n == '二人享购') {
+                            $("#divSort > span:last").append('<em class="double"><i>二人享购商品每期只有2人次，<br>每人次价格为商品总价格的一半</i></em>');
+                            //notice();
+                        };
+                        $("#selectSort").hide();
+                        $("#divSort .arrow-up").hide();
+                        $("#selectSort").find(".current").removeClass("current");
+                        $(this).addClass('current');
+                    });
+
+                    function back(){
+                        $("#add_html").css('display','none');
+                    }
+                   
+                </script>
+    
+                <div class="goodsList" style="clear: both;">
+                    <div id="divGoodsLoading" class="loading" style="display:none;height: 80px;">
+                    </div>
+                    <a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;border: none!important;"> <i class="jiazai"></i> 正在加载...
+                    </a>
+                    <a id="btnLoadMore2" class="loading" style="display:none; padding-top: 0px;">~~木有更多商品了~~</a>
+                    <a id="btnLoadMore3" class="loading" style="display:none; padding-top: 0px;">~~木有更多商品了~~</a>
+                </div>
+            </div>
+            <input id="urladdress" value="" type="hidden" />
+            <input id="pagenum" value="" type="hidden" />
+        </main>
+        <script src="{G_TEMPLATES_JS}/mobile/main1.js"></script>
+    </div>
+    {wc:php:start} $f_home = ''; $f_whole = ''; $f_jiexiao = ''; $f_car = ''; $f_personal = ''; if( ROUTE_C == 'home' || ROUTE_C == 'user' ){ $f_personal = 'cur'; }else if( ROUTE_C == 'mobile' && ROUTE_A == 'init'){ $f_home = 'cur'; }else if( ROUTE_C == 'mobile' && ROUTE_A == 'glist'){ $f_whole = 'cur'; }else if( ROUTE_C == 'mobile' && ROUTE_A == 'lottery'){ $f_jiexiao = 'cur'; }else if( ROUTE_C == 'shaidan'){ $f_car = 'cur'; } 
+    
+    {wc:php:end} {wc:templates "mobile/index","footer"}
+    <script type="text/javascript">
+   //打开页面加载数据
+window.onload=function(){
+    init_json("list/10");
+    //购物车数量
+    $.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+        if(data.num){
+            $("#btnCart").append('<em>'+data.num+'</em>');
+        }
+    });
+    
+}
+
+    //打开页面加载数据
+    function init_json(parm) {
+        $("#urladdress").val('');
+        $("#pagenum").val('');
+        $.getJSON('{WEB_PATH}/mobile/mobile/initajax1/' + parm, function(data) {
+            $("#divGoodsLoading").css('display', 'none');
+            if (data[0].sum) {
+                var fg = parm.split("/");
+                $("#urladdress").val(fg[0] + '/' + fg[1]);
+                $("#pagenum").val(data[0].page);
+                for (var i = 0; i < data.length; i++) {
+                    if(data[i].cateid == 168){
+                        var y = '<em class="cat-lottery"></em>';
+                    }else{
+                        var y = '';
+                    }
+                    var ul = '<ul><li>';
+                    //ul += '<span id="' + data[i].id + '" class="z-Limg" style="position:relative;display:block;"><a href="{WEB_PATH}/mobile/mobile/item/'+data[i].id +'"><img src="{G_UPLOAD_PATH}/' + data[i].thumb + '"></a><div id="jiazhi1">价值：￥' + data[i].money + '</div></span>';
+                    ul += '<span id="' + data[i].id + '" class="z-Limg" style="position:relative;display:block;"><a href="{WEB_PATH}/mobile/mobile/item/'+data[i].id +'"><img src="http://csth.oss-cn-shenzhen.aliyuncs.com/statics/uploads/' + data[i].thumb + '@!111">'+y+'</a></span>';
+                    ul += '<div style="margin-top:15px;" class="goodsListR">';
+                    ul += '<h2 id="' + data[i].id + '">' + data[i].title + '</h2>';
+                    // ul += '<h2 id="' + data[i].id + '">(第' + data[i].qishu + '期)' + data[i].title + '</h2>';
+                    ul += '</div>';
+                    ul += '<div class="pRate item_bottom_container">';
+                    ul += '<div class="Progress-bar jdt_container" id="' + data[i].id + '" style="width:100%;">';
+                    /*ul += '<div style="color:#646464;margin-top:2px;">';*/
+                    var num =(data[i].canyurenshu / data[i].zongrenshu) * 100;
+                    num = num.toFixed(2);
+                    var canyurenshu = data[i].canyurenshu;
+                    var zongrenshu = data[i].zongrenshu;
+                    var shenyurenshu = data[i].zongrenshu - data[i].canyurenshu;
+                    /*ul += '进度&nbsp;<label class="color_blue" id="jd">'+num+'%</label>';
+                    ul += '</div>';*/
+                    ul += '<p class="u-progress jdt" style="margin:.5rem 0;margin-left:0;"><span class="pgbar" style="width:' +num+ '%;"><span class="pging"></span></span></p></div>';//
+                    ul += '<p class="copies"><a>' + canyurenshu + '</a><a>' + zongrenshu + '</a><a>' + shenyurenshu + '</a></p>';
+                    ul += '<div class="itembot"><a class="collection ' + data[i].col + '" onclick="getcol(this);" colid = "'+ data[i].sid + '" href="javascript:void(0);"></a><a href="{WEB_PATH}/mobile/mobile/item/'+data[i].id +'">立即专享</a><a class="join"></a>';
+                    
+                    ul += '<div class="buy_container" style="float:right;"><div class="btn_buy">';
+                    ul += '<a class="add " codeid="' + data[i].id + '" href="javascript:;"></a>';
+                    ul += '</div></div></div></div></div></li></ul>';
+                    $("#divGoodsLoading").before(ul);
+                }
+                if (data[0].page <= data[0].sum) {
+                    $("#btnLoadMore").css('display', 'block');
+                    $("#btnLoadMore2").css('display', 'none');
+                    $("#btnLoadMore3").css('display', 'none');
+                } else if (data[0].page > data[0].sum) {
+                    $("#btnLoadMore").css('display', 'none');
+                    $("#btnLoadMore2").css('display', 'none');
+                    $("#btnLoadMore3").css('display', 'block');
+                }
+            } else {
+                $("#btnLoadMore").css('display', 'none');
+                $("#btnLoadMore2").css('display', 'block');
+                $("#btnLoadMore3").css('display', 'none');
+            }
+        });
+    }
+
+    //$(document).on("click",'.collection',function(){
+        function getcol(obj){
+
+            var thisObj=$(obj);//js对象转jquery对象  
+            var colid=thisObj.attr("colid");  
+
+            if(thisObj.hasClass("colfalse")){
+                $.getJSON('{WEB_PATH}/mobile/mobile/addCollect/' + colid,function(data){
+                    if(data.code==1){
+                        addsuccess1(data.msg);
+                    }else if(data.code==0){
+                        addsuccess1(data.msg);   
+                    }
+                });
+                thisObj.addClass("coltrue").removeClass("colfalse");
+            }else{
+                $.getJSON('{WEB_PATH}/mobile/mobile/delCollect/' + colid,function(data){
+                    if(data.code==1){
+                        addsuccess1(data.msg);
+                    }else if(data.code==0){
+                        addsuccess1(data.msg);  
+                        //window.location.reload();   
+                    }
+                });
+                thisObj.addClass("colfalse").removeClass("coltrue");
+            }
+
+        }
+    //});
+    
+    function addsuccess1(dat){
+        $("#pageDialogBG .Prompt").text("");
+        var w=($(window).width()-255)/2,
+            h=($(window).height()-45)/2;
+        $("#pageDialogBG").css({top:h,left:w,opacity:0.8});
+        $("#pageDialogBG").stop().fadeIn(1000);
+        $("#pageDialogBG .Prompt").append('<s></s>'+dat);
+        $("#pageDialogBG").fadeOut(1000);
+
+    }
+    
+    $(document).ready(function() {
+            /*分类卡片*/
+            var dl = $("#goodsNav .select-total");
+            $("#divSort").click(function () {
+                dl.slideToggle("normal", function () {
+                    if (!$(".select-total").is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+                        var offTop = $("#goodsNav").offset().top;
+                        $("html, body").animate({scrollTop: offTop}, 300)
+                    }
+                });
+            });
+
+            var touchYS = touchYE = 0;
+            $(document).on('touchstart', function (e) {
+                touchYS = e.originalEvent.touches[0].screenY;
+            });
+            $(document).on('touchmove', function (e) { // IOS端：须为touchend屏蔽touchmove
+                if (!dl.is(":hidden"))
+                    e.preventDefault()
+            });
+            $(document).on('touchend', function (e) {
+                touchYE = e.originalEvent.changedTouches[0].screenY;
+                if (Math.abs(touchYE - touchYS) > 100 && !dl.is(":hidden"))
+                    dl.slideUp();
+
+                touchYS = touchYE;
+            });
+            /*end*/
+
+            var nav = $("#goodsNav"),
+                nav_top = 0,
+                elm = $("#divGoodsLoading"),
+                remove = false,
+                ulOrder = $("#ulOrder"),
+                sort_list = $(".sort_list");
+
+            $(".sort_list label").click(function(){
+                var chk_for = $(this).attr("for");
+                var chk = $(this).prev().attr("class");
+                var xx = 0;
+
+                if(chk_for == "chk0"){
+                    if(chk == "cateChk"){
+                        console.log(1);
+                        $(".sort_list input").addClass("doChk");
+                        $(this).css("background-image","url(/statics/templates/yungou/images/mobile/check_bak.png)");
+                    }else{
+                        console.log(2);
+                        $(".sort_list input").removeClass("doChk");
+                        $(this).css("background-image","");
+                    }
+                    
+                }else{
+                    if(chk == "cateChk"){
+                        $(this).prev().addClass("doChk");
+                    }else{
+                        $(this).prev().removeClass("doChk");
+                    }
+                }
+
+                $(".sort_list input:not(':first')").each(function(){
+                    if($(this).attr('class') == "cateChk"){
+                        xx = 1;return false;
+                    }
+                })
+                if(xx == 0){
+                    $(".sort_list input:eq(0)").addClass("doChk");
+                    $(".sort_list label:eq(0)").css("background-image","url(/statics/templates/yungou/images/mobile/check_bak.png)");
+                }else{
+                    $(".sort_list input:eq(0)").removeClass("doChk");
+                    $(".sort_list label:eq(0)").css("background-image","");
+                }
+                return false;
+                
+            })
+               
+            $(".nav-inner li").click(function(){
+                var l = $(this).index();
+                var parm = $(this).attr('order');
+                if(parm == "30"){
+                    $(this).attr("order","40");
+                }
+                if(parm == "40"){
+                    $(this).attr("order","30");
+                }
+                if(parm == "50"){
+                    $(this).attr("order","60");
+                }
+                if(parm == "60"){
+                    $(this).attr("order","50");
+                }
+        
+                $(".nav-inner li").removeClass().eq(l).addClass('current');
+               
+                $("#divGoodsLoading").css('display', 'block');
+                $(".goodsList ul").remove();
+   
+                var offTop = $("#goodsNav").parent().offset().top;
+                $("#goodsNav").parent().removeClass("nav-wrapper");
+                 $("html, body").animate({scrollTop: offTop}, 300);
+                    
+               
+                var init = init_json("list/"+parm);
+        
+            });
+           
+                //加载更多
+                //自动加载
+                $(window).scroll(function() {
+                    if ($(document).height() - $(this).scrollTop() - $(this).height() < 500 && $('#btnLoadMore').css('display') != 'none') {
+                        var url = $("#urladdress").val(),
+                            page = $("#pagenum").val();
+                        //init_json(url + '/' + page);
+                        if (url!='') {
+                            init_json(url + '/' + page);
+                        }
+                    }
+                });
+
+
+        
+    //添加到购物车
+    $(document).on("click",'.add',function(){
+        var codeid=$(this).attr('codeid');
+        $.getJSON('{WEB_PATH}/mobile/ajax/addShopCart/'+codeid+'/1',function(data){
+            if(data.code==1){
+                addsuccess('添加失败');
+            }else if(data.code==0){
+                addsuccess('添加成功');             
+            }else if(data.code==2){
+                addsuccess('购买已达上限');    
+            }return false;
+            
+        });
+        
+        //添加购物车动画
+        var thecart = $('.f_car a');
+        var imgdrag = $(this).parents('li').find('span a img');
+        if(imgdrag){
+            var imgclone = imgdrag.clone().offset({
+                top:imgdrag.offset().top,
+                left: imgdrag.offset().left
+            }).css({
+                'opacity': '0.5',
+                'position': 'absolute',
+                'height': '150px',
+                'width': '150px',
+                'z-index': '9999999999999999999999999',
+                
+            }).appendTo($('body')).animate({
+                'top': thecart.offset().top,
+                'left': thecart.offset().left + 20,
+                'width': 50,
+                'height': 50,
+            
+            }, 1600, 'easeInOutExpo');
+            imgclone.animate({
+                'width': 0,
+                'height': 0,
+                
+            },function(){
+                $(this).detach();
+            });
+        }
+        
+    });
+
+        
+    
+    function addsuccess(dat){
+        $("#pageDialogBG .Prompt").text("");
+        var w=($(window).width()-255)/2,
+            h=($(window).height()-45)/2;
+        $("#pageDialogBG").css({top:h,left:w,opacity:0.8});
+        $("#pageDialogBG").stop().fadeIn(1000);
+        $("#pageDialogBG .Prompt").append('<s></s>'+dat);
+        $("#pageDialogBG").fadeOut(1000);
+        //购物车数量
+        $.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+            $("#btnCart").append('<em>'+data.num+'</em>');
+        });
+    }
+    //跳转页面
+    var gt='.goodsList span,.goodsList h2,.goodsList .Progress-bar';
+    $(document).on('click',gt,function(){
+        var id=$(this).attr('id');
+        if(id){
+            window.location.href="{WEB_PATH}/mobile/mobile/item/"+id;
+        }           
+    });
+
+});
+
+
+    //分类悬浮js
+/*  
+    window.onscroll = function() {
+        var w = document.documentElement.scrollTop || document.body.scrollTop;
+        var fldh = document.getElementById("fldh");
+        if (w >= 200) {
+            fldh.style.position = "fixed";
+            fldh.style.top = "49px";
+            fldh.style.width = "100%";
+        }else{
+            fldh.style.position = "relative";
+        }
+
+    }
+    */
+   
+    
+    </script>
+</body>
+
+</html>
+<div id="pageDialogBG" class="pageDialogBG">
+    <div class="Prompt"></div>
+</div>
+<!--
+<ul class="contact-public">
+<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={wc:fun:_cfg(" qq ")}&site=qq&menu=yes">
+联
+<br>
+系
+<br>
+客
+<br>服</a>
+</ul>
+-->
+<input name="hidLineLink" type="hidden" id="hidLineLink" value="{WEB_PATH}/mobile/mobile/" />
+<script>
+ $(function(){
+    var divTop = $('#goodsNav').offset().top;
+     //console.log(divTop);
+    
+     
+     $(window).scroll(function(){
+        var winscroll = $(window).scrollTop();
+        if(winscroll > divTop){
+            $('#goodsNav').parent().addClass("nav-wrapper");
+        }else{
+            $('#goodsNav').parent().removeClass("nav-wrapper");
+        }
+     });
+});
+</script>

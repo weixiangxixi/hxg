@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+<title>
+	计算结果
+</title>
+<meta content="app-id=518966501" name="apple-itunes-app" /><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black" name="apple-mobile-web-app-status-bar-style" /><meta content="telephone=no" name="format-detection" />
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile/callottery.css" rel="stylesheet" type="text/css" />
+<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/CalResult.js" language="javascript" type="text/javascript"></script></head>
+<style type="text/css">
+@media screen and (max-width: 340px) {
+	.infoResult li span dd{
+		margin-left: 1%;
+		padding-left: 1%;
+	}
+	.result2 p{
+		position: absolute;
+		left: 172px;
+	}
+	.infoResult li{
+		white-space: nowrap;
+		width: max-content;
+	}
+	.infoResult li span:nth-child(4n-1){
+		margin-left: 0;
+		min-width: 128px;
+		display: inline-block;
+	}
+	.infoResult .result2{
+		overflow-x: scroll;
+		background: #fffcda;
+	}
+}
+    #lot {
+    width: 100%;
+    padding: 10px;
+    background: #FFFDDD;
+    box-sizing: border-box;
+}
+#lot ul {
+    text-align: center;
+}
+#lot li:first-child {
+    position: relative;
+    margin-bottom: 18px;
+}
+#lot li {
+    height: 32px;
+    list-style: none;
+}
+#lot li em {
+    float: left;
+    width: 5%;
+    height: 32px;
+    line-height: 32px;
+    color: #ffc163;
+    font-size: 16px;
+    font-style: normal;
+}
+#lot li:first-child dl {
+    width: 23%;
+}
+#lot li:first-child dl:first-of-type {
+    width: 30%;
+}
+
+#lot dl {
+    float: left;
+    border: 1px solid #F60;
+    background: #FFF;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+#lot li:first-child dl:nth-of-type(2) {
+    width: 27%;
+    background: #F60;
+}
+#lot dl {
+    float: left;
+    border: 1px solid #F60;
+    background: #FFF;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+#lot li dd {
+    color: #bbb;
+}
+#lot li dd {
+    font-size: 10px;
+}
+#lot li dt {
+    color: #F60;
+}
+#lot li:first-child dl:nth-of-type(2) * {
+    color: #FFF;
+}
+#lot li:first-child:after {
+    content: '=';
+    display: block;
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    top: 34px;
+    left: calc(22.5% + 2px);
+    color: #ffc163;
+    font-size: 16px;
+    -webkit-transform: rotate(90deg);
+}
+#lot li:last-child dl:first-of-type {
+    margin-left: 10%;
+}
+#lot li:last-child dl {
+    width: 25%;
+}
+</style>
+<body>
+<div class="h5-1yyg-v1">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+    {wc:if $item['cateid'] == '173'}
+    <div id="lot">
+        <ul>
+            <li>
+                <em class="lotSign">(</em>
+                <dl>
+                    <dt>{wc:$item['q_counttime']}</dt>
+                    <dd>时间取和(A)</dd>
+                </dl>
+                <em class="lotSign">+</em>
+                <dl>
+                    <dt>{wc:php:start}if(!empty($ssc['ssc_number'])){echo $ssc['ssc_number'];}else{echo "？";}{wc:php:end}</dt>
+                    <dd>开奖码(B)</dd>
+                </dl>
+                <em class="lotSign">)</em>
+                <em class="lotSign">%</em>
+                <dl>
+                    <dt>{wc:$item['zongrenshu']}</dt>
+                    <dd>商品总需人次</dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>{wc:php:start}if (!empty($ssc['ssc_number'])){$total_number = ($item['q_counttime']+$ssc['ssc_number'])%$item['zongrenshu'];echo $total_number;}else{echo '？';}{wc:php:end}</dt>
+                    <dd>取得余数</dd>
+                </dl>
+                <em class="lotSign">+</em>
+                <dl>
+                    <dt>10000001</dt>
+                    <dd>固定数值</dd>
+                </dl>
+                <em class="lotSign">=</em>
+                <dl>
+                    <dt>{wc:php:start}if (!empty($ssc['ssc_number'])){echo $total_number+10000001;}else{echo "？";}{wc:php:end}</dt>
+                    <dd>最终计算结果</dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    {wc:if:end}
+    <input name="hidCodeID" type="hidden" id="hidCodeID" value="{wc:$item['id']}" />
+    
+    <input name="hidBaseNum" type="hidden" id="hidBaseNum" value="{wc:$user_shop_time_add}" />
+    <input name="hidCodeQuantity" type="hidden" id="hidCodeQuantity" value="{wc:$item['canyurenshu']}" />
+    <input name="hidYuShu" type="hidden" id="hidYuShu" value="{wc:$total_number}" />
+    <input name="hidCodeRno" type="hidden" id="hidCodeRno" value="{wc:$item['q_user_code']}" />
+    <input name="hidkjm" type="hidden" id="hidkjm" value="{wc:$ssc['ssc_number']}" />
+    <input name="uid" type="hidden" id="hiduid" value="{wc:php:start}if($item['q_uid'] == NULL){echo '0';}else{echo 1;}{wc:php:end}" />
+
+    <section id="calResult" class="z-minheight">
+        <div id="divGoodsLoading" class="loading loading2"><b></b>正在加载</div>
+    </section>
+    
+    
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+
+</div>
+</body>
+</html>

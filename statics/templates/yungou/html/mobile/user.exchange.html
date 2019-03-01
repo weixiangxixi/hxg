@@ -1,0 +1,634 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>兑换专区</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+    <link href="/statics/templates/yungou/css/mobile/comm3.css" rel="stylesheet" type="text/css">
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+    <script src="/statics/templates/yungou/js/mobile/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script>
+    <link rel="stylesheet" href="/statics/templates/yungou/css/mobile/exchange.css?v=18060402">
+<script src="/statics/templates/yungou/js/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+<style>
+
+    body{
+        background: #fff !important;
+    }
+    .dialogDetail{
+        text-align: center;
+        margin-top: 4px;
+    }
+    #amount{
+        text-align: center;
+    }
+    #amount .addressList{
+        text-align: left;
+    }
+    .labelForAddress{
+        width: 20px;
+        height: 20px;
+        display: block;
+        border: 1px solid #f90;
+        border-radius: 50%;
+        position: relative;
+    }
+    #dizhi{
+        text-align: left;
+    }
+    #dizhi input[type="radio"]{
+        display: none;
+    }
+    #dizhi input[type="radio"]:checked + .labelForAddress::before{
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 2px;
+        left: 2px;
+        background: #f90;
+        border-radius: 50%;
+    }
+    .section .layermcont{
+        padding:0px;
+    }
+    #dialog{
+        padding: 0px;
+        font-size: 13px;
+    }
+    .exchangeTitle{
+        width: 100%;
+        height: 40px;
+        background: #FE6D0B;
+        color: #fff;
+        line-height: 40px;
+        text-indent: 10px;
+    }
+    .layermbox0 .layermchild{
+        width: 90%;
+        position: relative;
+    }
+    .layermbtn{
+        position: absolute;
+        width: 100%;
+    }
+    .addressList ul{
+        max-height: 162px;
+        overflow: scroll;
+    }
+    .addAddressArea{
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        margin-top: 10px;
+        border-top: 1px solid #f5f5f5;
+    }
+    .addAddressArea .addAddress{
+        width: 24px;
+        height: 24px;
+        display: block;
+        position: absolute;
+        right: 6px;
+        background: #f90;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 19px;
+        line-height: 24px;
+        top: 6px;
+        text-align: center;
+    }
+    .addAddressArea .title{
+        font-size: 14px;
+        position: absolute;
+        left: 10px;
+        color: #fff;
+        font-weight: bold;
+    }
+    .Prompt{
+        font-size: 12px;
+    }
+    #loadingPicBlock .nav-wrapper .nav-list li{
+        width: 50%;
+    }
+</style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+</head>
+<body>
+<div id="loadingPicBlock">
+    <nav class="nav-wrapper" id="hook">
+        <div class="nav-inner">
+            <ul class="nav-list clearfix">
+                <li data-mark="goods" req="off" page="1"><span>兑换奖品</span></li>
+                <li data-mark="info"><span>兑换信息</span></li>
+                <!--<li class="gotoCoinExchange"><span>娱乐币兑换</span></li>-->
+            </ul>
+        </div>
+        <div class="nav-block"></div>
+    </nav>
+    <section id="ex-goods">
+        <article class="clearfix h5-1yyg-w310 m-tj-li">
+            <ul id="goods" class="clearfix">
+            </ul>
+        </article>
+        <p id="notice">没有更多了哦，亲~</p>
+    </section>
+    <section id="ex-info">
+        <ul id="info"></ul>
+    </section>
+    <div id="divGoodsLoading" class="">
+        <s></s>
+    </div>
+</div>
+<style>
+    #dizhi{
+        padding: 10px 10px;
+        height: 58px;
+        border-top: 1px solid rgb(204,204,204);
+    }
+    #dizhi table{
+        width: 100%;
+    }
+    #dizhi table td p:nth-child(2){
+        color: #888;
+        font-size: 12px;
+    }
+    #dizhi table tr td input{
+        width: 20px;
+    }
+    #adddizhi-div{
+        text-align: center
+    }
+    #adddizhi-div p{
+        width: 50px;
+        padding: 5px 18px;
+        background: #eee;
+        margin-left:29%;
+        border-radius: 5px;
+    }
+    .layui-layer-dialog{
+        top: 5px!important;
+    }
+    .pageDialog{
+        top: 300px!important;
+    }
+    div.pageDialog{
+        z-index: 99999999;
+    }
+</style>
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/message.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="/statics/templates/yungou/js/jquery.cookie.js"></script>
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript" type="text/javascript"></script>
+
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_personal > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+<script type="application/javascript">
+    var Path = new Object();
+    Path.Skin = "{G_TEMPLATES_STYLE}";
+    Path.Webpath = "{WEB_PATH}";
+
+    var Base = {
+        head: document.getElementsByTagName("head")[0] || document.documentElement,
+        Myload: function (B, A) {
+            this.done = false;
+            B.onload = B.onreadystatechange = function () {
+                if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                    this.done = true;
+                    A();
+                    B.onload = B.onreadystatechange = null;
+                    if (this.head && B.parentNode) {
+                        this.head.removeChild(B)
+                    }
+                }
+            }
+        },
+        getScript: function (A, C) {
+            var B = function () {
+            };
+            if (C != undefined) {
+                B = C
+            }
+            var D = document.createElement("script");
+            D.setAttribute("language", "javascript");
+            D.setAttribute("type", "text/javascript");
+            D.setAttribute("src", A);
+            this.head.appendChild(D);
+            this.Myload(D, B)
+        },
+        getStyle: function (A, B) {
+            var B = function () {
+            };
+            if (callBack != undefined) {
+                B = callBack
+            }
+            var C = document.createElement("link");
+            C.setAttribute("type", "text/css");
+            C.setAttribute("rel", "stylesheet");
+            C.setAttribute("href", A);
+            this.head.appendChild(C);
+            this.Myload(C, B)
+        }
+    }
+
+    function GetVerNum() {
+        var D = new Date();
+        return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+    }
+
+    Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v=' + GetVerNum());
+    var nav = $("#hook"),
+        elm = $("#divGoodsLoading"),
+        bodyScroll = function () {
+            var cHeight = document.documentElement.clientHeight,
+                sTop =  $(document).scrollTop()+900,
+                height = cHeight + sTop,
+                eTop = elm.offset().top,
+                current = nav.find('li.current').data('mark');
+            if (sTop >= eTop) {
+                switch (current) {
+                    case 'info':
+                        get_info();
+                        break;
+                    case 'goods':
+                        get_goods();
+                        break;
+                }
+            }
+        };
+
+    window.onload = function () {
+        $(window).bind("scroll", bodyScroll);
+        var type, str = location.search.substr(1),
+            Block = $("#loadingPicBlock");
+
+        if (str === 'info') {
+            type = 'info';
+            Block.find("nav ul li[data-mark='info']").addClass('current');
+            get_info();
+        } else {
+            type = 'goods';
+            Block.find("nav ul li[data-mark='goods']").addClass('current');
+            get_goods();
+        }
+        Block.addClass(type);
+    };
+
+    function get_goods() {
+        var hook = $("#hook li[data-mark='goods']"),
+            page = hook.attr('page'),
+            end = hook.data('load'),
+            req = hook.attr('req'),
+            url = '/index.php/mobile/home/swaplist';
+
+        hook.data('data', true);
+        if (end === false || req === 'on') {
+            return false;
+        }
+        if (!req || req === 'off') {
+            hook.attr('req', 'on');
+        }
+        page = !page ? 1 : page;
+
+        elm.addClass("loading");
+        $.getJSON(url, {"page": page}, function (result) {
+            var re = $("#goods"), ul = content = data = '';
+            if (result.success) {
+                data = result.data;
+                for (var i = 0; i < data.length; i++) {
+                    content = data[i].picarr ? "/index.php/mobile/home/exGoodsDesc/" + data[i].id : "javascript:;";
+                    ul += '<li data-index="' + data[i].id +'" ><div class="f_bor_tr"><div class="m-tj-pic">';
+                    ul += '<a href="' + content + '" class="u-lott-pic">';
+                    ul += '<img src="http://f.weimicm.com/' + data[i].thumb + '@!thumb_300_300" border=0 alt=""/>';
+                    ul += '</a>';
+                    ul += '</div>';
+                    ul += '<p class="g-name">' + data[i].title + '</p>';
+                    ul += '<div class="btn-wrap"><span class="count"><em>￥</em><em class="num">' + data[i].score + '福分</em></span>';
+                    ul += '<span class="btn"><a href="javascript:;" class="buy-btn" data-index="' + data[i].id + '" data-only="' + data[i].only + '"">兑换</a></span>';
+                    ul += '</div></div></li>';
+                }
+                re.append(ul);
+            } else {
+                $("#notice").show();
+            }
+
+            if (result.data.length < 10) {
+                elm.removeClass("loading");
+                hook.data("load", false);
+            } else {
+                elm.removeClass("loading");
+                hook.attr("page", parseInt(page) + 1);
+            }
+            loadImgFun(0);
+            hook.attr('req', 'off');
+        });
+    }
+
+    function get_info() {
+        var hook = $("#hook li[data-mark='info']"),
+            page = hook.attr('page'),
+            end = hook.data('load'),
+            req = hook.attr('req'),
+            url = '/index.php/mobile/home/swaprecord';
+
+        hook.data('data', true);
+        if (end === false || req === 'on') {
+            return false;
+        }
+        if (!req || req === 'off') {
+            hook.attr('req', 'on');
+        }
+        page = !page ? 1 : page;
+        elm.addClass("loading");
+        $.getJSON(url, {"page": page}, function (data) {
+
+            var re = $("#info"),
+                ul = '';
+            for (var i = 0; i < data.length; i++) {
+                ul += '<li data-index="' + data[i].id + '">';
+                ul += '<a class="fl z-Limg">';
+                ul += '<img src2="http://f.weimicm.com/' + data[i].thumb + '@!thumb_200_200" border=0 alt=""/>';
+                ul += '</a>';
+                ul += '<div class="u-gds-r gray9">';
+                ul += '<p class="z-gds-tt"><a class="gray6">' + data[i].title + '</a></p>';
+                ul += '<p>订单编号：<em class="orange">' + data[i].code + '</em>&emsp;兑换数量: <em class="orange">' + data[i].amount + '</em></p>';
+                ul += '<p>兑换时间： ' + data[i].time+ '</p>';
+
+                if (data[i].status == '无地址') {
+                    ul += '<a href="' + Gobal.Webpath + '/mobile/home/swapaddress/' + data[i].id + '" class="z-gds-btn">完善收货地址</a>';
+                } else {
+                    ul += '<a href="javascript:void(0);" class="z-gds-btn z-gds-btnDis">' + data[i].status + '</a>';
+                    if (data[i].status == '已发货') {
+                        ul += '<a href="javascript:void(0);" data-id="' + data[i].id + '" class="z-gds-btn">确认收货</a>';
+                    }
+                }
+                ul += '</div></li>';
+            }
+            re.append(ul);
+
+            if (data.message && !ul) {
+                ul += '<p>' + data.message + '</p>';
+                re.append(ul);
+            }
+            if (data.length < 10) {
+                elm.removeClass("loading");
+                hook.data("load", false);
+            } else {
+                elm.removeClass("loading");
+                hook.attr("page", parseInt(page) + 1);
+            }
+            loadImgFun(0);
+            hook.attr('req', 'off');
+        });
+    }
+
+    $("#ex-info").on('click', 'a[data-id]', function (e) {
+        var orderId = $(this).attr("data-id");
+        $.PageDialog.confirm("确认是否真的收到货啦!", function () {
+            $.post(Path.Webpath + "/mobile/home/dh_shouhuo", {
+                "did": orderId
+            }, function (data) {
+                if (data == 1) {
+                    window.location.href="/mobile/home/exchange?info";
+                } else {
+                    $.PageDialog.fail("确认收货地址失败!");
+                }
+            });
+        });
+        e.stopPropagation();
+    });
+    $("#ex-info").on('click', 'li[data-index]', function (e) {
+        var $this = $(this),
+            index = $this.data('index');
+        window.location.href = '/index.php/mobile/home/swapOrderDetail/' + index;
+    });
+    $("#loadingPicBlock nav").on('click', 'li', function () {
+        var $this = $(this),
+            mark = $this.data("mark"),
+            data = $this.data("data"),
+            Block = $("#loadingPicBlock");
+        $this.siblings().removeClass('current').end().addClass('current');
+
+        data || elm.addClass("loading").show();
+        switch (mark) {
+            case 'goods':
+                Block.removeClass().addClass('goods');
+                data || get_goods();
+                $this.siblings().removeData().removeAttr('page');
+                $("#info").empty();
+                break;
+            case 'info':
+                Block.removeClass().addClass('info');
+                data || get_info();
+                break;
+        }
+    });
+    $("#ex-goods").on('click', '.buy-btn', function (e) {
+        var $this = $(this),
+            url = '/index.php/mobile/home/swapoperation',
+            id = $this.data('index'),
+            only=$this.data("only");
+        if (!id) {
+            return false;
+        }
+        $.getJSON(url, {id: id, operation: 'check', amount: 1}, function (e) {
+            if(e.own < e.price){
+                var cz = e.price - e.own;
+                $.PageDialog.fail('福分不足以兑换当前商品,还需'+cz+'福分');
+                return false;
+            }
+            var address = e.address;
+            var title="选择您的地址:";
+            if(address.length==0){
+                title="您还没有地址,请先添加!"
+            }
+            var dizhi='';
+            for(var i=0;i<address.length;i++){
+                var checkinfo='';
+                if(i==0){
+                    var checkinfo="checked='checked'";
+                }
+                dizhi += '<li id="dizhi"><table><tr>' +
+                    '<td>' +
+                    '<p>' + address[i]['shouhuoren'] + '&nbsp;&nbsp;'+ address[i]['mobile'] + '</p>' +
+                    '<p>'+ address[i]['sheng']+ '&nbsp;&nbsp;'+ address[i]['shi']+ '&nbsp;&nbsp;'+ address[i]['xian']+ '&nbsp;&nbsp;'+ address[i]['jiedao']+ '</p>'+
+                    '</td>' +
+                    '<td align="right">' +
+                    '<input class="address_id" type="radio" '+checkinfo+' name="address_id" id="address_id_'+i+'" value="'+address[i]['id']+'"><label for="address_id_'+i+'" class="labelForAddress"></label>'+
+                    '</td></tr></table></li>';
+            }
+
+            if (e.own && e.price) {
+                var tiptext="";
+                if(e.only==1){
+                    tiptext='<p style="color:red;font-size: 12px;text-align:center;">特殊商品一次仅可兑换一件</p>' ;
+                }else{
+                    tiptext='<p class="dialogDetail"><span>最多可兑换: </span><em> ' + e.limit + '件</em></p>' ;
+                }
+                var html = '<div id="dialog">' +
+                    '<p class="exchangeTitle">兑换信息填写</p>'+
+                    '<p class="dialogDetail"><span>拥有福分: </span><em>' + e.own + '</em></p>' +
+                    '<p class="dialogDetail"><span>商品价格: </span><em> ' + e.price + '</em></p>' +
+                    tiptext +
+                    '<div id="amount">' +
+                    '<a class="minus limit" href="javascript:;">-</a>' +
+                    '<input type="tel" value="1" class="amount"/>' +
+                    '<a class="plus" href="javascript:;">+</a>'+
+                    '<input type="hidden" class="limit" data-max="' + e.limit + '">' +
+                    '</div>' +
+                    '<div class="addAddressArea"><span class="title" style="color:#828282">'+title+'</span><a class="addAddress" href="/index.php/mobile/home/address?swap=exchange">+</a></div>' +
+                    '<div class="addressList">'+
+                    '<ul>' +
+                    dizhi +
+                    '</ul>' +
+                    '</div>';
+                layer.open({
+                    content: html,
+                    btn: ['兑换', '取消'],
+                    shadeClose:false,
+                    yes: function (index) {
+                        var amount = parseInt($("#amount input[class='amount']").val());
+                        var limit = parseInt($("#amount input[class='limit']").data('max'));
+                        if(address.length==0){
+                            $.PageDialog.fail("您还没有地址,请先添加!");
+                            return false;
+                        }
+                        if( $(".address_id:checked").val()){
+                            var address_id = $(".address_id:checked").val();
+                        }
+
+                        if (!$.isNumeric(amount) || !$.isNumeric(limit)) {
+                            $.PageDialog.fail("请确定输入正确的数量！");
+                            return false;
+                        }
+                        if (limit < amount) {
+                            $.PageDialog.fail("您的福分不足以兑换更多的商品！");
+                            return false;
+                        }
+
+                        $.getJSON(url, {id: id, operation: 'change', amount: amount,address_id: address_id }, function (e) {
+                            if(e.state==false){
+                                $.PageDialog.fail(e.message);
+                            }else{
+                                $.PageDialog.fail(e.message);
+                                layer.close(index);
+                                setTimeout(function () {
+                                    window.location.href = '/index.php/mobile/home/exchange?info';
+                                }, 1000);
+                            }
+                        });
+                    }
+                });
+                $("#amount").on('click', 'a', function (e) {
+                    var $target = $(e.target),
+                        motion = $target.attr('class');
+                    var input_a = $target.siblings("input[class='amount']");
+                    var input_l = $target.siblings("input[class='limit']");
+                    var amount = parseInt(input_a.val());
+                    var limit = parseInt(input_l.data('max'));
+                    switch (motion) {
+                        case 'minus':
+                            if (amount > 1) {
+                                amount -= 1;
+                            }
+                            if (amount === 1) {
+                                $target.addClass("limit");
+                            }
+                            if (limit > 1) {
+                                $target.siblings("a[class*='plus']").removeClass('limit');
+                            }
+                            input_a.val(amount);
+                            break;
+                        case 'plus':
+                            if(only==1){//判断商品是否允许一次兑换多件
+                                $.PageDialog.fail('该商品一次仅可兑换一件');
+                                input_a.val(1);
+                                break;
+                            }else{
+                                if (limit > amount) {
+                                    amount += 1;
+                                }
+                                if (limit <= amount) {
+                                    $.PageDialog.fail('您的福分不足以兑换更多的商品');
+                                    $target.addClass("limit");
+                                }
+                                if (limit > 1) {
+                                    $target.siblings("a[class*='minus']").removeClass('limit');
+                                }
+                                input_a.val(amount);
+                                break;
+                            }
+                    }
+                });
+                $("#amount").on('blur','.amount',function(e){
+                    var LimitNum=parseInt($("#amount input[class='limit']").data('max'));
+
+                    if(!$.isNumeric($(this).val())){
+                        $.PageDialog.fail('请输入正确的数量!');
+                        $(this).val(1);
+                    }
+                })
+
+                $("#amount").on('keyup','.amount',function(e){
+
+                    if(only==1){
+                        if($(this).val()>1){
+                            $.PageDialog.fail('该商品一次仅可兑换一件');
+                            $(this).val(1);
+                        }
+                    }else{
+                        var LimitNum=parseInt($("#amount input[class='limit']").data('max'));
+
+                        if(!$.isNumeric($(this).val())&&$(this).val()!=""){
+                            $.PageDialog.fail('请输入正确的数量!');
+                            $(this).val(1);
+                        }
+
+                        if(parseInt($(this).val())===0){
+                            $.PageDialog.fail('数量不能小于0!');
+                            $(this).val(1);
+                        }
+
+                        if($(this).val()>LimitNum){
+                            $.PageDialog.fail('您的福分不足以兑换更多的商品!');
+                            $(this).val(LimitNum);
+                        }
+                    }
+                })
+
+            } else {
+                $.PageDialog.fail(e.message);
+            }
+        });
+    });
+
+
+</script>
+
+</body></html>

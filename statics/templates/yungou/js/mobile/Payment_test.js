@@ -1,0 +1,1 @@
+Base.getScript(Gobal.Skin+"/js/mobile/PaymentFun_test.js?v="+new Date().getTime());

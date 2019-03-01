@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title></title>
+<meta content="app-id=518966501" name="apple-itunes-app">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+<link href="/statics/templates/yungou/css/mobile/goods.css" rel="stylesheet" type="text/css">
+<script src="/statics/templates/yungou/js/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script id="pageJS" data="/statics/templates/yungou/js/mobile/BuyRecord.js" language="javascript" type="text/javascript"></script>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css?v=3.1.0" id="layuicss-layer"></head>
+<body style="zoom: 1;">
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+<style type="text/css">
+	img {
+		width: 100%;
+	}
+</style> 
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+    <section id="buyRecordPage" class="goodsCon" style="margin-bottom: 0px;">
+        <div id="divRecordList" class="recordCon z-minheight" style="display:block;margin-left: 0px;height: 100%;">
+        	{wc:php:start}foreach($str as $key=>$val){{wc:php:end}
+            	<p style="text-align: center"><img src="{OSS_UPLOAD_PATH}/{wc:$val}@!image" style="" title="1_0{wc:$key}.jpg"></p>
+            {wc:php:start}}{wc:php:end}
+            <p style="text-align: center"><img src="/statics/templates/yungou/images/mobile/rules.jpg" style="" title="详情解释1.jpg"></p>
+            <p><br></p>
+        </div>
+        	
+        
+    </section>
+    
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js?v=20171007"></script>
+<link href="/statics/templates/yungou/css/mobile/message.css?18060601" rel="stylesheet" type="text/css">
+
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/jquery.cookie.js?1.0"></script>
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js?180118" language="javascript" type="text/javascript"></script>
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_personal > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+</div>
+
+
+</body></html>

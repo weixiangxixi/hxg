@@ -1,0 +1,46 @@
+<div id="orderInfo1">
+    <div class="ico_title">撤销订单</div>
+    <div class="form_wrap account">
+        <div class="form_list">
+            <span class="list_title">商品订单号：</span>
+            <span class="list_val">
+                <input name="orderNo" id="orderNo" value="201791113138967" maxlength=""  placeholder="支付的商品订单号">
+            </span>
+        </div>
+        <div class="form_list">
+            <span class="list_title"></span>
+            <span class="list_val submit btn btn_blue" onclick="submit()">确定</span>
+        </div>
+    </div>
+</div>
+<script>
+    function submit() {
+        var data = {
+            orderNo: $('#orderNo').val()
+        };
+        var mask = $('<div class="mask"></div>');
+        $('body').append(mask);
+        $.ajax({
+                url: '/request.php?method=cancelOrder',
+                type: 'POST',
+                dataType: 'JSON',
+                data: data
+            })
+            .done(function(res) {
+                console.log(res);
+                $('body').popUpWin({
+                    content: function() {
+                        return '<p>' + res.msg + '</p> ';
+                    }
+                });
+            })
+            .fail(function() {
+                console.log("error");
+                alert("网络错误")
+            })
+            .always(function() {
+                console.log("complete");
+                $('body').find('.mask').remove();
+            });
+    }
+</script>

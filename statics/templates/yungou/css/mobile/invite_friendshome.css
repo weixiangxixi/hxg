@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none
+}
+
+li {
+    list-style: none
+}
+
+body {
+    position: relative;
+    background: #FFF
+}
+
+.clear::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    clear: both
+}
+
+.account {
+    width: 100%;
+    padding: 1rem;
+    color: #FFF;
+    text-align: center;
+    /*background: -moz-linear-gradient(left, #00bcfa, #0082ff);
+    background: -webkit-linear-gradient(left, #00bcfa, #0082ff);*/
+    background: -moz-linear-gradient(left, #ff802a, #F60);
+    background: -webkit-linear-gradient(left, #ff802a, #F60)
+}
+
+.account dt {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+}
+
+.account dt .title {
+    line-height: 1.5rem;
+    font-size: 1rem;
+}
+
+.account dt .content {
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+
+.account dd {
+    float: left;
+    position: relative;
+    width: 50%;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.account dd:first-of-type::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 1.5rem;
+    right: 0;
+    top: .75rem;
+    border-left: 1px solid rgba(255,255,255,.5);
+}
+
+.toggle_secret {
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    top: 0;
+    right: 0;
+    background: transparent url('/statics/templates/yungou/images/mobile/eye-open-white.png') no-repeat center center / 1.5rem 1.5rem;
+}
+
+.toggle_secret.hide {
+    background-image: url('/statics/templates/yungou/images/mobile/eye-off-white.png');
+}
+
+.gift {
+    width: 85%;
+    line-height: 3rem;
+    margin: 4rem auto;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    background: #fff3f6;
+    border-radius: 25px;
+}
+
+.gift a {
+    color: #ff7035;
+}
+
+.invite-list {
+    padding: 0 1rem;
+}
+
+.invite-list li {
+    line-height: 3rem;
+    border-bottom: 1px solid #f2f2f2
+}
+
+.invite-list li:first-child {
+    border-top: 1px solid #f2f2f2;
+}
+
+.invite-list li a {
+    color: #666;
+    display: block;
+}
+
+.invite-list li dd {
+    float: left;
+    position: relative;
+    width: 50%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.invite-list li dd em {
+    display: block;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    top: 0;
+    right: 0;
+    color: #ff7035;
+    font-weight: 600;
+    background: #fff3f6;
+    border-radius: 50%;
+}
+
+.invite-list li dd.left {
+    position: relative;
+}
+
+.invite-list li dd.left::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 1.5rem;
+    right: 0;
+    top: .75rem;
+    border-left: 1px solid #f2f2f2;
+}

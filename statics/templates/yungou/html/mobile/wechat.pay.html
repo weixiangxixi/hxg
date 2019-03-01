@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>微信支付</title>
+  	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  	<script>
+      function onBridgeReady(){
+         WeixinJSBridge.invoke(
+            'getBrandWCPayRequest', {
+               "appId":"{wc:$rs['appId']}",     //公众号名称，由商户传入     
+               "timeStamp":"{wc:$rs['timeStamp']}",         //时间戳，自1970年以来的秒数     
+               "nonceStr":"{wc:$rs['nonceStr']}", //随机串     
+               "package":"{wc:$rs['package']}",     
+               "signType":"{wc:$rs['signType']}",         //微信签名方式：     
+               "paySign":"{wc:$rs['paySign']}" //微信签名 
+            },
+            function(res){
+            if(res.err_msg == "get_brand_wcpay_request:ok" ){
+            // 使用以上方式判断前端返回,微信团队郑重提示：
+                  //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+              window.location.href = '/index.php/mobile/cart/paysuccess';
+            } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+              location.replace("/index.php/mobile/wechatpay/payfail");
+            } else if (res.err_msg == "get_brand_wcpay_request:fail") {
+              location.replace("/index.php/mobile/wechatpay/payfail");
+            } else {
+              location.replace("/index.php/mobile/wechatpay/payfail" + encodeURIComponent(res.err_msg));
+            }
+         }); 
+      }
+      if (typeof WeixinJSBridge == "undefined"){
+         if( document.addEventListener ){
+             document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+         }else if (document.attachEvent){
+             document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+             document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+         }
+      }else{
+         onBridgeReady();
+      }
+    </script>
+</head>
+<body>
+  <div align="center"><img src="/ext_pay2/image/loading.gif" align="center"></div>
+</body>
+</html>

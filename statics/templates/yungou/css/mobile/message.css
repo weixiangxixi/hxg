@@ -1,0 +1,65 @@
+.msg-box, .msg-box * {
+    box-sizing: border-box
+}
+
+.msg-box {
+    position: fixed;
+    width: 96%;
+    padding: .5rem;
+    top: -10rem;
+    left: 2%;
+    background: rgba(255,255,255,.98);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 10px #684f4f;
+    z-index: 11;
+    cursor: pointer;
+}
+
+.msg-box dl[data-type] > dt {
+    margin-bottom: .3rem
+}
+
+.msg-box dl[data-type] > dt::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+
+.msg-box .left, .msg-box .right {
+    float: left;
+    width: 50%;
+    line-height: 1.5rem;
+    color: #666;
+    font-size: .8rem;
+}
+
+.msg-box .left {
+    text-align: left
+}
+
+.msg-box .right {
+    text-align: right
+}
+
+.msg-box dt, .msg-box dd {
+    line-height: 1.2rem;
+    color: #333;
+    font-size: .95rem;
+    text-align: left
+}
+
+.msg-box dd dt {
+    font-weight: 600
+}
+
+.msg-box dd {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}

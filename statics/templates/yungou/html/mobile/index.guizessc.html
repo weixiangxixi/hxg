@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<html style="font-size: 40.1px;"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>透明购指南</title>
+    <script src="{G_TEMPLATES_JS}/mobile/jquery-3.1.1.min.js" language="javascript" type="text/javascript"></script>
+    <style type="text/css">
+        *{
+            margin:0px;
+            padding:0px;
+            list-style: none;
+            box-sizing: border-box;
+            color:#f8445d;
+        }
+        body{
+            background: #fff;
+        }
+        .clear{
+            clear: both;
+        }
+        .content_header{
+            width: 100%;
+            height: 4.8rem;
+            background-image: url("https://dyyyyg-static.oss-cn-shenzhen.aliyuncs.com/img/vip/index/transparent.png?v=123456");
+            background-position: center top;
+            background-size: 100% 100%;
+        }
+        .content_footer{
+            width: 100%;
+            height: 2rem;
+            position: relative;
+            background-image: url("/statics/templates/yungou/images/mobile/ssc/footer.jpg");
+            background-position: 0 0;
+            background-size: cover;
+        }
+        .footer_button{
+            position: absolute;
+            width: 3rem;
+            height: 1rem;
+            background: #FFF100;
+            border: none;
+            color: #F00;
+            top: -0.5rem;
+            font-weight: bold;
+            left: calc(50% - 1.5rem);
+            font-size: 0.5rem;
+            border-radius: 10px;
+            line-height: 1rem;
+            cursor: pointer;
+            display: block;
+            letter-spacing: 1px;
+        }
+        .content_main .show_list .main_img{
+            width:7rem;
+            margin:0 auto;
+        }
+        .content_main .show_list .main_img.full {
+            width: 100%;
+        }
+        .content_main .show_list .main_img img{
+            width: 100%;
+            height: 100%;
+        }
+        .content_main .show_list .main_text{
+            position: relative;
+            height: auto;
+        }
+        .content_main .show_list .main_text img{
+            width: 1.8rem;
+            height: 1.7rem;
+            float: left;
+            margin-right: 0.2rem;
+        }
+        .content_main .show_list .main_text .img_default{
+            width: 1.8rem;
+            height: 1.7rem;
+            margin-right: 0.2rem;
+        }
+        .content_main .show_list h1{
+            float: left;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 0.18rem;
+        }
+        .show_list li:nth-of-type(5) .main_text_h1{
+            padding-left:0.8rem;
+        }
+        .show_list li:nth-of-type(2n) .main_text_h1 img{
+            margin-left:0.4rem;
+        }
+        .content_main .show_list p{
+            font-size: 0.6rem;
+            font-weight: bold;
+            text-align: center;
+            padding:0 0.6rem;
+        }
+        .show_list li{
+            margin-bottom: 20px;
+        }
+        .show_list li:last-child {
+            margin-bottom: 1.5rem;
+        }
+        .main_text .main_text_h1{
+            box-sizing: border-box;
+            padding-left: 1.8rem;
+            margin-bottom: .3rem;
+        }
+        .main_text .main_text_h1 h1.center {
+            width: 100%;
+            text-align: center;
+        }
+        .arrow img {
+            width: 1rem;
+            height: 1.3rem;
+            margin: 0 auto;
+            display: block;
+        }
+        .explain_rule
+        {
+            width: 9rem;
+            margin: 0 auto;
+            border: 1px solid;
+            border-radius: 10px;
+            text-align: left;
+            padding:0.4rem;
+            margin-bottom:0.5rem;
+        }
+        .explain_rule.one {
+            margin-top: 0.5rem;
+        }
+        .explain_rule h1{
+            font-size: 0.8rem;
+            text-align: center;
+            margin-bottom: 0.2rem;
+        }
+        .explain_rule p{
+            font-size: 0.35rem;
+            line-height: 0.6rem;
+            text-indent: 0.3rem;
+        }
+        .one p{
+            text-align: left;
+            font-size: 0.3rem;
+        }
+    </style>
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script></head>
+
+<body>
+<div class="content">
+    <div class="content_header"></div>
+    <div class="content_main">
+        <div class="explain_rule one">
+            <h1>【透明购物】幸运码计算方式</h1>
+            <p>1、当商品的最后一个享购码分配完毕后，将公示截止该时间点前本站全部商品的最后100条参与时间记录</p>
+            <p>2、将这100个时间的数值进行求和（得出数值A）（每个时间按时、分、秒、毫秒的顺序依次排列组成一组数值，如12:01:51.119则为120151119）</p>
+            <p>3、【透明购物】所有商品以时时彩获取的开奖码（凌晨2点到10点以000000）作为数值B加入计算,购买完成立即揭晓</p>
+            <p>4、（数值A+数值B）除以该商品总需参与人次得到的余数+原始数10000001，得到最终幸运享购码，拥有该幸运号码者，即可获得该商品</p>
+        </div>
+        <div class="explain_rule">
+            <h1>郑重承诺</h1>
+            <p>【惠享购】秉承公开公平公正原则，为确保所有商品以及新推出【透明购物】的真实性，保证每位会员的有效合法利益，公司向各界承诺：如发现我们有造假行为，愿接受假一赔十的结果，欢迎各界人士的监督与指导。</p>
+        </div>
+        <ul class="show_list">
+           <li>
+               <div class="main_img">
+                   <img src="/statics/templates/yungou/images/mobile/ssc/1.PNG">
+               </div>
+               <div class="main_text">
+                   <div class="main_text_h1">
+                       <img src="/statics/templates/yungou/images/mobile/ssc/code1.jpg">
+                       <h1>进入首页</h1>
+                       <div class="clear"></div>
+                   </div>
+                   <p>进入【惠享购】首页，点击“透明购物”图标</p>
+               </div>
+               <div class="arrow"><img src="/statics/templates/yungou/images/mobile/ssc/e_arrow.jpg"></div>
+           </li>
+            <li>
+                <div class="main_img">
+                    <img src="/statics/templates/yungou/images/mobile/ssc/2.PNG">
+                </div>
+                <div class="main_text">
+                    <div class="main_text_h1">
+                        <h1>选择商品</h1>
+                        <img class="imgdefault" src="/statics/templates/yungou/images/mobile/ssc/code2.jpg">
+                        <div class="clear"></div>
+                    </div>
+                    <p>选择一款商品，点击“立即享购”</p>
+                </div>
+                <div class="arrow"><img src="/statics/templates/yungou/images/mobile/ssc/e_arrow.jpg"></div>
+            </li>
+            <li>
+                <div class="main_img">
+                    <img src="/statics/templates/yungou/images/mobile/ssc/3.PNG">
+                </div>
+                <div class="arrow"><img src="/statics/templates/yungou/images/mobile/ssc/e_arrow.jpg"></div>
+                <div class="main_text">
+                    <div class="main_text_h1">
+                        <img src="/statics/templates/yungou/images/mobile/ssc/code3.jpg">
+                        <h1>支付一元</h1>
+                        <div class="clear"></div>
+                    </div>
+                    <p>支付一元，购买一人次，获得一个“享购码”</p>
+                </div>
+            </li>
+            <li>
+                <div class="arrow"><img src="/statics/templates/yungou/images/mobile/ssc/e_arrow.jpg"></div>
+                <div class="main_img">
+                    <img src="/statics/templates/yungou/images/mobile/ssc/4.PNG">
+                </div>
+                <div class="arrow"><img src="/statics/templates/yungou/images/mobile/ssc/e_arrow.jpg"></div>
+                <div class="main_text">
+                    <div class="main_text_h1">
+                        <h1>立即揭晓</h1>
+                        <img class="imgdefault" src="/statics/templates/yungou/images/mobile/ssc/code4.jpg">
+                        <div class="clear"></div>
+                    </div>
+                    <p>当一件商品达到总参与人数时，获取时时彩开奖码，等待开奖。</p>
+                </div>
+            </li>
+            <li>
+                <div class="main_img">
+                    <img src="/statics/templates/yungou/images/mobile/ssc/5.PNG">
+                </div>
+                <div class="main_img">
+                    <img src="/statics/templates/yungou/images/mobile/ssc/6.PNG">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="content_footer">
+        <button class="footer_button" onclick="window.location.href='/'">
+            立即享购
+        </button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        //文档加载完成时获取屏幕宽度设置root的fontsize
+        var width=$(window).width();
+        $("html").css("fontSize",(width/10)+"px");
+
+        $(".footer_button").click(function(){
+            window.location.href="/index.php/mobile/mobile/glist";
+        })
+    });
+
+    $(window).resize(function() {
+        //屏幕变换时获取屏幕宽度设置root的fontsize
+        var width=$(window).width();
+        $("html").css("fontSize",(width/10)+"px");
+    });
+</script>
+</body></html>

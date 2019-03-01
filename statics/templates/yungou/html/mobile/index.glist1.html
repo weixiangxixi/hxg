@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link rel="icon" href="http://f.weimicm.com/photo/member.jpg@!thumb_200_200" type="image/x-icon">
+<title>{wc:$key} - {wc:$webname}</title>
+<meta content="app-id=518966501" name="apple-itunes-app" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile/goods.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile/main.css" rel="stylesheet" type="text/css">
+<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+<style type="text/css">
+    .footerdi {
+        height: 50px;
+    }
+	.nav-wrapper {
+    position: fixed;
+    width: 100%;
+    max-width: 640px;
+    height: 40px;
+    top: 0;
+    /* left: 0; */
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 10;
+}
+.nav-wrapper .select-btn.current {
+    color: #f60;
+    border-bottom: 2px solid #f60;
+}
+.nav-wrapper .select-btn {
+    border-right: 1px solid #eee;
+    box-sizing: border-box;
+    color: #999;
+    float: left;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    width: 33.33%;
+}
+.nav-wrapper .arrow-up {
+    left: 48%;
+    top: 22px;
+    position: absolute;
+    display: none;
+}
+.nav-wrapper .select-icon {
+    background-color: #fff;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+    width: 13px;
+}
+.nav-wrapper .select-total {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.19);
+    position: absolute;
+    right: 0;
+    top: 41px;
+    width: 100%;
+    z-index: 4;
+    display: none;
+}
+.nav-wrapper .select-btn.current .select-icon i {
+    background-color: #f60;
+}
+.nav-wrapper .select-icon i:first-child {
+    margin-top: 0;
+}
+.nav-wrapper .select-icon i {
+    background-color: #bbb;
+    display: block;
+    height: 2px;
+    margin-top: 3px;
+    width: 13px;
+}
+.sort_list {
+    width: 100%;
+}
+.sort_list li {
+    position: relative;
+    overflow: hidden;
+}
+.sort_list li {
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+    box-sizing: border-box;
+    float: left;
+    height: 44px;
+    line-height: 42px;
+    width: 33.3%;
+}
+.sort_list a {
+    color: #000;
+    display: block;
+    font-size: 14px;
+    padding: 0 20px;
+    text-align: left;
+}
+.sort_list li > input {
+    display: none;
+}
+.cateChk + label {
+    position: absolute;
+    height: 44px;
+    width: 44px;
+    top: 0;
+    right: -6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 1;
+    background: transparent url(/statics/templates/yungou/images/mobile/check_2.png) center 51px / 130% 390%;
+    text-align: center;
+    line-height: 44px;
+    color: #CCC;
+}
+.special a {
+    color: #1A9DEC !important;
+}
+.cateChk.red + label {
+    background-position: center;
+    color: #000;
+}
+#addAll {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    margin-top: -1px;
+}
+#addAll p {
+    border: 1px solid #F60;
+    border-radius: 3px;
+    width: 33%;
+    margin: 7px auto;
+    height: 28px;
+    color: #FFF;
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    background: #F60;
+}
+#addAll p#catUp {
+    display: none;
+    position: absolute;
+    width: 31%;
+    margin-left: 1%;
+    overflow: hidden;
+    background: #FFF;
+    border: none;
+}
+.nav-wrapper .select-btn {
+    border-right: 1px solid #eee;
+    box-sizing: border-box;
+    color: #999;
+    float: left;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    width: 33.33%;
+}
+.nav-wrapper .select-total {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.19);
+    position: absolute;
+    right: 0;
+    top: 41px;
+    width: 100%;
+    z-index: 4;
+    display: none;
+}
+.order_list {
+    width: 100%;
+}
+.order_list li:not(:last-of-type) {
+    border-bottom: 1px solid rgba(246,246,246,.8);
+}
+.order_list li {
+    box-sizing: border-box;
+    float: left;
+    height: 44px;
+    line-height: 42px;
+    width: 100%;
+}
+.order_list a {
+    color: #666;
+    display: block;
+    font-size: 14px;
+    padding: 0 15px;
+}
+.order_list li.current a {
+    color: #F60;
+}
+.sort_list::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+.doChk + label {
+    background-position-y: -7px;
+    color: #F60;
+}
+#myCollect a,#lottery a {
+    height: 26px;
+    padding: 0;
+    margin: 8px 12px 0;
+    color: #F60;
+    border: 1px solid #F60;
+    line-height: 26px;
+    text-indent: 5px;
+    border-radius: 5px;
+}
+#myCollect a::after,#lottery a::after {
+    content: '\279C';
+    font-size: 1.1rem;
+    display: block;
+    position: absolute;
+    width: 44px;
+    height: 30px;
+    right: 2px;
+    top: 0;
+    line-height: 44px;
+    text-align: center;
+    text-indent: 0;
+}
+.special a {
+    color: #1A9DEC !important;
+}
+</style>
+</head>
+<body>
+    <div class="h5-1yyg-v1" id="loadingPicBlock" style="padding-top: 5px">
+    
+<!-- 栏目页面顶部 -->
+
+
+<script src="{G_TEMPLATES_JS}/mobile/ajax.js"></script>
+
+<!-- 内页顶部 -->
+
+    <section class="goodsCon" style="position: relative;top:0 !important;">
+	    <!-- 导航 -->
+	    <nav class="nav-wrapper" id="goodsNav">
+            <input type="hidden" id="search" value="">
+            <input type="hidden" id="parm_order" value="10">
+            <input type="hidden" id="parm_cate" value="0">
+            <!--点击添加或移除current-->
+            <div class="select-btn current" id="divTmg">
+                <span class="arrow-up" style="display: none;"></span>
+                <span class="select-icon">
+                        <i></i><i></i><i></i>
+                    </span>
+                <span>透明购</span>
+            </div>
+            <div class="select-btn" id="divSort">
+                <span class="arrow-up" style="display: none;"></span>
+                    <span class="select-icon">
+                        <i></i><i></i><i></i>
+                    </span>
+                <span>{wc:php:start}if(empty($data_cate)){echo '普通商品';}else{echo $data_cate['name'];}{wc:php:end}</span>
+            </div>
+            <!--分类-->
+            <div id="selectSort" class="select-total" style="display: none;">
+                <ul class="sort_list">
+                                       
+                </ul>
+                <div id="addAll">
+                    <p id="catUp"></p>
+                    <p id="addCat" onclick="add_one()">一键添加</p>
+                                    </div>
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                    
+                })
+            </script>
+            <div class="select-btn" id="divOrder">
+                <span>即将揭晓</span>
+            </div>
+            <div id="selectOrder" class="select-total" style="display: none;">
+                <ul class="order_list">
+                    <li order="30" class="current"><a href="javascript:;">即将揭晓</a></li>
+                    <li order="20"><a href="javascript:;">人气</a></li>
+                    <li order="10"><a href="javascript:;">最新</a></li>
+                    <li order="50"><a href="javascript:;">价格</a></li>
+                </ul>
+            </div>
+            <p id="oneKey" style="display: none">{wc:php:start}echo $this->segment(4);{wc:php:end}</p>
+        </nav>
+	    <div class="goodsNav" style="display: none;position: fixed;top: 0;z-index: 9999;background: #fff">
+            <ul id="divGoodsNav">
+       	 	    <li order="10" class="current"><a href="javascript:;">即将获得<b></b></a></li>
+                <li order="20"><a href="javascript:;">人气<b></b></a></li>
+                <li order="50"><a href="javascript:;">最新<b></b></a></li>
+	            <li order="60"><a href="javascript:;">低价<b></b></a></li>
+                <li order="">
+                    <a style="text-align: center;line-height: 36px;height: 35px;padding: 0;" href="javascript:;">商品分类<s class="arrowUp"></s></a>
+					<dl style="display:none;">
+					<dd type="0" class="sOrange"><a href="javascript:;"><img style="width: 30px;height: 30px;border-radius: 3px;float: left;margin:10px 5px 0 0;" src="/statics/templates/yungou/images/mobile/moren.png" alt=""><span>默认排序</span></a></dd>
+						{wc:getlist sql="select * from `@#_category` where `model`='1' and `cateid` != '170' order by `order` desc""}
+						{wc:loop $data $categoryx}
+						<dd><a href="javascript:;"><span  id="{wc:$categoryx['cateid']}">{wc:$categoryx['name']}</span></a></dd>
+						{wc:loop:end}
+						{wc:getlist:end}
+					</dl>
+                </li>
+           </ul>
+        </div>
+        <!-- 列表 -->
+       <div class="goodsList" style="top: 49px;margin-top: 36px;">
+		<div id="divGoodsLoading" class="loading" style="display:none;height: 80px;">
+			<b></b>
+			正在加载...
+		</div>
+		<a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;">
+			<i class="jiazai"></i>
+			点击加载更多
+		</a>
+		<a id="btnLoadMore2" class="loading"  style="display:none; padding-top: 0px;">没有了</a>
+		<a id="btnLoadMore3" class="loading"  style="display:none; padding-top: 0px;">已经到底了</a>
+		
+        {wc:if $this->segment(4)=='177'}<div id="hdgz"><p>活动规则</p></div>{wc:else}<div id="bottomAll"><p>一键添加</p></div>{wc:if:end}
+              
+        <style type="text/css">
+        	#bottomAll,#hdgz {
+			    position: fixed;
+			    width: 4rem;
+			    height:4rem;
+			    left: calc(50% - 1.6rem);
+			    bottom: 58px;
+			    background: #f60;
+			    border-radius: 50%;
+			    box-shadow: 0 0 15px #f60;
+			    -webkit-animation-fill-mode: forwards;
+			    z-index: 111;
+			}
+			#bottomAll p,#hdgz p {
+			    display: block;
+			    width: 3.4rem;
+			    height: 3.4rem;
+			    padding: .5rem .4rem;
+			    margin: calc(0.3rem - 0px) auto;
+			    line-height: 1rem;
+			    color: #FFF;
+			    font-size: .9rem;
+			    background: #f60;
+			    text-align: center;
+			    border-radius: 50%;
+			    border: 1px solid #FFF;
+			    letter-spacing: 1px;
+			}
+			em.cat-lottery {
+			    display: block;
+			    position: absolute;
+			    width: 49px;
+			    height: 49px;
+			    background: transparent url(/statics/templates/yungou/images/mobile/zx.png) no-repeat 0 0px / 49px 196px;
+			    bottom: 0;
+			    right: 0;
+			    background-size: 100%;
+			}
+			em {
+			    font-style: normal;
+			}
+			em.tmg-lottery {
+			    display: block;
+			    position: absolute;
+			    width: 49px;
+			    height: 49px;
+			    background: transparent url(/statics/templates/yungou/images/mobile/cat_mark3.png) no-repeat 0 -147px / 49px 196px;
+			    bottom: 0;
+			    right: 0;
+                z-index: 99;
+			}
+            em.s11-lottery {
+                display: block;
+                position: absolute;
+                width: 49px;
+                height: 49px;
+                background: transparent url(/statics/templates/yungou/images/mobile/cat_mark2.png) no-repeat 0 -197px / 51px 296px;
+                bottom: 0;
+                right: 0;
+            }
+            .ruleBox{
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                z-index:1002;
+                transition: all 1s;
+            }
+            .ruleInnerBox{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                padding-top: 2rem;
+            }
+            .ruleList{
+                font-size: 1.4rem;
+                color: #fff;
+                z-index: 10000;
+                position: absolute;
+                display: block;
+                height: auto;
+                overflow: auto;
+                line-height: 150%;
+                width: 80%;
+                left: 10%;
+                top: 4.5rem;
+            }
+            .shadow{
+                position: absolute;
+                left: 0;
+                top: 0;
+                background: #000;
+                opacity: .8;
+                width: 100%;
+                height: 100%;
+            }
+            .closeRule{
+                position: absolute;
+                width: 2rem;
+                height: 2rem;
+                color: #fff;
+                top: 1.6rem;
+                right: 1.6rem;
+                font-size: 0.8rem;
+                text-align: center;
+                line-height: 1rem;
+                cursor: pointer;
+            }
+            .iconfont {
+                font-size: 25px;
+            }
+            .
+        </style>
+	</div>
+    </section>
+	
+    <input id="urladdress" value="" type="hidden" />
+    <input id="pagenum" value="" type="hidden" />
+    <input id="sort_id" value="{wc:php:start}echo $this->segment(4);{wc:php:end}" type="hidden">
+
+    <div class="ruleBox">
+        <div class="ruleInnerBox">
+            <div class="shadow"></div>
+            <div class="closeRule">
+                <i class="icon-close iconfont"><img src="/statics/templates/yungou/images/mobile/close.png"></i>
+            </div>
+            <div class="ruleList">
+                <p> 1、活动时间为每天10:00~24:00。用同一个微信账号或支付宝账号进行充值的会员最多只能有两个账号参与活动，如有违规，一经发现将冻结账号，谢谢合作；
+                
+                </p><br>
+                
+             
+                <p> 2、每个id同件商品当天只能购买5期；
+                </p><br>
+                <p> 3、通过恶意注册或其他不正当手段等参与本活动的，将取消其参与及领奖资格，且有权收回其通过本活动获得的奖品，并保留追究恶意刷奖者的法律责任的权利！
+                </p>    <br>    </p>4、惠享购对本次活动在法律范围内拥有最终解释权。</p>
+            </div>
+        </div>
+    </div>
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript">
+
+//打开页面加载数据
+window.onload=function(){
+	var sort_id = $("#sort_id").val();
+	if(sort_id == ''){
+		var str = "list";
+	}else{
+		var str = sort_id;
+	}
+	glist_json(str + "/30");
+	//购物车数量
+	$.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+		if(data.num){
+			$("#btnCart").append('<em>'+data.num+'</em>');
+		}
+	});
+	
+}
+
+function addsuccess(dat){
+	$("#pageDialogBG .Prompt").text("");
+	var w=($(window).width()-255)/2,
+		h=($(window).height()-45)/2;
+	$("#pageDialogBG").css({top:h,left:w,opacity:0.8});
+	$("#pageDialogBG").stop().fadeIn(1000);
+	$("#pageDialogBG .Prompt").append('<s></s>'+dat);
+	$("#pageDialogBG").fadeOut(1000);
+	//购物车数量
+	$.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+		$("#btnCart").append('<em>'+data.num+'</em>');
+	});
+}
+$(function(){
+	$('#bottomAll p').click(function(){
+		var shoparr = document.getElementsByName("shoparr");
+		var arr = [];
+		var brr = [];
+		for (var i = 0, j = shoparr.length; i < j; i++){
+			//console.log(shoparr[i].value);
+			arr[i] = shoparr[i].value;
+		}
+		//brr = JSON.stringify(arr);
+		$.ajax({
+            type: 'post',
+            url: '/mobile/ajax/addShopCartAll',
+            data: {item: arr},
+            dataType: 'json',
+            success: function (data) {  
+
+                if (data==0) {
+                	addsuccess('添加成功，跳转中');
+                    setTimeout(function () {
+                        window.location.href = "/index.php/mobile/cart/cartlist";
+                    }, 2000);
+                }         
+            }
+        });
+	});
+
+    $("#hdgz").click(function(){
+        $(".ruleBox").css("left",0);
+        $('#shownum').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+        $('#shownum2').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+        $('#shownum3').css({"transition":"all 1s ease 0s","opacity": "0", "transform": "rotateX(0deg)"});
+    })
+
+    $(".closeRule").click(function(){
+        $(".ruleBox").css("left","-100%");
+    })
+});
+//获取数据
+function glist_json(parm){
+	$("#urladdress").val('');
+	$("#pagenum").val('');
+	$.getJSON('{WEB_PATH}/mobile/mobile/glistajax/'+parm,function(data){
+		$("#divGoodsLoading").css('display','none');		
+		if(data[0].sum){
+			
+			var fg=parm.split("/");
+			// if(fg[0] == ''){
+			// 	$("#urladdress").val('');
+			// }else{
+			// 	$("#urladdress").val(fg[0]+'/'+fg[1]);
+			// }
+			//$("#urladdress").val('list/10');
+
+			$("#urladdress").val(fg[0]+'/'+fg[1]);
+
+			$("#pagenum").val(data[0].page);
+			for(var i=0;i<data.length;i++){	
+			//var x = data[i].money/data[i].yunjiage;
+			if(data[i].cateid == 168){
+				var y = '<em class="cat-lottery"></em>';
+			}else if(data[i].cateid == 173){
+				var y = '<em class="tmg-lottery"></em>';
+			}else if(data[i].cateid == 177){
+                var y = '<em class="s11-lottery"></em>';
+            }else{
+				var y = '';
+			}	
+
+	        if(data[i].cateid == 177){
+                var yj = parseInt(data[i].money)*2;
+                var z = '<p class="price"><em class="arial gray" style="text-decoration: line-through;">原价：￥'+yj+'</em>&thinsp;&thinsp;&thinsp;&thinsp;现价：'+data[i].money+'</p>';
+            }else{
+                var z = '<p class="price">价值：<em class="arial gray">￥'+data[i].money+'</em></p>';
+            }
+			var ul='<ul style="float:none;width:100%;"><li>';
+				ul+='<span id="'+data[i].id+'" class="z-Limg" style="display:inline-block;float:left;"><a href="{WEB_PATH}/mobile/mobile/item/'+data[i].id +'"><img src="{OSS_UPLOAD_PATH}/'+data[i].thumb+'@!thumb_200_200"></a>'+y+'</span>';
+				ul+='<div class="goodsListR" style="margin-left:90px;">';
+				ul+='<h2 id="'+data[i].id+'">'+data[i].title+'</h2>';
+				ul+=z;
+				//ul+='<h2 id="'+data[i].id+'">(第'+data[i].qishu+'期)'+data[i].title+'</h2>';
+				ul+='<div class="pRate">';
+				ul+='<div class="Progress-bar" id="'+data[i].id+'">';				
+				ul+='<p class="u-progress"><span class="pgbar" style="width:'+(data[i].canyurenshu / data[i].zongrenshu)*100+'%;"><span class="pging"></span></span></p>';
+				ul+='<ul class="Pro-bar-li">';
+				ul+='<li class="P-bar01"><em>'+data[i].canyurenshu+'</em>已参与</li>';
+				ul+='<li class="P-bar02"><em>'+data[i].zongrenshu+'</em>总需人数</li>';
+				ul+='<li class="P-bar03"><em>'+data[i].shenyurenshu+'</em>剩余</li>';
+				ul+='</ul></div>';
+				ul+='<a class="add " codeid="'+data[i].id+'" href="javascript:;"><i></i></a>';
+				ul+='</div></div></li><input type="hidden" name="shoparr" value="'+ data[i].id + '"></ul>';
+				$("#divGoodsLoading").before(ul);			
+			}
+			if(data[0].page<=data[0].sum){
+				$("#btnLoadMore").css('display','block');
+				$("#btnLoadMore2").css('display','none');
+				$("#btnLoadMore3").css('display','none');
+			}else if(data[0].page>data[0].sum){
+				$("#btnLoadMore").css('display','none');
+				$("#btnLoadMore2").css('display','none');
+				$("#btnLoadMore3").css('display','block');
+			}
+		}else{
+			$("#btnLoadMore").css('display','none');
+			$("#btnLoadMore2").css('display','block');	
+			$("#btnLoadMore3").css('display','none');			
+		}
+	});
+}
+$(document).ready(function(){
+
+    var sort_list = $('.sort_list');
+    $.ajax({
+        url: '/index.php/mobile/mobile/get_fenlei',
+        type: 'post',
+        data: {flag:'pt'},
+        dataType: 'json',
+        success:function(msg){
+            var ul = '';
+            ul += '<li sortid="2">';
+            ul += '<a href="javascript:;">全部商品</a>';
+            ul += '<input id="chk2" class="cateChk" type="checkbox" name="0" value="0">';
+            ul += '<label for="chk2" style=""></label></li>';
+            for(var i = 0;i < msg.length; i++){
+                ul += '<li sortid="'+msg[i].id+'">';
+                ul += '<a href="javascript:;">'+msg[i].name+'</a>';
+                ul += '<input id="chk'+msg[i].id+'" class="cateChk" type="checkbox" name="0" value="0">';
+                ul += '<label for="chk'+msg[i].id+'"></label>';
+                ul += '</li>';
+            }
+            ul += '<li class="special" sortid="168">';
+            ul += '<a href="javascript:;">二人专享</a>';
+            ul += '<input id="chk168" class="cateChk" type="checkbox" name="0" value="0">';
+            ul += '<label for="chk168"></label></li>';
+            ul += '<li id="myCollect">';
+            ul += '<a href="/index.php/mobile/home/collectlist">我的收藏</a></li>';
+            sort_list.html(ul);
+        }
+    })
+
+	//即将揭晓,人气,最新,价格	
+	$("#divGoodsNav li:not(:last)").click(function(){
+		var l=$(this).index();
+		$("#divGoodsNav li").removeClass().eq(l).addClass('current');
+		var parm=$("#divGoodsNav li").eq(l).attr('order');
+		$("#divGoodsLoading").css('display','block');
+		$(".goodsList ul").remove();
+		var glist=glist_json("list/"+parm);
+	});
+	
+	//商品分类
+	var dl=$("#divGoodsNav dl"),
+		last=$("#divGoodsNav li:last"),
+		first=$("#divGoodsNav dd:first");
+	$("#divGoodsNav li:last a:first").click(function(){		
+		if(dl.css("display")=='none'){
+			dl.show();
+			last.addClass("gSort");
+			first.addClass("sOrange");			
+		}else{
+			dl.hide();
+			last.removeClass("gSort");
+			first.removeClass("sOrange");
+		}
+	});
+	$("#divGoodsNav  dd").click(function(){
+		var s=$(this).index();
+		var t=$("#divGoodsNav .gSort dd a span").eq(s).html();
+		var id=$("#divGoodsNav .gSort dd a span").eq(s).attr('id');
+		$("#divGoodsNav .gSort a:first").html(t+'<s class="arrowUp"></s>');
+		var l=$("#divGoodsNav .current").index(),
+			parm=$("#divGoodsNav li").eq(l).attr('order');
+		if(id){			
+			$("#divGoodsLoading").css('display','block');
+			$(".goodsList ul").remove();
+			glist_json(id+'/'+parm);
+		}else{
+			glist_json("list/"+parm);
+			$(".goodsList ul").remove();
+		}	
+		dl.hide();
+		last.removeClass("gSort");
+		first.removeClass("sOrange");
+	});
+	//加载更多
+	$("#btnLoadMore").click(function(){		
+		var url=$("#urladdress").val(),
+			page=$("#pagenum").val();
+		glist_json(url+'/'+page);
+	});	
+	//自动加载
+	$(window).scroll(function () {   
+		// console.log($(document).height());
+		// console.log($(this).scrollTop());
+		// console.log($(this).height());
+            if ($(document).height() - $(this).scrollTop() - $(this).height() < 500
+                    && $('#btnLoadMore').css('display')!='none' ){
+                var url=$("#urladdress").val(),
+			page=$("#pagenum").val();
+
+			if (url!='') {
+				glist_json(url+'/'+page);
+			}
+		
+            }
+        });
+
+	//返回顶部
+	$(window).scroll(function(){
+		if($(window).scrollTop()>50){
+			$("#btnTop").show();
+		}else{
+			$("#btnTop").hide();
+		}
+	});
+	$("#btnTop").click(function(){
+		$("body").animate({scrollTop:0},10);
+	});
+	//添加到购物车
+	$(document).on("click",'.add',function(){
+		var codeid=$(this).attr('codeid');
+		$.getJSON('{WEB_PATH}/mobile/ajax/addShopCart/'+codeid+'/1',function(data){
+			if(data.code==1){
+				addsuccess('添加失败');
+			}else if(data.code==0){
+				addsuccess('添加成功');				
+			}else if(data.code==2){
+                $.PageDialog.fail('购买已达上限'); 
+            }else if(data.code==3){
+                $.PageDialog.fail('同一充值账户购买该商品已达上限');
+            }else if(data.code==4){
+                $.PageDialog.fail('活动时间为每天10:00~24:00！');
+            }else if(data.code==5){
+                $.PageDialog.fail('今天该商品您已购买满5期！');
+            }else if(data.code==-1){
+                window.location.href = '/index.php/mobile/user/login';
+            }return false;
+		});
+	});
+	function addsuccess(dat){
+		$("#pageDialogBG .Prompt").text("");
+		var w=($(window).width()-255)/2,
+			h=($(window).height()-45)/2;
+		$("#pageDialogBG").css({top:h,left:w,opacity:0.8});
+		$("#pageDialogBG").stop().fadeIn(1000);
+		$("#pageDialogBG .Prompt").append('<s></s>'+dat);
+		$("#pageDialogBG").fadeOut(1000);
+		//购物车数量
+		$.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+			$("#btnCart").append('<em>'+data.num+'</em>');
+		});
+	}
+	//跳转页面
+	var gt='.goodsList span,.goodsList h2,.goodsList .Progress-bar';
+	$(document).on('click',gt,function(){
+		var id=$(this).attr('id');
+		if(id){
+			window.location.href="{WEB_PATH}/mobile/mobile/item/"+id;
+		}			
+	});
+
+});
+
+</script>
+
+<script type="text/javascript">
+	var elm = $("#divGoodsLoading");
+	$(document).ready(function () {
+            //商品分类
+            var arrow_up = $("#divSort .arrow-up"),
+                arrow_up_tmg = $("#divTmg .arrow-up"),
+                selectOrder = $("#selectOrder"),
+                goodsNav = $("#goodsNav"),
+                dl = $("#selectSort"),
+                dr = $("#selectOrder"),
+                divSort = $("#divSort"),
+                divTmg = $("#divTmg"),
+                divOrder = $("#divOrder"),
+                goods_list = $("#goods_list");
+
+            $(".sort_list").on('click','label',function(){
+            	var chk_for = $(this).attr("for");
+            	var chk = $(this).prev().attr("class");
+            	var xx = 0;
+
+            	if(chk_for == "chk1" || chk_for == "chk2"){
+            		if(chk == "cateChk"){
+            			$(".sort_list input").addClass("doChk");
+            			$(this).css("background-image","url(/statics/templates/yungou/images/mobile/check_bak.png)");
+            		}else{
+            			$(".sort_list input").removeClass("doChk");
+            			$(this).css("background-image","");
+            		}
+            		
+            	}else{
+            		if(chk == "cateChk"){
+	            		$(this).prev().addClass("doChk");
+	            	}else{
+	            		$(this).prev().removeClass("doChk");
+	            	}
+            	}
+
+            	$(".sort_list input:not(':first')").each(function(){
+            		if($(this).attr('class') == "cateChk"){
+            			xx = 1;return false;
+            		}
+            	})
+            	if(xx == 0){
+            		$(".sort_list input:eq(0)").addClass("doChk");
+            		$(".sort_list label:eq(0)").css("background-image","url(/statics/templates/yungou/images/mobile/check_bak.png)");
+            	}else{
+            		$(".sort_list input:eq(0)").removeClass("doChk");
+            		$(".sort_list label:eq(0)").css("background-image","");
+            	}
+            	return false;
+            	
+            })
+
+            /*商品分类卡片折叠/展开动作*/
+            divSort.click(function () {
+                var sort_list = $('.sort_list');
+                $.ajax({
+                    url: '/index.php/mobile/mobile/get_fenlei',
+                    type: 'post',
+                    data: {flag:'pt'},
+                    dataType: 'json',
+                    success:function(msg){
+                        var ul = '';
+                        ul += '<li sortid="2">';
+                        ul += '<a href="javascript:;">全部商品</a>';
+                        ul += '<input id="chk2" class="cateChk" type="checkbox" name="0" value="0">';
+                        ul += '<label for="chk2" style=""></label></li>';
+                        for(var i = 0;i < msg.length; i++){
+                            ul += '<li sortid="'+msg[i].id+'">';
+                            ul += '<a href="javascript:;">'+msg[i].name+'</a>';
+                            ul += '<input id="chk'+msg[i].id+'" class="cateChk" type="checkbox" name="0" value="0">';
+                            ul += '<label for="chk'+msg[i].id+'"></label>';
+                            ul += '</li>';
+                        }
+                        ul += '<li class="special" sortid="168">';
+                        ul += '<a href="javascript:;">二人专享</a>';
+                        ul += '<input id="chk168" class="cateChk" type="checkbox" name="0" value="0">';
+                        ul += '<label for="chk168"></label></li>';
+                        ul += '<li id="myCollect">';
+                        ul += '<a href="/index.php/mobile/home/collectlist">我的收藏</a></li>';
+                        sort_list.html(ul);
+                    }
+                })
+                divSort.siblings().removeClass('current');
+                divSort.addClass('current');
+                
+                arrow_up.toggle();
+                
+                if(arrow_up_tmg.css('display') == 'block'){
+                   dl.slideToggle("normal", function () {
+                        if (!dl.is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+                            var offTop = $("#divSort").offset().top;
+                            $("html, body").animate({scrollTop: offTop}, 300)
+                        }
+                    });
+                   dl.slideDown("normal", function () {
+                        if (!dl.is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+                            var offTop = $("#divSort").offset().top;
+                            $("html, body").animate({scrollTop: offTop}, 300)
+                        }
+                    });
+                }else{
+                    dl.slideToggle("normal", function () {
+                        if (!dl.is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+                            var offTop = $("#divSort").offset().top;
+                            $("html, body").animate({scrollTop: offTop}, 300)
+                        }
+                    });
+                    if (dl.is(":visible"))
+                    dr.hide();
+                }
+                arrow_up_tmg.hide();
+            });
+
+            divTmg.click(function () {
+                var sort_list = $('.sort_list');
+                $.ajax({
+                    url: '/index.php/mobile/mobile/get_fenlei',
+                    type: 'post',
+                    data: {flag:'tmg'},
+                    dataType: 'json',
+                    success:function(msg){
+                        
+                        var ul = '';
+                        ul += '<li sortid="1">';
+                        ul += '<a href="javascript:;">全部商品</a>';
+                        ul += '<input id="chk1" class="cateChk" type="checkbox" name="0" value="0">';
+                        ul += '<label for="chk1" style=""></label></li>';
+                        for(var i = 0;i < msg.length; i++){
+                            ul += '<li sortid="'+msg[i].id+'">';
+                            ul += '<a href="javascript:;">'+msg[i].name+'</a>';
+                            ul += '<input id="chk'+msg[i].id+'" class="cateChk" type="checkbox" name="0" value="0">';
+                            ul += '<label for="chk'+msg[i].id+'"></label>';
+                            ul += '</li>';
+                        }
+                        ul += '<li id="myCollect">';
+                        ul += '<a href="/index.php/mobile/home/collectlist">我的收藏</a></li>';
+
+                        sort_list.html(ul);
+                    }
+                })
+                divTmg.siblings().removeClass('current');
+                divTmg.addClass('current');
+               
+                arrow_up_tmg.toggle();
+                if(arrow_up.css('display') == 'block'){
+                   dl.slideToggle("normal", function () {
+                        if (!dl.is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+                            var offTop = $("#divSort").offset().top;
+                            $("html, body").animate({scrollTop: offTop}, 300)
+                        }
+                    });
+                   dl.slideDown("normal", function () {
+                        if (!dl.is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+                            var offTop = $("#divSort").offset().top;
+                            $("html, body").animate({scrollTop: offTop}, 300)
+                        }
+                    });
+                }else{
+                     dl.slideToggle("normal", function () {
+                        if (!dl.is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+                            var offTop = $("#divTmg").offset().top;
+                            $("html, body").animate({scrollTop: offTop}, 300)
+                        }
+                    });
+                    if (dl.is(":visible"))
+                    dr.hide();
+                }
+                arrow_up.hide();
+
+            });
+
+            var oneKey = $("#oneKey").text();
+			if(oneKey == "oneKey"){
+				setTimeout(function(){
+					$(".arrow-up").css("display","");
+					dl.slideToggle("normal", function () {
+	                    if (!dl.is(":hidden")) { // 分类卡片显示时，页面自动滚动至卡片处
+	                        var offTop = $("#divSort").offset().top;
+	                        $("html, body").animate({scrollTop: offTop}, 300)
+	                    }
+	                });
+	                arrow_up.toggle();
+	                if (dl.is(":visible"))
+	                    dr.hide();
+						
+				},1000);
+			}
+
+            var touchYS = touchYE = 0;
+            $(document).on('touchstart', function (e) {
+                touchYS = e.originalEvent.touches[0].screenY;
+            });
+            $(document).on('touchmove', function (e) { // IOS端：须为touchend屏蔽touchmove
+                if (!dl.is(":hidden"))
+                    e.preventDefault()
+            });
+            $(document).on('touchend', function (e) {
+                touchYE = e.originalEvent.changedTouches[0].screenY;
+                if (Math.abs(touchYE - touchYS) > 100 && !dl.is(":hidden")) {
+                    dl.slideUp();
+                    arrow_up.hide();
+                }
+                touchYS = touchYE;
+            });
+            /*end*/
+
+
+            goodsNav.on('click', 'li[sortid]', function (e) {
+                var t = $(this),
+                    n = t.children('a').text();
+                var id = parseInt(t.attr('sortid'));
+                if (id < 0 || isNaN(id))return;
+                $("#parm_cate").val(id);
+                elm.attr("data-page", "1").attr("data-isload", "yes");
+                goods_list.children().remove();
+
+				parm=$(".order_list .current").attr('order');
+	
+				if(id){			
+					$("#divGoodsLoading").css('display','block');
+					$(".goodsList ul").remove();
+					glist_json(id+'/'+parm);
+				}else{
+					glist_json("list/"+parm);
+					$(".goodsList ul").remove();
+				}
+
+                var fl = $('.select-btn.current').attr('id');
+                if(fl == 'divSort'){
+                    divSort.children(':last').html(n);
+                }else{
+                    divTmg.children(':last').html(n);
+                }
+
+                if (n == '二人享购') {
+                    $("#divSort > span:last").append('<em class="double"><i>二人享购商品每期只有2人次，<br>每人次价格为商品总价格的一半</i></em>');
+                    notice();
+                };
+                dl.hide();
+                arrow_up.hide();
+                arrow_up_tmg.hide();
+                dl.find(".current").removeClass("current");
+                $(this).addClass('current');
+            });
+
+            divOrder.click(function () {
+                if (!dr.is(":visible")) {
+                    dr.show();
+                    dl.hide();
+                    arrow_up.hide();
+                    arrow_up_tmg.hide();
+                } else {
+                    dr.hide();
+                }
+            });
+            goodsNav.on('click', 'li[order]', function () {
+                var t = $(this),
+                    n = t.children("a").text(),
+                    id = parseInt(t.attr('order'));
+
+                if (id < 0 || isNaN(id))return;
+                
+                $("#parm_order").val(id);
+                elm.attr("data-page", "1").attr("data-isload", "yes");
+                goods_list.children().remove();
+                var parm=$(this).attr('order');
+                if(parm == "30"){
+                    $(this).attr("order","40");
+                }
+                if(parm == "40"){
+                    $(this).attr("order","30");
+                }
+                if(parm == "50"){
+                    $(this).attr("order","60");
+                }
+                if(parm == "60"){
+                    $(this).attr("order","50");
+                }
+                var id = $(".sort_list .current").attr("sortid");
+         
+                if(id){			
+					$("#divGoodsLoading").css('display','block');
+					$(".goodsList ul").remove();
+					glist_json(id+'/'+parm);
+				}else{
+					glist_json("list/"+parm);
+					$(".goodsList ul").remove();
+				}
+
+                divOrder.children('span').html(n);
+                dr.hide();
+                dr.find(".current").removeClass('current');
+                $(this).addClass('current');
+            });
+        })
+
+		function add_one(){
+            var arr = [];
+            var j = 0;
+            // $('.a1 input').each(function(){
+            //     var color2 = $(this).next().css('color');
+            //     if(color2 == 'rgb(255, 0, 0)'){
+            //         arr[j] = $(this).val();
+            //         j++;
+            //     }
+            // });
+            $(".sort_list input:not(':first')").each(function(){
+            	var x = $(this).attr('class');
+            	if(x != "cateChk"){
+            		arr[j] = $(this).parent().attr("sortid");
+            		j++;
+            	}
+       
+            })
+            if(arr == ''){
+            	$.PageDialog.fail("<s></s>请选择商品分类");return false;
+            }
+        
+            var tx = $('#total span:eq(0)').text();
+            var num = $('#total span:eq(1)').text();
+            if(tx == "最多可添加" || num == "0000"){
+                window.location.href = "/index.php/mobile/cart/cartlist";
+            }else{
+                $.ajax({
+                    type: 'POST',
+                    data: {item: arr},
+                    url: '/index.php/mobile/ajax/shopCartAll',
+                    success: function(data){
+                        var brr = JSON.parse(data);
+                        $.ajax({
+                            type: 'post',
+                            url: '/index.php/mobile/ajax/addShopCartAll',
+                            data: {item: brr},
+                            dataType: 'json',
+                            success: function (data) { 
+                                if (data==0) {
+                                    $.PageDialog.fail("成功添加"+brr.length+"件商品,跳转中...");
+                                    setTimeout(function () {
+		                                window.location.href = "/index.php/mobile/cart/cartlist";
+		                            },2000);
+           
+                                } else{
+                                    window.location.href = '/index.php/mobile/user/login';
+                                }       
+                            }
+                        });
+                    }
+                });
+            }
+            var brr = [];
+               
+        }
+</script>
+
+</div>
+</body>
+</html>
+<style>
+#pageDialogBG{-webkit-border-radius:5px; width:255px;height:45px;color:#fff;font-size:16px;text-align:center;line-height:45px;}
+.Prompt s {
+    width: 23px;
+    height: 23px;
+    background-repeat: no-repeat;
+    background-position: 0 -74px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+}
+</style>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>

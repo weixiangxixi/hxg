@@ -1,0 +1,1 @@
+Base.getScript(Gobal.Skin+"/js/mobile/RechargeFun9.js?v="+Date.now());

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>参与 - {wc:$webname}</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/cartList.css" rel="stylesheet" type="text/css" />
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Cartindex2.js" language="javascript" type="text/javascript"></script>
+    <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Payment2.js" language="javascript" type="text/javascript"></script>
+        <style type="text/css">
+            .flow-wrapper{position: relative;background-color: #f2f2f7;}
+            .flow-wrapper:before{
+                content: '';
+                position: absolute;
+                top: -12px;
+                left: 30px;
+                width: 0;
+                height: 0;
+                border-width: 6px;
+                border-style: dashed dashed solid;
+                border-color: transparent transparent #f2f2f7}
+            .flow-title{    position: relative;
+                margin: 0 10px;
+                padding: 8px 0;
+                color: #666;
+                font-size: 12px;}
+                .flow-title:after{    content: '';
+                position: absolute;
+                z-index: 1;
+                pointer-events: none;
+                background-color: #ddd;
+                height: 1px;
+                left: 0;
+                right: 0;
+                bottom: 0;}
+            .flow-content{    position: relative;
+                margin: 0 10px;
+                padding: 30px 0 10px;
+                height: 75px;}
+            .flow-img{position: absolute;
+                top: 30px;
+                left: 0;
+                width: 75px;
+                height: 75px;}
+            .flow-img img{display: block;
+                width: 75px;
+                height: 75px;border: 0;}
+            .flow-info{margin-left: 85px;height: 75px;}
+            .flow-name{color: #333;font-size: 14px;}
+            .flow-desc{color:#666;font-size: 12px;}
+        </style>
+        <style>
+                            .tags #wy{
+                                background: #dcdcdc;
+                            }
+                            .tags #wy:hover{
+                                color: 999;
+                                border: 1px solid #ccc;
+                            }
+                            .tags div{
+                                border: 1px solid #ccc;
+                                border-radius: 10px;
+                                cursor: pointer;
+                                float: left;
+                                height: 28px;
+                                margin: 0 6px;
+                                width: 50px;
+                            }
+                        </style>
+                        <style type="text/css">
+                            li:hover{color: #22AAFF;}
+                            span:hover{color: #22AAFF;}
+                            .tags li{
+                                height: 28px;width: 50px;border-radius: 10px;float: left;margin: 0 6px;cursor: pointer;border: 1px solid #ccc;
+                            }
+                            .tags li:hover{
+                                border:1px solid #22AAFF;
+                            }
+                            .g-Cart{
+                                padding-top: 0;
+                            }
+                        </style>
+</head>
+
+<body>
+    <div class="h5-1yyg-v1" id="loadingPicBlock">
+     <input name="hidShopMoney" type="hidden" id="hidShopMoney" value="{wc:$MoenyCount}" />
+    <input name="hidBalance" type="hidden" id="hidBalance" value="{wc:$Money}" />
+    <input name="hidPoints" type="hidden" id="hidPoints" value="{wc:$member['score']}" />
+    <input name="shopnum" type="hidden" id="shopnum" value="{wc:$shopnum}" />
+    <input name="pointsbl" type="hidden" id="pointsbl" value="{wc:$fufen_dikou}" />
+<!--     <div class="flow-wrapper">
+                <div class="flow-content">
+                    <div class="flow-img"><img src="http://m2.uqixun.com/statics/templates/quyu-1yygkuan/images/mobile/flow.jpg" alt="流量充值"></div>
+                    <div class="flow-info">
+                        <div class="flow-name">流量礼包-惠享购(1元0.1M流量)</div>
+                        <div class="flow-desc">单价：1元 / 份，每份赠送一个专享特惠号码</div>
+                    </div>
+                </div>
+            </div> -->
+
+    <input name="hidLogined" type="hidden" id="hidLogined" value="1" />
+    
+    <section class="clearfix g-Cart">
+        {wc:if $shop!=0}
+        <article class="clearfix m-round g-Cart-list">
+            <ul id="cartBody">
+                {wc:php:start} $buyshopmoney=0; {wc:php:end} {wc:loop $shoplist $key $val} {wc:php:start} $num = count($shoplist); $buyshopmoney+=$Mcartlist[$val['id']]['money']*$Mcartlist [$val ['id']] ['num']; {wc:php:end}
+                <li style="border-bottom: 1px solid #dcdcdc;padding: 6px 0;">
+                    <a class="fl u-Cart-img" href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}">
+                        <img src="/statics/templates/yungou/images/mobile/flow.jpg"  border="0" alt="" />
+                    </a>
+                    <div class="u-Cart-r">
+                        <p class="z-Cart-tt">
+                            <a class="gray6">流量礼包-惠享购</a>
+                        </p>
+                        <p class="z-Cart-tt">
+                            <a class="gray6">购买流量礼包, 赢取商品(1元0.1M流量)</a>
+                        </p> 
+                        <span class="" style="color: #666;">剩余 {wc:$val['zongrenshu']-$val['canyurenshu']}
+                            人次</span>
+                         <span class="" style="display: none;">剩余 {wc:$val['zongrenshu']-$val['canyurenshu']}
+                            人次</span> 
+                        <!-- <p class="gray9">
+                            总共参与： <em class="arial proce" id="arial{wc:$val['id']}" ids="{wc:$val['id']}">{wc:$Mcartlist[$val['id']]['num']}</em>
+                            人次/
+                            
+
+                            <em class="
+
+                             arial">￥<span  id="price{wc:$val['id']}" ids="{wc:$val['id']}" class='price'>{wc:$Mcartlist[$val['id']]['sun']}</span></em>
+                        </p> -->
+                        <p class="f-Cart-Other">
+                            <input type="hidden" value="{wc:$val['yunjiage']}" class="yunjiage">
+
+                            <!-- <a href="javascript:;" class="fr z-del" name="delLink" cid="{wc:$val['id']}"></a>
+ -->
+                            <a href="javascript:;" class="fl z-jian {wc:if $Mcartlist[$val['id']]['num']==1}z-jiandis{wc:if:end}">-</a>
+
+                            <input id="txtNum{wc:$val['id']}" name="num" type="text" maxlength="7" yunjiage="{wc:$val['yunjiage']}" value="{wc:$buynum}" class="fl z-amount" />
+
+                            <a href="javascript:;" class="fl z-jia {wc:if 
+                            $Mcartlist[$val['id']]['num']==$val['zongrenshu']}z-jiadis{wc:if:end}">+</a>
+
+                            <input id="shuliang{wc:$val['id']}" type="hidden" name="_num_" value="{wc:$buynum}" />
+
+                            <input type="hidden" value="{wc:$val['zongrenshu']-$val['canyurenshu']}" />
+
+                        </p>
+                    </div>
+
+                    <div style="float: left;color: #333;text-align: center;line-height: 28px;font-size: 14px;position: relative;margin-bottom: 5px;width: 100%;">
+                        
+                        <ul class="tags" style="margin: 0 auto;width: 90%;">
+                            {wc:if $val['zongrenshu']-$val['canyurenshu']>199}
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="10">10</li>
+                            <li id="Li2" data-id="{wc:$val['id']}" data-val="50">50</li>
+                            <li id="Li3" data-id="{wc:$val['id']}" data-val="100">100</li>
+                            <li id="Li4" data-id="{wc:$val['id']}" data-val="200">200</li>
+                            <li id="Li5" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:elseif $val['zongrenshu']-$val['canyurenshu']>99}
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="10">10</li>
+                            <li id="Li2" data-id="{wc:$val['id']}" data-val="50">50</li>
+                            <li id="Li3" data-id="{wc:$val['id']}" data-val="100">100</li>
+                            <div id="wy">200</div>
+                            <li id="Li4" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:elseif $val['zongrenshu']-$val['canyurenshu']>49}
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="10">10</li>
+                            <li id="Li2" data-id="{wc:$val['id']}" data-val="50">50</li>
+                            <div id="wy">100</div>
+                            <div id="wy">200</div>
+                            <li id="Li3" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:elseif $val['zongrenshu']-$val['canyurenshu']>9}
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="10">10</li>
+                            <div id="wy">50</div>
+                            <div id="wy">100</div>
+                            <div id="wy">200</div>
+                            <li id="Li2" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:elseif $val['zongrenshu']-$val['canyurenshu']>0}
+                            <div id="wy">10</div>
+                            <div id="wy">50</div>
+                            <div id="wy">100</div>
+                            <div id="wy">200</div>
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:if:end}
+                            </ul>
+                    </div>
+
+                </li>
+                {wc:loop:end}
+
+
+                                        
+            </ul>
+        </article>
+        <article class="clearfix m-round g-Cart-list">
+            <ul id="cartBody">
+                {wc:php:start} $buyshopmoney=0; {wc:php:end} {wc:loop $shoplist $key $val} {wc:php:start} $num = count($shoplist); $buyshopmoney+=$Mcartlist[$val['id']]['money']*$Mcartlist [$val ['id']] ['num']; {wc:php:end}
+                <li style="border-bottom: 1px solid #dcdcdc;padding: 6px 0;">
+                    <a class="fl u-Cart-img" href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}">
+                        <img src="{G_TEMPLATES_IMAGE}/loading.gif" src2="{G_UPLOAD_PATH}/{wc:$val['thumb']}" border="0" alt="" />
+                    </a>
+                    <div class="u-Cart-r">
+                        <p class="z-Cart-tt">
+                            <a href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}" class="gray6">{wc:$val['title']}</a>
+                        </p> 
+                        <p>已更新至第{wc:$val['qishu']}期</p>
+                        <!--
+                        <ins class="z-promo gray9">剩余 <em class="arial">{wc:$val['zongrenshu']-$val['canyurenshu']}</em>人次</ins> 
+                         <p class="gray9">
+                            总共参与： <em class="arial proce" id="arial{wc:$val['id']}" ids="{wc:$val['id']}">{wc:$Mcartlist[$val['id']]['num']}</em>
+                            人次/
+                            
+
+                            <em class="orange arial">￥<span  id="price{wc:$val['id']}" ids="{wc:$val['id']}" class='price'>{wc:$Mcartlist[$val['id']]['sun']}</span></em>
+                        </p> 
+                         <p class="f-Cart-Other">
+                            <input type="hidden" value="{wc:$val['yunjiage']}" class="yunjiage">
+
+                            <a href="javascript:;" class="fr z-del" name="delLink" cid="{wc:$val['id']}"></a>
+
+                            <a href="javascript:;" class="fl z-jian {wc:if $Mcartlist[$val['id']]['num']==1}z-jiandis{wc:if:end}">-</a>
+
+                            <input id="txtNum{wc:$val['id']}" name="num" type="text" maxlength="7" yunjiage="{wc:$val['yunjiage']}" value="{wc:$Mcartlist[$val['id']]['num']}" class="fl z-amount" />
+
+                            <a href="javascript:;" class="fl z-jia {wc:if 
+                            $Mcartlist[$val['id']]['num']==$val['zongrenshu']}z-jiadis{wc:if:end}">+</a>
+
+                            <input id="shuliang{wc:$val['id']}" type="hidden" value="{wc:$Mcartlist[$val['id']]['num']}" />
+
+                            <input type="hidden" value="{wc:$val['zongrenshu']-$val['canyurenshu']}" />
+
+                        </p> -->
+                    </div>
+
+                    <!-- <div style="display: none;float: left;color: #333;text-align: center;line-height: 28px;font-size: 14px;position: relative;margin-bottom: 5px;width: 100%;">
+                        
+                        <ul class="tags" style="margin: 0 auto;width: 90%;">
+                            {wc:if $val['zongrenshu']-$val['canyurenshu']>199}
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="10">10</li>
+                            <li id="Li2" data-id="{wc:$val['id']}" data-val="50">50</li>
+                            <li id="Li3" data-id="{wc:$val['id']}" data-val="100">100</li>
+                            <li id="Li4" data-id="{wc:$val['id']}" data-val="200">200</li>
+                            <li id="Li5" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:elseif $val['zongrenshu']-$val['canyurenshu']>99}
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="10">10</li>
+                            <li id="Li2" data-id="{wc:$val['id']}" data-val="50">50</li>
+                            <li id="Li3" data-id="{wc:$val['id']}" data-val="100">100</li>
+                            <div id="wy">200</div>
+                            <li id="Li4" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:elseif $val['zongrenshu']-$val['canyurenshu']>49}
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="10">10</li>
+                            <li id="Li2" data-id="{wc:$val['id']}" data-val="50">50</li>
+                            <div id="wy">100</div>
+                            <div id="wy">200</div>
+                            <li id="Li3" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:elseif $val['zongrenshu']-$val['canyurenshu']>9}
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="10">10</li>
+                            <div id="wy">50</div>
+                            <div id="wy">100</div>
+                            <div id="wy">200</div>
+                            <li id="Li2" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:elseif $val['zongrenshu']-$val['canyurenshu']>0}
+                            <div id="wy">10</div>
+                            <div id="wy">50</div>
+                            <div id="wy">100</div>
+                            <div id="wy">200</div>
+                            <li id="Li1" data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">包尾</li>
+                            {wc:if:end}
+                            </ul>
+                    </div> -->
+
+                </li>
+                {wc:loop:end}
+
+
+                                        
+            </ul>
+        </article>
+        <div id="divBtmMoney" class="" style="height: 40px;width: 100%;">
+            <p style="display: block;float: left;line-height: 45px;text-align: left;text-indent: 10px;">
+                <!--{wc:fun:_cfg('web_name_two')}-->
+                将获取以上活动商品
+                <span class="orange arial z-user" style="font-size: 12px;line-height: 45px;">{wc:$buyshopmoney}</span>
+                个参与号码&nbsp&nbsp&nbsp合计&nbsp
+                <span  id="total" class="orange arial" style="font-size: 14px;line-height: 45px;">{wc:$buyshopmoney}.00</span>
+                &nbsp元
+                <!-- <span  id="total" class="orange arial" style="font-size: 14px;line-height: 45px;">{wc:$buyshopmoney}</span>
+                &nbsp M -->
+            </p>
+            <!-- <a style="float: right;width: 20%;" href="javascript:;" class="orgBtn">去 支 付</a> -->
+
+        </div>
+        {wc:if:end}
+    </section>
+     <section class="clearfix g-Cart" style="padding-bottom:10px;background: #fff;bottom: 0px;width: 100%;left: 0px;padding-top: 0px;">
+    <div style="margin: 10px 10px 0px 10px;">
+        <article class="clearfix m-round g-pay-ment" style="border: 1px solid #dcdcdc;border-radius: 5px;box-shadow:1px 1px 1px #e7e7e7;overflow: hidden;">
+            <ul id="ulPayway">
+            {wc:if $fufen_dikou >= $MoenyCount}
+                <li class="gray9 z-pay-ff z-pay-grayC" style="height: 40px;">
+                <i id="spPoints" class="z-pay-ment" sel="0"></i>
+                <span>您可以使用积分付款（您的积分：{wc:$member['score']}）</span>
+                </li>
+            {wc:else}
+                 <li class="gray6 z-pay-ff z-pay-grayC" style="height: 40px;">
+                <span>您的积分不足（您的积分：{wc:$member['score']}）</span>
+                </li>
+            {wc:if:end}
+            
+            {wc:if $Money >= $MoenyCount}           
+                <li class="gray9 z-pay-ye z-pay-grayC"  style="height: 40px;"> 
+                <i id="spBalance" class="z-pay-ment" sel="0"></i>
+                <span>您可以使用余额付款（账户余额：{wc:$Money} 元）</span>
+                </li>
+            {wc:else}
+                <li class="gray6 z-pay-ye z-pay-grayC" style="height: 40px;">
+                <a href="{WEB_PATH}/mobile/home/userrecharge" class="z-pay-Recharge">去充值</a>
+                <span>您的余额不足（账户余额：{wc:$Money} 元）</span>
+                </li> 
+            {wc:if:end}
+            </ul>
+        </article>
+        
+         <article id="bankList" class="clearfix mt10 m-round g-pay-ment g-bank-ct">
+            <ul>
+                {wc:if $Money == 0}    
+                <li class="gray6 z-pay-grayC" style="height:41px;"><s class="z-arrow"></s>选择支付方式支付</li> 
+                {wc:loop $paylist $pay}
+                <li class="gray9" urm="{wc:$pay['pay_id']}"><i class="z-bank-Round"><s></s></i> {wc:$pay['pay_name']}</li>
+                 {wc:loop:end}
+                {wc:if:end}
+             </ul>
+        </article>
+        
+        
+        <div style="margin-top: 10px;">
+            <style type="text/css">
+                a.orgBtn1 {
+                    background: #22AAFF;
+                }
+                .orgBtn1{
+                    display: block;
+                    width: 100%;
+                    -webkit-box-sizing: border-box;
+                    height: 35px;
+                    line-height: 40px;
+                    text-align: center;
+                    color: #fff!important;
+                    border-radius: 5px;
+                    font-size: 18px;
+                    margin-right: 10px;
+                }
+            </style>
+            <a style="height: 45px;line-height: 45px;" id="btnPay1" onclick="turn_url();" class="orgBtn1">确认支付</a>
+            <script type="text/javascript">
+                function turn_url(){
+                    var thisnum = $("input[name='_num_']").val();
+                    var usnum = $("input[name='hidBalance']").val();
+                    var thisnum1 = $('#total').val();
+                    console.log("aaaaaaaaaaaaaaa");
+                    if (thisnum1 > usnum) {
+                        alert('支付金额超过余额!请充值');
+                        //window.location.href="/mobile/cart/paysubmit/money/9/" + thisnum +"/0/";
+                        return false;
+                    }else{
+                        window.location.href="/mobile/cart/paysubmit/money/9/" + thisnum +"/0/";
+                    }
+                    
+                }
+            </script>
+        </div>
+        
+    </div>
+    </section>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <script language="javascript" type="text/javascript">
+var Path = new Object();
+Path.Skin = "{G_WEB_PATH}/statics/templates/yungou";
+Path.Webpath = "{WEB_PATH}";
+Path.submitcode = '{wc:$submitcode}';
+
+var Base = {
+    head: document.getElementsByTagName("head")[0] || document.documentElement,
+    Myload: function(B, A) {
+        this.done = false;
+        B.onload = B.onreadystatechange = function() {
+            if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                this.done = true;
+                A();
+                B.onload = B.onreadystatechange = null;
+                if (this.head && B.parentNode) {
+                    this.head.removeChild(B)
+                }
+            }
+        }
+    },
+    getScript: function(A, C) {
+        var B = function() {};
+        if (C != undefined) {
+            B = C
+        }
+        var D = document.createElement("script");
+        D.setAttribute("language", "javascript");
+        D.setAttribute("type", "text/javascript");
+        D.setAttribute("src", A);
+        this.head.appendChild(D);
+        this.Myload(D, B)
+    },
+    getStyle: function(A, B) {
+        var B = function() {};
+        if (callBack != undefined) {
+            B = callBack
+        }
+        var C = document.createElement("link");
+        C.setAttribute("type", "text/css");
+        C.setAttribute("rel", "stylesheet");
+        C.setAttribute("href", A);
+        this.head.appendChild(C);
+        this.Myload(C, B)
+    }
+}
+
+function GetVerNum() {
+    var D = new Date();
+    return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v=' + GetVerNum());
+</script>
+    <style type="text/css">
+        .smailnav{bottom: 100px!important;}
+    </style>
+    {wc:templates "mobile/index","footer"}
+    <script type="text/javascript">
+        $(document).ready(function(){
+                $(function(){
+        $('.footerdi .f_home').find('i').css('background-image','url(/statics/templates/yungou/images/mobile/chao1.png)');
+    });
+        });
+    </script>
+    <script language="javascript" type="text/javascript">
+        var Path = new Object();
+        Path.Skin = "{G_TEMPLATES_STYLE}";
+        Path.Webpath = "{WEB_PATH}";
+
+        var Base = {
+            head: document.getElementsByTagName("head")[0] || document.documentElement,
+            Myload: function(B, A) {
+                this.done = false;
+                B.onload = B.onreadystatechange = function() {
+                    if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                        this.done = true;
+                        A();
+                        B.onload = B.onreadystatechange = null;
+                        if (this.head && B.parentNode) {
+                            this.head.removeChild(B)
+                        }
+                    }
+                }
+            },
+            getScript: function(A, C) {
+                var B = function() {};
+                if (C != undefined) {
+                    B = C
+                }
+                var D = document.createElement("script");
+                D.setAttribute("language", "javascript");
+                D.setAttribute("type", "text/javascript");
+                D.setAttribute("src", A);
+                this.head.appendChild(D);
+                this.Myload(D, B)
+            },
+            getStyle: function(A, B) {
+                var B = function() {};
+                if (callBack != undefined) {
+                    B = callBack
+                }
+                var C = document.createElement("link");
+                C.setAttribute("type", "text/css");
+                C.setAttribute("rel", "stylesheet");
+                C.setAttribute("href", A);
+                this.head.appendChild(C);
+                this.Myload(C, B)
+            }
+        }
+
+        function GetVerNum() {
+            var D = new Date();
+            return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+        }
+        Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+        </script></div>
+</body>
+
+</html>

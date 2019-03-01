@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" /><title>
+	最新揭晓 - {wc:$webname}
+</title>
+<link rel="icon" href="http://f.weimicm.com/photo/member.jpg@!thumb_200_200" type="image/x-icon">
+<meta content="app-id=518966501" name="apple-itunes-app" /><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black" name="apple-mobile-web-app-status-bar-style" /><meta content="telephone=no" name="format-detection" />
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile/lottery.css" rel="stylesheet" type="text/css" />
+<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+ <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Lottery.js" language="javascript" type="text/javascript"></script> 
+
+ <script src="{G_TEMPLATES_JS}/mobile/js.cookie.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/lodash.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/response.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/swiper.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/countdown.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/Comm.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/simpop.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/jquery.lazyload.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/ajax.js"></script>
+    <script>
+    var DuoBao = {};
+    var __data__ = (function() {
+        return JSON.parse('{}');
+    })();
+    var __user__ = (function() {
+        return JSON.parse('{}');
+
+    })();
+    var __touchorclick__ = (function() {
+        if ('ontouchend' in document)
+            return 'touchend';
+        else
+            return 'click';
+    })();
+    </script>
+    <style type="text/css">
+        span.cat-lottery {
+                display: block;
+                position: absolute;
+                width: 49px;
+                height: 49px;
+                background: transparent url(/statics/templates/yungou/images/mobile/zx.png) no-repeat 0 0px / 49px 196px;
+                bottom: 0;
+                right: 0;
+                background-size: 100%;
+                font-style: normal;
+            }
+            span.cat-lottery2 {
+                display: block;
+                position: absolute;
+                width: 49px;
+                height: 49px;
+                background: transparent url(/statics/templates/yungou/images/mobile/zx.png) no-repeat 0 -100px / 49px 196px;
+                bottom: 0;
+                right: 0;
+                background-size: 100%;
+                font-style: normal;
+            }
+            .revConL span:last-child {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                background: rgba(0, 0, 0, 0.4);
+                color: white;
+                border-radius: 0 0 3px 3px;
+            }
+            .fixed_header {
+                display: flex;
+                height: 40px;
+                width: 100%;
+                max-width: 640px;
+                background: #FFF;
+                z-index: 1;
+            }
+            .fixed_header .fixed_content.active {
+                border-bottom: 2px solid #f60;
+            }
+            .fixed_header .fixed_content {
+                flex-grow: 1;
+                box-sizing: border-box;
+                text-align: center;
+                line-height: 40px;
+                border-left: 1px solid #dddddd;
+                border-bottom: 1px solid #dddddd;
+            }
+            .fixed_header .fixed_content a {
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                display: block;
+                font-size: 14px;
+                color: #999090;
+            }
+            .fixed_header .fixed_content.active a {
+                color: #f60;
+            }
+           
+            span.tmg-lottery {
+                display: block;
+                position: absolute;
+                width: 49px;
+                height: 49px;
+                background: transparent url(/statics/templates/yungou/images/mobile/cat_mark3.png) no-repeat 0 -147px / 49px 196px;
+                bottom: 0;
+                right: 0;
+            }
+            span.s11-lottery {
+                display: block;
+                position: absolute;
+                width: 49px;
+                height: 49px;
+                background: transparent url(/statics/templates/yungou/images/mobile/cat_mark2.png) no-repeat 0 -197px / 51px 296px;
+                bottom: 0;
+                right: 0;
+                z-index: 999;
+            }
+    </style>
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+    <div class="fixed_header">
+        
+        <div class="fixed_content active"><a>普通商品</a></div>
+        <div class="fixed_content"><a href="/index.php/mobile/mobile/ssclottery">透明购</a></div>
+    </div>
+    <section class="revealed" style="margin-bottom: 48px;">
+	    <div id="divLottery" class="revCon">
+	    	<style>
+				.touxianga{
+					position: relative;
+					/*right: 0px;
+					top: 20px;*/
+				}
+	    	</style>
+            <div id="divLotteryLoading" class="loading" style="height: 80px;"><b></b>正在加载</div>
+            <a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;"><i class="jiazai"></i>点击加载更多</a>
+        </div>
+    </section>
+    
+{wc:templates "mobile/index","footer"}
+<script src="{G_TEMPLATES_JS}/mobile/main.js"></script>
+
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.path = "{G_WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+
+
+</body>
+</html>

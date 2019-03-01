@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>获得的商品 - {wc:$webname}</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/member.css" rel="stylesheet" type="text/css" />
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	
+    <script type="text/javascript">document.write('<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/OrderList.js?v='+new Date().getTime()+'" language="javascript" type="text/javascript"><\/script>');</script>
+    <style type="text/css">
+        a.fl.z-Limg {
+            position: relative;
+            display: block;
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+        }
+        a.fl.z-Limg.double::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 49px;
+            height: 49px;
+            background: transparent url(/statics/templates/yungou/images/mobile/zx.png) no-repeat 0 0 / 49px 196px;
+            bottom: 0;
+            right: 0;
+            background-size: 100%;
+        }
+        .lxkf {
+            padding: 0 15px;
+            line-height: 25px;
+            color: #fff;
+            display: inline-block;
+            background: #609700;
+            border-radius: 3px;
+            margin-right: 5px;
+            box-shadow: 1px 1px 1px #D3D3D3;
+        }
+        .lxkf0 {
+            padding: 0 15px;
+            line-height: 25px;
+            color: #fff;
+            display: inline-block;
+            background: #609700;
+            border-radius: 3px;
+            margin-right: 5px;
+            box-shadow: 1px 1px 1px #D3D3D3;
+            margin-right: 15px;
+            width: 80px;
+            border-top-left-radius: 150px;
+            border-bottom-right-radius: 150px;
+        }
+        .lxkf2 {
+            padding: 0 15px;
+            line-height: 25px;
+            color: #fff;
+            display: inline-block;
+            background: #609700;
+            border-radius: 3px;
+            margin-right: 5px;
+            box-shadow: 1px 1px 1px #D3D3D3;
+            margin-left: 15px;
+            width: 80px;
+            border-top-left-radius: 150px;
+            border-bottom-right-radius: 150px;
+        }
+        #service_bg, #service_info {
+            position: fixed;
+            right: 0;
+            left: 0;
+            display: none;
+            z-index: 9999999;
+        }
+        #service_bg {
+            top: 0;
+            bottom: 0;
+            z-index: 1200;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+            z-index: 999999;
+        }
+        #service_info {
+            top: 23%;
+            z-index: 140;
+            margin: auto;
+            width: 85%;
+            border-radius: 8px;
+            background: #f7ffff;
+            z-index: 9999999;
+        }
+        #service_code {
+            margin-bottom: 20px;
+        }
+        #service_code p {
+            color: #5c5c5c;
+            text-align: center;
+            font-size: 14px;
+            line-height: 45px;
+        }
+        #service_code img {
+            display: block;
+            margin: 0 auto;
+            width: 180px;
+        }
+        .gouxuan i{
+            background: url(http://m.weimicm.com/statics/templates/yungou/images/mobile/gouxuan.png)no-repeat 0px -30px;
+            height: 30px;
+            width: 30px;
+            position: absolute;
+            background-size: 50%;
+        }
+        .g-float-panel {
+            width: 100%;
+            max-width: 640px;
+            font-size: 14px;
+            position: fixed;
+            z-index: 12;
+            bottom: 45px;
+            background: #fff;
+        }
+        .g-float-panel dl {
+            border-top: 1px solid #dedede;
+            background: #fff;
+        }
+        .g-float-panel dt {
+            padding: 6px 0 22px 6px;
+            width: 55%;
+            float: left;
+            border: none;
+            background: #fff;
+        }
+        a.btn-batch-all.disabled {
+            border-color: #CCC;
+            color: #CCC;
+        }
+        a.btn-batch-all1 {
+            width: 46px;
+            margin-right: 4%;
+            color: #F60;
+            border: 1px solid #F60;
+        }
+      	a.btn-batch-all {
+            width: 46px;
+            margin-right: 4%;
+            color: #bbb;
+            border: 1px solid #bbb;
+        }
+.g-float-panel a {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    float: left;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.g-float-panel dd {
+    float: right;
+    width: 0;
+    height: 44px;
+    padding: 6px 6px 6px 0;
+    border: none;
+    background: #fff;
+}
+a.btn-batch-commit.disabled {
+    background-color: #CCC;
+}
+a.btn-batch-commit {
+    width: 126px;
+    background-color: #bbb;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 3px;
+    float: right;
+}
+a.btn-batch-commit1 {
+    width: 126px;
+    background-color: #F60;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 3px;
+    float: right;
+}
+a.btn-batch-edit {
+    width: 46px;
+    margin-right: 4%;
+    color: #fff;
+    background-color: #F60;
+}
+
+a.btn-batch-edit.disabled {
+    background-color: #CCC;
+}
+.g-goods li.pl{
+    border:;
+    margin-top: 0px;
+}
+.g-goods li.pl_sel{
+    border:1px solid #f60;
+    margin-top: 1px;
+}
+a.btn-batch-cancel {
+    width: 46px;
+    margin-right: 4%;
+    color: #fff;
+    background-color: #e0001a;
+}
+    </style>
+
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+    <header class="header" style="position: fixed;width: 100%;z-index: 99999999;display: none;">
+
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">
+               获得的商品
+            </a>
+        </span>
+
+        <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+        -->
+        <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 6px;top: 10px;">
+
+        <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+    -->
+    <a href="{WEB_PATH}/mobile/mobile" class="z-shop" style="background-position: 2px -73px;"></a>
+
+</div>
+
+</header>
+
+    <input name="hidTotalCount" type="hidden" id="hidTotalCount" />
+    <input name="hidPageMax" type="hidden" id="hidPageMax" />
+    <section class="clearfix g-member g-goods" style="padding-top: 5px;">
+        <p style='color:red;font-size: 15px;text-align: center;'>该页面仅保留2个月内获得的记录，请及时完善地址。</p>
+        <p style="width: 100%;text-align: center"><span class="lxkf0">普 通 商 品</span><span class="lxkf">联系物流客服</span><span class="lxkf2">商城购物券</span></p>
+        <ul id="ulListBox" class="z-minheight">
+	        <div id="divOrderLoading" class="loading" style="display:none;"><b></b>正在加载</div>
+	        <a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;">点击加载更多</a>
+        </ul>
+        <div style="height:50px;"></div>
+    </section>
+    <div class="g-float-panel">
+        <dl>
+            <dt class="gray6">
+                <a href="javascript:;" id="batch_all" class="btn-batch-all">全选</a>
+                <a href="javascript:;" id="batch_invert" class="btn-batch-all" style="display: none">反选</a>
+                <a href="javascript:;" id="batch_edit" class="btn-batch-edit">编辑</a>
+                <a href="javascript:;" id="batch_cancel" class="btn-batch-cancel" style="display: none">取消</a>
+            </dt>
+            <dd>
+              	<input type="hidden" id="pss" value="0">
+                <a id="batch_commit" class="btn-batch-commit">&nbsp;批量完善地址</a>
+            </dd>
+        </dl>
+    </div>
+    <div id="service_bg" style="display: none;">
+        <div id="service_info" style="display: none;">
+            <div id="service_code">
+                <p class="server_title">长按二维码，添加惠享购客服微信</p>
+                <img src="/statics/templates/yungou/images/mobile/w7_1.jpg">
+            </div>
+        </div>
+    </div>
+	<div class="mask">
+    <div id="mask_bg" onclick="closeaddress()"></div>
+    <div id="address_box">
+
+      	<ul>
+          {wc:loop $dizhi $ad}
+          <li value="{wc:$ad['id']}">
+            <h5>{wc:$ad['shouhuoren']}:{wc:$ad['mobile']}</h5>
+            <p>{wc:$ad['sheng']}{wc:$ad['shi']}{wc:$ad['xian']}{wc:$ad['jiedao']}</p>
+          </li>
+          {wc:loop:end}
+         
+ 
+      </ul>
+     <div class="button_box">
+            <button class="address_btn" onclick="go_dizhi();">确定</button>
+            <button class="address_btn" onclick="add_dizhi();">新增地址</button>
+          </div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+        $('.lxkf').click(function(){
+            $('#service_bg').css("display","block");
+            $('#service_info').css("display","block");
+        })
+
+        $(function(){
+            var x = $('#service_bg').css("display");
+            var y = $('#service_info').css("display");
+            if(x == "none" || y == "none"){
+
+                $('#service_bg').click(function(){
+                    $('#service_bg').css("display","none");
+                    $('#service_info').css("display","none");
+                })
+            }
+        })
+      	
+    </script>
+    
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+<script type="text/javascript">
+    function shouhuo(s,did){   
+        $.ajax({  
+            type : "POST",  //提交方式  
+            url : "/index.php/mobile/home/do_shouhuo",//路径  
+            data : {  
+                "did" : did ,
+                "s" : 2 
+            },//数据，这里使用的是Json格式进行传输  
+            success : function(data) {//返回数据根据结果进行相应的处理  
+                //console.log(data);
+                if (data==1) {
+                  window.location.href="/mobile/home/orderlist";
+                }
+            }  
+        }); 
+    }
+  </script>
+  <script>
+	  $(function(){
+     
+        // 批量完善地址
+      	$('.batch_commit').on('click',function(){
+        //	 $(this).addClass('choose_active');		//批量完善地址按钮高亮
+          		
+        })
+        
+        $('#address_box li').on('click',function(){
+        	$(this).addClass('add_active').siblings().removeClass('add_active');
+        })
+        
+      })
+  
+  	/*弹窗*/
+  	function test(){
+         var y = '';
+         $('#ulListBox input[type="checkbox"]').each(function(){
+            var x = $(this).prop('checked');
+            if(x == true){
+              if(y == ''){
+                y = $(this).val();
+              }else{
+                y = y + "," + $(this).val();
+              }
+            }
+         })
+         if(y == ''){
+          alert("请选择商品！");return false;
+         }
+         $.ajax({
+            type : "POST",  //提交方式  
+            url : "/index.php/mobile/someing/post_addr_id",//路径  
+            data : {'id':y},
+            success:function(msg){
+              if(msg){
+                window.location.href = '/index.php/mobile/someing/queren';
+              }else{
+                alert("商品选择错误,请重新选择商品！");
+              }
+            }
+         })
+      	//window.location.href = '/index.php/mobile/someing/queren';
+      	/*
+      	var pss = $('#pss').val();
+      	if(pss==0){return false;}
+    	document.getElementById("mask_bg").style.display="block";
+      	document.getElementById("address_box").style.display="block";
+      	document.documentElement.style.overflowY = 'hidden'; 
+        */
+    }
+  
+  // 关闭绑定银行卡弹窗
+	function closeaddress(){
+    document.documentElement.style.overflowY = 'scroll'; 
+    document.getElementById('mask_bg').style.display="none";
+    document.getElementById('address_box').style.display="none";
+}
+   function go_dizhi(){
+      var dizhi_id = $('.add_active').attr('value');
+      var id_obj = [];
+      //$('li.pl_sel').each(function(){  id_obj.push($(this).attr('id'))  });
+      $('input[name="rid"]:checked').each(function(){ 
+        id_obj.push($(this).val()); 
+      });
+      $.post("/index.php/mobile/someing/do_set_place",{rid:id_obj,did:dizhi_id},function(result){
+        result = $.parseJSON(result);
+        if(result.code==0){
+        	alert(result.msg);
+        }else{
+            window.location.reload();
+        }
+      });
+   }
+   function add_dizhi(){
+   	window.location.href = '/index.php/mobile/home/address';
+   }
+    
+   
+</script>
+</div>
+</body>
+</html>

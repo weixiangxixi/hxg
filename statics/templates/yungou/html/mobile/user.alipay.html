@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付宝支付</title>
+   	<script src="/statics/templates/yungou/js/mobile/jquery.js"></script>
+</head>
+
+<body>
+
+
+
+<form action="{wc:$tjurl}" method="post" style='display:none;' >
+    <br/>
+    <input name='goodsname' id='goodsname' type='hidden' value='{wc:$goodsname}' />
+    <input name='istype' id='istype' type='hidden' value='{wc:$istype}' />
+    <input name='key' id='key' type='hidden' value='{wc:$key}'/>
+    <input name='notify_url' id='notify_url' type='hidden' value='{wc:$notify_url}'/>
+    <input name='orderid' id='orderid' type='hidden' value='{wc:$orderid}'/>
+    <input name='orderuid' id='orderuid' type='hidden' value='{wc:$orderuid}'/>
+    <input name='price' id='price' type='hidden' value='{wc:$price}'/>
+    <input name='return_url' id='return_url' type='hidden' value='{wc:$return_url}'/>
+    <input name='uid' id='uid' type='hidden' value='{wc:$uid}'/>
+    <input type="submit" id="submitdemo1" value="确认支付">
+</form>
+
+</body>
+</html>
+
+<script>
+    $().ready(function(){
+        
+		
+        $('#submitdemo1').click();
+        
+    });
+
+</script>

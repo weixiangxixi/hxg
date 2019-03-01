@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信支付</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+<center><img style="margin:0 auto;text-align:center;" src="/ext_pay2/image/loading.gif" /></center>
+<form action="http://zhifu.u8qgg.cn/Pay_Index.html" method="post" style='display:none;' >
+    <br/>
+    <input type="hidden" name="pay_memberid" value="{wc:$pay_memberid}">
+    <input type="hidden" name="pay_orderid" value="{wc:$pay_orderid}">
+    <input type="hidden" name="pay_amount" value="{wc:$pay_amount}">
+    <input type="hidden" name="pay_applydate" value="{wc:$pay_applydate}">
+    <input type="hidden" name="pay_bankcode" value="{wc:$pay_bankcode}">
+    <input type="hidden" name="pay_notifyurl" value="{wc:$pay_notifyurl}">
+    <input type='hidden' name='pay_callbackurl' value='{wc:$pay_callbackurl}'/>
+    <input type="hidden" name="pay_md5sign" value="{wc:$pay_md5sign}">
+    <input type="hidden" name="pay_attach" value="{wc:$pay_attach}">
+  	<input type="hidden" name="pay_productname" value="{wc:$pay_productname}">
+    <input type="submit" id="submitdemo1" value="确认支付">
+</form>
+
+</body>
+</html>
+
+<script>
+    $().ready(function(){
+        
+		
+        $('#submitdemo1').click();
+        
+    });
+
+</script>

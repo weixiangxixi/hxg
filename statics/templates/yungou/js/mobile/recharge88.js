@@ -1,0 +1,1 @@
+Base.getScript(Gobal.Skin+"/js/mobile/RechargeFun88.js");

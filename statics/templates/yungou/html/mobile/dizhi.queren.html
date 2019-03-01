@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class=""><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>地址管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <link href="/statics/templates/yungou/css/mobile/member.css" rel="stylesheet" type="text/css">
+    <script src="/statics/templates/yungou/js/mobile/crypto-js.js" language="javascript" type="text/javascript"></script>
+    <script src="/statics/templates/yungou/js/mobile/aes.js" language="javascript" type="text/javascript"></script>
+    <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/recharge222.js" language="javascript" type="text/javascript"></script>
+    <link rel="stylesheet" href="/statics/templates/yungou/css/mobile/jquery.fancybox.css" type="text/css" media="screen">
+    <script type="text/javascript" src="/statics/templates/yungou/js/mobile/jquery.fancybox.pack.js"></script>
+  	<script type="text/javascript" src="/statics/templates/yungou/js/mobile/distpicker.data.js"></script>
+  	<script type="text/javascript" src="/statics/templates/yungou/js/mobile/distpicker.js"></script>
+	<link href="/statics/templates/yungou/css/mobile/queren.css" rel="stylesheet" type="text/css">
+<script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+<style type="text/css">.fancybox-margin{margin-right:0px;}</style>
+</head>
+<body>
+  	<div class="bd_wrap">
+  		<div class="addr_btn mgb">
+          <span>地址列表</span>
+          <a href="javascript:;" onclick="new_address()">添加新的地址</a>
+        </div>
+      	<div>
+         	<ul>
+              {wc:php:start}foreach($addr as $key=>$val){{wc:php:end}
+              <li>
+              	 <div class="address_box mgb">
+                   	<div class="address inline middle">
+                      	<p>
+                          	<span class="addr_name">{wc:php:start}echo $val['shouhuoren']{wc:php:end}</span>
+                          	<span>{wc:php:start}echo $val['mobile']{wc:php:end}</span>
+                      	</p>
+                      	<p class="address_info">
+                      		{wc:php:start}echo $val['sheng'].$val['shi'].$val['xian'].$val['jiedao']{wc:php:end}
+                      	</p>
+                   	</div>
+                   <div class="selectIt inline middle">
+                   		<input type="checkbox" id="{wc:$val['id']}" class="inline middle"/>
+                     	<label class="inline middle"></label>
+                   	</div>
+                 </div>
+              </li>
+              {wc:php:start}}{wc:php:end}
+          	</ul>
+        </div>
+      	
+      	<div class="btn_box">
+          	<button class="del_btn">删除</button>
+          	<button class="change_addr" onclick="edit_address()">修改</button>
+          	<button class="confirm_addr" onclick="confirm()">确认地址</button>
+      	</div>
+  	</div>
+  
+  	<div class="mask">
+  		<div id="mask_bg" class="mask_bg" onclick="closemask()"></div>
+      	<div id="confirm">
+            <div class="confirm_text">
+                <h3>一旦确认就不可再更改哦！</h3>
+                <div class="mask_addr">
+                  <p>
+                    <span class="mask_name" id="pl_name"></span>
+                    <span id="pl_mobile"></span>
+                  </p>
+                  <p class="detail_addr" id="pl_addr">
+                    
+                  </p>
+                  <p></p>
+                </div>
+            </div>
+          	<div class="confirm_btnbox">
+          		<button class="cancel" onclick="closeconfirm()">取消</button>
+              	<button class="confirm_btn" onclick="confirm_btn()">确认</button>
+          	</div>
+      	</div>
+      
+      	<div id="new_addr">
+          	
+              	<div class="new_type">
+                  <label class="middle inline">收货人</label>
+                  <input type="text" name="new_name" class="middle inline" placeholder="姓名" />
+              	</div>
+              	<div class="new_type">
+                  <label class="middle inline">联系方式</label>
+                  <input type="text" class="new_mobile" name="new_mobile" class="middle inline" placeholder="联系方式"/>
+              	</div>
+              	<div class="new_type cur_addr">
+                  <label class="middle inline">所在地区</label>
+               <!--   <input type="text" class="addr_box middle inline" placeholder="请选择所在地区" readonly="readonly"/> -->
+         			 <textarea class="addr_box top inline" placeholder="请选择所在地区" readonly="readonly"></textarea>
+                  <div id="distpicker1">
+                    <select id="first"></select>
+                    <select id="second" disabled="disabled"></select>
+                    <select id="third" disabled="disabled"></select>
+                  </div>
+              	</div>
+              	<div class="new_type">
+                  <label class="top inline">详细地址</label>
+                  <textarea class="detail_address top inline" placeholder="详细地区"></textarea>
+              	</div>
+              
+              	<div class="new_btn">
+                  	<button class="new_cancel" onclick="closeaddress()">取消</button>
+                  	<button class="new_confirm">确定</button>
+              	</div>
+      
+      	</div>
+        <div id="edit_addr">
+            
+                <div class="edit_type">
+                  <label class="middle inline">收货人</label>
+                  <input type="text" name="edit_name" class="middle inline" placeholder="姓名" />
+                </div>
+                <div class="edit_type">
+                  <label class="middle inline">联系方式</label>
+                  <input type="text" class="edit_mobile" name="edit_mobile" class="middle inline" placeholder="联系方式"/>
+                </div>
+                <div class="edit_type cur_addr">
+                  <label class="middle inline">所在地区</label>
+               <!--   <input type="text" class="addr_box middle inline" placeholder="请选择所在地区" readonly="readonly"/> -->
+               <textarea class="addr_box top inline" id="edit_box" placeholder="请选择所在地区" readonly="readonly"></textarea>
+                  <div id="distpicker2">
+                    <select id="first2"></select>
+                    <select id="second2" disabled="disabled"></select>
+                    <select id="third2" disabled="disabled"></select>
+                  </div>
+                </div>
+                <div class="edit_type">
+                  <label class="top inline">详细地址</label>
+                  <textarea class="detail_address top inline" id="edit_detail" placeholder="详细地区"></textarea>
+                </div>
+              
+                <div class="edit_btn">
+                    <button class="edit_cancel" onclick="closeaddress()">取消</button>
+                    <button class="edit_confirm">确定</button>
+                </div>
+      
+        </div>
+  	</div>
+  	
+    {wc:templates "mobile/index","footer"}
+    <script type="text/javascript">
+      $('.selectIt').click(function(){
+        $('.selectIt input').prop('checked',false);
+        $(this).children('input').prop('checked',true); 
+      })
+    </script>
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/layer.css" rel="stylesheet" type="text/css">
+<link href="/statics/templates/yungou/css/mobile/message.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/statics/templates/yungou/js/mobile/jquery.cookie.js"></script>
+<script type="text/javascript" src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript"></script>
+  <script type="text/javascript" src="/statics/templates/yungou/js/mobile/dizhi.js"></script>
+<script type="text/javascript">
+	$("#distpicker1").distpicker({
+		autoSelect: false
+	});
+	$("#distpicker1").distpicker('reset', true);
+
+  $("#distpicker2").distpicker({
+    autoSelect: false
+  });
+  $("#distpicker2").distpicker('reset', true);
+</script>
+
+ 
+</body></html>
+<style>
+#pageDialogBG{-webkit-border-radius:5px; width:255px;height:45px;color:#fff;font-size:16px;text-align:center;line-height:45px;}
+.Prompt s {
+    width: 23px;
+    height: 23px;
+    background-repeat: no-repeat;
+    background-position: 0 -74px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+}
+#pageDialog{
+  z-index: 99999;
+}
+</style>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>

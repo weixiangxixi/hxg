@@ -1,0 +1,444 @@
+<html><head>
+<title>惠享购走势图</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<link href="/statics/templates/yungou/css/mobile/comm1.css" rel="stylesheet" type="text/css">
+<link href="/statics/templates/yungou/css/mobile/cartList.css" rel="stylesheet" type="text/css">    
+<link href="/statics/templates/yungou/css/mobile/trend.css" rel="stylesheet" type="text/css">
+<body style="zoom: 1;">
+<div class="h5-1yyg-v1">
+    <div class="g-Cart-list g-Cart-list2">
+        <ul id="cartBody">
+            <li onclick="window.location.href='/mobile/mobile/item/{wc:$shop[id]}'">
+                <div class="fl u-Cart-img">
+                    <img src="{OSS_UPLOAD_PATH}/{wc:$shop['thumb']}@!thumb_300_300" border="0" alt="">
+                </div>
+                <div class="u-Cart-r">
+                    <p class="z-Cart-tt">{wc:$shop['title']}</p>
+                    <p>总需: <span class="orange">{wc:$shop['zongrenshu']}</span>人次</p>
+                    
+                    <input name="hidCodeID" type="hidden" id="hidCodeID" value="{wc:$shop['id']}"/>     <!--本期奖品id-->
+                </div>
+            </li>
+        </ul>
+    </div>
+    <section class="good-info">
+        <ul>
+            <li>
+                <div class="left">购买数量:
+                    <p class="f-Cart-Other">
+                        <a href="javascript:;" class="fl z-jian z-jiandis">-</a>
+                        <input id="buyNum" type="tel" maxlength="7" value="1" class="fl z-amount" data-temp="1" data-max="7386">
+                        <a href="javascript:;" class="fl z-jia ">+</a>
+                    </p>
+                </div>
+                <div class="right">查询期数:
+                    <p class="f-Cart-Other">
+                        <a href="javascript:;" class="fl z-jian">-</a>
+                        <input id="searchQishu" type="tel" maxlength="7" value="20" class="fl z-amount" data-temp="20" data-max="100">
+                        <a href="javascript:;" class="fl z-jia ">+</a>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="left" id="shangqi">第{wc:$last_shop['qishu']}期: </div>
+
+                {wc:if $last_shop['q_end_time']  < $timed }
+                <div class="right" ><span class="huode">{wc:$last_user['username']}&nbsp;购买了 &nbsp;<span class="orange" >{wc:$last_user['gonumber']}</span>人次</span></div>
+                {wc:else}
+                <div class="right" id="lase_user"><span class="huode">正在揭晓</span></div>
+                {wc:if:end}
+            </li>
+            <li>
+                <div class="left">正在进行: </div>
+                <div class="right" id="jinxing">{wc:$shop['qishu']}期</div>
+            </li>
+        </ul>
+    </section>
+    <section class="good-progress">
+        <div class="bar">
+            <p class="cur" style="width: {wc:$jindu}%;"></p>
+        </div>
+        <div class="txt">
+            <p>已售:<span class="da1">{wc:$shop['canyurenshu']}</span>人次</p>
+            <p>剩余:<span class="da2">{wc:$shop['shenyurenshu']}</span>人次</p>
+            <p>总需:<span class="da3">{wc:$shop['zongrenshu']}</span>人次</p>
+        </div>
+    </section>
+
+    <section class="trend-chart">
+        <div id="main" style="width: 100%; height: 400px; -webkit-tap-highlight-color: transparent; user-select: none; background: transparent;" _echarts_instance_="ec_1511577345912"><div style="position: relative; overflow: hidden; width: 375px; height: 400px; padding: 0px; margin: 0px; border-width: 0px;"><canvas width="750" height="800" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 375px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+    </section>
+
+    <section class="trend-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>期数</th>
+                    <th>中奖人</th>
+                    <th>中奖号码</th>
+                    <th>中奖位次</th>
+                    <th>买入次</th>
+                    <th>区间段</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <div class="trend-footer-block"></div>
+    <section class="trend-footer">
+        <a href="/index.php" class="index">首页</a>
+        <a href="javascript:;" class="start">开始监控</a>
+        <a href="javascript:;" class="stop">停止监控</a>
+        <a href="javascript:;" class="buy">立即下单</a>
+    </section>
+
+    <section class="point-popup"><div class="box"><h3 class="title">中奖详情<span class="close"></span></h3><ul class="main"></ul></div></section>
+    
+</div>
+<script src="/statics/templates/yungou/js/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script src="/statics/templates/yungou/js/mobile/echarts.min.js"></script>
+<script src="/statics/templates/yungou/js/mobile/pageDialog.js"></script>
+<script>
+    var set1;
+    var set2 = setInterval(data1,2000) ;
+    //data1();
+    function data1(){
+        var sid = {wc:$shopid};
+        $.ajax({   
+          url:'/mobile/mobile/kdata1/',   
+          type:'post',   
+          data:{sid:sid},     
+          success:function(data){   
+            var data = JSON.parse(data);
+            $('.da1').text(data.canyurenshu);
+            $('.da2').text(data.shenyurenshu);
+            $('#jinxing').text(data.qishu+ "期");
+            $('#shangqi').text("第"+data.last_qishu+"期");
+            //$('#lase_user').text(data.last_user);
+            //$('#lase_num').text(data.last_num);
+            if (data.status == 0) {
+                $('.huode').text(data.last_user);
+            }else{
+                $('.huode').text(data.last_user + "购买了" + data.last_num + "人次");
+            }
+            
+            document.querySelector('.cur').style.width = data.jindu;
+            //console.log(data.jindu); 
+            // if (data.status==1) {
+            //     window.location.reload(); 
+            // } 
+          } 
+        }); 
+    }
+    $(function(){
+        var gid = {wc:$shopid},
+            zongrenshu = {wc:$shop['zongrenshu']},
+            myChart = null;
+
+        // 开始监控
+        $(".trend-footer .start").on("click", function(){
+            data();
+            set1 = setInterval(data,2000) ;
+            
+        });
+        
+        function data(){
+            var _btn = $(this);
+            if(_btn.hasClass('gray')) return;
+            //alert(1);
+            var qishu = $.trim($("#searchQishu").val());
+            //$.PageDialog.fail('正在获取数据...');
+            $.getJSON('/mobile/mobile/kdata/'+ gid +'/'+qishu, function(res) {
+                //console.log(res);
+                var tHtml = '',
+                    xData = [],
+                    yData = [],
+                    positionCount = {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0};
+                for(var i in res){
+                    xData.push(res[i]['qishu']);
+                    yData.push(res[i]['position']);
+                    tHtml+= '<tr>'
+                          +     '<td>'+ res[i]['qishu'] +'</td>'
+                          +     '<td style="text-align: left;">'+ res[i]['q_user'] +'</td>'
+                          +     '<td>'+ res[i]['q_user_code'] +'</td>'
+                          +     '<td>'+ res[i]['position'] +'</td>'
+                          +     '<td>'+ res[i]['numberCount'] +'</td>'
+                          +     '<td>'+ res[i]['block'] +'</td>'
+                          + '</tr>';
+
+                    switch (res[i]['block']) {
+                        case '头':
+                            ++positionCount['0'];
+                            break;
+                        case '前':
+                            ++positionCount['1'];
+                            break;
+                        case '中':
+                            ++positionCount['2'];
+                            break;
+                        case '后':
+                            ++positionCount['3'];
+                            break;
+                        case '尾':
+                            ++positionCount['4'];
+                            break;
+                    }
+                }
+                // 位置统计
+                var pHtml = '<span>头['+positionCount[0]+']</span><span>前['+positionCount[1]+']</span><span>中['+positionCount[2]+']</span><span>后['+positionCount[3]+']</span><span>尾['+positionCount[4]+']</span>';
+                $(".good-progress .bar").append(pHtml);
+                var len = $('.good-progress .bar span').length-5;
+                console.log(len);
+                $('.good-progress .bar span:lt('+ len +')').remove();
+                // 图
+                var option = {
+                    xAxis:  {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: xData
+                    },
+                    yAxis: {
+                        type: 'value',
+                        min: 0,
+                        max: zongrenshu,
+                        name: '(人次)',
+                        nameLocation: 'end',
+                        interval: Math.ceil(zongrenshu/5),
+                        axisLabel:{
+                            rotate:40,
+                        },
+                    },
+                    series: [
+                        {
+                            type:'line',
+                            data: yData,
+                            smooth: true,
+                            symbol: 'circle',
+                            symbolSize: 10,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    padding: [2, 5, 2 , 5],
+                                    shadowBlur: 4,
+                                    shadowColor: '#000',
+                                    backgroundColor: '#fff'
+                                }
+                            }
+                        }
+                    ],
+                    dataZoom: [
+                        {
+                            type: 'inside',
+                            startValue: 0,
+                            endValue: 12,
+                            xAxisIndex: [0],
+                            preventDefaultMouseMove:false
+                        }
+                    ]
+                };
+                myChart = echarts.init(document.getElementById('main'));
+                myChart.setOption(option);
+                myChart.on('click', function (params) {
+                    if (params.componentType === 'series') {
+                        showPointDeta(res[params.dataIndex])
+                    }
+                });
+                // 表
+                $(".trend-table tbody").html(tHtml);
+
+                _btn.addClass('gray');
+                $(".trend-footer .stop").removeClass('gray');
+                $("#pageDialog").remove();
+            }, 'json');
+        }
+        // 停止监控
+        $(".trend-footer .stop").on("click", function(){
+            clearInterval(set1);
+            var _btn = $(this);
+            if(_btn.hasClass('gray')) return;
+
+            $.PageDialog.fail('监控已停止...');
+            $(".good-progress .bar span").remove();
+
+            $(".trend-table tbody").html('');
+            myChart.dispose();
+
+            _btn.addClass('gray');
+            $(".trend-footer .start").removeClass('gray');
+        });
+
+        // 立即下单
+        $(".trend-footer .buy").on("click", function(){
+            var num = $("#buyNum").val();
+            var p11 = $("#hidCodeID").val();
+             GetJPData(Gobal.Webpath, "ajax", "addShopCart/" + p11 + "/" + num,           
+
+            function(s) {
+
+                if (s.code == 0) {
+
+                    
+
+                        //location.href = Gobal.Webpath+"/mobile/mobile/item/" + {wc:$shopid};
+                        location.href = Gobal.Webpath+"/mobile/cart/cartlist";
+                    
+
+                } else {
+
+                    if (r == 0) {
+
+                        d("添加失败")
+
+                    } else {
+
+                        d("添加失败，请重试")
+
+                    }
+
+                }
+
+            })
+        });
+
+        // 减少
+        $(".z-jian").on("click", function(){
+            if($(this).hasClass('z-jiandis')) return;
+            var num = parseInt($(this).next().val());
+            --num;
+            changeNum(num, $(this).next());
+        });
+
+        // 增加
+        $(".z-jia").on("click", function(){
+            if($(this).hasClass('z-jiadis')) return;
+            var num = parseInt($(this).prev().val());
+            ++num;
+            changeNum(num, $(this).prev());
+        });
+
+        var intReg = /^[1-9]{1}\d{0,6}$/;
+        // 表单修改
+        $("#buyNum,#searchQishu").on("keyup", function(){
+            var _this = $(this),
+                num = _this.val();
+            if(num == ''){
+                _this.attr("data-temp", 1);
+            }else if(intReg.test(num)){
+                _this.attr("data-temp", num);
+                changeNum(num,_this, 0);
+            }else{
+                $.PageDialog.fail('只能输正整数哦');
+                _this.val(_this.attr("data-temp"));
+            }
+        });
+
+        $("#buyNum,#searchQishu").on("change", function(){
+            var num = $(this).val();
+            if(num == ''){
+                $(this).val(1);
+            }
+        })
+
+        // 更改数量
+        function changeNum (_num, _input, _change) {
+            var $input = _input,
+            $btnJia    = $input.next(),
+            $btnJian   = $input.prev(),
+            maxNum     = parseInt($input.attr("data-max"));
+
+            _change != 0 ? $input.val(_num) : '';
+            $btnJian.removeClass('z-jiandis');
+            $btnJia.removeClass('z-jiadis');
+            if(_num <= 1) {
+                $btnJian.addClass('z-jiandis')
+            };
+            if(_num >= maxNum){
+                $btnJia.addClass('z-jiadis');
+            };
+            if(_num > maxNum){
+                tempNum = maxNum;
+                $input.val(maxNum);
+                $('.txtNum').text(maxNum);
+                $.PageDialog.fail("最多" + maxNum + "人次");
+            };
+        }
+
+        // 显示详细
+        function showPointDeta(data){
+            var html = '<li><span class="label">期号</span><div class="item">'+ data['qishu'] +'</div></li><li><span class="label">获奖人</span><div class="item">'+ data['q_user'] +'</div></li><li><span class="label">幸运号码</span><div class="item">'+ data['q_user_code'] +'</div></li><li><span class="label">买入位置</span><div class="item">'+ data['position'] +'</div></li><li><span class="label">买入次数</span><div class="item">'+ data['numberCount'] +'</div></li><li><span class="label">区间</span><div class="item">'+ data['block'] +'</div></li>';
+            $(".point-popup .main").html(html);
+            $(".point-popup").show();
+        }
+
+        $(".point-popup .close").on("click", function(){
+            $(".point-popup .main").html('');
+            $(".point-popup").hide();
+        })
+    })
+</script>
+ <script language="javascript" type="text/javascript">
+        var Path = new Object();
+
+        Path.Skin = "/statics/templates/yungou";
+
+        Path.Webpath = "/index.php";
+
+
+
+        var Base = {
+            head: document.getElementsByTagName("head")[0] || document.documentElement,
+            Myload: function(B, A) {
+                this.done = false;
+                B.onload = B.onreadystatechange = function() {
+                    if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                        this.done = true;
+                        A();
+                        B.onload = B.onreadystatechange = null;
+                        if (this.head && B.parentNode) {
+                            this.head.removeChild(B)
+                        }
+                    }
+                }
+            },
+            getScript: function(A, C) {
+                var B = function() {};
+                if (C != undefined) {
+                    B = C
+                }
+                var D = document.createElement("script");
+                D.setAttribute("language", "javascript");
+                D.setAttribute("type", "text/javascript");
+                D.setAttribute("src", A);
+                this.head.appendChild(D);
+                this.Myload(D, B)
+            },
+            getStyle: function(A, B) {
+                var B = function() {};
+                if (callBack != undefined) {
+                    B = callBack
+                }
+                var C = document.createElement("link");
+                C.setAttribute("type", "text/css");
+                C.setAttribute("rel", "stylesheet");
+                C.setAttribute("href", A);
+                this.head.appendChild(C);
+                this.Myload(C, B)
+            }
+        }
+
+        function GetVerNum() {
+            var D = new Date();
+            return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+        }
+
+        Base.getScript('/statics/templates/yungou/js/mobile/Bottom.js?v=' + GetVerNum());
+
+        
+</script>
+
+</body></html>

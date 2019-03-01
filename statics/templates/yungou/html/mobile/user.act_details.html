@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+	<meta content="app-id=518966501" name="apple-itunes-app"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection">
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=20150129" rel="stylesheet" type="text/css">
+<link href="{G_TEMPLATES_CSS}/mobile/goods1.css" rel="stylesheet" type="text/css">
+<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+<style type="text/css">
+    .pPic2{
+        height: 230px;
+    }
+    .pImg ul.slides{
+        height: 230px;
+    }
+    .pImg,.pImg .direction-nav,.pImg .direction-nav li{
+        height: 230px;
+    }
+    .have_cy{
+        border: 1px solid #f60;
+        width: 60%;
+        text-align: center;
+        font-size: 18px;
+        color: #f60;
+        border-radius: 5px;
+        margin: 20px 20%;
+    }
+    .price{
+        background:#fff url(/statics/templates/yungou/images/mobile/act_dl.jpg) no-repeat left top;
+        background-size: 105%;
+        padding-top: 83%;
+        margin-left: -6%;
+    }
+    .get_price{
+        text-align: center;
+        color: #e9e027;
+        margin-top: -65%;
+        font-size: 0.85rem;
+    }
+    .get_price p{
+        margin-top: 15px;
+    }
+    .get_price p:first-child{
+        margin-top: 30px;
+    }
+    #get .not,.go{
+        border: 1px solid #f60;
+        padding: 5px 20px;
+        font-size: 18px;
+        background-color: #fff;
+        border-radius: 8px;
+        margin: 20px 0px;
+        color: #f60;
+    }
+    #get .yes{
+        border: 1px solid #ccc;
+        padding: 5px 20px;
+        font-size: 18px;
+        background-color: #fff;
+        border-radius: 8px;
+        margin: 20px 0px;
+        color: #ccc;
+    }
+    #get{
+        text-align: center;
+    }
+</style>
+</head>
+
+<body style="zoom: 1;">
+<div class="have_cy">已有{wc:$num}位好友成功参与</div>
+<div class="pPic pPicBor">
+    <div class="pPic2">
+        <div id="sliderBox" class="pImg" style="width: 399px;">
+            <div class="flex-viewport">
+                <ul class="slides" style="width: 400%; display: block; transition-duration: 0.4s; transform: translate3d(-325.5px, 0px, 0px);">
+                    {wc:loop $shop $val}
+                        <li data-val="{wc:$val['status']}" data-cla="{wc:$val['class']}" id="{wc:$val['id']}" style="width: 210px; float: left; display: block;">
+                            <span style="margin: 10px 0;display: block;color: #f60">{wc:if $val['yaoqing_num'] <= $num}已具备领取资格{wc:else}还差{wc:$val['yaoqing_num']-$num}位参与成功好友{wc:if:end}</span>
+                            <img src="http://f.weimicm.com/{wc:$val['img']}@!thumb_200_200" class="animClass">
+                        </li>
+                    {wc:loop:end}
+    
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div id="get"><button class="{wc:$shop[0]['class']}" id="{wc:$shop[0]['id']}">{wc:$shop[0]['status']}</button></div>
+<div class="price"></div>
+<div class="get_price">
+    {wc:loop $arr $val}
+    <p>
+        <span style="margin-left: 15%">{wc:$val['title']}</span>
+        <span style="border: 1px solid #f60;padding: 1px 5px;border-radius: 5px;display: block;margin-right: 20%;float: right;">{wc:if $val['sid']==0&&$val['dizhi_id']==0}<a href="/index.php/mobile/home/act_share_wsdz/{wc:$val['id']}" style="color: #e9e027">完善地址</a>{wc:elseif $val['dizhi_id']!=0}<a href="/index.php/mobile/home/swapOrderDetail_act/{wc:$val['id']}" style="color: #e9e027">查看物流</a>{wc:if:end}</span>
+    </p>
+    {wc:loop:end}
+</div>
+<script type="text/javascript">
+    $('#get').on("click",".not",function(){
+        var id = $(this).attr('id');
+        $.ajax({
+            url: '/index.php/mobile/home/ajax_act_details',
+            type: 'post',
+            data: {'sid':id},
+            dataType: 'json',
+            success:function(data){
+                var status = data.status;
+
+                if(status == 0){
+                    $.PageDialog.fail("该商品您已领取！");
+                }else if(status == 2){
+                    $.PageDialog.fail("商品领取失败！");
+                }else if(status == 3){
+                    $.PageDialog.fail("您还没有达到领取条件哦！");
+                }else if(status == 1){
+                    $.PageDialog.fail("商品领取成功！");
+                    setTimeout(function(){
+                        window.location.reload();
+                    },1000)
+                }
+            }
+        })
+    })
+    $('#get').on("click",".go",function(){
+        window.location.href = '/index.php/mobile/home/invite';
+    })
+</script>
+<script type="text/javascript">
+    //返回顶部
+    $(function() {
+        $("#btnTop").click(function() {
+            $("html,body").animate({
+                scrollTop: 0
+            }, 1500);
+        });
+    });
+
+    window.onscroll = function() {
+        var elm = $("#btnTop");
+        if ( $(window).scrollTop() >= 250 && !elm.hasClass("show") ){
+            elm.addClass("show");
+        }
+
+        if ( $(window).scrollTop() < 250 && elm.hasClass("show") ){
+            elm.removeClass("show");
+        }
+
+    }
+
+    function Show_Hidden(btnGotoTop3) {
+        if (btnGotoTop3.style.display == "block") {
+            btnGotoTop3.style.display = 'none';
+        } else {
+            btnGotoTop3.style.display = 'block';
+        }
+    }
+    </script>
+</div> <script type="text/javascript">
+    //返回顶部
+    $(function() {
+        $("#btnGotoTop").click(function() {
+            $("html,body").animate({
+                scrollTop: 0
+            }, 1500);
+        });
+    });
+
+   
+
+    function Show_Hidden(btnGotoTop3) {
+        if (btnGotoTop3.style.display == "block") {
+            btnGotoTop3.style.display = 'none';
+        } else {
+            btnGotoTop3.style.display = 'block';
+        }
+    }
+    /*document.onclick = function() //发布微博刷新代码
+        {
+            var obj = event.srcElement;
+            if (obj.id == "shuaxin") {
+                window.location.reload();
+            }
+        }*/
+    </script>
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="http://m.weimicm.com/statics/templates/yungou";
+  Path.Webpath = "http://m.weimicm.com/index.php";
+
+var Base = {
+    head: document.getElementsByTagName("head")[0] || document.documentElement,
+    Myload: function(B, A) {
+        this.done = false;
+        B.onload = B.onreadystatechange = function() {
+            if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                this.done = true;
+                A();
+                B.onload = B.onreadystatechange = null;
+                if (this.head && B.parentNode) {
+                    this.head.removeChild(B)
+                }
+            }
+        }
+    },
+    getScript: function(A, C) {
+        var B = function() {};
+        if (C != undefined) {
+            B = C
+        }
+        var D = document.createElement("script");
+        D.setAttribute("language", "javascript");
+        D.setAttribute("type", "text/javascript");
+        D.setAttribute("src", A);
+        this.head.appendChild(D);
+        this.Myload(D, B)
+    },
+    getStyle: function(A, B) {
+        var B = function() {};
+        if (callBack != undefined) {
+            B = callBack
+        }
+        var C = document.createElement("link");
+        C.setAttribute("type", "text/css");
+        C.setAttribute("rel", "stylesheet");
+        C.setAttribute("href", A);
+        this.head.appendChild(C);
+        this.Myload(C, B)
+    }
+}
+function GetVerNum() {
+    var D = new Date();
+    return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0': D.getMinutes().toString().substring(0, 1))
+}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+
+
+</script>
+<script>
+
+
+function addsuccess(dat){
+    $("#pageDialogBG .Prompt").text("");
+    var w=($(window).width()-255)/2,
+        h=($(window).height()-45)/2;
+    $("#pageDialogBG").css({top:h,left:w,opacity:0.8});
+    $("#pageDialogBG").stop().fadeIn(1000);
+    $("#pageDialogBG .Prompt").append('<s></s>'+dat);
+    $("#pageDialogBG").fadeOut(1000);
+}
+</script>
+<script language="javascript" type="text/javascript" src="{G_TEMPLATES_JS}/mobile/BottomFun.js"></script>
+<script type="text/javascript">
+    document.write('<script language="javascript" type="text/javascript" src="{G_TEMPLATES_JS}/mobile/LotteryDetailFun_act.js?v='+new Date().getTime()+'"><\/script>');
+</script>
+
+</div>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>
+<style type="text/css">
+        #pageDialogBG{-webkit-border-radius:5px; width:255px;height:45px;color:#fff;font-size:16px;text-align:center;line-height:45px;}
+
+    </style>
+
+
+</body></html>

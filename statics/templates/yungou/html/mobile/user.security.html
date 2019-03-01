@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html><head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>安全密码修改</title>
+    <meta content="app-id=518966501" name="apple-itunes-app">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+    <link href="/statics/templates/yungou/css/mobile/comm3.css" rel="stylesheet" type="text/css">
+	<link href="/statics/templates/yungou/css/mobile/login.css" rel="stylesheet" type="text/css">
+	<script src="/statics/templates/yungou/js/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <script src="/statics/templates/yungou/js/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+    <style>
+        body{
+            background: #f7f7f7;
+        }
+        .header{
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            background: #fff;
+            border-bottom: 0px;
+        }
+        .row{
+            display: flex;
+            width: 94%;
+            margin: 6px auto;
+            justify-content: space-between;
+            align-content: center;
+            color:#a5a5a5;
+            flex-direction: column;
+        }
+        .row:last-child{
+            border: none;
+        }
+        .row input{
+            background: none;
+            height: 36px;
+            color: #000;
+            border-bottom:1px solid #e6e6e6;
+            font-size: 14px;
+            flex-grow: 2;
+            margin: 4px 0px;
+        }
+        .row input:focus{
+            border-bottom: 1px solid #f60;
+        }
+        .row .tip{
+            font-size: 12px;
+            color: #000;
+        }
+        .row button{
+            background: #f60;
+            border: none;
+            color: #fff;
+            height: 30px;
+            border-radius: 4px;
+            padding: 0 10px;
+            cursor: pointer;
+            width: 80px;
+            margin-left: 8%;
+        }
+        #apply{
+            width: 100%;
+            height: 36px;
+            margin-top: 20px;
+            margin-left: 0;
+            font-size: 14px;
+        }
+        .row .row_box{
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+        em.psw_type {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: 10%;
+            margin-top: 18px;
+            background: transparent url(/statics/templates/yungou/images/mobile/eye-off.png) no-repeat center / 60% auto;
+        }
+        em.psw_type.show_psw {
+            background-image: url(/statics/templates/yungou/images/mobile/eye-open.png);
+        }
+    </style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+</head>
+<body style="zoom: 1;">
+<div class="h5-1yyg-v1" id="content">
+    <section style="margin-top: 36px;">
+        <div class="row">
+            <span class="tip">安全手机:</span>
+            <input name="mobile" disabled="" value="{wc:$data['mobile']}">
+        </div>
+        <div class="row">
+            <span class="tip">新密码:</span>
+            <input class="password" id="txtPassword" name="password" type="password" placeholder="请输入您的安全密码">
+            <em id="toggle_psw" class="psw_type"></em>
+        </div>
+        <div class="row">
+            <span class="tip">验证码:</span>
+            <div class="row_box">
+                <input class="code" name="code" placeholder="请输入您的验证码">
+                <button class="getCode" id="getCode">获取验证码</button>
+            </div>
+        </div>
+        <div class="row">
+            <button id="apply">
+                确认
+            </button>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/message.css" rel="stylesheet" type="text/css">
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/jquery.cookie.js"></script>
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript" type="text/javascript"></script>
+<script src="/geetest/static/gt.js"></script>
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_ > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    $("#toggle_psw").click(function () {
+        var elm = $(this),
+            inpElm = $("#txtPassword"),
+            show = inpElm.attr("type");
+
+        elm.toggleClass("show_psw");
+        show == "password" ? inpElm.attr("type", "text") : inpElm.attr("type", "password")
+    });
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+<script language="javascript" type="text/javascript">
+    $(".getCode").click(function(){
+        var validata = captchaObj.getValidate();
+        if (!validata) {
+            captchaObj.verify();
+            return;
+        }else{
+            var here=$(this);
+            here.attr("disabled",true);
+            $.getJSON("/index.php/mobile/user/getPasswordCode1",function(res){
+                $.PageDialog.fail(res.tip);
+                if(res.type==2||res.type==0){
+                    var needtime=res.time;
+                    here.text(needtime);
+                    var timer=setInterval(function () {
+                        needtime--;
+                        if(needtime<=0){
+                            clearInterval(timer);
+                            here.attr("disabled",false);
+                            here.text("获取验证码")
+                        }else{
+                            here.text(needtime);
+                        }
+                    },1000)
+                }else{
+                    here.attr("disabled",false);
+                }
+            })
+        }
+    })
+
+
+    $("#apply").click(function(){
+        var password=$(".password").val();
+        var code=$(".code").val();
+
+        if(password.length < 6){
+            $.PageDialog.fail('密码长度最少6位以上！');
+            return false;
+        }
+        $.getJSON("/index.php/mobile/user/changePass/",{type:1,"code":code,"password":password},function(data){
+            if(data.success){
+                $.PageDialog.fail("设置成功");
+                setTimeout(function(){
+                    window.location.href="/index.php/mobile/home";
+                }, 1000);
+            }else{
+                $.PageDialog.fail(data.tip);
+            }
+        });
+    });
+
+    var handlerEmbed = function (captchaObj) {
+        window.captchaObj=captchaObj;
+        captchaObj.onSuccess(function () {
+            var validata = captchaObj.getValidate();
+            if (!validata) {
+                captchaObj.reset();
+                $.PageDialog.fail("安全验证失败，请重新验证")
+            } else {
+                var here=$('.getCode');
+                here.attr("disabled",true);
+                $.getJSON("/index.php/mobile/user/getPasswordCode1",function(res){
+                    $.PageDialog.fail(res.tip);
+                    if(res.type==2||res.type==0){
+                        var needtime=res.time;
+                        here.text(needtime);
+                        var timer=setInterval(function () {
+                            needtime--;
+                            if(needtime<=0){
+                                clearInterval(timer);
+                                here.attr("disabled",false);
+                                here.text("获取验证码")
+                            }else{
+                                here.text(needtime);
+                            }
+                        },1000)
+                    }else{
+                        here.attr("disabled",false);
+                    }
+                })
+            }
+        });
+        
+        captchaObj.appendTo('#getCode');
+    };
+
+    $.ajax({
+        // 获取id，challenge，success（是否启用failback）
+        url: "/geetest/web/StartCaptchaServlet.php?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                new_captcha: data.new_captcha,
+                product: "bind", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+
+                // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+            }, handlerEmbed);
+        }
+    });
+
+     var Path = new Object();
+        Path.Skin = "{G_TEMPLATES_STYLE}";
+        Path.Webpath = "{WEB_PATH}";
+
+        var Base = {
+            head: document.getElementsByTagName("head")[0] || document.documentElement,
+            Myload: function(B, A) {
+                this.done = false;
+                B.onload = B.onreadystatechange = function() {
+                    if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                        this.done = true;
+                        A();
+                        B.onload = B.onreadystatechange = null;
+                        if (this.head && B.parentNode) {
+                            this.head.removeChild(B)
+                        }
+                    }
+                }
+            },
+            getScript: function(A, C) {
+                var B = function() {};
+                if (C != undefined) {
+                    B = C
+                }
+                var D = document.createElement("script");
+                D.setAttribute("language", "javascript");
+                D.setAttribute("type", "text/javascript");
+                D.setAttribute("src", A);
+                this.head.appendChild(D);
+                this.Myload(D, B)
+            },
+            getStyle: function(A, B) {
+                var B = function() {};
+                if (callBack != undefined) {
+                    B = callBack
+                }
+                var C = document.createElement("link");
+                C.setAttribute("type", "text/css");
+                C.setAttribute("rel", "stylesheet");
+                C.setAttribute("href", A);
+                this.head.appendChild(C);
+                this.Myload(C, B)
+            }
+        }
+
+        function GetVerNum() {
+            var D = new Date();
+            return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+        }
+        Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+</script>
+
+
+</body></html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+<title>我的竞猜-惠享购</title>
+<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/mobile/worldcup.css"/>
+<script src="/statics/templates/yungou/js/mobile/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="guessing">
+	<div class="header">
+		<div class="user" onclick="window.location.href= '/mobile/home';return false;">
+			<img src="/statics/templates/yungou/images/touxiang.jpg"/><span>{wc:php:start}if(empty($member['username'])){echo substr_replace($member['mobile'],'****',3,4);}else{echo $member['username'];}{wc:php:end}</span><div><img src="/statics/templates/yungou/images/mobile/fifa/fifagonggao.png"/>
+			<!--
+          	<div class="notice_active">
+            
+			<ul>
+				<li class="notice_active_ch">
+					<span>公告111111111</span>  
+				</li>
+				<li class="notice_active_ch">
+					<span>公告22222222</span>
+				</li>
+				<li class="notice_active_ch">
+					<span>公告3333333</span>
+				</li>
+				
+			</ul>   
+			
+		</div>
+	-->
+			</div>
+		</div>
+		<span>总奖金(元)</span>
+		<h1>{wc:$user['money']}</h1>
+		<p>可充值<span>{wc:$user['money']*$xx['times']}</span>元(<a href="#">共邀请<span>{wc:$user['num']}</span>人</a>，总奖金&#215;{wc:$xx['times']})</p>
+		<a href="#" class="share-btn"><img src=""/><span>{wc:if $xx['num']>=50}总奖金倍数已达上限{wc:else}再邀{wc:$zyq}人，总奖金&#215;{wc:$bs}{wc:if:end}</span></a>
+		<a class="tx" style="font-size: 18px">立即充值</a>
+	</div>
+	
+	<div class="result">
+		<p>我的竞猜<span>累计参与<small>{wc:fun:count($guess)}</small>场，猜对<small>{wc:fun:count($guess_true)}</small>场</span></p>
+		<ul>
+          	{wc:loop $guess $gs}
+          		{wc:php:start}
+          			$mh = $this->db->GetOne("SELECT * FROM `@#_fifa_list` WHERE `match_id` = '$gs[match_id]'");
+          			if($mh['match_status'] == '-1'){
+          				if($gs['guess']==$mh['results']){
+          					$class  = 'win';
+          					$zt = '您猜对了～';
+          					$hd = '获得奖金'.$gs['money'].'元';
+          				}else{
+          					$class  = 'lose';
+          					$zt = '您猜错了～';
+          					$hd = '';
+          				}
+          			}else{
+          				$class  = 'never-begin';
+          				$zt = '比赛未开始或未结束';
+          				$hd = '';
+          			}
+          		{wc:php:end}
+			<li class="{wc:$class}">
+				<div class="total">{wc:php:start} echo $mh['money'] / 10000;{wc:php:end}万场</div>
+				<h4><span>{wc:$mh['host_name']}</span><span>VS</span><span>{wc:$mh['guest_name']}</span></h4>
+				<p>比赛时间：<span>{wc:fun:date('m/d H:i',$mh['match_time'])}</span></p>
+				<p><span>{wc:$zt}</span> <span>{wc:$hd}</span></p>
+			</li>
+          	{wc:loop:end}
+          	<!--
+			<li class="never-begin">
+				<div class="total">100万场</div>
+				<h4><span>丹麦</span><span>VS</span><span>澳大利亚</span></h4>
+				<p>比赛时间：<span>6/21 20:00</span></p>
+				<p>您选择了：<span>平</span> <span>竞猜中</span></p>
+			</li>
+			<li class="win">
+				<div class="total">100万场</div>
+				<h4><span>伊朗</span><span>VS</span><span>西班牙</span><span>0:1</span></h4>
+				<p>比赛时间：<span>6/21 02:00</span></p>
+				<div class="present-time">6月22日可提现</div>
+				<p>您猜对了：<span>猜对获得奖金<small>0.30</small>元</span></p>
+				
+			</li>
+			<li class="lose">
+				<div class="total">100万场</div>
+				<h4><span>乌拉圭</span><span>VS</span><span>沙特</span></h4>
+				<p>比赛时间：<span>6/21 20:00</span></p>
+				<p>您未猜对~<span>猜对获得奖金<small>0.30</small>元</span></p>
+			</li>
+			<li class="win">
+				<div class="total">100万场</div>
+				<h4><span>葡萄牙</span><span>VS</span><span>摩洛哥</span><span>1:0</span></h4>
+				<p>比赛时间：<span>6/21 20:00</span></p>
+				<div class="present-time">6月22日可提现</div>
+				<p>您猜对了：<span>猜对获得奖金<small>0.30</small>元</span></p>
+				
+			</li>
+			-->
+			<h4><a href="/index.php/mobile/fifa/competitions">往期赛果</a></h4>
+		</ul>
+	</div>
+	
+	<div class="bottom">
+		<p class="icon"></p>
+	</div><span></span>
+   <div class="fifashare" style="display:none;width:100%;height:100%;position:fixed;z-index:3;top:0;left:0;background:rgba(0,0,0,0.8);text-align:right;">
+      	<img src="/statics/templates/yungou/images/mobile/fifa/fifashare.png" style="position:relative;top:50px;left:-20px;width:50%;" />
+      </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$('.tx').click(function(){
+			var x = confirm("您确定提现吗？");
+			if(x == true){
+				window.location.href= "/index.php/mobile/fifa/money_tx";
+			}
+		})
+	})
+</script>
+<script type="text/javascript">
+	function timer(opj){
+		$(opj).find('ul').animate({
+			marginTop : "-3.5rem"  
+			},500,function(){  
+			$(this).css({marginTop : "-1px"}).find("li:first").appendTo(this);  
+		})  
+	}
+	$(function(){ 
+		var num = $('.notice_active').find('li').length;
+		if(num > 1){
+		   var time=setInterval('timer(".notice_active")',3500);
+			$('.gg_more a').mousemove(function(){
+				clearInterval(time);
+			}).mouseout(function(){
+				time = setInterval('timer(".notice_active")',3500);
+			}); 
+		}
+		
+		$(".news_ck").click(function(){
+			location.href = $(".notice_active .notice_active_ch").children(":input").val();
+		})
+	});
+  
+   $('.share-btn').click(function(){
+   		$('.fifashare').css('display','block');
+   });
+  $('.fifashare').click(function(){
+  	$(this).css('display','none');
+  })
+</script>
+</body>
+</html>

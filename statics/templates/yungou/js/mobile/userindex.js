@@ -1,0 +1,1 @@
+Base.getScript(Gobal.Skin+"/js/mobile/userindexFun.js?v=190115");

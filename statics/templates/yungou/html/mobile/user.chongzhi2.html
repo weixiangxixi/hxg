@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html class=""><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>账户充值</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <link href="/statics/templates/yungou/css/mobile/member.css" rel="stylesheet" type="text/css">
+    <script src="/statics/templates/yungou/js/mobile/functions.js" language="javascript" type="text/javascript"></script>
+    <script src="/statics/templates/yungou/js/mobile/crypto-js.js" language="javascript" type="text/javascript"></script>
+    <script src="/statics/templates/yungou/js/mobile/aes.js" language="javascript" type="text/javascript"></script>
+    <script>document.write("<script id='pageJS' language='javascript' type='text/javascript' data='{G_TEMPLATES_JS}/mobile/recharge225.js?v=" + Date.now() + "'><\/script>");</script>
+
+    <link rel="stylesheet" href="/statics/templates/yungou/css/mobile/jquery.fancybox.css" type="text/css" media="screen">
+    <script type="text/javascript" src="/statics/templates/yungou/js/mobile/jquery.fancybox.pack.js"></script>
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+    <style>
+    .recharge-tip
+    {
+        border:1px dashed red;
+        width: 60%;
+        margin:0 auto;
+        border-radius: 10px;
+        padding:20px;
+        margin-top:40px;
+        color:red;
+        text-align: center;
+        font-size: 16px;
+    }
+    .cfm-title {
+        font-size: 18px;
+        line-height: 50px;
+        font-weight: bold;
+    }
+
+    .cfm-content {
+        background-color: #EFEFEF;
+        word-wrap: break-word;
+        font-size: 14px;
+        line-height: normal;
+        padding: 6px;
+        margin: 0 10px 10px 10px;
+        text-align: left;
+    }
+
+    .g-pay-vip a {
+        display: block;
+        color: #333;
+    }
+
+    .g-pay-vip a.no-inline {
+        color: #ccc;
+    }
+    .g-pay-vip a.alipay-list {
+        color: #999;
+    }
+
+    .g-pay-ment .li-header ,.g-pay-ment .alipay{
+        background: #F4F4F4;
+        line-height: 22px;
+        max-height: 70px;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        border-top: 1px dotted #ddd;
+        padding: 0 10px;
+        overflow: hidden;
+        margin-top: -1px;
+    }
+    .g-pay-ment .li-header .nav {
+        background: url(statics/templates/yungou/images/m_set.png);
+        background-size: 20px auto;
+        background-position: 0 -70px;
+        right: 10px;
+        width: 7px;
+        height: 13px;
+        top: 12px;
+        position: absolute;
+    }
+    .panel {
+        display: none;
+    }
+    .panel.active {
+        display: block;
+    }
+    .card_form {
+        margin: 10px;
+    }
+    .card_form input {
+        color: #959595;
+        width: 80%;
+        line-height: 30px;
+        display: inline-block;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        border: 1px solid #EAEAEA;
+        box-shadow: 1px 1px 1px #EDEDED;
+    }
+     .Afancybox{
+         width: 100%;
+         height: 100%;
+         position: fixed;
+         background: rgba(0,0,0,.6);
+         left: 0px;
+         top: 0;
+         display: none;
+         z-index: 99;
+     }
+    .PayBox{
+        position: absolute;
+        bottom: 0px;
+        height: auto;
+        background-color: #fff;
+        width: 100%;
+        z-index: 9999;
+        padding-top: 1rem;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        display: none;
+    }
+    .PayBox .title{
+        padding-left: 4%;
+        font-size: 1rem;
+        color: #999;
+        margin-bottom: 1rem;
+    }
+    .PayBox .title span{
+        color: #F60;
+    }
+    .PayBox .money li{
+        float: left;
+        width: 20%;
+        margin-left: 4%;
+        text-align: center;
+        cursor: pointer;
+        padding: 0.6rem 0px;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        border: 1px solid #EAEAEA;
+        color: #959595;
+        box-shadow: 1px 1px 1px #EDEDED;
+    }
+    .PayBox .money .active {
+        border: 1px solid #F60;
+        color: #666;
+    }
+    .PayBox .alipay-btn{
+        width: 100%;
+    }
+    .PayBox .alipay-btn input{
+        background: #F60;
+        border: 1px solid #ef6000;
+        display: block;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        height: 43px;
+        line-height: 43px;
+        text-align: center;
+        color: #fff!important;
+        font-size: 18px;
+
+    }
+    .PayBox .PayClose {
+        position: absolute;
+        right: 5%;
+        top: 1rem;
+        font-size: 1.2rem;
+        color: #F60;
+        cursor: pointer;
+    }
+    .channel-tip {
+        line-height: 10px;
+        padding-bottom: 4px;
+    }
+    .channel-tip em {
+        font-size: 10px;
+        color: #F60;
+    }
+    .tran-btn {
+        float: right;
+        padding: 5px;
+        height: 30px;
+        line-height: 20px;
+        border-radius: 5px;
+        border: 1px solid #F60;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    .weixin-img,.chongzhi-img{
+        display: none;
+        width: 90%;
+        position: fixed;
+        top: 20%;
+        text-align: center;
+        z-index: 100;
+        max-width: 640px;
+        background: #fff;
+        box-sizing: border-box;
+        left: 5%;
+    }
+    .weixin-img div,.chongzhi-img div{
+        font-size: 14px;
+        background: #f2f2f2;
+        width: 100%;
+        margin: 0 auto;
+        height: 36px;
+        line-height: 36px;
+    }
+    .weixin-img img,.chongzhi-img img{
+        width: 70%;
+        height: auto;
+        margin-top: 16px;
+        margin-left: 1%;
+        font-size: 0;
+    }
+    .mask{
+        display: none;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        background-color: black;
+        opacity: 0.5;
+        z-index: 99;
+    }
+    .logo{
+        width: 28%;
+        height: 63%;
+    }
+    .linkbox .des{
+        width:72% ;
+    }
+    .layui-layer-fufen{
+        width: 70%!important;
+        top:20%!important;
+        line-height: 50%;
+    }
+    .layui-layer-fufen .layui-layer-content{
+        padding: 0 !important;
+    }
+    .z-bank-Round2 {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #bbb;
+        background: #fff;
+        border-radius: 16px;
+        display: inline-block;
+        margin-right: 8px;
+        box-shadow: 0 1px 1px #ccc inset;
+    }
+    .li-header{
+        background: #F4F4F4;
+        line-height: 22px;
+        max-height: 70px;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        border-top: 1px dotted #ddd;
+        overflow: hidden;
+        margin-top: -1px;
+        padding: 0 10px;
+    }
+    .channel-tip em {
+        font-size: 12px;
+        color: #F60;
+    }
+    .z-arrow {
+        width: 6px;
+        height: 6px;
+        display: inline-block;
+        border: solid #BBB;
+        -webkit-transform: rotate(45deg);
+        font-size: 0;
+        line-height: 0;
+        border-width: 2px 2px 0 0;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -3px;
+    }
+    .g-pay-ment li {
+        line-height: 36px;
+        border-top: 1px dotted #CBCBCB;
+        max-height: 35px;
+        overflow: hidden;
+        margin-top: -1px;
+        padding: 0 10px;
+    }
+    .g-pay-vip a {
+        display: block;
+        color: #333;
+    }
+</style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+<style type="text/css">.fancybox-margin{margin-right:0px;}</style>
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    <div class="g-Total gray9">
+                您的当前余额：<span class="orange arial">{wc:$user['money']}</span>元
+        <a href="/index.php/mobile/invite/cashout/#recharge" class="tran-btn orange">佣金转余额</a>
+    </div>
+    <section class="clearfix g-member">
+        <div class="g-Recharge">
+            <ul id="ulOption">
+                <li money="20"><a href="javascript:;" class="z-sel">20元<s></s></a></li>
+                <li money="50"><a href="javascript:;">50元<s></s></a></li>
+                <li money="100"><a href="javascript:;">100元<s></s></a></li>
+                <li money="200"><a href="javascript:;">200元<s></s></a></li>
+                <li money="500"><a href="javascript:;">500元<s></s></a></li>
+              	<li money="1000"><a href="javascript:;">1000元<s></s></a></li>
+              	<li money="2000"><a href="javascript:;">2000元<s></s></a></li>
+              	<li money="5000"><a href="javascript:;">5000元<s></s></a></li>
+                <li money="10000" style="display: none"><a href="javascript:;">10000元<s></s></a></li>
+                <li><b style="float: right;"><input type="text" class="z-init" placeholder="输入金额" maxlength="8"><s></s></b></li>
+            </ul>
+        </div>
+         <article class="clearfix m-round g-pay-ment g-bank-ct">
+          <ul id="ulBankList">
+            <li class="gray6">支付宝支付<em class="orange">20.00</em>元</li>
+              
+              
+              
+              
+               <li class="gray9 {wc:$uid}" urm="1111" bankname="支付宝">
+                    <i class="z-bank-Round"><s></s></i><span>支付宝支付</span>           
+              </li>
+              {wc:if $wepay4['status']== '1'}
+               <li class="gray9 {wc:$uid}" urm="9999" bankname="微信">
+                    <i class="z-bank-Round"><s></s></i><span>微信支付（<span style="color: red">推荐</span>）</span>           
+              </li>
+              {wc:if:end}
+            
+              {wc:if $wepay3['status']== '1'}
+               <li class="gray9 {wc:$uid}" urm="999" bankname="微信">
+                    <i class="z-bank-Round"><s></s></i><span>微信支付<!-- （<span style="color: red">备用</span>） --></span>           
+              </li>
+              {wc:if:end}
+              
+              {wc:if $wepay2['status']== '1'}
+               <li class="gray9 {wc:$uid}" urm="99" bankname="微信">
+                    <i class="z-bank-Round"><s></s></i><span>微信支付（<span style="color: red">支付成功后请重新进入网站</span>）</span>           
+              </li>
+              {wc:if:end}
+            
+              {wc:if $wepay['status']== '1'}
+               <li class="gray9 {wc:$uid}" urm="9" bankname="微信">
+                    <i class="z-bank-Round"><s></s></i><span>微信支付（<span style="color: red">推荐</span>）</span>           
+              </li>
+              {wc:if:end}
+            
+              <li class="gray9 {wc:$uid}" urm="20" bankname="支付宝" {wc:if $alipay['status']=='0'}style="display:none;"{wc:if:end}>
+              		<i class="z-bank-Roundsel"><s></s></i><span>支付宝支付（<span style="color: red">支付姓“陈”，转账时请勿修改金额</span>）</span>               
+              </li>
+              
+              
+			 
+              <li class="gray9" onclick="wx_sm()" {wc:if $saoma['status']=='0'}style="display:block;"{wc:if:end}><i class="z-bank-Round2"><s></s></i>微信扫码充值送1%</li>
+            
+              <!-- <li class="gray9" onclick="showWeixinImg()">线下充值送1%（100起充）</li> -->
+          </ul>
+
+       </article>
+       <article class="clearfix mt10 m-round g-pay-ment g-pay-vip" style="margin-top: 20px">
+            <div class="gray3 li-header custom_service" target="#vip_list">
+                <div>点击加客服线下充值<span style="font-size: 10px;color: red;"></span></div>
+                <div class="channel-tip"><em>（支持微信 支付宝 银行卡 充100送1，以此类推）</em></div>
+                <b class="z-arrow"></b>
+            </div>
+            <ul id="vip_list" class="panel" style="display: none;">
+                <li>
+                    <a class="popimage" href="javascript:;" title="扫描二维码添加微信好友">
+                        <i class="z-bank-Round"><s></s></i>惠享购充值-客服(在线客服)
+                    </a>
+                </li>
+            </ul>
+        </article>
+        <div class="mt10 f-Recharge-btn" style="">
+            <a id="btnSubmit" href="javascript:;" class="orgBtn">确认充值</a>
+        </div>
+         <div class="mt10 f-Recharge-btn" style="">
+            <a href="/index.php/mobile/home/userrecharge"><img src="/statics/templates/yungou/images/mobile/smcz3.png" style="width: 100%"></a>
+        </div>
+        
+    </section>
+
+    <div class="Afancybox">
+    </div>
+    <div class="PayBox">
+        <input id="payid" type="hidden" value="">
+        <span class="PayClose">X</span>
+        <div class="title">您的当前余额：<span>{wc:$user['money']}</span>元</div>
+        <div class="money" id="money">
+
+        </div>
+        <div class="alipay-btn">
+            <input type="button" class="am-btn am-btn-yellow" id="alipay-buy" value="确认充值">
+        </div>
+    </div>
+    <div class="weixin-img">
+        <div>长按二维码识别关注</div>
+        <img src="/statics/templates/yungou/images/mobile/w7.jpg">
+    </div>
+    <div class="chongzhi-img">
+        <img src="/statics/templates/yungou/images/mobile/w5.jpg">
+    </div>
+    <div class="mask" onclick="hideWeixinImg()" style="height: 778px;">
+    </div>
+    {wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/layer.css" rel="stylesheet" type="text/css">
+<link href="/statics/templates/yungou/css/mobile/message.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/statics/templates/yungou/js/mobile/jquery.cookie.js"></script>
+<script type="text/javascript" src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript"></script>
+<script>
+    var needToPopup = true;
+    
+    /*置顶按钮滚动特效*/
+    initTopHoverTree("btnTop");
+    
+    // 中奖弹窗
+    function layer_prize(qishu,goodsname){
+        layer.open({
+            type: 1,
+            closeBtn: false, //不显示关闭按钮
+            title: false,
+            content:
+            '<img src="statics/templates/yungou/picture/pop.png" style="width: 100%;"><div class="popText">[第'+qishu+'期]</div><div class="popName">'+goodsname+'</div>',
+            area: ['80%', '50%'],
+            skin: ' layui-m-down-prize',
+            shadeClose: true, //开启遮罩关闭,
+            end: function() {
+                getZjPopup();
+            },
+            success: function(elem){  
+                        $('.layui-layer-content,.layui-m-layercont').append('<span class="layui-layer-setwin"><a class="layui-layer-ico layui-layer-close layui-layer-close2" href="javascript:;"></a></span>');  
+                    } 
+        })
+    }
+    $(document).on('click',".layui-layer-close",function(){
+        layer.closeAll()
+    })
+    function getZjPopup() {
+        if (needToPopup) {
+            $.getJSON('/?/app/ajax/getZjPopupMessage', function(data) {
+                if (parseInt(data.code) > 0) {
+                    needToPopup = false;
+                    
+                    return;
+                }
+                
+                layer_prize(data.item.qishu, data.item.title);
+            });
+        }
+    }
+ 
+    getZjPopup()
+    
+     //判断是否webApp
+    function isWebView(){
+        console.log(navigator.userAgent);
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/Linux/i)){
+            if(ua.match(/Version/i) && !ua.match(/MicroMessenger/i) && ua.match(/html5plus/i)){
+                return true;
+            }
+        }else if(ua.match(/iPhone/i)){
+            if(!ua.match(/Version/i) && !ua.match(/MicroMessenger/i) && !ua.match(/UCBrowser/i) && !ua.match(/qbwebviewtype/i) && !ua.match(/mqqbrowser/i) && !ua.match(/sogoumse/i) && !ua.match(/baidu/i) && !ua.match(/XiaoMi/i) && !ua.match(/360/i)){
+                return true;
+            }
+        }
+        return false;
+    }
+    if(isWebView()){
+        $("#app_download").hide();
+        $("#exchange").show()
+    }
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+    var Path = new Object();
+    Path.Skin="{G_TEMPLATES_STYLE}";
+    Path.Webpath = "{WEB_PATH}";
+
+    var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+    function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+    Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+        </script><!--开启全站微信分享自定义-->
+<!--end-->
+<script language="javascript" type="text/javascript">
+    $("#vip_list").on('click','li',function(){
+        $('.mask').show();
+        $(".chongzhi-img").show();
+    });
+    $('.custom_service').click(function() {
+        if ($('#vip_list').is(':animated')) {
+            return;
+        }
+        $('#vip_list').slideToggle();
+    });
+    function hideWeixinImg(){
+        $(".mask").hide();
+        $(".weixin-img").hide();
+        $(".chongzhi-img").hide();
+    }
+
+    docheight=$(document).outerHeight(true);
+    $(".mask").height(docheight);
+
+    function wx_sm() {
+        window.location.href = "{wc:$wx_sm['pay_link']}";
+    }
+
+    function showWeixinImg() {
+        layer.open({
+            type:1,
+            closeBtn: 2, //不显示关闭按钮
+            title: false,
+            content:
+                '<img src="/statics/templates/yungou/images/mobile/xxcz.jpg" style="width: 100%;">',
+            area: 'auto',
+            skin: 'layui-layer-fufen',
+            shadeClose: true, //开启遮罩关闭,
+        });
+    }
+
+
+
+
+    Path.PayMinMoney = 1
+    function changeWxPay() {
+        $("#ulBankList li[urm=7]").attr("urm", 8);
+    }
+
+    $(function () {
+
+        $(".popimage").fancybox({
+            openEffect: 'none',
+            closeEffect: 'none',
+            closeClick: true,
+        });
+
+        $(".g-pay-vip a.no-inline").click(function () {
+            //$.PageDialog.fail('此线下充值人员当前不在线');
+        });
+        $('.g-pay-ment .li-header').click(function () {
+            var target = $(this).attr('target');
+            $(target).toggleClass('active');
+        });
+
+        $('.g-pay-ment .alipay').click(function () {
+            var target = $(this).attr('target');
+            $(target).toggleClass('active');
+        });
+
+        $(document).on('click','#money li',function () {
+            $(this).siblings().removeClass("active");
+            $(this).addClass("active");
+        });
+        $('.Afancybox,.PayClose').click(function () {
+            $('body,html').css({'overflow':'auto','height': 'auto'});
+            $(".Afancybox,.PayBox").fadeOut();
+        })
+
+    })
+
+</script>
+ 
+</div>
+</body></html>

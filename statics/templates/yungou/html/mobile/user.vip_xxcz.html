@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>完善收货地址 - {wc:$webname}</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/member.css" rel="stylesheet" type="text/css" />
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/orderdetail.js" language="javascript" type="text/javascript"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+    
+    <style type="text/css">
+      .addrlist li{border-bottom:1px solid #dbdbdb;padding:3px;position:relative;}
+
+
+.addrlist li i {
+  background: url(../../images/mobile/set.png);
+  background-size: 35px auto;
+  width: 20px;
+  height: 20px;
+  float: right;
+  background-position: 0 -325px;
+  position:absolute;
+  top: 30px;
+  display: none;
+  right:0;
+}
+.addrlist li.hover i {
+  display: block!important;
+}
+.addrlist p,.receive p{margin-top:8px;}
+a.btn_ok{background:#ff6600;padding:6px 8px;display:block;color:#fff;border-radius:5px;margin:0 auto;width:60%;text-align:center;font-size:14px;cursor:pointer;}
+a.btn_ok1{background:#ff6600;padding:6px 8px;display:block;color:#fff;border-radius:5px;margin:0 auto;width:60%;text-align:center;font-size:14px;cursor:pointer;}
+.orgBtn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 35px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-top: 5px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+a.orgBtn {
+    background: #C04D00;
+}
+
+.mask1 {       
+        position: absolute; 
+        top: 0px; 
+        width: 100%;
+        height: 100%;
+        left: 0px;     
+
+        background-color: rgba(0,0,0,0.7);
+        /*filter: alpha(opacity=60);
+        opacity:0.9;*/
+       /* background: url(/statics/templates/yungou/images/mobile/money_qrcode/10.jpg) top center;*/  
+        z-index: 9999999999999999999; 
+        overflow:hidden;
+    } 
+    @media \0screen\,screen\9 {
+    .mask1{
+      background-color:#000000;
+      filter:Alpha(opacity=50);
+      position:static; 
+      *zoom:1; 
+    }
+    .mask1 img{
+      position: relative;
+    }  
+    .mask1 p{
+      position: relative;
+    }
+  }
+    .mask1 img{ 
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 10%;
+      position: absolute;
+      clip: rect(90px,280px,350px,20px);
+      width: 300px;
+      height: 400px;
+    }
+    .mask1 p{
+      width:80%;
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      bottom: 24%;
+      color: #fff;
+      text-align: center;
+      line-height: 24px;
+    }
+    </style>
+	
+
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+     <section class="clearfix g-Record-ct" style=" border-bottom-width:0px; padding-top:10px;padding-bottom: 10px;">
+          <select>
+            {wc:loop $str $val}
+              <option value="{wc:$val['uid']}">{wc:$val['uid']}</option>
+            {wc:loop:end}
+          </select>
+          
+     </section>
+     <section class="clearfix g-Record-ct" style=" border-bottom-width:0px; padding-top:10px;padding-bottom: 10px;">
+          
+          <p><a class="btn_ok">提交</a></p>
+     </section>
+  
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+</div>
+</body>
+</html>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>

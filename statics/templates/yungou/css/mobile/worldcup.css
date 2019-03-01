@@ -1,0 +1,976 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: PingFang SC,Helvetica Neue,Hiragino Sans GB,Helvetica,Microsoft YaHei,Arial;
+	font-size: 0.22rem;
+	-webkit-font-smoothing:antialiased;
+}
+.wc-container{
+	width: 100%;
+	height: -webkit-fill-available;
+	background: url(/statics/templates/yungou/images/mobile/fifa/worldcupbg.jpg) no-repeat center top;
+	background-size:contain; 
+}
+.rule{
+	
+}
+.rule a:last-of-type{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack:end;
+	-webkit-justify-content:flex-end;
+	justify-content: flex-end;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	align-items:center;
+	width: 14%;
+	height: 36px;
+	padding: 11px 0;
+	background-image: url(/statics/templates/yungou/images/mobile/fifa/rule_bg.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	float: right;
+}
+.winning{
+	background: #ef4d45;
+	margin: 4px;
+	padding: 10px 0;
+	border-radius: 4px;
+}
+.winning .content{
+	/*background: url(game_bg.png) no-repeat;
+	width: 90%;
+	margin:0 auto;
+	background-size: contain;
+	padding-bottom: 10px;*/
+}
+.situation{
+	width: 56%;
+	margin: 190px auto 0;
+	background: #fff2dc;
+	border-radius: 30px;
+}
+.situation p{
+	text-align: center;
+	line-height: 24px;
+	color: #a04f14;
+  font-size:17px;
+}
+.situation p a,.situation p span{
+	color: #ef4d45;
+  	font-size:16px;
+}
+.situation p a{
+	margin-left: 6px;
+  	font-size:16px;
+}
+.schedule{
+	text-align: center;
+	width: 100%;
+	overflow: hidden;
+}
+.schedule:before{
+	display: block;
+	content: '';
+	border-top: 1px solid #da2a2a;
+	position: relative;
+	top: 27px;
+}
+.gameoverflow{
+	width: 100%;
+	overflow: scroll;
+	white-space: nowrap;
+	margin-bottom: 10px;
+}
+.schedule .item{
+	width: 120px;
+	display: inline-block;
+	text-align: center;
+}
+.schedule .item p{
+	color: #fff;
+	font-size:12px;
+}
+.schedule .item em{
+	content: '';
+	width: 14px;
+	height: 14px;
+	border-radius: 8px;
+	background: #e03e36;
+	display: block;
+	margin: 4px auto;
+	position: relative;
+}
+.schedule .item em:after{
+	content: '';
+	width: 8px;
+	height: 8px;
+	border-radius: 8px;
+	background: #f25c5c;
+	display: block;
+	margin: 0 auto;
+	position: relative;
+	top: 3px;
+}
+.schedule .active em:after{
+	background: #fff;
+}
+.schedule .content h3,.schedule .content h3 span{
+	font-size: 16px;
+	line-height: 34px;
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	background-image: -webkit-gradient(linear,0 0,0 bottom,from(#fffce1),to(#fff6a9));
+}
+.schedule .content h3 span{
+	font-size: 20px;
+}
+
+.schedule .draw{
+	width: 30%;
+}
+.schedule .fbteam{
+	background: url(/statics/templates/yungou/images/mobile/fifa/game_bg.png) no-repeat;
+	width: 90%;
+	margin:0 auto;
+	background-size: contain;
+	padding-bottom: 20px;
+}
+.schedule .fbteam>div{
+	display: inline-block;
+}
+.schedule .country{
+	width: 30%;
+	text-align: center;
+	padding-top: 20px !important;
+}
+.schedule .country img{
+	width: 70px;
+	height: 70px;
+	border-radius: 100px;
+	overflow: hidden;
+	border: 4px solid #ffe4c4;
+	margin-bottom: 6px;
+}
+.schedule .fbteam a{
+	font-size: 14px;
+	display: block;
+	line-height:36px;
+	border-radius: 100px;
+	color: #fff;
+	background-image: -webkit-gradient(linear,0 0,0 bottom,from(#fc473b),to(#fe1e17));
+	margin: 0 2px;
+	text-shadow: 0 10px 10px rgba(0,0,0,.4);
+	border-bottom: 2px solid #c5120c;
+}
+.schedule .fbteam span.participants{
+	display: block;
+	color: #b37025;
+	padding: 6px 0;
+}
+.schedule .draw p{
+	color: #541515;
+}
+.schedule .draw a{
+	width: 80%;
+	margin: 0 auto;
+}
+.schedule .countdown {
+	width: 100%;
+	height: 80px;
+	position: relative;
+	top: -20px;
+}
+.schedule .countdown span{
+	background: #fada9d;
+	border-radius: 2px;
+	width: 20px;
+	height: 20px;
+	margin: 4px;
+	line-height: 20px;
+	color: #b37025;
+	display: inline-block;
+	box-shadow: 0 1px 0 0 #fff6d7, inset 0 2px 2px 0 hsla(35,75%,74%,.63);	
+}
+.swiper-button-next, .swiper-button-prev{
+	outline: none;
+	width: 20px;
+	height: 34px;
+	background-size: 20px 34px;
+	opacity: 0.4;
+}
+.paginaton-overflow{
+	width: 100%;
+	overflow-x: scroll;
+}
+.swiper-pagination{
+	white-space: nowrap;
+	
+}
+.swiper-wrapper{
+	
+}
+.pagination {
+	width: 100%;
+	height: 48px;
+	margin: .24155rem 0;
+	overflow-x: scroll;
+	overflow-y: hidden
+}
+
+.pagination::-webkit-scrollbar {
+	background-color: transparent;
+	display: none
+}
+
+.pagination::-webkit-scrollbar-thumb,
+.pagination::-webkit-scrollbar-track {
+	background-color: transparent
+}
+
+.pagination-line {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	position: relative;
+	height: 1px;
+	top: 50%;
+	border-radius: 5px;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	background: #da2a2a;
+	-webkit-transition: .6s ease;
+	transition: .6s ease
+}
+
+.pagination-block {
+	position: relative;
+	height: 100%
+}
+
+.pagination-circle {
+	position: absolute;
+	top: -6px;
+	left: calc(50% - 7px);
+	width: 14px;
+	height: 14px;
+	border-radius: 100%;
+	cursor: pointer;
+	background: #da2a2a
+}
+
+.pagination-circle:before {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 8px;
+	height: 8px;
+	border-radius: 100%;
+	background: #f25c5c
+}
+
+.pagination-circle-active:before {
+	background: #fff
+}
+
+.pagination-content p {
+	text-align: center;
+	font-size: 12px;
+	color: #fff
+}
+
+.pagination-content p:first-of-type {
+	position: relative;
+	top: -22px
+}
+
+.pagination-content p:nth-of-type(2) {
+	position: relative;
+	top: -8px
+}
+.addgof{
+	margin-top: -84px;
+	z-index: -1;
+	position: relative;
+}
+
+.guess-share {
+	margin: 4px;
+	padding: .40258rem .48309rem;
+	border: 2px solid #f83a37;
+	border-radius: .16103rem;
+	margin-bottom: 20px;
+}
+
+.guess-share-content {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center
+}
+
+.guess-share-content div:first-of-type {
+	position: relative;
+	width: 50px;
+	height:50px;
+	background-image: url(/statics/templates/yungou/images/mobile/fifa/double.png);
+	background-repeat: no-repeat;
+	background-size: contain
+}
+
+.guess-share-content div:nth-of-type(2) {
+	position: relative;
+	left: -24px;
+}
+
+.guess-share-content div:nth-of-type(2) p {
+	font-size: 1.0628rem;
+	font-weight: 500
+}
+
+.guess-share-content div:nth-of-type(2) p:first-of-type {
+	color: #ef2625;
+	font-size: 18px;
+	
+}
+
+.guess-share-content div:nth-of-type(2) p:nth-of-type(2) {
+	font-size: .77295rem;
+	color: #ef2625
+}
+
+.guess-share-content div:nth-of-type(3) {
+	border-radius: .96618rem;
+	box-shadow: 0 2px 2px 1px rgba(0, 0, 0, .1)
+}
+
+.guess-share-content div:nth-of-type(3) span {
+	width: 80px;
+	height: 26px;
+	border-radius: .86151rem;
+	background-image: -webkit-linear-gradient(bottom, #ffbd4d, #fff4a2 83%, #fffcb3);
+	background-image: linear-gradient(0deg, #ffbd4d 0, #fff4a2 83%, #fffcb3);
+	box-shadow: inset 0 1px 0 0 #ffe8be;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	font-weight: 500;
+	font-size: 14px;
+	color: #d82739
+}
+
+.guess-share-content div:nth-of-type(3) span,
+.pannel {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex
+}
+/*
+.guess-home-rank {
+	width: 19.51691rem;
+	margin: 1.0789rem auto 0;
+	border: 2px solid #5a91f8;
+	border-radius: .16103rem
+}
+*/
+.guess-home-rank-title {
+	position: relative;
+	top: -.72464rem;
+	display: block;
+	margin: 0 auto;
+	width: 6.77939rem;
+	height: 1.70692rem;
+	background-color: #fff;
+	background-image: url(../../../static/img/guess_rank_titlebg.32ecf0c.png);
+	background-size: cover;
+	background-repeat: no-repeat
+}
+
+.guess-home-rank-info {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	margin: 0 auto .96618rem
+}
+
+.guess-home-rank-info p {
+	padding: .24155rem .96618rem;
+	text-align: center;
+	background: #5a91f8;
+	border-radius: 30px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 400
+}
+
+.guess-home-rank-info p span {
+	color: #fef436
+}
+.guess-home-rank {
+	
+	margin: 4px;
+	border: 2px solid #5a91f8;
+	border-radius: .16103rem
+}
+
+.guess-home-rank-title {
+	position: relative;
+	top: -10px;
+	display: block;
+	margin: 0 auto;
+	width: 36%;
+	height: 1.70692rem;
+	background-color: #fff;
+	background-image: url(/statics/templates/yungou/images/mobile/fifa/jcjj.png);
+	background-size:cover;
+	background-repeat: no-repeat
+}
+
+.guess-home-rank-info {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	margin: 0 auto .96618rem
+}
+
+.guess-home-rank-info p {
+	padding: .24155rem .96618rem;
+	text-align: center;
+	background: #5a91f8;
+	border-radius: 30px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 400
+}
+.guess-rank li > div p:first-of-type{
+	font-size: 15px;
+}
+.guess-home-rank-info p span {
+	color: #fef436
+}
+.guess-rank *{
+	color: #5A91F8;
+}
+.guess-rank li {
+
+ /*	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+ 	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+
+	height: 2.51208rem;
+	border-bottom: .0161rem solid #dde9fd;*/
+	margin: 0 6px;
+  height: 2.51208rem;
+	border-bottom: .0161rem solid #dde9fd;
+	margin: 0 6px;
+  -webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+  list-style-type:none;
+  padding:12px 0;
+}
+.guess-rank li > div{
+	display:inline-block;
+  position:relative;
+  top:-4px;
+}
+.guess-rank li>:first-child {
+	width: 24px;
+	text-align: center;
+	font-size: 16px;
+  float:left;
+	margin-right:14px;
+}
+.guess-rank li>:nth-child(3) {
+	
+}
+
+.guess-rank li>:nth-child(3) p:nth-of-type(2) {
+	font-size: 12px
+}
+
+.guess-rank li>:nth-child(4) {
+	display: inline-block;
+	font-size: 16px;
+  float:right;
+}
+
+.guess-rank li img {
+	position: relative;
+	width: 32px;
+	height: 32px;
+	border-radius: 100%;
+    display:inline-block;
+  margin-right:10px;
+}
+
+.guess-rank-item {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex
+}
+
+.guess-rank-item i {
+	width: 28px;
+	height: 28px;
+	background-size: contain;
+	background-repeat: no-repeat
+}
+
+.guess-rank-item-0 {
+	background-image: url(/statics/templates/yungou/images/mobile/fifa/guanjun.png)
+}
+
+.guess-rank-item-1 {
+	background-image: url(/statics/templates/yungou/images/mobile/fifa/yajun.png)
+}
+
+.guess-rank-item-2 {
+	background-image: url(/statics/templates/yungou/images/mobile/fifa/jijun.png)
+}
+
+.guess-rank-more {
+	display: block;
+	margin: .40258rem auto .85346rem;
+	text-align: center;
+	text-decoration: underline;
+	font-size: 14px;
+	color: #5a91f8;
+}
+
+.small-phone {
+	display: block;
+}
+.bottom .icon {
+	width: 30%;
+	height: 20px;
+	margin: 0 auto;
+	background: url(/statics/templates/yungou/images/mobile/fifa/bottomicon.png) no-repeat 50%;
+	background-size: contain;
+	margin-bottom: 12px;
+}
+.checked{
+	background-image:linear-gradient(to top, #f83600 0%, #f9d723 100%) !important;
+}
+
+.rules{
+	background: #5A91F8;
+	padding-top: 20px;
+}
+.rules h2{
+	background-image: url(/statics/templates/yungou/images/mobile/fifa/rulelabel.png);
+	background-size: cover;
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 34px;
+	font-size: 16px;
+	color: #fff;
+	letter-spacing: 2px;
+	position: relative;
+	top: -6px;
+}
+.rules .content{
+	background: #fff;
+	margin: 20px 10px;
+	margin-top: 0;
+	border-radius: 6px;
+	padding:0 14px;
+	padding-bottom: 14px;
+}
+.rules .content:nth-of-type(2) .item{
+	margin-top:0 ;
+}
+.rules .content p{
+	color: #888;
+	font-size: 13px;
+	line-height:20px;
+}
+.rules .content>small{
+	font-size: 9px;
+	color: #999;
+	text-align: center;
+}
+.rules h3{
+	font-family: "黑体";
+	font-size: 14px;
+	margin-bottom: 4px;
+	color: #555;
+}
+.rules .content:first-of-type .item{
+	position: relative;
+	padding-left: 46px;
+}
+.rules .item img{
+	position: absolute;
+	left: 0;
+	width: 34px;
+	float: left;
+}
+.rules .content .item{
+	margin:16px 0;
+}
+.rules p.last{
+	color: #fff;
+	padding-bottom: 10px;
+	font-size: 8px;
+	position: relative;
+	top: -4px;
+	text-align: center;
+}
+.guessing {
+	padding-right: 0;
+} 
+.guessing .user{
+	position: relative;
+	height: 24px;
+	display: flex;
+	padding-left: 10px;
+	margin-bottom: ;
+}
+.guessing .user span{
+	line-height: 34px;
+}
+.guessing .user>img{
+	width: 26px;
+	height: 26px;
+	border-radius: 30px;
+	overflow: hidden;
+	border: 2px solid #fff;
+	margin-right: 6px;
+}
+.guessing .header *{
+	color: #fff;
+}
+.guessing .user > div{
+	position: absolute;
+	right: 0;
+	top: 6px;
+	background: rgba(0,0,0,0.5);
+	border-radius: 30px;
+	line-height: 20px;
+	border-bottom-right-radius: 0;
+	border-top-right-radius:0 ;
+	padding-right: 20px;
+	overflow: hidden;
+}
+.guessing .user > div img{
+	width: 16px;
+	margin:0 4px;
+	position: absolute;
+	top: 2px;
+	left: 0;
+}
+.guessing .header{
+	text-align: center;
+	padding: 10px 0;
+	background: #ef4d45;
+	border-bottom-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+}
+.guessing .header > span{
+	color: #FFBD4D;
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+	position: relative;
+	top: 14px;
+}
+.guessing .header h1{
+	font-size: 43px;
+	font-family: DINAlternate-Bold;
+	text-shadow: 0 5px 1px #dc3136;
+	margin: 10px 0;
+}
+.guessing .header  p{
+	margin:12px 0 24px;
+}
+.guessing .header p>span{
+	color: #FFBD4D;
+}
+.guessing .header>a:first-of-type{
+	text-decoration: none;
+	padding: 10px 20px;
+	background-image: linear-gradient(to bottom, #fdfcfb 0%, #e2d1c3 100%);
+	border-radius: 50px;
+	margin: 20px 0;
+	box-shadow: 0 5px 5px #dc3136;
+}
+.guessing .header>a:first-of-type span{
+	color: #ff0000;
+	font-size: 16px;
+	font-weight: 500;
+}
+.guessing .header>a:last-of-type{
+	display: block;
+	margin: 20px 0 80px 0;
+	color: #ffa8a8;
+}
+.guessing .result{
+	margin: 4px;
+	background: rgb(255,232,197);
+	border-radius: 8px;
+	margin: 8px;
+	padding: 10px;
+	margin-top: -78px;
+}
+.guessing .result > p{
+	color: #f00;
+	border-bottom: 1px solid #FC473B;
+	padding-bottom: 4px;
+	position: relative;
+	background: url(/statics/templates/yungou/images/mobile/fifa/myguessing.png) no-repeat;
+	background-size: contain;
+	padding-left:26px;
+}
+.guessing .result > p span{
+	float: right;
+}
+.guessing .result p img{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+}
+.guessing .resutl ul {
+	padding: 6px;
+	
+}
+.guessing .result ul li{
+	list-style-type: none;
+	background: #fff;
+	padding: 8px 12px;
+	margin:6px 4px;
+	border-radius: 4px;
+	position: relative;
+}
+.guessing .result ul li.win{
+	border-left: 8px solid #F7C90C;
+}
+.guessing .result ul li.lose{
+	border-left: 8px solid #d1d1d1;
+}
+.guessing .result ul li.never-begin{
+	border-left: 8px solid #fff;
+}
+.guessing .result ul li p:first-of-type{
+	color: #999;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 0px;
+	padding-bottom: 3px;
+}
+.guessing .result ul li p:last-of-type{
+	color: #eaa638;
+	margin-top: 12px;
+}
+.guessing  .result ul li p:last-of-type span:last-of-type{
+	float: right;
+}
+.guessing .result ul li p:last-of-type small{
+	color: #f00;	
+	margin: 0 4px;
+}
+.present-time{
+	background: #f96;
+	padding: 0 4px;
+	position: absolute;
+	right: 0;
+	-webkit-transform:scale(0.7);
+	transform: scale(0.7);
+	color: #fff;
+}
+.guessing ul li .total{
+	position: absolute;
+	right: 6px;
+	color: #fff;
+	background: #ef4d45;
+	border-bottom-left-radius: 50px;
+	border-top-left-radius: 50px;
+	padding-right: 6px;
+	padding-left: 10px;
+	-webkit-transform:scale(0.8);
+	transform: scale(0.8);
+}
+.guessing ul li .total:before{
+	width: 4px;
+	height: 4px;
+	border-radius: 6px;
+	background: #fff;
+	content: '';
+	position:absolute;
+	left: 4px;
+	top: 6px;
+	display: block;
+}
+.guessing ul h4{
+	font-weight: 400;
+}
+.guessing ul>h4{
+	text-align: center;
+	
+}
+.guessing ul > h4 a{
+	color: #f00;
+}
+
+.notice_active {
+	float: left;
+	height: 26px;
+	padding-left:24px;
+	overflow: hidden;
+	position: relative;
+}
+.notice_active{
+	margin-top: -6px;
+}
+.notice_active li {
+	list-style-type: none;
+	line-height: 26px;
+	overflow: hidden;
+}
+
+.notice_active li.notice_active_ch span {
+	color: #fff;
+	font-size: 12px;
+	display: block;
+	overflow: hidden;
+	float: left;
+	overflow: hidden;
+}
+
+.huadong .gg_more .news_ck {
+	float: left;
+	margin: 0 1rem 0 1rem;
+	color: #fff;
+	width: 5rem;
+	height: 2rem;
+	line-height: 2rem;
+	display: block;
+	border: 1px solid #656972;
+	text-align: center;
+	border-radius: 0.7rem;
+	font-size: 0.8rem;
+	margin-top: 1rem;
+}
+
+.huadong .notice_active li.notice_active_ch em {
+	text-align: right;
+	float: right;
+	color: #fff;
+	font-size: 12rem;
+	font-style: normal;
+}
+.invitation {
+	
+}
+.invitation .header{
+	height: 200px;
+	background: url(/statics/templates/yungou/images/mobile/fifa/invitation.jpg) no-repeat center bottom;
+	background-size: cover;
+	
+}
+.invitation .header h3{
+	font-size: 20px;
+	font-weight: 400;
+	color: #fff;
+	padding: 50px 14px;
+}
+.invitation .header h3:after{
+	content: '';
+	display: block;
+	width: 60px;
+	height: 2px;
+	position: relative;
+	top: 6px;
+	background: #fff;
+}
+.invitation .content{
+	background: #fff;
+	position: relative;
+	top: -80px;
+	margin: 12px;
+	border-radius: 8px;
+}
+.invitation ul li{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	margin: 4px 14px;
+	padding: 6px;
+	border-bottom: 1px dashed #eee;
+}
+.invitation ul li:last-of-type{
+	border: none;
+}
+.invitation ul li img{
+	width: 40px;
+	height: 40px;
+	border-radius:40px ;
+}
+.invitation ul li span{
+	color: #f65266;
+	font-size: 14px;
+}
+.invitation ul li small{
+	color: #bbb;
+}
+.invitation ul>p{
+	color: #bbb;
+	margin: 10px 0;
+	text-align: center;
+}
+@media screen and (max-width: 330px) {
+    .swiper-container{
+      height:190px !important;
+    }
+	.schedule .countdown span{
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+	}
+    .schedule .country {
+      padding-top:0 !important;
+    }
+    .schedule .countdown{
+      position:relative;
+      top:-4px;
+    }
+    .schedule .country img{
+      margin-bottom:0;
+    }
+    .schedule .content h3{
+      font-size:14px;
+    }
+    
+    .guess-share-content div:nth-of-type(2) p:first-of-type{
+      font-size:14px;
+    }
+    .guess-share-content div:nth-of-type(2){
+      position:relative;
+      left:-6px;
+    }
+}

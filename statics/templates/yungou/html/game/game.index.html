@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript">
+    var time = new Date().getTime();
+  </script>
+  <meta charset="utf-8">
+
+  <title>幸运三关</title>
+  <script>document.write('<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/mobile/game.css?v=' + Date.now() + '">');</script>
+  <!--http://www.html5rocks.com/en/mobile/mobifying/-->
+  <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+
+  <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- force webkit on 360 -->
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <!-- force edge on IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- force full screen on some browser -->
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  
+  <!-- force screen orientation on some browser -->
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+
+  <!--fix fireball/issues/3568 -->
+  <!--<meta name="browsermode" content="application">-->
+  <meta name="x5-page-mode" content="app">
+
+  <!--<link rel="apple-touch-icon" href=".png" />-->
+  <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
+  <script>document.write('<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/html/game/style-mobile.7c914.css?v=' + Date.now() + '">');</script>
+  
+  <script>document.write("<script type='text/javascript' src='/statics/templates/yungou/js/mobile/csg/jquery-3.2.1.min.js?v=" + Date.now() + "'><\/script>");</script>
+  <script type="text/javascript">
+    var nowMid = {wc:php:start}echo $sid;{wc:php:end};
+    var nowOid = {wc:php:start}echo $rid;{wc:php:end};
+    var num1 = {wc:php:start}echo $data['kh_num'];{wc:php:end};
+    var num2 = {wc:php:start}echo $data['kh_num2'];{wc:php:end};
+    var num3 = {wc:php:start}echo $data['kh_num3'];{wc:php:end};
+    var time1 = {wc:php:start}echo $data['game_time'];{wc:php:end};
+    var time2 = {wc:php:start}echo $data['game_time2'];{wc:php:end};
+    var time3 = {wc:php:start}echo $data['game_time3'];{wc:php:end};
+  </script>
+  <style type="text/css">
+    .PopupBox2{
+      width: 6.0rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 10;
+      border-radius: 0.08rem;
+    }
+    .PopupBox3{
+      position: absolute;
+      top: 13%;
+      z-index: 10;
+      width: 100%;
+    }
+    .PopupBox3 img{
+      width: 94%;
+      margin-left: 3%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+  <div id="splash">
+    <div class="progress-bar stripes">
+      <span style="width: 0%"></span>
+    </div>
+  </div>
+  <div class="PopupBox2" id="falseBox" style="display: none;width: auto;top:70%;background-color: ;">
+    <div id="falseBoxTitle"></div>
+  </div>
+  <div class="PopupBox3" id="luckeBox" style="display: none;background-color: ;">
+    {wc:php:start}if($luck == 4){echo '<img src="/statics/templates/yungou/images/mobile/game/one.png">';}else if($luck == 3){echo '<img src="/statics/templates/yungou/images/mobile/game/two.png"';}else if($luck == 2){echo '<img src="/statics/templates/yungou/images/mobile/game/three.png">';}{wc:php:end}
+  </div>
+<script type="text/javascript">
+  
+</script>
+<script>document.write("<script type='text/javascript' src='/statics/templates/yungou/html/game/src/settings.deeb0.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='/statics/templates/yungou/html/game/main.188a6.js?v=" + Date.now() + "'><\/script>");</script>
+
+</body>
+</html>

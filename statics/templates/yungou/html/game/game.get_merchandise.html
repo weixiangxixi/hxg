@@ -1,0 +1,486 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>获得商品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+    <link href="/statics/templates/yungou/css/mobile/comm3.css" rel="stylesheet" type="text/css">
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+    <script src="/statics/templates/yungou/js/mobile/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script>
+    <link rel="stylesheet" href="/statics/templates/yungou/css/mobile/exchange.css?v=18060402">
+<script src="/statics/templates/yungou/js/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+<style>
+
+    body{
+        background: #fff !important;
+    }
+    .dialogDetail{
+        text-align: center;
+        margin-top: 4px;
+    }
+    #amount{
+        text-align: center;
+    }
+    #amount .addressList{
+        text-align: left;
+    }
+    .labelForAddress{
+        width: 20px;
+        height: 20px;
+        display: block;
+        border: 1px solid #f90;
+        border-radius: 50%;
+        position: relative;
+    }
+    #dizhi{
+        text-align: left;
+    }
+    #dizhi input[type="radio"]{
+        display: none;
+    }
+    #dizhi input[type="radio"]:checked + .labelForAddress::before{
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 2px;
+        left: 2px;
+        background: #f90;
+        border-radius: 50%;
+    }
+    .section .layermcont{
+        padding:0px;
+    }
+    #dialog{
+        padding: 0px;
+        font-size: 13px;
+    }
+    .exchangeTitle{
+        width: 100%;
+        height: 40px;
+        background: #FE6D0B;
+        color: #fff;
+        line-height: 40px;
+        text-indent: 10px;
+    }
+    .layermbox0 .layermchild{
+        width: 90%;
+        position: relative;
+    }
+    .layermbtn{
+        position: absolute;
+        width: 100%;
+    }
+    .addressList ul{
+        max-height: 162px;
+        overflow: scroll;
+    }
+    .addAddressArea{
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        margin-top: 10px;
+        border-top: 1px solid #f5f5f5;
+    }
+    .addAddressArea .addAddress{
+        width: 24px;
+        height: 24px;
+        display: block;
+        position: absolute;
+        right: 6px;
+        background: #f90;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 19px;
+        line-height: 24px;
+        top: 6px;
+        text-align: center;
+    }
+    .addAddressArea .title{
+        font-size: 14px;
+        position: absolute;
+        left: 10px;
+        color: #fff;
+        font-weight: bold;
+    }
+    .Prompt{
+        font-size: 12px;
+    }
+    #loadingPicBlock .nav-wrapper .nav-list li{
+        width: 50%;
+    }
+    .zzx {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #ccc;
+    top: 0px;
+    display: none;
+    opacity: 0.5;
+}
+.zz {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    display: none;
+}
+.tx {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    background-color: #f60;
+    position: fixed;
+    padding-bottom: 20px;
+}
+.fz_img {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10%;
+    background-color: #f60;
+    position: fixed;
+}
+.close img{
+    position: absolute;
+    z-index: 9;
+    height: 25px;
+    right: 8%;
+    margin-top: 11%;
+}
+.tx p:first-child{
+    margin-top: 4px;
+    margin-right: 4px;
+    text-align: right;
+}
+.tx p img{
+    height: 20px;
+}
+
+.tx p{
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+.tx p em{
+    color: #ff0000;
+    font-size: 16px;
+}
+.tx button{
+    display: block;
+    margin: auto;
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #af4600;
+}
+.fz_img img{
+    width: 90%;
+    margin: 10% 5%;
+    height: 400px;
+}
+</style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+</head>
+<body>
+<div id="loadingPicBlock">
+    <!-- <nav class="nav-wrapper" id="hook">
+        <div class="nav-inner">
+            <ul class="nav-list clearfix">
+                <li data-mark="info" class="current"><span>获得商品</span></li> 
+            </ul>
+        </div>
+        <div class="nav-block"></div>
+    </nav> -->
+    <section id="ex-info" style="display: block;">
+        <ul id="info"></ul>
+    </section>
+    <div id="divGoodsLoading" class="">
+        <s></s>
+    </div>
+</div>
+<div class="zzx">
+</div>
+<div class="zz">
+    <div class="close"><img src='/statics/templates/yungou/images/mobile/close.png'></div>
+    <div class="fz_img">
+        
+    </div>
+</div>
+<style>
+    #dizhi{
+        padding: 10px 10px;
+        height: 58px;
+        border-top: 1px solid rgb(204,204,204);
+    }
+    #dizhi table{
+        width: 100%;
+    }
+    #dizhi table td p:nth-child(2){
+        color: #888;
+        font-size: 12px;
+    }
+    #dizhi table tr td input{
+        width: 20px;
+    }
+    #adddizhi-div{
+        text-align: center
+    }
+    #adddizhi-div p{
+        width: 50px;
+        padding: 5px 18px;
+        background: #eee;
+        margin-left:29%;
+        border-radius: 5px;
+    }
+    .layui-layer-dialog{
+        top: 5px!important;
+    }
+    .pageDialog{
+        top: 300px!important;
+    }
+    div.pageDialog{
+        z-index: 99999999;
+    }
+</style>
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/message.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="/statics/templates/yungou/js/jquery.cookie.js"></script>
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript" type="text/javascript"></script>
+
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_personal > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+<script type="application/javascript">
+    var Path = new Object();
+    Path.Skin = "{G_TEMPLATES_STYLE}";
+    Path.Webpath = "{WEB_PATH}";
+
+    var Base = {
+        head: document.getElementsByTagName("head")[0] || document.documentElement,
+        Myload: function (B, A) {
+            this.done = false;
+            B.onload = B.onreadystatechange = function () {
+                if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                    this.done = true;
+                    A();
+                    B.onload = B.onreadystatechange = null;
+                    if (this.head && B.parentNode) {
+                        this.head.removeChild(B)
+                    }
+                }
+            }
+        },
+        getScript: function (A, C) {
+            var B = function () {
+            };
+            if (C != undefined) {
+                B = C
+            }
+            var D = document.createElement("script");
+            D.setAttribute("language", "javascript");
+            D.setAttribute("type", "text/javascript");
+            D.setAttribute("src", A);
+            this.head.appendChild(D);
+            this.Myload(D, B)
+        },
+        getStyle: function (A, B) {
+            var B = function () {
+            };
+            if (callBack != undefined) {
+                B = callBack
+            }
+            var C = document.createElement("link");
+            C.setAttribute("type", "text/css");
+            C.setAttribute("rel", "stylesheet");
+            C.setAttribute("href", A);
+            this.head.appendChild(C);
+            this.Myload(C, B)
+        }
+    }
+
+    function GetVerNum() {
+        var D = new Date();
+        return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+    }
+
+    Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v=' + GetVerNum());
+    var nav = $("#hook"),
+        elm = $("#divGoodsLoading"),
+        bodyScroll = function () {
+            var cHeight = document.documentElement.clientHeight,
+                sTop =  $(document).scrollTop()+900,
+                height = cHeight + sTop,
+                eTop = elm.offset().top,
+                current = nav.find('li.current').data('mark');
+            if (sTop >= eTop) {
+                switch (current) {
+                    case 'info':
+                        get_info();
+                        break;
+                    case 'goods':
+                        get_goods();
+                        break;
+                }
+            }
+        };
+
+    window.onload = function () {
+        $(window).bind("scroll", bodyScroll);
+        var type, str = location.search.substr(1),
+            Block = $("#loadingPicBlock");
+
+            Block.find("nav ul li[data-mark='info']").addClass('current');
+            get_info();
+
+        Block.addClass(type);
+    };
+
+    function get_info() {
+        var hook = $("#hook li[data-mark='info']"),
+            page = hook.attr('page'),
+            end = hook.data('load'),
+            req = hook.attr('req'),
+            url = '/index.php/mobile/game/swaprecord';
+
+        hook.data('data', true);
+        if (end === false || req === 'on') {
+            return false;
+        }
+        if (!req || req === 'off') {
+            hook.attr('req', 'on');
+        }
+        page = !page ? 1 : page;
+        elm.addClass("loading");
+        $.getJSON(url, {"page": page}, function (data) {
+
+            var re = $("#info"),
+                ul = '';
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].dizhi_id == '0') {
+                    ul += '<li>';
+    
+                } else if(data[i].wuliu != ''){
+                    ul += '<li data-index="' + data[i].id + '">';
+                }
+                
+                ul += '<a href="javascript:void(0);" class="fl z-Limg">';
+                ul += '<img src="/statics/templates/yungou/images/loading.gif?171209" src2="/statics/uploads/' + data[i].thumb + '" border=0 alt=""/>';
+                ul += '</a>';
+                ul += '<div class="u-gds-r gray9">';
+                ul += '<p class="z-gds-tt"><a class="gray6"><em style="font-size:16px;color:red">(闯三关)</em>' + data[i].name + '</a></p>';
+                ul += '<p>商品价格： ' + data[i].price + '元</p>';
+                ul += '<p>获得时间： ' + data[i].create_time + '</p>';
+
+                if (data[i].dizhi_id == '0') {
+                    if(data[i].yes == 1){
+                        ul += '<a href="' + Gobal.Webpath + '/mobile/game/wsdz/' + data[i].id + '" class="z-gds-btn">完善收货地址</a>';
+                    }else{
+                        ul += '<p class="z-gds-btn" onclick="fz('+data[i].id+')">已有'+data[i].friends_num+'个好友完成辅助(需'+data[i].friends+'个好友辅助)</p>';
+                    }
+                } else if(data[i].wuliu != ''){
+                    ul += '<a href="javascript:void(0);" class="z-gds-btn z-gds-btnDis">' + data[i].wuliu + '</a>';
+                    if (data[i].wuliu == '已发货' && data[i].company == '惠享配送') {
+                        ul += '<a href="javascript:void(0);" data-id="' + data[i].id + '" class="z-gds-btn">确认收货</a>';
+                    }
+                }
+                ul += '</div></li>';
+            }
+            re.append(ul);
+
+            if (data.message && !ul) {
+                ul += '<p>' + data.message + '</p>';
+                re.append(ul);
+            }
+            if (data.length < 10) {
+                elm.removeClass("loading");
+                hook.data("load", false);
+            } else {
+                elm.removeClass("loading");
+                hook.attr("page", parseInt(page) + 1);
+            }
+            loadImgFun(0);
+            hook.attr('req', 'off');
+        });
+    }
+
+    $("#ex-info").on('click', 'a[data-id]', function (e) {
+        var orderId = $(this).attr("data-id");
+        $.PageDialog.confirm("确认是否真的收到货啦!", function () {
+            $.post(Path.Webpath + "/mobile/game/csg_shouhuo", {
+                "did": orderId
+            }, function (data) {
+                if (data == 1) {
+                    window.location.reload();
+                } else {
+                    $.PageDialog.fail("确认收货地址失败!");
+                }
+            });
+        });
+        e.stopPropagation();
+    });
+    $("#ex-info").on('click', 'li[data-index]', function (e) {
+        var $this = $(this),
+            index = $this.data('index');
+       window.location.href = '/index.php/mobile/game/swapOrderDetail/' + index;
+    });
+
+    function fz(id){
+        $.ajax({
+            type: 'post',
+            url: '/index.php/mobile/game/fz_get',
+            data: {'id':id},
+            dataType: 'json',
+            success:function(data){
+                if(data.status != 1){
+                    $.PageDialog.fail(data.msg);
+                }else{
+                    $('.fz_img').replaceWith("<div class='fz_img'><img src='/game_img2.php?fid="+data.fid+"&sid="+data.sid+"'></div>");
+                    $('.zz,.zzx').show();
+                    document.documentElement.style.overflow='hidden';
+                    document.body.style.overflow='hidden';
+                    $('.close img').click(function(){
+                        $('.zz,.zzx').hide();
+                        $('body').css({ 
+                            "overflow-x":"auto",
+                            "overflow-y":"auto"        
+                        });
+                    })
+                }
+            }
+        })
+    }
+
+   
+
+</script>
+
+</body></html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>在线付款</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" /> 
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.header{
+		height: 46px;
+		background: #393a3f;
+		width: 100%;
+		line-height: 46px;
+		position: relative;
+	}
+	.header a{
+		display: inline-block;
+		width:10%;
+		text-align: center;
+	
+	}
+	.header a img{
+		width: 40%;
+		padding: 0 12px;
+		border-right:1px solid #1e1e1e ;
+		vertical-align: middle;
+	}
+	.header span.name{
+		color: #fff;
+		padding-left: 12px;
+	}
+	.header .more{
+		display: inline-block;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	.header .more span em{
+		content: '';
+		width: 3px;
+		height: 3px;
+		display: block;
+		background: #fff;
+		margin: 4px;
+		border-radius: 4px;
+	}
+	.content{
+		padding: 20px;
+	}
+	.content h1 img{
+		width: 24%;
+	}
+	.container p{
+		font-size: 30px;
+		color: #999;
+		text-align: center;
+	}
+	.content p span{
+	text-align: center;
+		color: #e09a0d;
+		font-size: 40px;
+	}
+	.content p span small{
+		padding-left: 4px;
+		color: #999;font-size: 12px;
+	}
+	.content h5{
+		font-size: 17px;
+		color: #999;
+		padding-top: 30px;
+		font-weight: normal;
+		text-align: center;
+	}
+	.content > small:first-of-type{
+		padding-top: 30px;
+	}
+	.content > small{
+		color: #bbb;
+		display: block;
+		text-align: center;
+		line-height: 16px;
+		font-size: 14px
+	}
+	.content .tz{
+		text-align: center;
+		margin-top: 30px;
+	}
+	.content .tz a{
+		padding:10px 16px;
+		background: #d7544f;
+		border-radius: 4px;
+		color: #fff;
+		text-decoration: none;
+		font-size: 12px;
+	}
+	.content .tz img{
+		width: 50%;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 30px;
+	}
+	.footer{
+		position: absolute;
+		bottom: 0;
+		border-top: 1px solid #ededed;
+		line-height: 50px;
+		text-align: center;
+		width: 100%;
+		color: #0485db;
+	}
+	.skip{
+		width: 20%;
+		position: absolute;
+		right:10px;
+		top:30px;
+	}
+	.skip img{
+		width: 100%;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<!-- <div class="header">
+			<a href=""><img src="/statics/templates/yungou/images/mobile/close.png"/></a><span class="name">在线付款</span>
+			<div class="more"><span><em></em><em></em><em></em></span></div>
+		</div> -->
+		<div class="content">
+			<h1><img src="/statics/templates/yungou/images/mobile/alipay.png"/></h1>
+			<p><!-- 会员ID/订单号：Ruishi_1522625255555 --> <span>{wc:$m}.00元<!--<small>元</small>--></span></p>
+			<h5>请点击右上角菜单，安卓选择在浏览器中打开，苹果选择在Safari中打开...</h5>
+			<small>注意：转账金额需要与充值金额一致才能充值成功哦</small>
+			<!-- <small class="time">04分53秒过期</small> -->
+			<div class="skip"><img src="/statics/templates/yungou/images/mobile/skip.png"/></div>
+			<div class="tz">
+				<img src="/statics/templates/yungou/images/mobile/qralipay.png" /> <!--qrcode-->
+				<a href="/index.php/mobile/home">付款成功点击这里</a>
+			</div>
+		</div>
+		
+	</div>
+	<div class="footer">支付宝</div>
+</body>
+</html>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+</script>
+<script type="text/javascript">
+	function test(){
+		var ua = navigator.userAgent.toLowerCase(); 
+		if(ua.match(/MicroMessenger/i) != "micromessenger") { 
+			window.location.href = "HTTPS://QR.ALIPAY.COM/FKX016510C2DIM5TKT4472";
+		}
+	}
+	//HTTPS://QR.ALIPAY.COM/FKX097910HGCZ8GXD7OAD9
+	//HTTPS://QR.ALIPAY.COM/FKX016510C2DIM5TKT4472
+	test();
+</script>
+<script type="text/javascript">
+	function tishi(){
+	    alert('重要提示：点右上角选在浏览器打开，付款时必须输入指定金额({wc:$m}元)，否则会充值失败哦！');
+	}
+	
+	setTimeout("tishi()",1000);
+</script>

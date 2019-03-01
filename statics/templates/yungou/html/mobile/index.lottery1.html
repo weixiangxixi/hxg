@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" /><title>
+	1最新揭晓 - {wc:$webname}
+</title><meta content="app-id=518966501" name="apple-itunes-app" /><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black" name="apple-mobile-web-app-status-bar-style" /><meta content="telephone=no" name="format-detection" />
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile/lottery1.css" rel="stylesheet" type="text/css" />
+<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+ <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Lottery1.js" language="javascript" type="text/javascript"></script> 
+
+ <script src="{G_TEMPLATES_JS}/mobile/js.cookie.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/lodash.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/response.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/swiper.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/countdown.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/comm.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/simpop.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/jquery.lazyload.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/ajax.js"></script>
+    <script>
+    var DuoBao = {};
+    var __data__ = (function() {
+        return JSON.parse('{}');
+    })();
+    var __user__ = (function() {
+        return JSON.parse('{}');
+
+    })();
+    var __touchorclick__ = (function() {
+        if ('ontouchend' in document)
+            return 'touchend';
+        else
+            return 'click';
+    })();
+    </script>
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+<!-- 栏目页面顶部 -->
+
+
+
+<!-- 内页顶部 -->
+     <!-- <div class="zxjx">
+                
+                
+               
+               
+                <ul class="ul" style="border-right: 1px solid #dcdcdc;">
+                    <script>
+                    (function() {
+                        DuoBao.refresh_prize = function refresh_prize() {
+                           
+                            var $el = $($(this).data('dom_id'));
+                            console.log($el.attr('title'))
+                            $.get($el.attr('title'), {
+                                raw_only: 'true'
+                            }, function(data) {
+                                $el.html(data);
+                            });
+                        };
+
+                        
+
+                    })();
+                    </script>
+                    {wc:loop $shopqishu $k $qishu} {wc:php:start} $qishu['q_user'] = unserialize($qishu['q_user']); {wc:php:end} {wc:if $qishu['q_showtime']=='N'}
+                    
+                    {wc:else}
+                    <li style="display:block;clear:both;position: relative;width: 100%;padding-top: 0.4rem;margin: 0 auto">
+                        <a style="color:#666;" href="{WEB_PATH}/mobile/mobile/item/{wc:$qishu['id']}" id="r{wc:$qishu['id']}" title="{WEB_PATH}/mobile/mobile/itemajax/{wc:$qishu['id']}">
+                            <div style="width:34%;position:relative;left:0.5rem;padding:0.4rem 0.4rem;float: left;">
+                                <img style="width:68%;float: left;border:0.01rem solid #f4f4f4;" src="{G_UPLOAD_PATH}/{wc:$qishu['thumb']}" class="lazy_loading_image">
+                                 <div id="daojishi" style="color: #22aaff;"><img style="width:3rem;position: absolute;top: 0.4rem;left: 0.4rem;" src="/statics/templates/yungou/images/djs.png"></div>
+                            </div>
+                            <div class="txt" style="position: relative;top: 0;left: -1.4rem;">
+                                <h6 style="line-height:1rem;font-weight:lighter;color:#999;font-size: 0.8rem;margin-top: 0.2rem; ">{wc:fun:_strcut($qishu['title'],30)}</h6>
+                                <div class="zj">
+                                    <div style="text-align:left;white-space: nowrap; text-overflow: ellipsis; overflow: hidden; color:red;padding:0.4rem 0 0 0;line-height:0.6rem;">
+                                        <time class="countdown" style="color:#22aaff;white-space: nowrap; text-overflow: ellipsis; overflow: hidden;font-size: 0.6rem;line-height: 2rem;height: 2rem;" data-dom_id="#r{wc:$qishu['id']}" data-sec="{wc:fun:ceil($qishu['q_end_time']-time())}" data-text="正在揭晓..." data-delay="1000" data-callback="DuoBao.refresh_prize">开始倒计时</time>
+                                       
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {wc:if:end} {wc:loop:end}
+                </ul>
+            </div> -->
+             <!-- '/statics/templates/yungou/images/djs.png' -->
+    <section class="revealed" style="margin-bottom: 48px;">
+	    <div id="divLottery" class="revCon">
+	    	<style>
+				.touxianga{
+					position: absolute;
+					right: 0px;
+					top: 20px;
+				}
+	    	</style>
+            <div id="divLotteryLoading" class="loading" style="height: 80px;"><b></b>正在加载</div>
+            <a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;"><i class="jiazai"></i>点击加载更多</a>
+        </div>
+    </section>
+    
+{wc:templates "mobile/index","footer"}
+<script src="{G_TEMPLATES_JS}/mobile/main.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    $(function(){
+        $('.footerdi .f_home').find('i').css('background-image','url(/statics/templates/yungou/images/mobile/chao1.png)');
+    });
+    });
+</script>
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.path = "{G_WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    console.log(1);
+    $('.footer .f_home').find('i').css('background-image', 'url(/statics/templates/yungou/images/mobile/chao1.png)');
+  
+  	var str = $('.rNow .revConR').children('p:last').html();
+  	console.log(str);
+  	/*
+  	if(str.indexOf('正在计算') >= 0){
+  		$('.rNow .revConR P:last').css('width','50%');
+  	}*/
+  
+  });
+
+</script>
+</div>
+
+
+</body>
+</html>

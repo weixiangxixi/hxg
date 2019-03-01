@@ -1,0 +1,991 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>大转盘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <script src="/statics/templates/yungou/js/mobile/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="http://game.dyyyyg.net/statics/templates/ffxiang/js/mobile/layer_mobile/need/layer.css" />
+	<script src="/statics/templates/yungou/js/mobile/jquery-1.10.2.js" language="javascript" type="text/javascript"></script>
+	<script src="/statics/templates/yungou/js/mobile/awardRotate.js" language="javascript" type="text/javascript"></script>
+	<script src="/statics/templates/yungou/js/mobile/musicAutoPlay.js?v=2.0" language="javascript" type="text/javascript"></script>
+	<script src="/statics/templates/yungou/js/mobile/layer.js?v=2.0" language="javascript" type="text/javascript"></script>
+<style>
+	html{
+		/*background:#ccffff;*/
+		height:100%;
+	}
+	body{
+		max-width: 640px;
+		margin: 0 auto;
+		position: relative;
+		height:100%;
+	}
+	.lotteryList ul li
+	{
+		font-size: 12px;
+	}
+	.lucky_header_box{
+		width: 100%;
+		max-width: 640px;
+		margin: 0 auto;
+		overflow: hidden;
+		max-height: 320px;
+		position: relative;
+		margin-bottom: -5%;
+	}
+	.lucky_header_box .logo{
+		position: absolute;
+		height: 16%;
+		right: 2%;
+		top: 2%;
+	}
+	.lucky_header{
+		width: 70%;
+		margin-left: 15%;
+	}
+	.box{
+		margin:0 auto;
+		max-width: 640px;
+	}
+	.banner{
+		position: relative;
+		width: 90%;
+		margin: auto;
+		margin-top: 30px;
+	}
+	.banner span{
+		position: absolute;
+		font-weight: bold;
+	}
+	.banner .yprizetip{
+		bottom: 55px;
+		left: 0px;
+		color:#fff;
+	}
+	.banner .ruletip{
+		bottom: 55px;
+		right: 0px;
+		color: #fff;
+	}
+	.yprize img, .rule img{
+		width: 100%;
+	}
+
+	/*bgm*/
+	#bgm {
+		position: absolute;
+		top: .5rem;
+		left: .5rem;
+		width: 2rem;
+		height: 2rem;
+		background: transparent url("/statics/templates/yungou/images/mobile/music.png") no-repeat center / 1.5rem 1.5rem;
+		cursor: pointer;
+		-webkit-tap-highlight-color: rgba(255,255,255,0);
+		-webkit-animation: music 2s infinite linear;
+		animation-fill-mode: forwards;
+		z-index: 2;
+	}
+
+	@-webkit-keyframes music {
+		100% {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+	#shownum{
+		position: absolute;
+		bottom:0 ;
+		left: 50%;
+		width: 220px;
+		height: 30px;
+		background: #75c8da;
+		margin-left: -110px;
+		text-align: center;
+		box-sizing: border-box;
+		line-height: 30px;
+		border-radius: 10px;
+		opacity: 0;
+		z-index: 100010;
+	}
+	.banner .turnplate{
+		z-index: 10001;
+		position: relative;
+	}
+	.banner .turnplate img.pointer{
+		width: 24%;
+		height: auto;
+		left: 38%;
+		position: absolute;
+		top: 36%;
+		cursor: pointer;
+	}
+	.banner .turnplateBottom{
+		width: 240px;
+		height: auto;
+		display: block;
+		margin: -44px auto 0;
+	}
+	.box-bottom{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		z-index: 10001;
+		height: 10%;
+		position: relative;
+		align-items: center;
+	}
+	.box-bottom .yprize,.box-bottom .rule{
+		width: 17%;
+		text-align: center;
+	}
+	#msg{
+		z-index: 1000001;
+	}
+	.linkBox{
+		position: fixed;
+		width: 100%;
+		z-index: 999999;
+		max-width: 640px;
+	}
+	.vlink{
+		height: 40px;
+	}
+	.link{
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		background: #3e3e3e;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+		position: relative;
+	}
+	.closeLink{
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		right: 10px;
+		font-size: 22px;
+		top: 0px;
+		line-height: 40px;
+		transform: rotateZ(225deg);
+		cursor: pointer;
+	}
+	.linkLogo{
+		width: 70px;
+		position: absolute;
+		left: 10px;
+		top: 7px;
+	}
+	.qrCodeBox ,.myqrCodeBox{
+		width: 60%;
+		position: absolute;
+		top: 20%;
+		left: 20%;
+		z-index: 100001;
+		border-radius: 10%;
+		opacity: 0;
+		display: none;
+	}
+	.innerBox{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.innerBox .close{
+		position: absolute;
+		right: -6px;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		line-height: 20px;
+		background: #000;
+		color: #fff;
+		cursor: pointer;
+		border-radius: 50%;
+		top: -6px;
+		font-size: 12px;
+		transform: rotateZ(45deg);
+	}
+	.innerBox img{
+		width: 100%;
+		border-radius: 10%;
+	}
+	.layui-m-layerbtn span[yes] {
+		color: #FFF;
+	}
+	.turnplate-bg{
+		/*background-image: url("http://dyyyyg-static.oss-cn-shenzhen.aliyuncs.com/lucky/img/20180918/5ba0a0c5f1e56.png");*/
+		/*background-size: 100% 100%;*/
+		/*background-position: center top;*/
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		padding: 10px;
+		margin:0 auto;
+		position: relative;
+	}
+	.myQrcodeBt{
+		width: 74px;
+		height: 24px;
+		background: #ffff00;
+		border: none;
+		box-sizing: border-box;
+		cursor: pointer;
+		border-radius: 4px;
+		color: #f00;
+	}
+	.qrcodeTip{
+		width: 80%;
+		/*position: absolute;*/
+		position: fixed;
+		bottom: 10%;
+		/*bottom: -26%;*/
+		left: 10%;
+		text-align: center;
+		background: #000;
+		color: #fff;
+		padding: 2%;
+		border-radius: 8px;
+		font-weight: bold;
+	}
+	.qrcodeTip2{
+		width: 80%;
+		position: fixed;
+		bottom: 15%;
+		left: 10%;
+		text-align: center;
+		background: #eaeaea;
+		color: #262626;
+		padding: 2%;
+		border-radius: 8px;
+		font-weight: bold;
+	}
+
+	/*
+	提示
+	 */
+	.district .layui-m-layercont{
+		padding: 10px 0px 0px 0px;
+		min-height: 100px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+	}
+	.district .layui-m-layerbtn{
+		width: 100%;
+		line-height: 30px;
+		height: 30px;
+		background: #ff8e8e;
+		color: #fff;
+	}
+	.awardDistrict{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		padding: 10px;
+	}
+	.awardDistrict img{
+		width: 40%;
+		margin:0 auto;
+	}
+	.awardDistrict p{
+		width: 80%;
+		margin:0 auto;
+		text-align: center;
+		font-weight:bold;
+	}
+	/*end*/
+
+	/*
+		规则
+	*/
+	.rule p{
+		width: 100%;
+		height: auto;
+		word-wrap:break-word;
+		word-break:break-all;
+		overflow: hidden;
+		text-align: left;
+	}
+	.rule .layui-m-layerbtn{
+		background: #ff9c00;
+	}
+	.rule .layui-m-layerbtn span{
+		color: #fff;
+		font-weight: bold;
+	}
+	.rule .layui-m-layercont{
+		max-height: 300px;
+		overflow: scroll;
+	}
+	#wheelcanvas{
+		width: 100%;
+		height: 100%;
+	}
+	.finger{
+		width: 12%;
+		position: absolute;
+		left: 44%;
+		top: -8%;
+		z-index: 999999;
+	}
+	.plateBack{
+		position: absolute;
+		width: 100%;
+		top: 2%;
+		left: -2%;
+		z-index: -1;
+	}
+	.boot{
+		position: absolute;
+		height: 80%;
+		z-index: -1;
+		right: 0;
+		top: -10px;
+	}
+	.watermark{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+		/*height:100%;*/
+	}
+
+	/*
+		样式修改-20180704
+	*/
+	.banner .turnplate img.pointer{
+		left: 38%;
+		top: 37%;
+	}
+	.banner .turnplateBottom{
+		width: 70%;
+		height: auto;
+		display: block;
+		margin: -2% auto;
+	}
+	.turnplate{
+		/*display: inline-block;*/
+		/*margin-left: calc(6%);*/
+		/*margin-right: calc(6%);*/
+	}
+
+	.myQrcodeBt{
+		background: rgb(241, 189, 58);
+		color: #000;
+	}
+	.lucky_header_box{
+		padding: 2% 12% 1%;
+		box-sizing: border-box;
+	}
+	.backbody{
+		position: absolute;
+		/*top: 40px;*/
+		left: 0;
+		width: 100%;
+		z-index: 0;
+	}
+	.zhen{
+		width: 8%;
+		position: absolute;
+		z-index: 10002;
+		top: 0;
+		height: 12%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+	.footer .u-ft-nav{
+		max-width: 640px;
+	}
+	/* 图片弹出层start */
+	.layer_bottom{
+		display: none;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		background: rgba(0,0,0,0.7);
+		z-index: 100020;
+	}
+	.layer_content{
+		position: relative;
+		width: 70%;
+		height: auto;
+		top: 15%;
+		left:15%;
+	}
+	.layer_content img{
+		width: 100%;
+		height: auto;
+		border: 3px solid #acacac;
+	}
+	.closeCodeImg{
+		position: absolute;
+		right: -13px;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+		line-height: 20px;
+		background: #000;
+		color: #fff;
+		cursor: pointer;
+		border-radius: 50%;
+		top: -9px;
+		font-size: 12px;
+	}
+	/* 图片弹出层end */
+
+	.logo{
+		width:100%;
+	}
+	.logo img{
+		position: relative;
+		width: 23%;
+		left: 38%;
+		margin-top: 2%;
+	}
+</style>
+</head>
+<body>
+<div class="layer_bottom">
+	<div class="layer_content">
+		<img src="" alt="">
+		<div class="closeCodeImg">
+			X
+		</div>
+	</div>
+	<div class='qrcodeTip2'></div>
+</div>
+<img class="watermark" src="/statics/templates/yungou/images/mobile/zpbg.png">
+<img class="backbody" src="/statics/templates/yungou/images/mobile/5ba0a1f0ab37e.png" />
+<div class="linkBox">
+	<div class="link">
+
+		点击关注惠享购		<span class="closeLink">
+			+
+		</span>
+	</div>
+</div>
+<div class="vlink"></div>
+<div class="logo"><img src="/statics/templates/yungou/images/mobile/logo.gif" alt=""></div>
+<div class="lucky_header_box">
+	<img class="lucky_header" src="/statics/templates/yungou/images/mobile/guoqing.png"/>
+	<div id="bgm"></div>
+	<div id="shownum"></div>
+</div>
+<div class="box">
+	<div class="banner">
+		<div class="turnplate">
+			<img class="zhen" src="/statics/templates/yungou/images/mobile/zhizhen.png" alt="">
+			<canvas class="item" id="wheelcanvas" width="400px" height="400px"></canvas>
+			<img class="pointer" src="/statics/templates/yungou/images/mobile/5ba09fd151c78.png"/>
+						<!--<img class="turnplateBottom" src="http://dyyyyg-static.oss-cn-shenzhen.aliyuncs.com/lucky/img/20180918/5ba0a0695bd83.png"/>-->
+			<!--<img class="turnplateBottom" src="/images/turntable/lucky_bottom.png"/>-->
+					</div>
+	</div>
+	<div id="msg" style="display: none;">
+		<div id="innerTxt">
+			<p style="margin-top: 20%;">抽奖次数已用完！</p>
+			<a href='#'>前往充值</a>
+		</div>
+		<p id="mClose">+</p>
+	</div>
+</div>
+<div class="box-bottom">
+	<!--<img class="boot" src="/images/turntable/boot.png" />-->
+	<a class="yprize" href="/index.php/mobile/zhuanpan/getPersonprize" ><img src="/statics/templates/yungou/images/mobile/prize.png" alt=""></a>
+		<button class="myQrcodeBt">增加机会</button>
+		<div class="rule"><img src="/statics/templates/yungou/images/mobile/rule.png" alt=""></div>
+</div>
+<div class="qrCodeBox">
+	<div class="innerBox">
+		<img src="/statics/templates/yungou/images/mobile/gqbg1.jpg"/>
+		<div class="close">
+			+
+		</div>
+	</div>
+</div>
+<div class="myqrCodeBox">
+	<div class="innerBox">
+		<img class="mycode" src="/guoqing.php?id={wc:$uid}/"/>
+		<div class="close">
+			+
+		</div>
+		<div class="qrcodeTip">保存图片分享到朋友圈，2位以上好友扫描参与，您即可再获得一次转盘机会哦 （扫码好友必须先登录泰享购）</div>
+	</div>
+</div>
+
+<style>
+    .footer .u-ft-nav{
+        z-index:100009;
+    }
+</style>
+{wc:templates "mobile/index","footer"}
+
+<!--开启全站微信分享自定义-->
+<!--<script type="text/javascript" src="http://game.dyyyyg.net/statics/templates/ffxiang/js/jquery.cookie.js"></script>
+-->
+<!--end--></body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript"> //微信分享和音频函数
+var shareData = {
+    title:"惠享购送你iPhoneX！", // 分享标题
+    desc: "商品数量有限,快点来抢吧！", // 分享描述
+    link: 'http://tt.ysqyg.xyz?g=%2Findex.php%2Fmobile%2Fhome%2Fgoto_game', // 分享链接
+    imgUrl: 'http://dyyyyg-static.oss-cn-shenzhen.aliyuncs.com/images/mobile/luckyicon/201801168.png?v=10002', // 分享图标
+
+    trigger: function (res) {
+        $.getJSON("http://game.dyyyyg.net/index.php/mobile/luckyicon/updateshare",function(json){
+            setTimeout(function(){
+                if(json.share==1){
+                    showMsg(json.tip);
+                }else if(json.share==2){
+                    showMsg("您今天的分享次数已经用完了");
+                }else if(json.share==0){
+                    showMsg(json.tip);
+                }
+            },1000);
+        })
+    },
+    cancel: function (res) {
+
+    }
+
+};
+wx.config({
+    debug:false,
+    appId: '',
+    timestamp: '',
+    nonceStr: '',
+    signature: '',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+});
+wx.ready(function(){
+    wx.onMenuShareTimeline(shareData);
+    wx.onMenuShareAppMessage(shareData);
+
+    /*IOS端音频自动播放*/
+    audio.play();
+    audio.loop = true;
+});
+</script>
+<script type="text/javascript">
+    var canvas = document.getElementById("wheelcanvas");//获取奖品canvas
+    var context = canvas.getContext("2d");
+
+    var turnplate={
+        restaraunts:[],				//大转盘奖品
+        colors:[],					//大转盘奖品区块对应背景颜色
+        outsideRadius:150,			//大转盘外圆的半径
+        insideRadius:0,			//大转盘内圆的半径
+        textRadius:120,				//大转盘奖品位置距离圆心的距离
+        startAngle:0,				//开始角度
+        bRotate:false,				//false:停止;ture:旋转
+    };
+
+    function showMsg(msg,type){ //提示框
+        var btns="OK";
+        if(type==2){
+            btns="去充值"
+        }
+        if(type==3){
+            btns="去分享"
+        }
+        if(type==6){
+            btns=new Array("兑换","取消");
+		}
+		if(type==7){
+            btns="去登录"
+		}
+        layer.open({
+            style:"border:none;background:#fff;color:#000",
+            content:msg,
+            btn:btns,
+            className:"district",
+            anim:"up",
+            yes:function(index){
+                if(type==2){
+                    window.location.href='http://m.bhzxdy.net/index.php/mobile/home/user_recharge'
+                }else if(type==7){
+                    window.location.href='http://m.bhzxdy.net/index.php/mobile/home/goto_game'
+				}else if(type==3){
+                    layer.closeAll();
+                    $(".myqrCodeBox").show(100,function(){
+                        $(".myqrCodeBox").animate({opacity:"0.9"},1000);
+                        $(".watermark").css({"z-index":100000,"background":"#000","opacity":'0.4'})
+                    });
+                }else if(type==6){
+                    layer.closeAll();
+                    var msg="该兑换将消耗您250万娱乐币!";
+                    coinChange(msg);
+				}else{
+                    $('.pointer').bind("click", function(){data()});
+                    layer.close(index);
+                }
+            },
+			no:function(){
+                window.location.reload();
+			}
+        })
+    }
+
+    function coinChange(msg){
+        layer.open({
+            style:"border:none;background:#fff;color:#000",
+            content:msg,
+            btn:['确定','取消'],
+            shadeClose:false,
+            yes:function(index){
+                layer.close(index);
+                $.getJSON("http://game.dyyyyg.net/index.php/mobile/luckyicon/exchangeCoin",function(json){
+                    showMsg(json.tip);
+				})
+            },
+			no:function(){
+                window.location.reload();
+			}
+        })
+	}
+
+    function load(){//加载需渲染的数据
+        var imgList=new Array();
+        $.getJSON("/index.php/mobile/zhuanpan/luckyDraw",function(json){
+            var itemList=toArray(json);
+            turnplate.restaraunts = itemList;
+
+            turnplate.colors = ["rgba(0,0,0,0)","rgba(0,0,0,0)","rgba(0,0,0,0)","rgba(0,0,0,0)","rgba(0,0,0,0)","rgba(0,0,0,0)","rgba(0,0,0,0)"];
+
+            for(var i=0;i<turnplate.restaraunts.length;i++){
+                imgList[i]=new Image();
+                imgList[i].src=turnplate.restaraunts[i].imgUrl;
+            }
+
+            var img=[];//图片数组
+            var flag=0;//标识
+
+            var imgTotal = turnplate.restaraunts.length;//应加载的图片长度
+            for(var i = 0 ; i < imgTotal ; i++){
+                img[i] = new Image();
+                img[i].src = turnplate.restaraunts[i].imgUrl;
+
+                img[i].onload = function(){
+                    //第i张图片加载完成
+                    flag++;
+                    if( flag == imgTotal ){
+                        drawRouletteWheel(imgList);
+                    }
+                }
+            }
+        });
+    }
+
+    function toArray(myObj){
+        var array = $.map(myObj, function(value, index) {
+            return [value];
+        });
+
+        return array;
+    }
+
+
+    $(document).ready(function(){
+        load();
+        setTimeout(function(){
+            getMemberInfo();
+        },1000);
+
+        var shownum=$("#shownum");
+        var member="Array";
+        var day_lucky="";
+        var lucky_mun="";
+
+        $("#mClose").click(//关闭按钮
+            function(){
+                $("#msg").css("transition","1s");
+                $("#msg").css({"top":"70%","left":"48%","transform":"rotate(360deg)","opacity":"0"});
+                setTimeout(function(){
+                    $("#msg").hide();
+                    $("#msg").css({"top":"19%","left":"50%","transform":"","opacity":"","transition":""});
+                    getMemberInfo();
+                },1000);
+                $(".arrow_box").hide();
+                $('.pointer').bind("click", function(){data()});
+            });
+
+        $('.pointer').bind("click", function(){data()});//点击旋转
+
+        $(".link").click(function(){
+            $(".qrCodeBox").show(100,function(){
+                $(".qrCodeBox").animate({opacity:"0.9"},1000);
+                $(".watermark").css({"z-index":100000,"background":"#000","opacity":'0.4'})
+            });
+        })
+
+        $(".qrCodeBox .close").click(function(){
+            $(".qrCodeBox").animate({opacity:"0"},1000,function(){
+                $(".qrCodeBox").hide();
+                $(".watermark").css({"z-index":-1,"background":"none","opacity":'1'})
+            });
+        })
+
+        $(".closeLink").click(function(event){
+            event.stopPropagation();    //  阻止事件冒泡
+            $(".link").animate({opacity:"0"},1000,function(){
+                $(".link").hide(1000);
+                $(".vlink").hide(1000);
+                $(".backbody").animate({"top":0},1000);
+            });
+        })
+
+        $(".myQrcodeBt").click(function(){
+            $(".myqrCodeBox").show(100,function(){
+                $(".myqrCodeBox").animate({opacity:"0.9"},1000);
+                $(".watermark").css({"z-index":100000,"background":"#000","opacity":'0.4'})
+            });
+        })
+
+        $(".myqrCodeBox .close").click(function(){
+            $(".myqrCodeBox").animate({opacity:"0"},1000,function(){
+                $(".myqrCodeBox").hide();
+                $(".watermark").css({"z-index":-1,"background":"none","opacity":'1'})
+            });
+        })
+
+    });
+
+    function rd(n,m){//随机取整数
+        var c = m-n+1;
+        return Math.floor(Math.random() * c + n);
+    }
+
+    //旋转转盘 item:奖品位置; txt：提示语;
+    function rotateFn(item,txt,score,type,prize){
+        var deviateangle=(360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length*2))
+        deviateangle=Math.floor(deviateangle);
+        deviateangle=deviateangle-6;//防止产生压线情况的发生
+
+        var angles = item * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length*2));
+
+        if(angles<270){
+            angles = 270 - angles;
+        }else{
+            angles = 360 - angles + 270;
+        }
+        var num = Math.random();
+        num = Math.ceil(num*deviateangle);
+        var r=rd(1,2);
+        if(r==1)
+        {
+            var angles=angles+num;
+        }else
+        {
+            var angles=angles-num;
+        }
+        $('#wheelcanvas').stopRotate();
+        $('#wheelcanvas').rotate({
+            angle:0,
+            animateTo:angles+1800,
+            duration:10000,
+            callback:function (){
+                var showtype=1;
+                var msg="<div class='awardDistrict '>";
+                msg+="<img class='prizeImg' src='"+prize.img+"' />";
+                msg+="<p>恭喜您获得";
+                switch (type){
+                    case '2':
+					case '3':
+					case '7':
+                        msg+= txt + "</p><p>马上充入您的账号,请注意查收!</p>";
+                        break;
+					case '4':
+                        msg+= txt + "</p><p>话费已经充入您的手机号码!</p>";
+                        break;
+					//case "5":
+                    // case "6":
+					 //    msg+=txt + "</p><p>请长按复制下方卡密</p><p style='color: #f04900'>"+prize.card+"</p><p>到公众号'滨惠网',点击底部菜单进入首页点击'奖品兑换'</p>";
+					 //    break;
+                    default:
+						var pri = prize.invite_num;
+						getInviImg(pri);
+                        $('.pointer').bind("click", function(){data()});
+                        return false;
+                }
+                switch (type){
+                    case "5":
+                    case "6":
+                        msg+="<img src='"+'/images/turntable/mallcode.png'+"' />";
+                        break;
+                }
+                msg+"</div>";
+                showMsg(msg,showtype);
+                turnplate.bRotate = !turnplate.bRotate;
+                load();
+            }
+        });
+    }
+
+    var imgNum=0;
+
+    function drawRouletteWheel(imgList) {//画转盘
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        var img = new Image();
+        img.src = "/statics/templates/yungou/images/mobile/5ba0a0695bd83.png";
+        img.onload = function () {
+            context.drawImage(img, 0, 0, canvas.width,canvas.height);
+
+            var arc = (Math.PI * 2) / turnplate.restaraunts.length;
+            //strokeStyle 属性设置或返回用于笔触的颜色、渐变或模式
+            context.strokeStyle = "rgba(0,0,0,0)";
+            //font 属性设置或返回画布上文本内容的当前字体属性
+            context.font = '14px Microsoft YaHei';
+            for (var i = 0; i < turnplate.restaraunts.length; i++) {
+                var angle = turnplate.startAngle + i * arc;
+                context.save();
+                context.fillStyle = turnplate.colors[i];
+                context.beginPath();
+                /*x,y,r,sAngle,eAngle,(true:顺,false:逆)*/
+                context.arc(canvas.width / 2, canvas.height / 2, turnplate.outsideRadius, angle, angle + arc, false);//外
+                context.arc(canvas.width / 2, canvas.height / 2, turnplate.insideRadius, angle + arc, angle, true);//内
+                context.stroke();
+//            if (i % 2 === 0) context.fillStyle = '#fff'
+//            else             context.fillStyle = '#fff';
+//            context.fill();
+                //锁画布(为了保存之前的画布状态)
+                //----绘制奖品开始----
+                context.moveTo(canvas.width / 2, canvas.height / 2); //起点
+                context.fillStyle = "#E5302F";
+                //translate方法重新映射画布上的 (0,0) 位置
+                context.translate(canvas.width / 2 + Math.cos(angle + arc / 2) * turnplate.textRadius, canvas.height / 2 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+                //rotate方法旋转当前的绘图
+                context.rotate(angle + arc / 2 + Math.PI / 2);
+                //context.lineTo(100 , 100); //下一个点
+//            context.strokeStyle = '#000'; //线条的颜色
+//            context.stroke(); //画线
+
+                context.font = "bold 14px Microsoft YaHei";
+                context.fillStyle = "#333";//#F8CC00
+                context.fillText(turnplate.restaraunts[i].name, -context.measureText(turnplate.restaraunts[i].name).width / 2, 0);
+
+                context.drawImage(imgList[i], -23, 10, 46, 46);
+
+                context.restore();
+            }
+        }
+    }
+
+    function getMemberInfo() {
+        $.getJSON("/index.php/mobile/zhuanpan/getMemberinfo", function (json) {
+            var shownum = $("#shownum");
+            if (json.success == 1) {
+                shownum.html("<p style='color:#fff;font-size: 14px;font-weight: bold'>您今天剩余" + json.lucky_mun + "次</p>");
+                shownum.css("transition", "1s");
+                shownum.css({"opacity": "1", "transform": "rotateX(720deg)"});
+                setTimeout(function () {
+                    shownum.css({"opacity": "0", "transform": "rotateX(0deg)"});
+                }, 2000)
+            } else {
+                shownum.html("<p style='color:#fff;font-size: 14px;font-weight: bold'>登陆后即可查看您的抽奖次数</p>");
+                shownum.css("transition", "1s");
+                shownum.css({"opacity": "1", "transform": "rotateX(720deg)"});
+                setTimeout(function () {
+                    shownum.css({"opacity": "0", "transform": "rotateX(0deg)"});
+                }, 2000)
+            }
+        })
+    }
+
+    function data() {
+        $(".pointer").unbind();
+        $.getJSON("/index.php/mobile/zhuanpan/luckyDrawClick", function (json) {
+            var showtype=0;
+            var msg=json.tip;
+            switch (json.code){
+				case -1:
+                    var pri = json.num;
+					getInviImg(pri);
+                    $('.pointer').bind("click", function(){data()});
+                    return;
+                case 0: //没登陆
+					msg='您没有登录,请先登录!';
+                    showtype = 7;
+                    break;
+                case 2://没充值
+                    showtype = 2;
+                    break;
+                case 3:
+                    showtype = 3;
+                    break;
+				case 6:
+				    showtype= 6;
+				    break;
+                case 100:
+                    if (turnplate.bRotate) return;
+                    turnplate.bRotate = !turnplate.bRotate;
+                    var item = json.item.item;
+                    var score = json.score;
+                    var type = json.type;
+                    var tempItem;
+
+                    for(var j=0;j<turnplate.restaraunts.length;j++){
+                        if(item==turnplate.restaraunts[j].item){
+                            tempItem=j;
+                        }
+                    }
+
+                    var realItem=tempItem+1;
+
+                    rotateFn(realItem,turnplate.restaraunts[tempItem].name,score,type,json.item);
+                    break;
+            }
+            if(json.code!=100){
+                showMsg(msg, showtype);
+            }
+        });
+    }
+
+    $(".rule").click(function(){
+        getRule();
+	})
+
+    function getRule(){
+        $.getJSON("/index.php/mobile/zhuanpan/getRule",function(res){
+            layer.open({
+                style:"border:none;background:#fff;color:#000",
+                className:"rule",
+                content:res.text,
+                anim:"up",
+                btn:'明白了',
+            })
+		})
+	}
+
+    //获取奖品和二维码图
+    function getInviImg(pri) {
+        //添加图片
+        $('.layer_content img').attr("src",'http://game.dyyyyg.net/index.php/mobile/luckyicon/invi_img');
+
+        //添加图片提示
+        $('.qrcodeTip2').html("保存图片分享到朋友圈，"+pri+"位以上好友扫描参与，您即可进行实物领取哦！（扫码好友必须先登录泰享购）");
+
+        //图文显示
+        $('.layer_bottom').fadeIn("slow");
+    }
+
+    //隐藏奖品和二维码
+    $('.closeCodeImg').click(function () {
+        $('.layer_bottom').hide(800);
+    })
+</script>
+</html>

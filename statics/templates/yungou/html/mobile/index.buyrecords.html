@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+
+<head><meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+<title>{wc:$key}</title>
+
+<meta content="app-id=518966501" name="apple-itunes-app" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" /><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black" name="apple-mobile-web-app-status-bar-style" /><meta content="telephone=no" name="format-detection" /><link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" /><link href="{G_TEMPLATES_CSS}/mobile/goods.css" rel="stylesheet" type="text/css" /><script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script><script id="pageJS" data="{G_TEMPLATES_JS}/mobile/BuyRecord.js" language="javascript" type="text/javascript"></script></head>
+
+<body>
+
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+
+    
+
+<!-- 栏目页面顶部 -->
+
+
+
+
+
+<!-- 内页顶部 -->
+
+
+
+    
+
+
+
+
+    <input name="hidCodeID" type="hidden" id="hidCodeID" value="18101" />
+
+    <input name="hidIsEnd" type="hidden" id="hidIsEnd" value="1" />
+
+
+
+    <!-- 梦想购记录 -->
+
+    <section id="buyRecordPage" class="goodsCon">
+
+        
+
+	{wc:if $co < 1}
+		<div id="divNone" class="haveNot z-minheight" style="margin-top: 0;"><s></s><p>抱歉，暂时还没有记录！</p><a href="{G_WEB_PATH}"><p class="guangguang">参与</p></a>
+
+		</div>
+
+	  {wc:else}
+		<div id="divRecordList" class="recordCon z-minheight" style="display:block; height:auto;margin-top: 0px;">
+            {wc:loop $cords $c}
+           
+			<ul>
+
+				<li class="rBg"><a href="{WEB_PATH}/mobile/mobile/userindex/{wc:$c['uid']}">
+                    {wc:php:start}
+                        $touxiangq=get_user_key($c['uid'],'img');
+                        $touxianga=get_user_key($c['uid'],'headimg');
+                    {wc:php:end}
+					<img style="border-radius: 110px;" id="imgUserPhoto" src="{OSS_UPLOAD_PATH}/{wc:$c['uphoto']}@!thumb_110_110"   border="0"/>
+                        </a>
+
+				</li>
+
+				<li class="rInfo"><a href="{WEB_PATH}/mobile/mobile/userindex/{wc:$c['uid']}">{wc:$c['username']}</a>
+
+					<strong>{wc:if $c['ip']}
+
+							
+
+							{wc:if:end}</strong><br>
+
+					<span>参与了<b class="orange">{wc:$c['gonumber']}</b>人次</span><em class="arial">{wc:fun:date("Y-m-d H:i:s",$c['time'])}</em>
+
+				</li><i></i>
+
+			</ul>
+		   {wc:loop:end}
+
+	{wc:if:end}
+
+        </div>
+
+    </section>
+
+
+
+    
+
+
+
+
+</div>
+{wc:templates "mobile/index","footer"}
+</body>
+
+</html>
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>邀请记录-惠享购</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/mobile/worldcup.css"/>
+</head>
+<body>
+<div class="invitation">
+	<div class="header">
+		<h3>邀请记录</h3>
+	</div>
+	<div class="content">
+		<ul>
+          	{wc:loop $user $us}
+			<li><img src="/statics/templates/yungou/images/touxiang.jpg"/><span>{wc:php:start}if(empty($us['username'])){echo substr_replace($us['mobile'],'****',3,4);}else{echo $us['username'];}{wc:php:end}</span></li>
+			{wc:loop:end}
+		</ul>
+	</div>
+	<div class="bottom">
+		<p class="icon"></p>
+	</div><span></span>
+</div>
+</body>
+</html>

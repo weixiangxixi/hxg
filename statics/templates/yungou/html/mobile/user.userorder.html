@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>手机订单 - {wc:$webname}</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" /><link href="{G_TEMPLATES_CSS}/mobile/member.css" rel="stylesheet" type="text/css" /><script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <!-- <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/userbuylist1.js" language="javascript" type="text/javascript"></script> -->
+    <style type="text/css">
+      #kk a{
+        color: #fff;
+        border: 1px solid #f60;
+        background: #f60;
+        padding: 7px;
+        width: 100%;
+        border-radius: 0.2rem;
+      }
+      #kk {
+        padding-top: 15px;
+        padding-bottom: 5px;
+      }
+      #pp{
+        padding-bottom: 15px;
+      }
+    </style>
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+   <header class="header" style="position: fixed;width: 100%;z-index: 99999999;">
+
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">
+                手机订单查询
+            </a>
+        </span>
+
+        <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+        -->
+        <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 6px;top: 10px;">
+
+        <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+    -->
+    <a href="{WEB_PATH}/mobile/mobile" class="z-shop" style="background-position: 2px -73px;"></a>
+
+</div>
+
+</header>
+    <style type="text/css" >
+      
+    </style>
+    <div id="navBox" class="g-snav m_listNav" style="padding-top: 55px;margin:0 auto;text-align: center;">
+        <!-- <form action="" method="get">
+            <div style="margin-bottom: 10px;margin-top: 5px;margin-left: 40px;">
+                <input type="text" name="mobile" id="keyword" value="{wc:$keyword}" style="padding: 10px;border-radius: 5px;border-color: #AADFFD;font-size: 17px;width: 130px;">
+                <input type="submit" value="查 询" id="data_get" style="color: #fff;padding: 9px;border-radius:5px;border:0;background:#f60;font-size: 16px;">
+            </div>
+        </form> -->
+        <div id="pp" style="width: 100%">
+          {wc:php:start}
+              foreach($brr as $val){
+                  echo "<p id='kk' style='width: 25%;float: left;'><a href='/index.php/mobile/home/myorder?mobile=".$val."'>".$val."</a><p>";
+              } 
+          {wc:php:end}
+        </div>
+		
+    </div>
+    <section class="clearfix g-Record-lst" style="margin-bottom: 55px;">
+        <ul class="z-minheight">
+	        {wc:php:start} 
+                foreach($list as $v){
+                    echo  "<li>";
+                    echo  '<a class="fl z-Limg"><span class="z-Imgbg z-ImgbgC02"></span><em class="z-Imgtxt">已发货</em>';
+                    echo  "<img src='".$v['thumb']."'  ></a>";
+                    echo  '<div class="u-sgl-r "><p class="z-sgl-tt"><a class="gray6">';
+                    echo  '(第'.$v['shopqishu'].'期)'.$v['shopname'];
+                    echo  '</a></p><p>商品价格：<em class="gray6">'.$v['price'].'元</em></p><p>获得者：<em class="blue">'.$v['username'].'</em></p><p>提交时间：<em class="gray6">'.$v['time'].'</em></p></div><b class="z-arrow"></b>';
+                    echo  '</li>';
+                }
+            {wc:php:end}
+            <div class="information" ></div>
+            {wc:if $keyword!=null}
+                {wc:if $count >10}
+	               <a id="more" data-status="1" class="loading" href="javascript:;">点击加载更多</a>
+               {wc:if:end}
+            {wc:if:end}
+            <input type="hidden" id="page" value="2"> 
+        </ul>
+    </section>
+<script type="text/javascript">
+    $(function () {  
+       $("#more").click(function () {  
+           //var mobile = $('#keyword').val();
+           var mobile = '{wc:php:start}echo $mobile;{wc:php:end}';
+           console.log(mobile);
+           var page = parseInt($("#page").val());  
+           $(this).html("加载中...");  
+           status=$(this).attr("data-status");  
+           if(status==1) {  
+               status = $(this).attr("data-status", "0");  
+               $.ajax({  
+                   type: "get",  
+                   url: "/index.php/mobile/home/getorder",  
+                   data: {mobile:mobile,p:page},
+                   dataType: "json",  
+                   success: function (data) {  
+                       if (data.code == 0) {alert('您没有此号码的查询权限!');return ;}
+                       data = data.data; 
+
+                       //console.log(data); 
+                       //console.log(data.length); 
+                       /*数据不够10条隐藏按钮*/  
+                       if (data.length < 10) {  
+                           $('#more').hide()  
+                       } else {  
+                           $("#page").val(page + 1);//记录页码  
+                       }  
+                       insertDiv(data);  
+                    }  
+               });  
+           }  
+  
+       });  
+   });  
+       function insertDiv(data){  
+           var information = $(".information");  
+           var html = '';  
+           for (var i = 0; i < data.length; i++) {  
+               html +='<li><a class="fl z-Limg"><span class="z-Imgbg z-ImgbgC02"></span><em class="z-Imgtxt">已发货</em><img src="'+ data[i].thumb +'" border=0 alt=""></a><div class="u-sgl-r "><p class="z-sgl-tt"><a class="gray6">(第' + data[i].shopqishu + '期)'  +data[i].shopname + '</a></p><p>商品价格：<em class="gray6">' + data[i].price + '元</em></p><p>获得者：<em class="blue">' + data[i].username + '</em></p><p>提交时间：<em class="gray6">'+ data[i].time + '</em></p></div><b class="z-arrow"></b></li>'; 
+           }  
+           information.append(html);  
+           $("#more").html("加载更多");  
+           $("#more").attr("data-status","1");  
+       } 
+</script>
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  $(document).ready(function(){
+    $(function(){
+        $('.footerdi .f_home').find('i').css('background-image','url(/statics/templates/yungou/images/mobile/chao1.png)');
+    });
+  });
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" href="http://f.weimicm.com/photo/member.jpg@!thumb_200_200" type="image/x-icon">
+	<title>抵用券</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<script src="{G_TEMPLATES_JS}/mobile/jquery.js"></script>
+	<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css">
+	<script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+	<style type="text/css">
+		.voucher img{
+			width: 50%;
+			margin: 0 2%;
+		}
+		.djs p{
+			margin: 2px;
+		}
+		.djs img{
+			width: 25px;
+			margin: 0;
+		}
+		.djs em{
+			font-size: 14px;
+			display: block;
+		    margin-left: 25px;
+		    margin-top: -25px;
+		}
+		button{
+			padding: 10px 30%;
+		    font-size: 18px;
+		    margin-left: 5px;
+		    border-radius: 5px;
+		    background-color: #ff6600;
+		    color: #fff;
+		    margin-top: 10px;
+		    border-color: #f60;
+		}
+		.over{
+			background-color: #ccc;
+			border-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		{wc:loop $data $val}
+		<div class="voucher" style="margin-top: 10px;display: inline-block;">
+			<img src="http://f.weimicm.com/{wc:$val['image']}@!image" style="float: left;">
+			<div style="float: left;width: 46%">
+				{wc:if $val['use_time'] != 0}
+					<div class="djs">
+						<p>						
+							<img src="/statics/templates/yungou/images/mobile/icon_djs_over.png">
+							<em>{wc:php:start}echo date("Y-m-d H:i:s",$val['valid_time']);{wc:php:end}</em>
+							
+						</p>
+					</div>
+					<button class="over">已使用</button>
+				{wc:elseif $val['valid_time'] < time()}
+					<div class="djs">
+						<p>						
+							<img src="/statics/templates/yungou/images/mobile/icon_djs_over.png">
+							<em>{wc:php:start}echo date("Y-m-d H:i:s",$val['valid_time']);{wc:php:end}</em>
+							
+						</p>
+					</div>
+					<button class="over">已过期</button>
+				{wc:else}
+					<div class="djs">
+						<p>						
+							<img src="/statics/templates/yungou/images/mobile/icon_djs.png">
+							<em>{wc:php:start}echo date("Y-m-d H:i:s",$val['valid_time']);{wc:php:end}</em>
+							
+						</p>
+					</div>
+					<button class="go">去使用</button>
+				{wc:if:end}
+			</div>
+		</div>
+		{wc:loop:end}
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$('.go').click(function(){
+				window.location.href = '/index.php/mobile/cart/cartlist';
+			})
+		})
+	</script>
+	{wc:templates "mobile/index","footer"}
+</body>
+</html>

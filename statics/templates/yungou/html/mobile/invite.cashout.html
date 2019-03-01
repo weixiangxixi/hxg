@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>申请提现 - {wc:$webname}</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/member.css" rel="stylesheet" type="text/css" />
+    <link href="{G_TEMPLATES_CSS}/mobile/invite2.css" rel="stylesheet" type="text/css" />
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/invite_cashout.js" language="javascript" type="text/javascript"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/city.js" language="javascript" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <div class="h5-1yyg-v11">
+
+    <section class="clearfix">
+        <div class="R-content">
+            <div class="subMenu">
+                <a id="linkApply" class="current">提现申请</a>
+                <a id="linkRecharge">充值到账户</a>
+            </div>
+
+            <div class="total">
+                <div class="acct"><span class="title">收入</span>&nbsp;&nbsp;<span class="orange">{wc:$shourutotal}元</span>
+                </div>
+                <div class="acct"><span class="title">余额</span>&nbsp;&nbsp;<span class="orange" id="yue">{wc:$cashouthdtotal}元</span>
+                </div>
+                <div class="acct no-bottom"><span class="title">提现审核</span>&nbsp;&nbsp;<span class="orange">{wc:if !$cashoutdj['summoney']}0{wc:else}{wc:$cashoutdj['summoney']}{wc:if:end}元</span></div>
+                <div class="acct no-bottom"><a class="block" href="/index.php/mobile/invite/record"><span class="orange">提现记录</span></a></div>
+            </div>
+            <div id="divSQTX" class="Apply-con">
+                <form id="cashout" name="form1" action="" method="post">
+                    <dl class="split">
+                        <dt>提现金额</dt>
+                        <dd><input id="txtAppMoney" type="tel" name="money" onkeyup="value=value.replace(/\D/g,'')" class="input-txt inp-money txtAri" value="" maxlength="5" placeholder="免手续费(200元至5万元/次)"></dd>
+                    </dl>
+                    <dl>
+                        <dt>收款姓名</dt>
+                        <dd>
+                            <input name="txtUserName" type="text" id="txtUserName" class="input-txt" maxlength="10" placeholder="试试右边的收款人">
+                            <label id="for_payee_list" class="for_bank_class deep_black"><img class="left" src="/statics/templates/yungou/images/mobile/payee.png" alt="">&nbsp;收款人</label>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>收款卡号</dt>
+                        <dd><input name="txtBankNo" type="tel" id="txtBankNo" class="input-txt txtAri" maxlength="19" placeholder="与姓名对应的卡号">
+                        </dd>
+                    </dl>
+                    <dl id="for_bank_list">
+                        <dt>收款银行</dt>
+                        <dd>
+                            <input name="txtBankName" type="hidden" id="txtBankName" class="input-txt" value="">
+                            <label class="for_bank_class">
+                                <span id="select_bank">请选择银行</span>
+                                <img class="right" src="/statics/templates/yungou/images/mobile/bank_arrow_right.png" alt=""></label>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>手机号码</dt>
+                        <dd><input name="txtPhone" type="tel" id="txtPhone" class="input-txt txtAri" maxlength="11" placeholder="可联系到您的手机号码">
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dd class="half">
+                            <label class="for_select_class">
+                                <span id="sel_province">-请选择省份-</span>
+                            </label>
+                            <select id="Province" name="Province">
+                                <option data-code="" value="null" selected="" disabled="">-请选择省份-</option>
+                            </select>
+                        </dd>
+                        <dd class="half">
+                            <label class="for_select_class">
+                                <span id="sel_city">-请选择城市-</span>
+                            </label>
+                            <select id="City" name="City">
+                                <option value="null" selected="" disabled="">-请选择城市-</option>
+                            </select>
+                        </dd>
+                    </dl>
+
+                    <div class="Apply-button">
+                        <input type="text" name="submit1" hidden="">
+                        <input type="button" id="btnSQTX" class="bluebut" title="提交申请" value="提交申请" onclick="confirmInfo()">
+                    </div>
+                </form>
+            </div>
+            <div id="divSQCZ" class="Apply-con recharge" style="display:none;">
+                <form name="form2" action="" method="post">
+                    <dl>
+                        <dt>充值金额</dt>
+                        <dd style="margin: 0 auto"><input id="txtCZMoney" name="txtCZMoney" type="tel" onkeyup="value=value.replace(/\D/g,'')" class="input-txt inp-money txtAri" value="" placeholder="请输入大于1的金额">
+                        </dd>
+                    </dl>
+
+                    <div class="Apply-button">
+                        <input type="submit" name="submit2" id="btnSQCZ" class="bluebut" title="充值" value="充值">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <style type="text/css">
+        .payee-list table tr{
+           display: block;
+           margin-top: 10px;
+        }
+        .payee-list table td, th{
+            text-align: center;
+            font-size: 14px;
+            width: 20%;
+            display: inline-block;
+        }
+        .payee-list table tr td:nth-child(2), th:nth-child(2){
+            width: 50%
+        }
+        .payee-list table td:last-child a{
+            color: red;
+        }
+    </style>
+    <div id="payee-list" class="payee-list">
+        <dt>我的收款人
+            <div id="payee-exit" class="payee-exit">
+            </div>
+        </dt>
+        <table style="width: 100%;padding-left: 5%;padding-top: 20px">
+            <tr>
+                <th>姓名</th>
+                <th>卡号</th>
+                <th>操作</th>
+            </tr>
+            {wc:php:start}foreach($bank_user as $key=>$val){{wc:php:end}
+            <tr>
+                <td>{wc:$val['username']}</td>
+                <td>{wc:$val['banknumber']}</td>
+                <td><a class="select_user_bank" data-name="{wc:$val['username']}" data-key="{wc:$val[banknumber]}">选择</a>&nbsp;|&nbsp;<a id="{wc:$val['id']}" onclick="del_bank_user({wc:$val['id']})">删除</a></td>
+            </tr>
+            {wc:php:start}}{wc:php:end}
+            
+        </table>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            $(".select_user_bank").click(function(){
+                var name = $(this).data("name");
+                var bankNo = $(this).data("key");
+ 
+                $("#txtUserName").val(name);
+                $("#txtBankNo").val(bankNo);
+                $("#payee-list").removeClass("show");
+            })
+        })
+        function del_bank_user(id){
+            var r = confirm("确认删除吗？");
+            if(r == true){
+                window.location.href = "/index.php/mobile/invite/bank_user_del/"+id;
+            }
+        }
+    </script>
+    <div id="bank-list" class="bank-list">
+        <ul>
+                        <li class="bank" data-key="gsyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/gsyh.png" alt=""></div>
+                <p class="bank-name">工商银行</p>
+            </li>
+                        <li class="bank" data-key="zgyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/zgyh.png" alt=""></div>
+                <p class="bank-name">中国银行</p>
+            </li>
+                        <li class="bank" data-key="jsyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/jsyh.png" alt=""></div>
+                <p class="bank-name">建设银行</p>
+            </li>
+                        <li class="bank" data-key="nyyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/nyyh.png" alt=""></div>
+                <p class="bank-name">农业银行</p>
+            </li>
+                        <li class="bank" data-key="jtyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/jtyh.png" alt=""></div>
+                <p class="bank-name">交通银行</p>
+            </li>
+                        <li class="bank" data-key="ycyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/ycyh.png" alt=""></div>
+                <p class="bank-name">邮储银行</p>
+            </li>
+                        <li class="bank" data-key="zsyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/zsyh.png" alt=""></div>
+                <p class="bank-name">招商银行</p>
+            </li>
+                        <li class="bank" data-key="payh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/payh.png" alt=""></div>
+                <p class="bank-name">平安银行</p>
+            </li>
+                        <li class="bank" data-key="msyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/msyh.png" alt=""></div>
+                <p class="bank-name">民生银行</p>
+            </li>
+                        <li class="bank" data-key="gdyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/gdyh.png" alt=""></div>
+                <p class="bank-name">光大银行</p>
+            </li>
+                        <li class="bank" data-key="hxyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/hxyh.png" alt=""></div>
+                <p class="bank-name">华夏银行</p>
+            </li>
+                        <li class="bank" data-key="zxyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/zxyh.png" alt=""></div>
+                <p class="bank-name">中信银行</p>
+            </li>
+                        <li class="bank" data-key="pfyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/pfyh.png" alt=""></div>
+                <p class="bank-name">浦发银行</p>
+            </li>
+                        <li class="bank" data-key="gfyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/gfyh.png" alt=""></div>
+                <p class="bank-name">广发银行</p>
+            </li>
+                        <li class="bank" data-key="xyyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/xyyh.png" alt=""></div>
+                <p class="bank-name">兴业银行</p>
+            </li>
+                        <li class="bank" data-key="bjyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/bjyh.png" alt=""></div>
+                <p class="bank-name">北京银行</p>
+            </li>
+                        <li class="bank" data-key="bhyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/bhyh.png" alt=""></div>
+                <p class="bank-name">渤海银行</p>
+            </li>
+                        <li class="bank" data-key="jsuyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/jsuyh.png" alt=""></div>
+                <p class="bank-name">江苏银行</p>
+            </li>
+                        <li class="bank" data-key="cssyyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/cssyyh.png" alt=""></div>
+                <p class="bank-name">城市商业银行</p>
+            </li>
+                        <li class="bank" data-key="ncsyyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/ncsyyh.png" alt=""></div>
+                <p class="bank-name">农村商业银行</p>
+            </li>
+                        <li class="bank" data-key="ncxyhzs">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/ncxyhzs.png" alt=""></div>
+                <p class="bank-name">农村信用<br>合作社</p>
+            </li>
+                        <li class="bank" data-key="nchzyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/nchzyh.png" alt=""></div>
+                <p class="bank-name">农村合作银行</p>
+            </li>
+                        <li class="bank" data-key="czyh">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/czyh.png" alt=""></div>
+                <p class="bank-name">村镇银行</p>
+            </li>
+                        <li class="bank" data-key="none">
+                <div class="bank-logo"><img src="/statics/templates/yungou/images/bank/slide_right.png" alt=""></div>
+                <p class="bank-name">收起</p>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var balance = parseInt($("#yue").text());
+        
+        $(function(){
+            $("#for_payee_list").click(function(){
+                $("#payee-list").addClass("show");
+            })
+            $("#payee-exit").click(function(){
+                $("#payee-list").removeClass("show");
+            })
+
+        })
+    </script>
+
+    <script type="text/javascript" src="{G_TEMPLATES_JS}/layer/layer.js"></script>
+<link href="{G_TEMPLATES_CSS}/mobile/layer.css" rel="stylesheet" type="text/css">
+<link href="{G_TEMPLATES_CSS}/mobile/message.css" rel="stylesheet" type="text/css">
+<style>#forever_url{display:none;position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.79);z-index:111}#forever_url .main{width:12rem;height:auto;margin:8rem auto 0;border-radius:10px;box-sizing:border-box;overflow:hidden}#forever_url .main img{vertical-align:middle}#forever_url p.close{position:absolute;width:2rem;height:2rem;top:25rem;left:calc(50% - 1rem);margin:0 auto;color:#333;font-size:1.8rem;line-height:2rem;text-align:center;background:#FFF;border-radius:50%}
+.msg-logo{vertical-align: text-bottom;  width: 20px; margin-right: 5px;}
+.footer .u-ft-nav i {background: url(https://dyyyyg-static.oss-cn-shenzhen.aliyuncs.com/img/vip/index/footer_nav.png?v=20180622) no-repeat center/27px auto;}
+.footer li.f_home a.hover .foot_1 {background-position: 0 -112px;}
+.footer li.f_home .foot_1 {background-position: 0 -142px;}
+
+.footer li.f_allgoods a.hover .foot_2 {background-position: 0 -222px;}
+.footer li.f_allgoods .foot_2 {background-position: 0 -250px;}
+
+.footer li.f_announced a.hover .foot_3 {background-position: 0 -169px;}
+.footer li.f_announced .foot_3 {background-position: 0 -195px;}
+
+.footer li.f_car a.hover .foot_4 {background-position: 0 1px;}
+.footer li.f_car .foot_4 {background-position: 0 -28px;}
+
+.footer li.f_personal a.hover .foot_5 {background-position: 0 -57px;}
+.footer li.f_personal .foot_5 {background-position: 0 -83px;}
+a[title='站长统计']{
+    display: none;
+}
+</style>
+
+<script type="text/javascript" src={G_TEMPLATES_JS}/mobile/jquery.cookie.js?1.0"></script>
+</div>
+
+
+    <div class="h5-1yyg-v11">
+        <!-- 栏目页面顶部 -->
+        <!-- 内页顶部 -->
+      <header class="header" style="position: fixed;width: 100%;z-index: 99999999;display: none;">
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">
+                申请提现
+            </a>
+        </span>
+
+        <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+        -->
+        <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 6px;top: 10px;">
+
+        <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+    -->
+    <a href="{WEB_PATH}/mobile/mobile" class="z-shop" style="background-position: 2px -73px;"></a>
+
+</div>
+
+</header>
+       <!--  <section class="clearfix g-member" style="padding-top: 5px;">
+        <div class="R-content">
+            <div class="subMenu">
+                <a id="linkApply" class="current">提现申请</a>
+                <a id="linkRecharge">充值到账户</a>
+            </div>
+
+            <div class="total">
+                <dt>
+                </dt><dd>佣金总余额：<b class="orange">{wc:$total}</b>元</dd>  <dd>活动佣金：<b class="orange">{wc:$cashouthdtotal}</b>元</dd> <dd>正在佣金提现审核（冻结）：<b class="orange">{wc:$cashoutdjtotal}</b>元</dd>
+
+                <dd class=" "id="divTip">为确保您申请的金额能够正确无误的转入您的账户，请填写真实有效的账户信息，以下信息均为必填项！</dd>
+            </div>
+            <div id="divSQTX" class="Apply-con" style="margin-bottom: 30px;">
+                <form name="form1" action="" method="post">
+                    <dl>
+                        <dt>佣金余额：</dt>
+                        <dd><span id="spanBrokerage" class="orange">{wc:$cashouthdtotal}</span> 元&nbsp;<span class="gray02" style="color:#999999">余额满100元时才可以申请提现</span></dd>
+                    </dl>
+                    <dl>
+                        <dt>申请提现金额：</dt>
+                        <dd><input id="txtAppMoney" type="text" name="money" onkeyup="value=value.replace(/\D/g,'')" class="inp-money txtAri" value="" maxlength="10" tip="1" /><b>元</b>&nbsp;<span id="tip1"></span></dd>
+                    </dl>
+                    <dl>
+                        <dt>开&nbsp;&nbsp;户&nbsp;人：</dt>
+                        <dd><input name="txtUserName" type="text" id="txtUserName" class="input-txt" maxlength="10" tip="2" value="{wc:$bank_record['username']}" />&nbsp;<span id="tip2"></span></dd>
+                    </dl>
+                    <dl>
+                        <dt>银行名称：</dt>
+                        <dd><input name="txtBankName" type="text" id="txtBankName" class="input-txt" tip="3" value="{wc:$bank_record['bankname']}" />&nbsp;<span id="tip3"></span></dd>
+                    </dl>
+                    <dl>
+                        <dt>开户支行：</dt>
+                        <dd><input name="txtSubBank" type="text" id="txtSubBank" class="input-txt" tip="4" value="{wc:$bank_record['branch']}" />&nbsp;<span id="tip4"></span></dd>
+                    </dl>
+                    <dl>
+                        <dt>银行帐号：</dt>
+                        <dd><input name="txtBankNo" type="text" id="txtBankNo" class="input-txt txtAri" maxlength="23" tip="5" value="{wc:$bank_record['banknumber']}" />&nbsp;<span id="tip5"></span></dd>
+                    </dl>
+                    <dl>
+                        <dt>联系电话：</dt>
+                        <dd><input name="txtPhone" type="text" id="txtPhone" class="input-txt txtAri" maxlength="13" tip="6" value="{wc:$bank_record['linkphone']}" />&nbsp;<span id="tip6">格式输入186****2310</span></dd>
+                    </dl>
+
+                    <div class="Apply-button">
+                        <input style="padding: 10px 20px;" type="submit" name="submit1" id="btnSQTX" class="bluebut" title="提交申请" value="提交申请">
+                    </div>
+                </form>
+            </div>
+            <div id="divSQCZ" class="Apply-con" style="display:none;">
+                <form name="form2" action="" method="post">
+                    <dl>
+                        <dt>当前可充值金额：</dt>
+                        <dd><span id="spanBrokerage2" class="orange">{wc:$cashouthdtotal}</span> 元 <br><br></dd>
+                    </dl>
+                    <dl>
+                        <dt>申请充值金额：</dt>
+                        <dd><input id="txtCZMoney" name="txtCZMoney" type="text" onkeyup="value=value.replace(/\D/g,'')" class="inp-money txtAri" value="" tip="请输入充值金额"/><b>元</b>
+                  </dd>
+                    </dl>
+                    <div class="Apply-button" style="height: 50px;">
+                        <input style="padding: 10px 20px;margin: 20px 0px 0px 0px;" type="submit" name="submit2" id="btnSQCZ" class="bluebut" title="充值" value="充值" style="float:left;" >
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </section> -->
+        {wc:templates "mobile/index","footer"}
+        
+    </div>
+</body>
+
+</html>

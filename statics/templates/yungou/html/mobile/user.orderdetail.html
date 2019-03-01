@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>获得的商品 - {wc:$webname}</title>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/member.css" rel="stylesheet" type="text/css" />
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/orderdetail.js" language="javascript" type="text/javascript"></script>
+    
+    <style type="text/css">
+      .addrlist li{border-bottom:1px solid #dbdbdb;padding:3px;position:relative;}
+
+
+.addrlist li i {
+  background: url(../../images/mobile/set.png);
+  background-size: 35px auto;
+  width: 20px;
+  height: 20px;
+  float: right;
+  background-position: 0 -325px;
+  position:absolute;
+  top: 30px;
+  display: none;
+  right:0;
+}
+.addrlist li.hover i {
+  display: block!important;
+}
+.addrlist p,.receive p{margin-top:8px;}
+a.btn_ok{background:#ff6600;padding:6px 8px;display:block;color:#fff;border-radius:5px;margin:0 auto;width:60%;text-align:center;font-size:14px;cursor:pointer;}
+a.btn_ok1{background:#ff6600;padding:6px 8px;display:block;color:#fff;border-radius:5px;margin:0 auto;width:60%;text-align:center;font-size:14px;cursor:pointer;}
+.orgBtn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 35px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-top: 5px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+a.orgBtn {
+    background: #C04D00;
+}
+    </style>
+	
+
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+    <header class="g-header">
+        <div class="head-l">
+	        <a href="javascript:;" onclick="history.go(-1)" class="z-HReturn"><img src="{G_TEMPLATES_IMAGE}/wap_img/fan.png" /></a>
+        </div>
+        <h2>订单详情</h2>
+        
+    </header>
+
+    
+    <section class="clearfix g-member g-goods">
+        
+    </section>
+    
+    
+    <section class="clearfix g-Record-ct">
+		<a href="{WEB_PATH}/dataserver/{wc:$record['shopid']}" class="fl z-Limg">
+            <span class="z-Imgbg z-ImgbgC02"></span>
+            <em class="z-Imgtxt">已揭晓...</em>
+            <img border="0"  src="{G_TEMPLATES_IMAGE}/loading.gif" src2="{G_UPLOAD_PATH}/{wc:$record['thumb']}">
+        </a>
+        <div class="u-Rcd-r gray9">
+            <p class="z-Rcd-tt"><a class="gray6" href="{WEB_PATH}/mobile/mobile/item/{wc:$record['shopid']}">(第{wc:$record['shopqishu']}期){wc:$record['shopname']}</a></p>
+            <p>商品价值：<em class="blue">{wc:$info['money']}元</em></p>
+            <p>获得者：<em class="blue">{wc:$record['username']}</em></p>
+            <p>揭晓时间：<em class="gray6">{wc:$record['q_end_time']}</em></p>
+            <p>中奖码：<em class="gray6">{wc:$record['huode']}</em></p>
+            <input name="oid" type="hidden" id="sid" value="{wc:$oid}" />
+        </div>
+    </section>
+    
+     <section class="clearfix g-Record-ct" style=" border-bottom-width:0px; padding-top:0px;">
+       {wc:if $record['dizhi_id']!=0}
+           <li>
+                
+                 <p style="padding-left:1rem; ">收货地址：{wc:$place['sheng']}{wc:$place['shi']}{wc:$place['xian']}{wc:$place['jiedao']}</p>
+                 <p  style="padding-left:1rem; ">联 系 人：{wc:$place['shouhuoren']} </p>
+                 <p  style="padding-left:1rem; ">联系手机：{wc:$place['mobile']}</p>
+                 <i></i>
+                
+              </li>
+          
+       {wc:else}
+        <p class="title">您尚未确认地址,请{wc:$record['shipaddress']}选择</p>
+        <div class="addrlist">
+          <ul>
+            {wc:if $dizhi }
+              {wc:loop $dizhi $dz}
+              <li><label for="a{wc:$dz['id']}">
+                 <input style="float: left;position: relative;top: 0.6rem;" type="radio" name="adress" value="{wc:$dz['id']}" id="a{wc:$dz['id']}">
+                 <p style="padding-left:1rem; ">收货地址：{wc:$dz['sheng']}{wc:$dz['shi']}{wc:$dz['xian']}{wc:$dz['jiedao']}</p>
+                 <p  style="padding-left:1rem; ">联 系 人：{wc:$dz['shouhuoren']} </p>
+                 <p  style="padding-left:1rem; ">联系手机：{wc:$dz['mobile']}</p>
+                 <i></i>
+                 </label>
+              </li>
+              
+              {wc:loop:end}
+              <li>
+                 <a class="addaddr" href="{WEB_PATH}/mobile/home/address">添加其他地址</a>
+              </li>
+            {wc:else}
+               <a class="addaddr orgBtn" href="{WEB_PATH}/mobile/home/address">请先添加地址</a>
+            {wc:if:end}
+          </ul>
+         {wc:if $dizhi }
+         
+          
+          <p><a class="btn_ok">提交</a></p>
+          <script type="text/javascript">
+              $('.btn_ok').click(function(){
+                    
+                   var sid = $('#sid').val();
+                   var did = $("input[name='adress']:checked").val()
+                 $.ajax({  
+                    type : "POST",  //提交方式  
+                    url : "/index.php/mobile/home/do_dizhi",//路径  
+                    data : {  
+                        "sid" : sid ,
+                        "did" : did 
+                    },//数据，这里使用的是Json格式进行传输  
+                    success : function(data) {//返回数据根据结果进行相应的处理  
+                        //console.log(data);
+                        if (data==1) {
+                          window.location.href="/mobile/home/orderlist";
+                        }
+                    }  
+                }); 
+              });
+          </script>
+		  {wc:if:end}
+        </div>
+        <script>
+           $(".addrlist ul li:first").addClass("hover");
+		   var first=$(".addrlist ul li:first").html().replace("<i></i>","");
+		   first=first.replace(/[ ]/g,"");
+		   first=first.replace(/[\r\n]/g,"");
+		   $("#addr").val(first);
+        </script>
+        {wc:if:end}
+     </section>
+     
+     
+     
+   
+     
+     {wc:if $record['company_code']&& $record['company']}
+     <section class="clearfix g-Record-ct">
+       <div class="receive">
+         <p>快递公司：{wc:$record['company']}</p>
+         <p>快递单号：{wc:$record['company_code']}</p>
+       
+        {wc:php:start}             
+            $status=@explode(",",$record['status']);
+            if($status[2]=='未完成' || $status[2]=='待收货'){       	
+               
+                if($status[1]=='已发货'){
+                    echo '<p><a class="btn_ok1" >确认收货</a></p>';                      
+                }  
+                if($status[2]=='已完成'){
+                    echo '<p>订单已完成</p>';                      
+                }  
+            }
+            if($status[2]=='已完成'){
+                    echo '<p>订单已完成</p>';                      
+                }    
+        {wc:php:end}
+
+
+        </div>
+     </section>
+     {wc:if:end}
+     
+     
+  <script>
+    
+  </script>
+  
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+<script type="text/javascript">
+              $('.btn_ok1').click(function(){
+                    
+                   var did = $('#sid').val();
+                   
+                 $.ajax({  
+                    type : "POST",  //提交方式  
+                    url : "/index.php/mobile/home/do_shouhuo",//路径  
+                    data : {  
+                        "did" : did ,
+                        "s" : 2 
+                    },//数据，这里使用的是Json格式进行传输  
+                    success : function(data) {//返回数据根据结果进行相应的处理  
+                        //console.log(data);
+                        if (data==1) {
+                          window.location.href="/mobile/home/orderlist";
+                        }
+                    }  
+                }); 
+              });
+          </script>
+</div>
+</body>
+</html>

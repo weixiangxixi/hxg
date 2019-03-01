@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>购物车 - {wc:$webname}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/zdy.css">
+    <link href="{G_TEMPLATES_CSS}/mobile/cartList.css" rel="stylesheet" type="text/css" />
+    <script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Cartindex.js" language="javascript" type="text/javascript"></script>
+    <link rel="icon" href="http://f.weimicm.com/photo/member.jpg@!thumb_200_200" type="image/x-icon">
+    <style type="text/css">
+        #pageDialog {top:150px!important;}
+#all {
+    max-width: 640px;
+    bottom: 113px;
+    padding: 6px 6px 6px 10px;
+    box-sizing: border-box;
+    border-top: 1px solid #dedede;
+    /*border-bottom: 1px solid #dedede;*/
+    background: #FFF;
+}
+.g-Total-bt {
+    clear: both;
+    width: 100%;
+    max-width: 640px;
+    font-size: 14px;
+    position: fixed;
+    display: inline-block;
+    z-index: 12;
+}
+/*dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}*/
+#all dd:first-child {
+    width: 52%;
+    float: left;
+}
+#all input {
+    float: left;
+    display: block;
+    height: 35px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 5px;
+}
+#allNum + label {
+    float: left;
+    display: block;
+    height: 35px;
+    line-height: 25px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 5px;
+    width: 60%;
+    color: #F60;
+    border: 1px solid #F60;
+    margin-right: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+#keyboard, #keyboard * {
+    margin: 0;
+    padding: 0;
+}
+#keyboard {
+    display: none;
+    position: absolute;
+    width: 80%;
+    left: 10px;
+    bottom: 55px;
+    background: #FFF;
+    opacity: .85;
+}
+#all dd:first-child p {
+    float: left;
+    display: block;
+    width: 35%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 5px;
+}
+#all dd:last-child {
+    width: 46.5%;
+    float: right;
+}
+#keyboard ul {
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    background: #000;
+    overflow: hidden;
+}
+#keyboard ul li:not(:nth-child(3n)) {
+    border-right: 1px solid #F2F2F2;
+}
+#keyboard li {
+    display: block;
+    float: left;
+    width: calc(100% / 3);
+    height: 3rem;
+    border-bottom: 1px solid #F2F2F2;
+    color: #F2F2F2;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 3rem;
+    background: transparent;
+    list-style: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+.clear {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+#all dd:first-child p {
+    float: left;
+    display: block;
+    width: 35%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 5px;
+}
+div#divBtmMoney {
+    max-width: 640px;
+}
+.g-Total-bt {
+    clear: both;
+    width: 100%;
+    max-width: 640px;
+    font-size: 14px;
+    position: fixed;
+    display: inline-block;
+    z-index: 12;
+}
+.g-car-new, .g-Pay-new {
+    /*bottom: 52px;*/
+    line-height: 20px;
+    background: #fff;
+}
+/*.g-Total-bt.g-car-new dl {
+    border-top: 1px solid #dedede;
+    background: #fff;
+}*/
+.g-Total-bt.g-car-new dt {
+    padding: 7px 10px;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    border: none;
+    background: #fff;
+    height: 60px;
+}
+a.gray6, .gray6 {
+    color: #333;
+}
+.g-Total-bt.g-car-new dt .money-total {
+    font-size: 15px;
+    height: 20px;
+}
+.g-Total-bt.g-car-new dt .money-total em {
+    font-weight: bold;
+    font-size: 16px;
+}
+.orange {
+    color: #f60;
+}
+em {
+    font-style: normal;
+}
+.g-Total-bt.g-car-new dt .pro-total {
+    font-size: 15px;
+    color: #999;
+}
+.g-Total-bt.g-car-new dd {
+    float: right;
+    width: 45%;
+    height: 44px;
+    padding: 6px 6px 6px 0;
+    border: none;
+    background: #fff;
+}
+.g-Total-bt.g-car-new dd a.orgBtn {
+    height: 44px;
+    line-height: 44px;
+    background-color: #f60;
+    color: #FFF;
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+    letter-spacing: 10px;
+}
+#addMore {
+    width: 56%;
+    margin-right: 4%;
+    color: #ffb320;
+    border: 1px solid #FDA700;
+}
+
+#addMore, #clearAll {
+    background: #FFF;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+#addMore, #clearAll {
+    background: #FFF;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+#allNum + label:after {
+    content: '\039E\039E\039E';
+    display: block;
+    position: absolute;
+    width: 25px;
+    height: 15px;
+    top: 15px;
+    left: 23%;
+    color: #CCC;
+    border: 1px solid #CCC;
+    line-height: 15px;
+    font-size: 12px;
+    text-align: center;
+}
+/*自定义键盘*/
+    #keyboard {
+        display: none;
+        position: absolute;
+        width: 80%;
+        left: 10px;
+        bottom: 55px;
+        background: #FFF;
+        opacity: .85;
+    }
+    #keyboard, #keyboard * {
+        margin: 0;
+        padding: 0;
+    }
+    #keyboard:after {
+        position: absolute;
+        content: ' ';
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        background: #000;
+        transform: rotate(-45deg);
+        left: calc((100% / 3) / 2 - 0.5rem);
+        bottom: -.5rem;
+        z-index: -1;
+    }
+    #keyboard ul {
+        width: 100%;
+        text-align: center;
+        border-radius: 5px;
+        background: #000;
+        overflow: hidden
+    }
+    #keyboard li {
+        display: block;
+        float: left;
+        width: calc(100% / 3);
+        height: 3rem;
+        border-bottom: 1px solid #F2F2F2;
+        color: #F2F2F2;
+        font-weight: 400;
+        font-size: 1.3rem;
+        line-height: 3rem;
+        background: transparent;
+        list-style: none;
+        box-sizing: border-box;
+        cursor: pointer;
+        -moz-user-select: none; /*不允许数字被选中*/
+        -webkit-user-select: none;
+    }
+    #keyboard li:nth-child(12) {
+        background: #F60;
+    }
+    #keyboard li:active { /*点击时的背景反馈*/
+        background: #F60;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+    #keyboard ul li:not(:nth-child(3n)) {
+        border-right: 1px solid #F2F2F2;
+    }
+    .clear {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        clear: both;
+    }
+    /*end*/
+    </style>
+</head>
+
+<body>
+    <div class="h5-1yyg-v1" id="loadingPicBlock">
+
+    <input name="hidLogined" type="hidden" id="hidLogined" value="1" />
+    <style type="text/css">
+                            .tags li:hover{color: #22AAFF;}
+                            /*span:hover{color: #22AAFF;}*/
+                            .tags li{
+                                height: 28px;width: 50px;border-radius: 10px;float: left;margin: 0 6px;cursor: pointer;border: 1px solid #ccc;
+                            }
+                            .tags li:hover{
+                                border:1px solid #22AAFF;
+                            }
+                            .g-Cart{
+                                padding-top: 0;
+                            }
+                            .g-Cart-list .u-Cart-r p {
+                                margin-bottom: 5px;
+                                font-size: 12px;
+                            }
+                            .f-Cart-Other {
+                                width: 100%;
+                                margin-bottom: 10px;
+                                display: inline-block;
+                            }
+                            input.regular-radio {
+                                display: none;
+                            }
+                            input.regular-radio:checked + label {
+                                background-color: #FFEEC2;
+                                color: #f60;
+                                border: 1px solid #f60;
+                            }
+                            .zhuijia span, input.regular-radio + label {
+                                float: left;
+                                font-size: 14px;
+                                width: 40px;
+                                height: 30px;
+                                line-height: 30px;
+                                vertical-align: middle;
+                                text-align: center;
+                                border: 1px solid #CACACA;
+                                border-radius: 5px;
+                                margin-right: 5px;
+                                background-color: #EEEEEE;
+                            }
+                            .btn-all-img i {
+                                display: block;
+                                background: url(/statics/templates/yungou/images/mobile/chao.png) no-repeat scroll center center / 28px auto;
+                                width: 40px;
+                                height: 30px;
+                            }
+                            a.fl.u-Cart-img {
+                                position: relative;
+                                display: block;
+                                width: 80px;
+                                height: 80px;
+                                overflow: hidden;
+                            }
+                            a.fl.u-Cart-img.double::after {
+                                content: " ";
+                                display: block;
+                                position: absolute;
+                                width: 49px;
+                                height: 49px;
+                                background: transparent url(/statics/templates/yungou/images/mobile/zx.png) no-repeat 0 0 / 49px 196px;
+                                bottom: 0;
+                                right: 0;
+                                background-size: 100%;
+                            }
+                            .tags {
+                                float: left;
+                                margin-bottom: 10px!important;
+                            }
+                            .tags span {
+                                float: left;
+                                font-size: 14px;
+                                width: 40px;
+                                height: 30px;
+                                line-height: 30px;
+                                vertical-align: middle;
+                                text-align: center;
+                                border: 1px solid #CACACA;
+                                border-radius: 5px;
+                                margin-right: 5px;
+                                background-color: #EEEEEE;
+                            }
+                            a.gray9, .gray9{
+                                color:#999;
+                            }
+                            em.tmg-lottery {
+                                display: block;
+                                position: absolute;
+                                width: 49px;
+                                height: 49px;
+                                background: transparent url(/statics/templates/yungou/images/mobile/cat_mark3.png) no-repeat 0 -147px / 49px 196px;
+                                bottom: 0;
+                                right: 0;
+                            }
+                        </style>
+    <section class="clearfix g-Cart" style="margin-bottom: 95px">
+        {wc:if $shop!=0}
+        <article class="clearfix m-round g-Cart-list">
+            <ul id="cartBody">
+                {wc:php:start} $buyshopmoney=0; {wc:php:end} {wc:loop $shoplist $key $val} {wc:php:start} $num = count($shoplist); $buyshopmoney+=$Mcartlist[$val['id']]['money']*$Mcartlist [$val ['id']] ['num'];{wc:php:end}
+                {wc:if $val['money']==$val['yunjiage']*2}
+                <li style="border-bottom: 1px solid #dcdcdc;padding: 6px 0;">
+                    <a class="fl u-Cart-img double" href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}">
+                        <img src="{G_TEMPLATES_IMAGE}/loading.gif" src2="{G_UPLOAD_PATH}/{wc:$val['thumb']}" border="0" alt="" />
+                    </a>
+                    <div class="u-Cart-r">
+                        <p class="z-Cart-tt">
+                            <a href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}" class="gray6">(第{wc:$val['qishu']}期){wc:$val['title']}</a>
+                            <!-- <a href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}" class="gray6">(第{wc:$val['qishu']}期){wc:$val['title']}</a> -->
+                        </p> <ins class="z-promo gray9">剩余 <em class="arial">{wc:$val['zongrenshu']-$val['canyurenshu']}</em>
+                            人次</ins> 
+                        {wc:if $val['zongrenshu']-$val['canyurenshu'] == 1}
+                        <style type="text/css">
+                            input.regular-radio:disabled + label {
+                                background: #f7f7f7;
+                                border: 1px solid #ddd;
+                                color: #ddd;
+                            }
+                        </style>
+                        <p class="f-Cart-Other">
+                            <a href="javascript:;" style="margin-top: -40px;" class="fr z-del" name="delLink" cid="{wc:$val['id']}"></a><!--删除按钮-->
+                            <!--二人专享-->
+                                <input id="txtNum{wc:$val['id']}" name="num2" type="hidden" yunjiage="{wc:$val['yunjiage']}" value="{wc:$val['zongrenshu']-$val['canyurenshu']}">
+                                <span data-id="{wc:$val['id']}">
+                                    <input id="model_extend_{wc:$val['id']}_3" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="2" disabled="true">
+                                    <label for="model_extend_{wc:$val['id']}_3" class="btn-all-img"><i></i></label>
+                                    <input id="model_extend_{wc:$val['id']}_1" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="1" disabled="true">
+                                    <label for="model_extend_{wc:$val['id']}_1">P</label>
+                                    <input id="model_extend_{wc:$val['id']}_2" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="1" checked="">
+                                    <label for="model_extend_{wc:$val['id']}_2">K</label>
+                                </span>
+                        </p>
+                        {wc:elseif $Mcartlist [$val ['id']] ['num'] == 2}
+                         <p class="f-Cart-Other">
+                            <a href="javascript:;" style="margin-top: -40px;" class="fr z-del" name="delLink" cid="{wc:$val['id']}"></a><!--删除按钮-->
+                            <!--二人专享-->
+                                <input id="txtNum{wc:$val['id']}" name="num2" type="hidden" yunjiage="{wc:$val['yunjiage']}" value="{wc:$val['zongrenshu']-$val['canyurenshu']}">
+                                <span data-id="{wc:$val['id']}">
+                                    <input id="model_extend_{wc:$val['id']}_3" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="2" checked="">
+                                    <label for="model_extend_{wc:$val['id']}_3" class="btn-all-img"><i></i></label>
+                                    <input id="model_extend_{wc:$val['id']}_1" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="1">
+                                    <label for="model_extend_{wc:$val['id']}_1">P</label>
+                                    <input id="model_extend_{wc:$val['id']}_2" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="1">
+                                    <label for="model_extend_{wc:$val['id']}_2">K</label>
+                                </span>
+                        </p>
+                        {wc:else}
+                        <p class="f-Cart-Other">
+                            <a href="javascript:;" style="margin-top: -40px;" class="fr z-del" name="delLink" cid="{wc:$val['id']}"></a><!--删除按钮-->
+                            <!--二人专享-->
+                                <input id="txtNum{wc:$val['id']}" name="num2" type="hidden" yunjiage="{wc:$val['yunjiage']}" value="{wc:$val['zongrenshu']-$val['canyurenshu']}">
+                                <span data-id="{wc:$val['id']}">
+                                    <input id="model_extend_{wc:$val['id']}_3" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="2">
+                                    <label for="model_extend_{wc:$val['id']}_3" class="btn-all-img"><i></i></label>
+                                    <input id="model_extend_{wc:$val['id']}_1" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="1" checked="">
+                                    <label for="model_extend_{wc:$val['id']}_1">P</label>
+                                    <input id="model_extend_{wc:$val['id']}_2" class="regular-radio" type="radio" name="model_extend_{wc:$val['id']}" value="1">
+                                    <label for="model_extend_{wc:$val['id']}_2">K</label>
+                                </span>
+                        </p>
+                        {wc:if:end}
+                    </div>
+                    <script type="text/javascript">
+                        $(function(){
+                            $('.regular-radio').click(function(){
+                                var val = $(this).val();
+                            })
+                        })
+                    </script>
+                    <div style="float: left;color: #333;text-align: center;line-height: 28px;font-size: 14px;position: relative;margin-bottom: 5px;width: 100%;">
+                        <style>
+                            .tags #wy{
+                                background: #dcdcdc;
+                            }
+                            .tags #wy:hover{
+                                color: 999;
+                                border: 1px solid #ccc;
+                            }
+                            .tags div{
+                                border: 1px solid #ccc;
+                                border-radius: 10px;
+                                cursor: pointer;
+                                float: left;
+                                height: 28px;
+                                margin: 0 6px;
+                                width: 50px;
+                            }
+                        </style>
+                        <ul class="tags" style="margin: 0 auto;width: 90%;">
+                           
+                        </ul>
+                    </div>
+
+                </li>
+                {wc:elseif $val['cateid'] == '177'}
+                    <li style="border-bottom: 1px solid #dcdcdc;padding: 6px 0;">
+                        <a class="fl u-Cart-img" href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}">
+                            <img src="{G_TEMPLATES_IMAGE}/loading.gif" src2="{OSS_UPLOAD_PATH}/{wc:$val['thumb']}@!thumb_300_300" border="0" alt="" />
+                        </a>
+                        <div class="u-Cart-r">
+                            <p class="z-Cart-tt">
+                                <a href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}" class="gray6">(第{wc:$val['qishu']}期){wc:$val['title']}</a>
+                                <!-- <a href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}" class="gray6">(第{wc:$val['qishu']}期){wc:$val['title']}</a> -->
+                            </p> <ins class="z-promo gray9" style="float: left">剩余 <em class="arial">{wc:$val['zongrenshu']-$val['canyurenshu']}</em>
+                                人次</ins><ins class="z-promo gray9" style="float: left">(限购 <em class="arial">{wc:$val['str4']}</em>
+                                人次</ins><ins class="z-promo gray9" style="float: left">/已购 <em class="arial">{wc:$val['yg']}</em>
+                                人次)</ins>
+                            <p class="f-Cart-Other">
+                                <input type="hidden" value="{wc:$val['yunjiage']}" class="yunjiage">
+
+                                <a href="javascript:;" class="fr z-del" name="delLink" cid="{wc:$val['id']}"></a>
+
+                                <a href="javascript:;" class="fl z-jian {wc:if $Mcartlist[$val['id']]['num']==1}z-jiandis{wc:if:end}">-</a>
+
+                                <input id="txtNum{wc:$val['id']}" name="num" type="text" maxlength="7" yunjiage="{wc:$val['yunjiage']}" value="{wc:$Mcartlist[$val['id']]['num']}" class="fl z-amount" />
+
+                                <a href="javascript:;" class="fl z-jia {wc:if 
+                                $Mcartlist[$val['id']]['num']==$val['zongrenshu']}z-jiadis{wc:if:end}">+</a>
+
+                                <input id="shuliang{wc:$val['id']}" type="hidden" value="{wc:$Mcartlist[$val['id']]['num']}" />
+
+                                <input type="hidden" value="{wc:php:start}if(($val['zongrenshu']-$val['canyurenshu']) > ($val['str4'] - $val['yg'])){echo $val['str4'] - $val['yg'];}else{echo $val['zongrenshu']-$val['canyurenshu'];}{wc:php:end}" />
+
+                            </p>
+                            <p class="tags">
+                                <span data-id="{wc:$val['id']}" data-val="20">20</span>
+                                <span data-id="{wc:$val['id']}" data-val="50">50</span>
+                                <span data-id="{wc:$val['id']}" data-val="100">100</span>
+                                <span data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">梭哈</span>
+                            </p>
+                        </div>
+
+                    </li>
+                {wc:else}
+                <li style="border-bottom: 1px solid #dcdcdc;padding: 6px 0;">
+                    <a class="fl u-Cart-img" href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}">
+                        <img src="{G_TEMPLATES_IMAGE}/loading.gif" src2="{OSS_UPLOAD_PATH}/{wc:$val['thumb']}@!thumb_300_300" border="0" alt="" />
+                        {wc:if $val['cateid'] == '173'}<em class="tmg-lottery"></em>{wc:if:end}
+                    </a>
+                    
+                    <div class="u-Cart-r">
+                        <p class="z-Cart-tt">
+                            <a href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}" class="gray6">(第{wc:$val['qishu']}期){wc:$val['title']}</a>
+                            <!-- <a href="{WEB_PATH}/mobile/mobile/item/{wc:$val['id']}" class="gray6">(第{wc:$val['qishu']}期){wc:$val['title']}</a> -->
+                        </p> <ins class="z-promo gray9">剩余 <em class="arial">{wc:$val['zongrenshu']-$val['canyurenshu']}</em>
+                            人次</ins>
+                        <p class="f-Cart-Other">
+                            <input type="hidden" value="{wc:$val['yunjiage']}" class="yunjiage">
+
+                            <a href="javascript:;" class="fr z-del" name="delLink" cid="{wc:$val['id']}"></a>
+
+                            <a href="javascript:;" class="fl z-jian {wc:if $Mcartlist[$val['id']]['num']==1}z-jiandis{wc:if:end}">-</a>
+
+                            <input id="txtNum{wc:$val['id']}" name="num" type="text" maxlength="7" yunjiage="{wc:$val['yunjiage']}" value="{wc:$Mcartlist[$val['id']]['num']}" class="fl z-amount" />
+
+                            <a href="javascript:;" class="fl z-jia {wc:if 
+                            $Mcartlist[$val['id']]['num']==$val['zongrenshu']}z-jiadis{wc:if:end}">+</a>
+
+                            <input id="shuliang{wc:$val['id']}" type="hidden" value="{wc:$Mcartlist[$val['id']]['num']}" />
+
+                            <input type="hidden" value="{wc:$val['zongrenshu']-$val['canyurenshu']}" />
+
+                        </p>
+                        <p class="tags">
+                            <span data-id="{wc:$val['id']}" data-val="20">20</span>
+                            <span data-id="{wc:$val['id']}" data-val="50">50</span>
+                            <span data-id="{wc:$val['id']}" data-val="100">100</span>
+                            <span data-id="{wc:$val['id']}" data-val="{wc:$val['zongrenshu']-$val['canyurenshu']}">梭哈</span>
+                        </p>
+                    </div>
+
+                </li>
+                {wc:if:end}
+                {wc:loop:end}
+
+
+                                        
+            </ul>
+        </article>
+        <!-- <div id="divBtmMoney" class="g-Total-bt" style="height: 40px;width: 100%;">
+            <p style="display: block;float: left;line-height: 45px;text-align: left;text-indent: 10px;">
+                共
+                <span class="orange arial z-user" style="font-size: 12px;line-height: 45px;">{wc:$num}</span>
+                &nbsp件商品&nbsp&nbsp&nbsp合计&nbsp
+                <span  id="total" class="orange arial" style="font-size: 14px;line-height: 45px;">{wc:$buyshopmoney}.00</span>
+                &nbsp元
+                
+            </p>
+            <a style="float: right;width: 20%;" href="javascript:;" class="orgBtn">去 支 付</a>
+            <p style="float: right;width: 20%;background-color: #87CEFA" onclick="delCart();" id="cleanCart">清 空</p>
+            <style type="text/css">
+                p #cleanCart {
+                    background: #22AAFF;
+                }
+                #cleanCart {
+                    display: block;
+                    width: 100%;
+                    -webkit-box-sizing: border-box;
+                    height: 35px;
+                    line-height: 40px;
+                    text-align: center;
+                    color: #fff!important;
+                    border-radius: 5px;
+                    font-size: 18px;
+                    margin-right: 10px;
+                }
+            </style>
+            <script type="text/javascript">               
+                function delCart(){
+                    $.ajax({
+                        type: 'post',
+                        url: '/mobile/ajax/delShopCartAll',
+                        data: {id: 1},
+                        dataType: 'json',
+                        success: function (data) {
+                            //console.log(data);   
+                            if (data==0) {
+                                //addsuccess('删除成功');
+                                location.reload() ; 
+                            }         
+                        }
+                    });
+                }
+                
+            </script>
+
+        </div> -->
+        {wc:if:end}
+        <style type="text/css">
+            #intro span.title, .record span.title {
+                display: inline-block;
+                position: relative;
+                padding: 12px;
+                font-size: 14px;
+                line-height: 14px;
+            }  
+            #intro {
+                text-align: center;
+                height: 2.4rem;
+            }
+            #intro span.title::before, .record span.title::before {
+                content: ' ';
+                display: block;
+                position: absolute;
+                width: 2rem;
+                height: 1px;
+                right: 100%;
+                top: 50%;
+                background-image: -webkit-linear-gradient(top, #DEDEDE, #DEDEDE);
+            }
+            #intro span.title s {
+                display: inline-block;
+                margin-right: .1rem;
+                width: 14px;
+                height: 14px;
+                background: url({G_WEB_PATH}/statics/templates/yungou/images/mobile/intro.png) no-repeat center / auto 14px;
+                vertical-align: top;
+            }
+            #intro span.title::after, .record span.title::after {
+                content: ' ';
+                display: block;
+                position: absolute;
+                width: 2rem;
+                height: 1px;
+                left: 100%;
+                top: 50%;
+                background-image: -webkit-linear-gradient(top, #DEDEDE, #DEDEDE);
+            }
+            #intro, .record {
+                background: #F4F4F4;
+            }
+            .haveNot {
+                padding-top: 30px;
+            }
+            .haveNot .guangguang {
+                display: block;
+                margin: 0 auto;
+                height: 35px;
+                width: 100px;
+                background-color: #f60;
+                line-height: 35px;
+                text-align: center;
+                color: #fff;
+                font-size: 20px;
+                border-radius: 5px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            .tabs-wrap .goodsList > ul > li > span >a> img {
+                height: 7rem;
+                margin: 1rem auto;
+                width: 7rem;
+            }
+            img {
+                border: 0;
+            }
+            .itembot {
+                text-align: center;
+            }
+            .colfalse {
+                background-image: url(/statics/templates/yungou/images/mobile/colfalse.png);
+            }
+
+            .collection {
+                width: 24px;
+                height: 24px;
+                display: inline-block;
+                background-size: cover;
+                float: left;
+            }
+            .itembot a:nth-of-type(2) {
+                border: 1px solid #f60;
+                color: #f60;
+                height: 26px;
+                border-radius: 20px;
+                line-height: 26px;
+                text-align: center;
+                margin: 0 auto;
+                width: 90px;
+                position: relative;
+                top: 2px;
+                display: inline-block;
+            }
+            .tabs-wrap .goodsList > ul >li {
+                border-right: 1px solid transparent;
+                display: inline-block;
+                height: auto;
+                line-height: 1.25em;
+                padding-bottom: 1rem;
+                width: 100%;
+            }
+            .copies a:first-of-type {
+                color: #22aaff;
+                text-align: left;
+            }
+            .copies a {
+                font-size: 12px;
+                width: 33.3%;
+                color: #999;
+                display: inline-block;
+                text-align: center;
+            }
+            .copies a:last-of-type {
+                color: #f60;
+                text-align: right;
+            }
+            img {
+                display: block;
+                height: auto;
+                max-width: 100%;
+                border: 0px none;
+            }
+            .item_bottom_container {
+                overflow: hidden;
+                padding: 0 5%;
+                margin-top: 0.4rem;
+                font-size: 1rem;
+            }
+            .tabs-wrap .goodsList > ul > li > div > h2 {
+                font-size: 0.8rem;
+                overflow: hidden;
+                padding: 0 5%;
+                color: black;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            #bottomAll {
+                position: fixed;
+                width: 3.2rem;
+                height: 3.2rem;
+                left: calc(50% - 1.6rem);
+                bottom: 58px;
+                background: #f60;
+                border-radius: 50%;
+                box-shadow: 0 0 15px #f60;
+                -webkit-animation-fill-mode: forwards;
+                z-index: 111;
+            }
+            #bottomAll p {
+                display: block;
+                width: 2rem;
+                height: 1.8rem;
+                padding: .5rem .4rem;
+                margin: calc(0.14rem - 0px) auto;
+                line-height: 1rem;
+                color: #FFF;
+                font-size: .9rem;
+                background: #f60;
+                text-align: center;
+                border-radius: 50%;
+                border: 1px solid #FFF;
+                letter-spacing: 1px;
+            }
+            #clearAll {
+                width: 30%;
+                color: #F60;
+                border: 1px solid #F60;
+            }
+            .colfalse{
+                background-image: url('/statics/templates/yungou/images/mobile/colfalse.png');
+            }
+            .coltrue{
+                background-image: url('/statics/templates/yungou/images/mobile/coltrue.png');
+            }
+            .haveNot .btn-jumpBuy {
+                padding: 10px 0;
+                margin: 0 auto;
+                display: flex;
+            }
+            .haveNot .btn-jumpBuy a:first-child {
+                background: #F60;
+            }
+            .haveNot .btn-jumpBuy a {
+                width: calc(28% - 5px);
+            }
+            .haveNot .btn-jumpBuy a {
+                display: block;
+                float: left;
+                height: 35px;
+                margin: 0 auto;
+                line-height: 35px;
+                border-radius: 3px;
+                font-size: 18px;
+                color: #FFF;
+            }
+            .haveNot .btn-jumpBuy a:nth-child(2) {
+                background: #F80000;
+            }
+            .haveNot .btn-jumpBuy a:last-child {
+                background: #22AAFF;
+            }
+        </style>
+        <div id="divNone" class="haveNot z-minheight" style="display:none">
+            <s></s>
+            <p style="padding: 10px 0;">购物车为空</p>
+            <p class="btn-jumpBuy">
+                <a href="/">赶快逛逛</a>
+                <a href="/index.php/mobile/mobile">透明购</a>
+                <a href="/index.php/mobile/home/collectlist">我的收藏</a>
+            </p>
+            <div id="intro"><span class="title"><s></s>热销商品</span>
+                 <div class="tabs-wrap" style="min-height:1000px;position: relative;">
+                    <div class="goodsList" style="clear: both;">
+                        <div id="divGoodsLoading" class="loading" style="display:none;height: 80px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="bottomAll">
+              <p>一键添加</p>
+            </div>
+        </div>
+
+    </section>
+    {wc:if $shop!=0}
+    <div id="all" class="g-Total-bt">
+        <dl>
+            <dd>
+                <input id="allNum" type="hidden">
+                <label for="allNum"></label>
+                <div id="keyboard" style="display: none;">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>0</li>
+                        <li>退格</li>
+                        <li>确定</li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <p>次/件</p>
+            </dd>
+            <dd>
+                <input id="addMore" value="继续添加" type="button">
+                <input id="clearAll" value="清空" type="button">
+            </dd>
+        </dl>
+    </div>
+    <div id="divBtmMoney" class="g-Total-bt g-car-new">
+    <dl>
+        <dt class="gray6">
+        <p class="money-total">合计：&nbsp;<em class="orange">{wc:$buyshopmoney}.00&nbsp;元</em></p>
+        <p class="pro-total">总共&nbsp;<em>{wc:$num}&nbsp;</em>件商品</p>
+        </dt>
+        <dd>
+            <a href="javascript:;" id="a_payment" class="orgBtn">&nbsp;去结算</a>
+        </dd>
+    </dl>
+    </div>
+    {wc:if:end}
+    <style type="text/css">
+        .smailnav{bottom: 160px!important;}
+    </style>
+    {wc:templates "mobile/index","footer"}
+    <script type="text/javascript">  
+        $(function(){
+            $("#clearAll").click(function(){
+                $.ajax({
+                    type: 'post',
+                    url: '/index.php/mobile/ajax/delShopCartAll',
+                    data: {id: 1},
+                    dataType: 'json',
+                    success: function (data) {
+                        //console.log(data);   
+                        if (data==0) {
+                            $.PageDialog.fail("清空成功,页面跳转中");
+                            setTimeout(function () {
+                                location.reload() ; 
+                            },2000);
+                            
+                        }         
+                    }
+                });
+            })
+        })             
+    </script>
+    <script type="text/javascript">
+        window.onload=function(){
+    init_json("list/10");
+    //购物车数量
+    $.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+        if(data.num){
+            $("#btnCart").append('<em>'+data.num+'</em>');
+        }
+    });
+    
+}
+
+    //打开页面加载数据
+    function init_json(parm) {
+        $("#urladdress").val('');
+        $("#pagenum").val('');
+        $.getJSON('{WEB_PATH}/mobile/mobile/initajax1/' + parm, function(data) {
+            $("#divGoodsLoading").css('display', 'none');
+            var data = data.shoplist;
+            if (data.sum) {
+                var fg = parm.split("/");
+                $("#urladdress").val(fg[0] + '/' + fg[1]);
+                $("#pagenum").val(data.page);
+                for (var i = 0; i < data.length; i++) {
+                    var ul = '<ul><li>';
+                    //ul += '<span id="' + data[i].id + '" class="z-Limg" style="position:relative;display:block;"><a href="{WEB_PATH}/mobile/mobile/item/'+data[i].id +'"><img src="{G_UPLOAD_PATH}/' + data[i].thumb + '"></a><div id="jiazhi1">价值：￥' + data[i].money + '</div></span>';
+                    ul += '<span id="' + data[i].id + '" class="z-Limg" style="position:relative;display:block;"><a href="{WEB_PATH}/mobile/mobile/item/'+data[i].id +'"><img src="{OSS_UPLOAD_PATH}/' + data[i].thumb + '@!thumb_300_300"></a></span>';
+                    ul += '<div style="margin-top:15px;" class="goodsListR">';
+                    ul += '<h2 id="' + data[i].id + '">' + data[i].title + '</h2>';
+                    // ul += '<h2 id="' + data[i].id + '">(第' + data[i].qishu + '期)' + data[i].title + '</h2>';
+                    ul += '</div>';
+                    ul += '<div class="pRate item_bottom_container">';
+                    ul += '<div class="Progress-bar jdt_container" id="' + data[i].id + '" style="width:100%;">';
+                    /*ul += '<div style="color:#646464;margin-top:2px;">';*/
+                    var num =(data[i].canyurenshu / data[i].zongrenshu) * 100;
+                    num = num.toFixed(2);
+                    var canyurenshu = data[i].canyurenshu;
+                    var zongrenshu = data[i].zongrenshu;
+                    var shenyurenshu = data[i].zongrenshu - data[i].canyurenshu;
+                    /*ul += '进度&nbsp;<label class="color_blue" id="jd">'+num+'%</label>';
+                    ul += '</div>';*/
+                    ul += '<p class="u-progress jdt" style="margin:.5rem 0;margin-left:0;"><span class="pgbar" style="width:' +num+ '%;"><span class="pging"></span></span></p></div>';//
+                    ul += '<p class="copies"><a>' + canyurenshu + '</a><a>' + zongrenshu + '</a><a>' + shenyurenshu + '</a></p>';
+                    ul += '<div class="itembot"><a class="collection ' + data[i].col + '" onclick="getcol(this);" colid = "'+ data[i].sid + '" href="javascript:void(0);"></a><a href="{WEB_PATH}/mobile/mobile/item/'+data[i].id +'">立即专享</a><a class="join"></a>';
+                    
+                    ul += '<div class="buy_container" style="float:right;"><div class="btn_buy">';
+                    ul += '<a class="add " codeid="' + data[i].id + '" href="javascript:;"></a>';
+                    ul += '</div></div></div></div></div></li></ul>';
+                    ul+='</div></div></li><input type="hidden" name="shoparr" value="'+ data[i].id + '"></ul>';
+                    $("#divGoodsLoading").before(ul);
+                }
+                if (data.page <= data.sum) {
+                    $("#btnLoadMore").css('display', 'block');
+                    $("#btnLoadMore2").css('display', 'none');
+                    $("#btnLoadMore3").css('display', 'none');
+                } else if (data.page > data.sum) {
+                    $("#btnLoadMore").css('display', 'none');
+                    $("#btnLoadMore2").css('display', 'none');
+                    $("#btnLoadMore3").css('display', 'block');
+                }
+            } else {
+                $("#btnLoadMore").css('display', 'none');
+                $("#btnLoadMore2").css('display', 'block');
+                $("#btnLoadMore3").css('display', 'none');
+            }
+        });
+    }
+
+    $(function(){
+        $('#bottomAll p').click(function(){
+            var shoparr = document.getElementsByName("shoparr");
+            var arr = [];
+            var brr = [];
+            for (var i = 0, j = shoparr.length; i < j; i++){
+                //console.log(shoparr[i].value);
+                arr[i] = shoparr[i].value;
+            }
+            //brr = JSON.stringify(arr);
+            $.ajax({
+                type: 'post',
+                url: '/mobile/ajax/addShopCartAll',
+                data: {item: arr},
+                dataType: 'json',
+                success: function (data) {
+                    //console.log(data);   
+                    if (data==0) {
+                        window.location.href = "{WEB_PATH}/mobile/cart/cartlist";  
+                    }         
+                }
+            });
+        });
+    });
+
+     function getcol(obj){
+
+            var thisObj=$(obj);//js对象转jquery对象  
+            var colid=thisObj.attr("colid");  
+
+            if(thisObj.hasClass("colfalse")){
+                $.getJSON('{WEB_PATH}/mobile/mobile/addCollect/' + colid,function(data){
+                    if(data.code==1){
+                        addsuccess1(data.msg);
+                    }else if(data.code==0){
+                        addsuccess1(data.msg);   
+                    }
+                });
+                thisObj.addClass("coltrue").removeClass("colfalse");
+            }else{
+                $.getJSON('{WEB_PATH}/mobile/mobile/delCollect/' + colid,function(data){
+                    if(data.code==1){
+                        addsuccess1(data.msg);
+                    }else if(data.code==0){
+                        addsuccess1(data.msg);  
+                        //window.location.reload();   
+                    }
+                });
+                thisObj.addClass("colfalse").removeClass("coltrue");
+            }
+
+        }
+
+    function addsuccess1(dat){
+        $("#pageDialogBG .Prompt").text("");
+        var w=($(window).width()-255)/2,
+            h=($(window).height()-45)/2;
+        $("#pageDialogBG").css({top:h,left:w,opacity:0.8});
+        $("#pageDialogBG").stop().fadeIn(1000);
+        $("#pageDialogBG .Prompt").append('<s></s>'+dat);
+        $("#pageDialogBG").fadeOut(1000);
+
+    }
+    </script>
+    <script type="text/javascript">
+
+        $(document).on("click",'.add',function(){
+        var codeid=$(this).attr('codeid');
+        $.getJSON('{WEB_PATH}/mobile/ajax/addShopCart/'+codeid+'/1',function(data){
+            if(data.code==1){
+                addsuccess('添加失败');
+            }else if(data.code==0){
+                window.location.href = "{WEB_PATH}/mobile/cart/cartlist";             
+            }return false;
+            
+        });
+        
+    });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+        document.body.addEventListener('touchstart', function () { /*兼容IOS元素:active事件*/});
+
+        //弹出虚拟键盘
+        $("#keyboard").prev("label").click(function (e) {
+            //阻止冒泡
+            if (e && e.stopPropagation) {//非IE浏览器
+                e.stopPropagation();
+            } else {//IE浏览器
+                window.event.cancelBubble = true;
+            }
+
+            $('#keyboard').slideToggle(200);
+        });
+        //自动隐藏键盘
+        $(window).scroll(function () {
+            $("#keyboard").hide()
+        });
+        $("html,body").click(function () {
+            $("#keyboard").hide();
+        });
+        $("#keyboard").click(function (e) {
+            //阻止冒泡
+            if (e && e.stopPropagation) {//非IE浏览器
+                e.stopPropagation();
+            } else {//IE浏览器
+                window.event.cancelBubble = true;
+            }
+        });
+
+        //继续添加
+        $("#addMore").click(function () {
+            window.location.href = "/index.php/mobile/mobile/glist/oneKey";
+        });
+
+
+        //键盘点击事件
+        $("#keyboard li").click(function () {
+            var tip = $("#keyboard");
+            var label = tip.prev("label");
+            var index = $(this).index(), now = label.text(), newNum;
+
+            if (index == 10) { //退格
+                if (now.length > 1) {
+                    newNum = parseInt(now.slice(0,-1));
+                } else {
+                    newNum = "";
+                }
+            } else if (index == 11) { //一键更改数量
+                var val = $("#allNum").val();
+                var t = $("#all");
+                var A = ($(window).width()) / 2 - t.offset().left - 127;
+                if (val == "" || val == 0) {
+                    //$.PageDialog.fail("请输入数量", t, -90, A);
+                    return false;
+                } else { //开始向后台传输数据
+                    tip.hide();
+                    val = parseInt(val);
+                    var len = $("input[id*='txtNum']").length, sids = "", sid;
+                    for (var i=0; i<len; i++) {
+                        sid = parseInt($("input[id*='txtNum']").eq(i).attr("id").replace("txtNum",""));
+                        if (i != (len - 1)) {
+                            sids += sid + ",";
+                        } else {
+                            sids += sid;
+                        }
+                    }
+                    //console.log(sids)
+                    $.getJSON("/index.php/mobile/ajax/addAllToCart", {"sids": sids, "num": val}, function (json) {
+                        if (json == 0) {
+                            $.PageDialog.fail("更新成功，页面刷新中");
+                            setTimeout(function () {
+                                window.location.reload(true);
+                            }, 2000);
+                        } else {
+                            $.PageDialog.fail("更新失败");
+                        }
+                    })
+                }
+            } else { //数字按钮
+                var keyNum = $(this).text();
+                newNum = parseInt(now + keyNum);
+                var A = ($(window).width()) / 2 - tip.offset().left - 146;
+                var notice;
+                if (newNum == 0) {
+                    notice = "必须大于0";
+                    $.PageDialog.fail(notice);
+                    return false;
+                }
+                if (newNum > 1000) {
+                    notice = "不能大于1000";
+                    $.PageDialog.fail(notice);
+                    return false;
+                }
+            }
+
+            label.text(newNum);
+            $("#allNum").val(newNum);
+        });
+    }) 
+    </script>
+    <script language="javascript" type="text/javascript">
+        var Path = new Object();
+        Path.Skin = "{G_TEMPLATES_STYLE}";
+        Path.Webpath = "{WEB_PATH}";
+
+        var Base = {
+            head: document.getElementsByTagName("head")[0] || document.documentElement,
+            Myload: function(B, A) {
+                this.done = false;
+                B.onload = B.onreadystatechange = function() {
+                    if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                        this.done = true;
+                        A();
+                        B.onload = B.onreadystatechange = null;
+                        if (this.head && B.parentNode) {
+                            this.head.removeChild(B)
+                        }
+                    }
+                }
+            },
+            getScript: function(A, C) {
+                var B = function() {};
+                if (C != undefined) {
+                    B = C
+                }
+                var D = document.createElement("script");
+                D.setAttribute("language", "javascript");
+                D.setAttribute("type", "text/javascript");
+                D.setAttribute("src", A);
+                this.head.appendChild(D);
+                this.Myload(D, B)
+            },
+            getStyle: function(A, B) {
+                var B = function() {};
+                if (callBack != undefined) {
+                    B = callBack
+                }
+                var C = document.createElement("link");
+                C.setAttribute("type", "text/css");
+                C.setAttribute("rel", "stylesheet");
+                C.setAttribute("href", A);
+                this.head.appendChild(C);
+                this.Myload(C, B)
+            }
+        }
+
+        function GetVerNum() {
+            var D = new Date();
+            return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+        }
+        Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+        </script></div>
+</body>
+
+</html>

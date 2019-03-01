@@ -1,0 +1,264 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+body{color:#333; font-size:12px;font-family:"Microsoft YaHei"}
+ul,ol{list-style-type:none;}
+select,input,img,select{vertical-align:middle;}
+input{ font-size:12px;}
+a{ text-decoration:none; color:#000;}
+a:hover{color:#c00; text-decoration:none;}
+.clear{clear:both;}
+
+body {
+	background:#FFF;
+	overflow-x:hidden;
+}
+
+/*index.html*/
+
+/* 大转盘样式 */
+.banner{display:block;width:100%;max-width:422px;margin: 0 auto;overflow: hidden;}
+.banner .turnplate{
+	display: block;
+	position: relative;
+	width: 90%;
+	margin:10px auto 0px;
+}
+.banner .turnplate canvas.item{width:100%;}
+.banner .turnplate img.pointer{cursor:pointer;position:absolute;width:31.5%;height:42.5%;left:34.6%;top:23%;}
+
+#wheelcanvas {
+	transform: rotate(247.5deg);
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+/*新增*/
+#num {
+	width: 94%;
+	max-width: 400px;
+	height: 50px;
+	font-size: 14px;
+	background: #F9D006;
+	color: #f00;
+	text-align: center;
+	line-height: 50px;
+	margin: 0px auto;
+	border-radius: 5px;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+#num a{
+	padding: 4px;
+	background: #fff;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+}
+#num .rule{
+	padding:4px;
+	background: #fff;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 14px;
+}
+#num span {
+	color: #666;
+	font-size: 25px;
+}
+.ac {
+  width: 95%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-top: 1px dashed #ccc;
+  font-size: 16px;
+  font-style: italic
+}
+.ac p {
+  color: #666;
+  text-align: center;
+  line-height: 30px;
+  text-shadow: 1px 1px 1px #999;
+}
+.lotteryList {
+	width: 90%;
+	max-width: 400px;
+	background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+	height: 150px;
+	margin: 20px auto 50px;
+	border: 2px solid #F9D006;
+	border-radius: 10px;
+	box-sizing: border-box;
+	padding: 10px;
+}
+#msg {
+	height: auto;
+	background: rgba(0, 0, 0, 0.6);
+	color: #FFF;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: center;
+	width: 210px;
+	position: fixed;
+	left: 50%;
+	top: 15%;
+	margin-left: -105px;
+	box-sizing: border-box;
+	padding: 20px 10px;
+	overflow: hidden;
+	z-index: 1004;
+}
+#msg a {
+	display: block;
+	margin-top: 40px;
+	padding: 5px 0;
+	background: #C81623;
+	color: #FFF;
+}
+#mClose {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-size: 30px;
+	transform: rotate(45deg);
+	z-index: 1;
+	display: block;
+	padding: 5px;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+}	
+
+/*index.html结束*/
+
+/*count.html*/
+
+/*奖品列表*/	
+* {
+	margin: 0;
+	padding: 0;/*--------------------------em 用after函数插入-------------------------------------------------------*/
+}
+.prize, .prize * {
+	/*box-sizing: border-box;*/
+	font-size: 16px;
+	color: #333
+}
+.prize {
+	width: 97%;
+	max-width: 400px;
+	margin: 10px auto 30px;
+	border-top: 1px dashed #CCC
+}
+
+.box > li {
+	width: 100%;
+	display: block;
+	border-bottom: 1px dashed #CCC
+}
+.box > li:after {
+	display: block;
+	content: " ";
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+
+.model {
+	position: relative;
+	float: left;
+	width: 100%;
+	margin: 8px 0
+}
+.model .true {
+	background: #F9D006
+}
+.model li {
+	position: relative;
+	display: block;
+	float: left;
+	width: 40px;
+    height: 40px;
+    line-height: 40px;
+	background: #CCC;
+	text-align: center;
+	border-radius: 50%;
+	margin: 3px 2px
+}
+.model li.cashing {
+	float: right;
+	border-radius: 0;
+	background: transparent;
+	position: relative;
+}
+.model li.cashing a {
+	display: block;
+	border-radius: 5px;
+	background: #CCC;
+}
+.model li.cashing .true {
+	background: #F00;
+	color: #FFF
+}
+.model>li>em {
+    position: absolute;
+    top: -16px;
+    left: 15px;
+    color: #F00;
+    font-weight: bold;
+}
+
+.exMsg {
+	display: none;
+    position: absolute;
+    right: 50px;
+    top: 0px;
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.9)
+}
+.exMsg em {
+    display: block;
+    content: " ";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 15px;
+    left: 75px;
+    transform: rotate(45deg);
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.9)
+}
+
+li.prizeLi p {
+  color: #666;
+  text-align: center;
+  font-style: italic;
+  line-height: 35px;
+  text-shadow: 1px 1px 1px #999
+}
+#pModel {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 8px 0;
+}
+
+#pModel li {
+  width: 100%;
+  text-align: left;
+  font-style: italic;
+  text-indent: 10px;
+  color: #E61F6B;
+  text-shadow: 1px 1px 1px #333
+}
+#pModel li em {
+  position: absolute;
+  right: 10px;
+  color: #E61F6B;
+}
+/*count.html结束*/

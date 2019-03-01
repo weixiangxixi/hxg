@@ -1,0 +1,645 @@
+@charset "utf-8";
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: #f4f2f3;
+}
+
+input::-webkit-input-placeholder{
+    color: #CCC;
+}
+
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color: #CCC;
+}
+
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color: #CCC;
+}
+
+.text-align-left {
+    text-align: left !important;
+}
+
+.text-align-right {
+    text-align: right !important;
+}
+
+.block {
+    display: block;
+}
+
+.R-content {
+    width: 100%;
+    padding: 3rem 0 1.5rem;
+}
+
+.R-content .member-t {
+    border-bottom: 1px solid #ededed;
+    padding-left: 1em;
+}
+
+.R-content .success-invitation {
+    border: 1px solid #f5f5f5;
+    background: #fcfcfc;
+    line-height: 22px;
+    padding: 10px 0px 20px 30px;
+}
+
+.R-content .success-invitation button {
+    background: none;
+}
+
+.R-content .success-invitation #txtInfo {
+    border: 1px solid #ddd;
+    line-height: 18px;
+}
+
+.R-content .success-invitation #d_clip_button {
+    margin-left: 5px;
+    padding: 0 10px 0 10px;
+    line-height: 18px;
+    background: none;
+}
+
+.R-content .get-tips {
+    border: 1px solid #FEDD98;
+    background: #FFFBE3;
+    padding: 5px;
+}
+
+.R-content .list-tab {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.R-content .list-tab .w200 {
+    width: 25%;
+}
+
+.R-content .list-tab .w20 {
+    width: 20%;
+}
+
+.R-content .list-tab .w40 {
+    width: 40%;
+}
+
+.R-content .list-tab .w10 {
+    width: 10%;
+}
+
+.R-content .list-tab .w35 {
+    width: 35%;
+}
+
+.R-content .list-tab .w15 {
+    width: 15%;
+}
+
+.R-content .list-tab ul {
+    clear: both;
+    width: 100%;
+}
+
+.R-content .list-tab .listTitle li {
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    background: #f9f9f9;
+    line-height: 18px;
+}
+
+.R-content .list-tab ul li {
+    float: left;
+    text-align: center;
+}
+
+.R-content .list-tab .tips-con {
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+}
+
+.R-content .bluebut {
+    width: 98%;
+    height: 2.5rem;
+    padding: .25rem;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 1px;
+    background: #F60;
+    border-radius: 5px;
+}
+
+.R-content .orangebut {
+    border: 1px solid #f65802;
+    color: #fff;
+    background: #ff6600;
+}
+
+.subMenu {
+    position: fixed;
+    width: 100%;
+    max-width: 640px;
+    margin-top: -3rem;
+    background: #FFF;
+    box-shadow: 0 0 10px 0 rgba(155,143,143,0.6);
+    overflow: hidden;
+    z-index: 111;
+}
+
+.subMenu a {
+    float: left;
+    width: 50%;
+    height: 3rem;
+    color: #F60;
+    font-size: .9rem;
+    line-height: 3rem;
+    text-align: center;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+.subMenu a i {
+    background: #f60;
+    color: #fff;
+    position: absolute;
+    top: 1px;
+    margin-left: -1px;
+    height: 9px;
+    font-size: 12px;
+    line-height: 9px;
+    border-radius: 2px;
+    padding: 2px;
+    font-family: Arial;
+    font-weight: normal;
+}
+
+.subMenu a.current {
+    background: #F60;
+    color: #fff;
+    border-top: 0 none;
+}
+
+.subMenu a.current:hover {
+    color: #fff;
+}
+
+.subMenu a.current2 {
+    border-left: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+
+.Apply-con, .Apply-con * {
+    box-sizing: border-box
+}
+
+
+.total, .total * {
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.total {
+    margin-bottom: .25rem;
+    margin-top: 0px;
+    line-height: 0px;
+    border: 0px solid #EED7D9;
+    padding: 0px;
+    overflow: hidden;
+    color: ;
+}
+
+.total::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+
+.total .acct {
+    float: left;
+    width: 50%;
+    line-height: 2rem;
+    padding: .5rem;
+    background: #FFF;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.total .acct:nth-child(2n-1) {
+    border-right: 1px solid #F2F2F2;
+}
+
+.total .acct.no-bottom {
+    border-bottom: none;
+}
+
+.acct .title {
+    color: #666;
+}
+
+.acct .orange {
+    color: #F60;
+}
+
+.Apply-con {
+    width: 100%;
+}
+
+.Apply-con [id^='tip'] {
+    color: #F60;
+    line-height: 1.1rem;
+}
+
+.Apply-con dl, .Apply-con dl * {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.Apply-con dl {
+    position: relative;
+    width: 100%;
+    line-height: 2rem;
+    padding: .5rem;
+    background: #FFF;
+    border-bottom: 1px solid #f2f2f2;
+    overflow: hidden;
+}
+
+.Apply-con dl.split {
+    border-bottom: none;
+    margin-bottom: .25rem;
+}
+
+.Apply-con dl::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+
+.Apply-con dt, .Apply-con dd {
+    float: left;
+}
+
+.Apply-con dt {
+    color: #666;
+    z-index: 1;
+}
+
+.Apply-con dd b {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: #666;
+    font-size: .9rem;
+    font-weight: normal;
+    line-height: 1.5rem;
+}
+
+.Apply-con dd em {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position: -102px -99px;
+    float: left;
+    position: relative;
+    top: 6px;
+    left: 3px;
+    margin-right: 8px;
+}
+
+.Apply-con .input-txt {
+    display: block;
+    width: 150%;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0 2px;
+    color: #F60;
+    text-align: left;
+    text-indent: .5rem;
+    vertical-align: middle;
+    border: none;
+}
+
+.txtAri {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Apply-con select {
+    position: absolute;
+    width: 100%;
+    height: 2rem;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.Apply-con .for_bank_class {
+    display: block;
+    position: absolute;
+    height: 2rem;
+    line-height: 2rem;
+    right: .5rem;
+    top: .5rem;
+    color: #CCC;
+    text-align: right;
+    background: #FFF;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.Apply-con .for_bank_class.deep_black {
+    color: #666;
+    padding-left: 4px;
+    border-left: 1px solid #f2f2f2;
+}
+
+.Apply-con .for_bank_class span {
+    color: #F60;
+}
+
+.Apply-con .for_bank_class img.left {
+    height: 90%;
+    width: auto;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.Apply-con .for_bank_class img.right {
+    height: 50%;
+    width: auto;
+    margin-left: .5rem;
+    vertical-align: text-top;
+}
+
+.Apply-button {
+    width: 100%;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.Apply-button a {
+    font-weight: bold;
+}
+
+.Apply-con span.orange {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.Apply-con span.oran {
+    color: #f60;
+    overflow: hidden;
+    display: inline-block;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.yongjin5 {
+    overflow: hidden;
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.yongjin5 ul {
+    overflow: hidden;
+    margin-left: 30px;
+    margin-right: 30px;
+    border: 1px solid #ccc;
+}
+
+.yongjin5 ul li {
+    height: 30px;
+    clear: both;
+    overflow: hidden;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    line-height: 30px;
+}
+
+.yongjin5 ul li span {
+    width: 33%;
+    display: block;
+    float: left;
+}
+
+.yongjin5 ul li .yj_1, .yongjin5 ul li .yj_2 {
+    border-right: 1px solid #ccc;
+}
+
+.Apply-con dl dd.half {
+    position: relative;
+    width: 50%;
+}
+
+.Apply-con dl dd.half:first-child {
+    border-right: 1px solid #f2f2f2
+}
+
+.Apply-con .for_select_class {
+    display: block;
+    width: 100%;
+    color: #666;
+    line-height: 2rem;
+    text-align: center
+}
+
+/*历史账户*/
+.address_log {
+    float: right;
+    position: relative;
+    width: 4rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+    margin: -2rem 1.1rem 1rem 0;
+    color: #FFF;
+    font-size: .8rem;
+    text-align: center;
+    background: #F60;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    z-index: 1;
+}
+
+.address_log s {
+    display: block;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    top: -1rem;
+    right: -1rem;
+    text-decoration: none;
+    background: #F60;
+    border-radius: 50%;
+    z-index: 1;
+}
+/*end*/
+
+/*bank-list*/
+.bank-list, .bank-list * {
+    box-sizing: border-box
+}
+
+.bank-list {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    left: 100%;
+    bottom: 0;
+    background: #FFF;
+    transition: all .5s;
+    overflow: hidden;
+    z-index: 1111111111;
+}
+
+.bank-list.show {
+    left: 0;
+    box-shadow: 0 0 10px #CCC;
+}
+
+.bank-list::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    clear: both
+}
+
+.bank-list li {
+    display: block;
+    float: left;
+    width: 25%;
+    height: 0;
+    padding-bottom: 25%;
+    text-align: center;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #DDD;
+    overflow: hidden;
+}
+
+.bank:nth-child(4n) {
+    border-right: none
+}
+
+.bank-list .bank-logo {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+}
+
+.bank-list .bank-logo img {
+    position: absolute;
+    width: 35%;
+    height: auto;
+    bottom: 0;
+    left: calc(65% / 2);
+}
+
+.bank-list .bank-name {
+    width: 100%;
+    height: auto;
+    color: #333;
+    font-size: .7rem;
+}
+
+/*payee-list*/
+.payee-list, .payee-list * {
+    box-sizing: border-box
+}
+
+.payee-list {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    min-height: 76%;
+    bottom: 0;
+    left: 100%;
+    text-align: left;
+    background: #f0eff5;
+    transition: all .5s;
+    overflow: hidden;
+    z-index: 1
+}
+
+.payee-list.show {
+    left: 0;
+    box-shadow: 0 0 10px #CCC;
+}
+
+.payee-list dt {
+    color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+    text-indent: .5rem;
+    line-height: 2.25rem;
+    border-bottom: 1px solid #CCC
+}
+
+.payee-exit {
+    float: right;
+    width: 2rem;
+    height: 2rem;
+    background: transparent url('/statics/templates/yungou/images/mobile/payee_exit.png') no-repeat center center / 60% auto;
+}
+
+.payee-list dd {
+    padding: .5rem;
+    background: #FFF;
+    border-bottom: 1px solid #DDD
+}
+
+.payee-list dd::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+
+.payee-list .bank-logo, .payee-info {
+    float: left;
+    height: 2rem;
+}
+
+.payee-list .bank-logo {
+    padding: 0 .5rem;
+}
+
+.payee-list .bank-logo img {
+    height: 100%;
+    width: auto;
+    vertical-align: middle;
+}
+
+.payee-info {
+    line-height: 1rem
+}
+
+.payee {
+    color: #333;
+    font-size: 1rem;
+}
+
+.payee-number {
+    color: #999;
+    font-size: .8rem;
+}

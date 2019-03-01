@@ -1,0 +1,10 @@
+.idea/
+Thumbs.db
+.DS_Store
+*.vscode
+lock/*
+*.lock
+statics/uploads/photo/
+statics/uploads/shaidan/
+system/caches/
+statics/templates/yungou/images/mobile/yyy/*

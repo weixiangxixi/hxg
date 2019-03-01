@@ -1,0 +1,223 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>更改昵称</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+    <script src="/statics/templates/yungou/js/mobile/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script>
+    <link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer"></head>
+<body>
+<div class="main-content clearfix">
+    <link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/layout-setUp.css">
+    <script type="text/javascript" src="/statics/templates/yungou/js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var demo = $(".registerform").Validform({
+                tiptype: 2,
+                datatype: {
+                    "tel": /([a-z][A-Z][0-9])+/,
+                    "nic": /^[A-Za-z0-9_\u4e00-\u9fa5]{2,5}$/,
+                },
+            });
+            demo.tipmsg.w["tel"] = "请正确输入电话号码(区号、号码必填，用“-”隔开)";
+            demo.tipmsg.w["nic"] = "昵称为2-5个汉字、字母、数字、“_”字符组成";
+            demo.addRule([
+                {
+                    ele: "#nicxx",
+                    datatype: "nic",
+                },
+                {
+                    ele: "#txt_ship_tel",
+                    datatype: "tel",
+                }]);
+        });
+    </script>
+    <script type="text/javascript" src="/statics/templates/yungou/js/jquery.Jcrop.js"></script>
+    <script type="text/javascript" src="/statics/templates/yungou/js/jquery.uploadify-3.1.min.js"></script>
+    <script type="text/javascript" src="/statics/templates/yungou/js/jquery.Validform.min.js"></script>
+    <style type="text/css">
+        /*==========以下部分是Validform必须的===========*/
+        .Validform_checktip {
+            margin-left: 8px;
+            line-height: 20px;
+            height: 20px;
+            overflow: hidden;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .Validform_right {
+            color: #71b83d;
+            padding-left: 20px;
+            background: url(/statics/templates/yungou/images/mobile/right.png) no-repeat left center;
+        }
+
+        .Validform_wrong {
+            color: red;
+            padding-left: 20px;
+            white-space: nowrap;
+            background: url(/statics/templates/yungou/images/mobile/error.png) no-repeat left center;
+        }
+
+        .Validform_loading {
+            padding-left: 20px;
+            background: url(/statics/templates/yungou/images/mobile/onLoad.gif) no-repeat left center;
+        }
+
+        .Validform_error {
+            background-color: #ffe7e7;
+        }
+
+        #Validform_msg {
+            color: #7d8289;
+            font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;
+            width: 280px;
+            -webkit-box-shadow: 2px 2px 3px #aaa;
+            -moz-box-shadow: 2px 2px 3px #aaa;
+            background: #fff;
+            position: absolute;
+            top: 0px;
+            right: 50px;
+            z-index: 99999;
+            display: none;
+            filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');
+        }
+
+        #Validform_msg .iframe {
+            position: absolute;
+            left: 0px;
+            top: -1px;
+            z-index: -1;
+        }
+
+        #Validform_msg .Validform_title {
+            line-height: 25px;
+            height: 25px;
+            text-align: left;
+            font-weight: bold;
+            padding: 0 8px;
+            color: #fff;
+            position: relative;
+            background-color: #666;
+        }
+
+        #Validform_msg a.Validform_close:link, #Validform_msg a.Validform_close:visited {
+            line-height: 22px;
+            position: absolute;
+            right: 8px;
+            top: 0px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #Validform_msg a.Validform_close:hover {
+            color: #cc0;
+        }
+
+        #Validform_msg .Validform_info {
+            padding: 8px;
+            border: 1px solid #666;
+            border-top: none;
+            text-align: left;
+        }
+
+        li.acc {
+            padding-top: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .R-content li {
+            margin: 10px 10%;
+        }
+
+        .R-content li label {
+            letter-spacing: 10px;
+            padding-right: 10px;
+        }
+
+        .R-content li label, .R-content li input.txt {
+            color: #000;
+            font-size: 16px;
+        }
+
+        .R-content li input.txt {
+            display: inline-block;
+            height: 40px;
+            width: 70%;
+        }
+        input.orgBtn {
+            margin-top: 20px;
+            background: #f60;
+            border: 1px solid #ef6000;
+        }
+        .main-content{
+            margin-top: 2.9rem;
+        }
+    </style>
+    <div class="R-content">
+        <form class="registerform" method="post" action="/index.php/mobile/home/usermodify/">
+            <ul>
+                <li class="acc">
+                    <label for="nicxx">昵称</label>
+                    <input id="nicxx" datatype="nic" nullmsg="昵称为5个汉字、字母、数字组成" name="username" value="{wc:$member['username']}" type="text" class="txt" maxlength="20" style="border: none">
+                </li>
+                <li>
+                    <input name="submit" type="submit" class="orgBtn" value="保存">
+                <span class="Validform_checktip"></span></li>
+            </ul>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/layer.css" rel="stylesheet" type="text/css">
+<link href="/statics/templates/yungou/css/mobile/message.css?18060601" rel="stylesheet" type="text/css">
+<style>#forever_url{display:none;position:fixed;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.79);z-index:111}#forever_url .main{width:12rem;height:auto;margin:8rem auto 0;border-radius:10px;box-sizing:border-box;overflow:hidden}#forever_url .main img{vertical-align:middle}#forever_url p.close{position:absolute;width:2rem;height:2rem;top:25rem;left:calc(50% - 1rem);margin:0 auto;color:#333;font-size:1.8rem;line-height:2rem;text-align:center;background:#FFF;border-radius:50%}
+.msg-logo{vertical-align: text-bottom;  width: 20px; margin-right: 5px;}
+.footer .u-ft-nav i {background: url(https://dyyyyg-static.oss-cn-shenzhen.aliyuncs.com/img/vip/index/footer_nav.png?v=20180622) no-repeat center/27px auto;}
+.footer li.f_home a.hover .foot_1 {background-position: 0 -112px;}
+.footer li.f_home .foot_1 {background-position: 0 -142px;}
+
+.footer li.f_allgoods a.hover .foot_2 {background-position: 0 -222px;}
+.footer li.f_allgoods .foot_2 {background-position: 0 -250px;}
+
+.footer li.f_announced a.hover .foot_3 {background-position: 0 -169px;}
+.footer li.f_announced .foot_3 {background-position: 0 -195px;}
+
+.footer li.f_car a.hover .foot_4 {background-position: 0 1px;}
+.footer li.f_car .foot_4 {background-position: 0 -28px;}
+
+.footer li.f_personal a.hover .foot_5 {background-position: 0 -57px;}
+.footer li.f_personal .foot_5 {background-position: 0 -83px;}
+a[title='站长统计']{
+    display: none;
+}
+</style>
+{wc:templates "mobile/index","footer"}
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript" type="text/javascript"></script>
+<script>
+
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+
+</body></html>

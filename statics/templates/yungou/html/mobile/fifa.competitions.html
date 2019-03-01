@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/mobile/worldcup.css"/>
+<script src="/statics/templates/yungou/js/mobile/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<style type="text/css">
+/*覆盖公用样式*/
+.guessing .result{
+	background: none;
+	margin-top: -30px;
+}
+body{
+	background: #ef4d45;
+}
+.competitions{
+	background: #ef4d45;
+}
+.competitions h1{
+	width: 80%;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+.competitions h1 img{
+	width: 100%;
+	
+}
+</style>
+</head>
+<body>
+<div class="competitions guessing">
+	<h1><img src="/statics/templates/yungou/images/mobile/fifa/history_title.png"/></h1>
+	<div class="result">
+		
+		<ul>
+          	{wc:loop $match $mh}
+          		{wc:php:start}
+          			$my = $this->db->GetOne("SELECT * FROM `@#_fifa_guess_list` WHERE `match_id` = '$mh[match_id]' AND `uid` = '$uid'");
+          			if(empty($my)){
+          				$class = 'never-begin';
+          				$zt = '您未参与～';
+          				$hd = '';
+          			}else{
+          				if($my['guess']==$mh['results']){
+          					$class  = 'win';
+          					$zt = '您猜对了～';
+          					$hd = '获得奖金'.$my['money'].'元';
+          				}else{
+          					$class  = 'lose';
+          					$zt = '您猜错了～';
+          					$hd = '';
+          				}
+          			}
+          			if($my['guess']==1)
+          		{wc:php:end}
+			<li class="{wc:$class}">
+				<div class="total">{wc:php:start} echo $mh['money'] / 10000;{wc:php:end}万场</div>
+				<h4><span>{wc:$mh['host_name']}</span><span>VS</span><span>{wc:$mh['guest_name']}</span></h4>
+				<p>比赛时间：<span>{wc:fun:date('m/d H:i',$mh['match_time'])}</span></p>
+				<p><span>{wc:$zt}</span> <span>{wc:$hd}</span></p>
+			</li>
+          	{wc:loop:end}
+          	<!--
+			<li class="win">
+				<div class="total">100万场</div>
+				<h4><span>伊朗</span><span>VS</span><span>西班牙</span><span>0:1</span></h4>
+				<p>比赛时间：<span>6/21 02:00</span></p>
+				<div class="present-time">6月22日可提现</div>
+				<p>您猜对了：<span>猜对获得奖金<small>0.30</small>元</span></p>
+				
+			</li>
+			<li class="lose">
+				<div class="total">100万场</div>
+				<h4><span>乌拉圭</span><span>VS</span><span>沙特</span></h4>
+				<p>比赛时间：<span>6/21 20:00</span></p>
+				<p>您未猜对~<span>猜对获得奖金<small>0.30</small>元</span></p>
+			</li>
+			<li class="win">
+				<div class="total">100万场</div>
+				<h4><span>葡萄牙</span><span>VS</span><span>摩洛哥</span><span>1:0</span></h4>
+				<p>比赛时间：<span>6/21 20:00</span></p>
+				<div class="present-time">6月22日可提现</div>
+				<p>您猜对了：<span>猜对获得奖金<small>0.30</small>元</span></p>
+				
+			</li>
+			<li class="win">
+				<div class="total">100万场</div>
+				<h4><span>伊朗</span><span>VS</span><span>西班牙</span><span>0:1</span></h4>
+				<p>比赛时间：<span>6/21 02:00</span></p>
+				<div class="present-time">6月22日可提现</div>
+				<p>您猜对了：<span>猜对获得奖金<small>0.30</small>元</span></p>
+				
+			</li>
+			<li class="lose">
+				<div class="total">100万场</div>
+				<h4><span>乌拉圭</span><span>VS</span><span>沙特</span></h4>
+				<p>比赛时间：<span>6/21 20:00</span></p>
+				<p>您未猜对~<span>猜对获得奖金<small>0.30</small>元</span></p>
+			</li>
+			<li class="win">
+				<div class="total">100万场</div>
+				<h4><span>葡萄牙</span><span>VS</span><span>摩洛哥</span><span>1:0</span></h4>
+				<p>比赛时间：<span>6/21 20:00</span></p>
+				<div class="present-time">6月22日可提现</div>
+				<p>您猜对了：<span>猜对获得奖金<small>0.30</small>元</span></p>
+			</li>
+			-->
+			<h4 style="color: #fff;">以上就是所有往期赛过啦~</h4>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

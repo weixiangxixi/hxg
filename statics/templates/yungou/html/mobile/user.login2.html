@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+<html><head>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <title>登录 - {wc:$webname}</title>
+
+    <meta content="app-id=518966501" name="apple-itunes-app">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+
+    <meta content="yes" name="apple-mobile-web-app-capable">
+
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <meta content="telephone=no" name="format-detection">
+
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+
+    <link href="/statics/templates/yungou/css/mobile/comm2.css" rel="stylesheet" type="text/css">
+
+    <script src="/statics/templates/yungou/js/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+
+    <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Login2.js" language="javascript" type="text/javascript"></script>
+
+    <script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+    <style>
+        .registerCon li {
+            margin: 15px 10%;
+        }
+
+        .title {
+            text-align: center;
+            padding: 15px;
+            font-size: 20px;
+            font-family: "微软雅黑";
+            color: #000;
+        }
+
+        .registerCon li label{
+            color: #000;
+            font-size: 16px;
+        }
+
+        .registerCon li label {
+            letter-spacing: 6px;
+            padding-right: 6px;
+        }
+
+        .registerCon li input {
+            display: inline-block;
+            height: 40px;
+            width: 70%;
+            font-size: 14px;
+        }
+
+        li.acc, li.pwd {
+            position: relative;
+            border-bottom: 1px solid #ccc;
+        }
+
+        li.acc, li.code {
+            position: relative;
+            border-bottom: 1px solid #ccc;
+        }
+        .btnArea{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btnArea .btn-forget,.btnArea .btn-register{
+            color: #f60;
+            font-size: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btnArea .btn-forget span,.btnArea .btn-register span{
+            font-size: 12px;
+            margin-left: 2px;
+        }
+        .btnArea .btn-forget i{
+            width: 18px;
+            height: 18px;
+            background-size:100% 100%;
+            background-position: center;
+            background-image: url("/images/forget.png");
+            background-repeat: no-repeat;
+            display: inline-block;
+        }
+        .btnArea .btn-register i{
+            width: 22px;
+            height: 22px;
+            background-size:60% 80%;
+            background-position: center;
+            background-image: url("/images/reg.png");
+            background-repeat: no-repeat;
+            display: inline-block;
+        }
+                .btnArea .btn-forget{
+            opacity: 0;
+        }
+                /*添加阅读协议的要求*/
+        #notice {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: rgba(0, 0, 0, .9);
+        }
+
+        #notice dt, #notice dd {
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: .025rem
+        }
+
+        #notice dt, #notice dd:first-of-type {
+            margin-left: 10%;
+        }
+
+        #notice dt {
+            width: 80%;
+            height: 60px;
+            line-height: 60px;
+            margin-top: 50%;
+            background: #FFF;
+            border-radius: 3px 3px 0 0;
+        }
+
+        #notice dt a {
+            display: block;
+            color: #00A8E8;
+        }
+
+        #notice dd {
+            float: left;
+            width: 40%;
+            height: 43px;
+            line-height: 43px;
+            color: #FFF;
+            cursor: pointer;
+            -webkit-user-select: none
+        }
+
+        #notice dd a {
+            display: block;
+            color: #FFF;
+        }
+
+        #notice dd:first-of-type {
+            background: #CCC;
+            border-radius: 0 0 0 3px
+        }
+
+        #notice dd:last-of-type {
+            background: #00BC0C;
+            border-radius: 0 0 3px 0;
+        }
+
+        /*end*/
+
+        /*密码提示*/
+        em.psw_type {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: 0;
+            background: transparent url("/statics/templates/yungou/images/mobile/eye-off.png") no-repeat center / 60% auto;
+        }
+
+        em.psw_type.show_psw {
+            background-image: url("/statics/templates/yungou/images/mobile/eye-open.png")
+        }
+
+        /*end*/
+
+        .agreement-tips {
+            width: 100%;
+            height: 2rem;
+            font-size: .9rem;
+            text-align: center;
+            line-height: 2rem;
+        }
+
+        .agreement-tips a {
+            width: auto;
+            margin: 0;
+            color: #333;
+            text-decoration: underline;
+        }
+        .getCode{
+            width: 90px;
+            height: 30px;
+            background: #f60;
+            border: none;
+            color: #fff;
+            right: 0;
+            cursor: pointer;
+            border-radius: 5px;
+            top: 4%;
+        }
+        .loginType{
+            display: flex;
+            margin:0 10%;
+            box-sizing: border-box;
+            height: 50px;
+            justify-content: space-between;
+            border-bottom: 1px solid #c9c9c9;
+        }
+        .loginType .mobileCodeLogin,.loginType .accountLogin{
+            text-align: center;
+            height: 100%;
+            line-height: 50px;
+            color: #c9c9c9;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .loginType .active{
+            border-bottom:2px solid #f60;
+            color: #f60;
+        }
+
+                .registerCon .pwd{
+            display: none;
+        }
+        
+        .loginTip{
+            margin:10px 10%;
+            border:1px solid #f60;
+            box-sizing: border-box;
+            padding: 10px;
+            color: #f60;
+            border-radius: 4px;
+        }
+        .loginTip h
+        .loginTip p{
+            font-weight: bold;
+            font-size: 14px;
+        }
+        #btnLogin{
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+        }
+        .registerCon  .lcode{
+            width: calc(100% - 94px);
+        }
+        #embed-captcha {
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+<script language="javascript" type="text/javascript" src="/statics/templates/yungou/js/mobile/Comm.js"></script>
+<script language="javascript" type="text/javascript" src="/statics/templates/yungou/js/mobile/pageDialog.js"></script>
+</head>
+
+<body style="zoom: 1;">
+
+<div class="h5-1yyg-v1" id="content">
+
+    <section>
+
+        <div class="registerCon">
+            <ul>
+                <div class="loginType">
+                    <div class="mobileCodeLogin active">
+                        手机验证码登录
+                    </div>
+                    <div class="accountLogin">
+                        账户密码登录
+                    </div>
+                </div>
+                <!--<li class="title">登录</li>-->
+                <li class="acc">
+                    <label for="txtAccount">账号</label>
+                    <input id="txtAccount" type="tel" placeholder="手机/邮箱" class="lEmail">
+                </li>
+                <li class="pwd">
+                    <label for="txtPassword">密码</label>
+                    <input type="password" id="txtPassword" class="lPwd" placeholder="请输入密码">
+                    <em id="toggle_psw" class="psw_type"></em>
+                </li>
+                <li class="hid">
+                    <input type="text" id="loginType" value="1" style="display: none;">
+                </li>
+                <li class="code">
+                    <input type="tel" id="txtVerify" class="lcode" maxlength="6" placeholder="请输入验证码">
+                    <button class="getCode" id="getCode" type="button">获取验证码</button>
+                </li>
+                <li class="btn-login"><a href="javascript:;" id="btnLogin" class="nextBtn orgBtn">登 录</a>
+                    </li><li id="appWeixin" class="btn-weixin" style="display: none">
+                   
+                    <a style="border-radius: 5px;background-color: #00bc0c;display: block;width: 100%;height: 43px;text-align: center;-webkit-filter: grayscale(100%)" href="javascript:;"><img style="padding-top: 5px;" alt="微信登录" src="/images/wxlogin.png"></a>
+                </li>
+                <div id="embed-captcha"></div>
+                <script>
+                    function showAppWeixin() {
+                        $("#appWeixin").show();
+                    }
+
+                    function app_event() {
+                        $("#btnLogin").attr("data-app", "1");
+                    }
+                </script>
+
+                <input name="hidLoginForward" type="hidden" id="hidLoginForward" value="/index.php/mobile/mobile/init">
+                                <li class="btnArea">
+                    <a class="btn-forget hide" href="{WEB_PATH}/mobile/user/step1"><i></i><span>忘记密码</span></a>
+                    <a class="btn-register" href="/index.php/mobile/user/register/"><i></i><span>快速注册</span></a>
+                </li>
+                            </ul>
+        </div>
+
+        <div class="loginTip">
+            <p style="color: red">用户首次登录需使用手机验证码进行登录</p>
+            <p style="height: 3px"></p>
+            <p style="color: red">验证码可保存8小时</p>
+            <p style="height: 3px"></p>
+            <p style="color: red">首次登录成功后可到个人中心切换登录方式!</p>
+        </div>
+        <div class="agreement-tips">
+            <p>登录代表同意<a href="/index.php/mobile/mobile/terms">《用户服务条款》</a></p>
+        </div>
+    </section>
+<style type="text/css">
+    #mybg {
+        background: rgb(0, 0, 0); 
+        width: 100%; 
+        height: 100%; 
+        position: fixed; 
+        top: 0px; 
+        left: 0px; 
+        z-index: 500; 
+        opacity: 0.6;
+    }
+    #mybg2 {
+        background: rgb(255, 255, 255); 
+        width: 70%; 
+        height: 200px; 
+        position: fixed; 
+        top: 30%; 
+        left: 15%; 
+        z-index: 600;
+    }
+    #mybg2 p:nth-child(2) {
+        margin: 30px 15px;
+        height: 50px;
+        border-bottom: 1px solid #ccc;
+    }
+    #mybg2 p:nth-child(1) {
+        font-size: 16px;
+        text-align: center;
+        color: #757575;
+        margin-top: 10px;
+    }
+    #yanzhengs {
+        background: url(/statics/templates/yungou/images/mobile/loginSet1.png) 7px 11px no-repeat;
+        background-color: #fff;
+        background-size: 30px auto;
+        height: 50px;
+        font-size: 16px;
+    }
+    #mybg2 button{
+        font-size: 18px;
+        margin-left: 35%;
+        letter-spacing: 15px;
+        padding-left: 15px;
+        border-radius: 5px;
+        line-height: 30px;
+    }
+    #close {
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        background: url(/statics/templates/yungou/images/close.fw.png) 0 0/100%;
+        top: 5px;
+        right: 5px;
+    }
+</style>
+<div id="mybg" style="display: none"></div>
+<div id="mybg2" style="display: none">
+    <p>输入验证码<span id="close"></span></p>
+    <p>
+        <input id="yanzhengs" type="text" maxlength="6" placeholder="验证码" class="inputxt" name="captcha" type="text" style="padding-left: 48px;width: 45%;float: left;" />
+        <span class="fog" style="display: block;width: 20%;float: left;height: 45px;"><img style="border-radius: 5px; margin-left: 5px;margin-top: 12px;" id="checkcode" src="{WEB_PATH}/api/checkcode/image/80_27/"/></span>
+    </p>
+    <button>确定</button>
+</div>
+
+    <script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/message.css" rel="stylesheet" type="text/css">
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/jquery.cookie.js"></script>
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript" type="text/javascript"></script>
+<script src="/geetest/static/gt.js"></script>
+<script type="text/javascript">
+    var handlerEmbed = function (captchaObj) {
+        $(".getCode").click(function(){
+            var txtAccount=$("#txtAccount").val();
+            if(txtAccount.length == 11){
+               var validata = captchaObj.getValidate();
+                if (!validata) {
+                    captchaObj.verify();
+                    return;
+                }
+            }else{
+               $.PageDialog.fail("手机号错误");
+            }
+        })
+
+        window.captchaObj=captchaObj;
+        captchaObj.onSuccess(function () {
+            var validata = captchaObj.getValidate();
+            if (!validata) {
+                captchaObj.reset();
+                $.PageDialog.fail("安全验证失败，请重新验证")
+            } else {
+                set_code();
+            }
+        });
+        
+        captchaObj.appendTo('#getCode');
+    };
+    function set_code(txtAccount,geetest_challenge,geetest_validate,geetest_seccode){
+        var here=$(".getCode");
+        here.attr("disabled",true);
+        var txtAccount=$("#txtAccount").val();
+        $.getJSON("/index.php/mobile/user/getCode",{"mobile":txtAccount},function(res){
+            console.log(res);
+          if(res == 2){
+            $.PageDialog.fail("手机号错误");
+          }else if(res == 3){
+            $.PageDialog.fail("手机号未注册,请前往注册");
+          }else if(res == 4){
+           
+            $.PageDialog.fail("验证码8小时内通用,请在短信查看");
+          }else if(res == 1){
+             
+              $.PageDialog.ok("验证码发送成功");
+              var needtime=120;
+              here.text(needtime);
+             var timer=setInterval(function () {
+                  needtime--;
+                  if(needtime<=0){
+                      clearInterval(timer);
+                      here.attr("disabled",false);
+                      here.text("获取验证码")
+                  }else{
+                      here.text(needtime);
+                  }
+              },1000)
+          }else{
+              here.attr("disabled",false);
+          }
+      })
+    }
+    $.ajax({
+        // 获取id，challenge，success（是否启用failback）
+        url: "/geetest/web/StartCaptchaServlet.php?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                new_captcha: data.new_captcha,
+                product: "bind", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+
+                // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+            }, handlerEmbed);
+        }
+    });
+</script>
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_personal > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+
+    <script language="javascript" type="text/javascript">
+
+        var Path = new Object();
+
+        Path.Skin = "{G_TEMPLATES_STYLE}";
+
+        Path.Webpath = "{WEB_PATH}";
+
+
+
+        var Base = {
+            head: document.getElementsByTagName("head")[0] || document.documentElement,
+            Myload: function(B, A) {
+                this.done = false;
+                B.onload = B.onreadystatechange = function() {
+                    if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                        this.done = true;
+                        A();
+                        B.onload = B.onreadystatechange = null;
+                        if (this.head && B.parentNode) {
+                            this.head.removeChild(B)
+                        }
+                    }
+                }
+            },
+            getScript: function(A, C) {
+                var B = function() {};
+                if (C != undefined) {
+                    B = C
+                }
+                var D = document.createElement("script");
+                D.setAttribute("language", "javascript");
+                D.setAttribute("type", "text/javascript");
+                D.setAttribute("src", A);
+                this.head.appendChild(D);
+                this.Myload(D, B)
+            },
+            getStyle: function(A, B) {
+                var B = function() {};
+                if (callBack != undefined) {
+                    B = callBack
+                }
+                var C = document.createElement("link");
+                C.setAttribute("type", "text/css");
+                C.setAttribute("rel", "stylesheet");
+                C.setAttribute("href", A);
+                this.head.appendChild(C);
+                this.Myload(C, B)
+            }
+        }
+
+        function GetVerNum() {
+            var D = new Date();
+            return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+        }
+
+        Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v=' + GetVerNum());
+    </script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("#toggle_psw").click(function () {
+                var elm = $(this),
+                    inpElm = $("#txtPassword"),
+                    show = inpElm.attr("type");
+
+                elm.toggleClass("show_psw");
+                show == "password" ? inpElm.attr("type", "text") : inpElm.attr("type", "password")
+            });
+            $("#close").click(function(){
+                $("#mybg").hide();
+                $("#mybg2").hide();
+            })
+            
+            $("#mybg2 button").click(function(){
+                checkcode = $("#yanzhengs").val();
+                if(checkcode != ''){
+                    $.ajax({
+                        data: {'param':checkcode},
+                        type: 'POST',
+                        url: '/index.php/member/user/codeCheck',
+                        async: false,
+                        success:function(data){
+                            data = eval("(" + data + ")");
+                            if(data.status == 'y'){
+                                set_code();
+                            }else{
+                                $("#mybg").hide();
+                                $("#mybg2").hide();
+                                $("#yanzhengs").val("");
+                                $.PageDialog.fail(data.info);
+                            }
+                        }
+                    })
+                }else{
+                    $("#mybg2 input").focus();
+                }
+            })
+            function set_code(txtAccount,geetest_challenge,geetest_validate,geetest_seccode){
+                var here=$(".getCode");
+                here.attr("disabled",true);
+                var txtAccount=$("#txtAccount").val();
+                $.getJSON("/index.php/mobile/user/getCode",{"mobile":txtAccount,"geetest_challenge" :geetest_challenge, "geetest_validate" : geetest_validate, "geetest_seccode" :geetest_seccode},function(res){
+                    console.log(res);
+                  if(res == 2){
+                    $.PageDialog.fail("手机号错误");
+                  }else if(res == 3){
+                    $.PageDialog.fail("手机号未注册,请前往注册");
+                  }else if(res == 4){
+                   
+                    $.PageDialog.fail("验证码8小时内通用,请在短信查看");
+                  }else if(res == 1){
+                     
+                      $.PageDialog.ok("验证码发送成功");
+                      var needtime=120;
+                      here.text(needtime);
+                     var timer=setInterval(function () {
+                          needtime--;
+                          if(needtime<=0){
+                              clearInterval(timer);
+                              here.attr("disabled",false);
+                              here.text("获取验证码")
+                          }else{
+                              here.text(needtime);
+                          }
+                      },1000)
+                  }else{
+                      here.attr("disabled",false);
+                  }
+              })
+            }
+        });
+
+    </script>
+
+
+</div>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>
+</body></html>

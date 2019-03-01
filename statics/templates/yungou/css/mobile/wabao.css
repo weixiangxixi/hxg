@@ -1,0 +1,207 @@
+body{
+	background: url(/statics/templates/yungou/images/mobile/wback.png) no-repeat;
+	background-size: 100%;
+}
+.demo{
+   padding:1em 2.2em;
+   padding-top: 34%;
+}
+.demo .container{
+    padding: 0;
+    border:2px solid #fff;
+}
+.demo .row{
+    padding: 10px;
+    margin: 10px;
+    background: rgba(255,255,255,0.76);
+}
+.box{
+    position: relative;
+    perspective: 1000px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.box .box-img{
+    transform: rotateY(0);
+    transition: all 0.50s ease-in-out 0s;
+}
+.box.active .box-img{
+    transform: rotateY(-90deg);
+}
+.box .box-img img{
+    width: 100%;
+    height: auto;
+}
+.box .box-content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    transform: rotateY(90deg);
+    transition: all 0.50s ease-in-out 0s;
+    background: url(http://m.cc.com/statics/templates/yungou/images/mobile/fm.png) no-repeat;
+    background-size: cover;
+}
+.box.active .box-content{
+    transform: rotateY(0);
+}
+.box-content img{
+    width: 70%;
+    position: relative;
+    top: 12%;
+}
+.box .title{
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.box .description{
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+}
+.box .title:after,
+.box .description:after{
+    content: "";
+    width: 80%;
+    display: block;
+    border-bottom: 1px solid #fff;
+    margin: 15px auto;
+}
+.box .social-links{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.box .social-links li{
+    display: inline-block;
+    margin: 0 10px;
+}
+.box .social-links li a{
+    font-size: 20px;
+    color: #a6a6a6;
+}
+.box .social-links li a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.col-xs-3{
+    padding:6px;
+}
+.result {
+    position: fixed;
+    top: 160px;
+    MARGIN-RIGHT: auto;
+    vertical-align: middle;
+    MARGIN-LEFT: auto;
+    z-index: 2;
+    padding: 20px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    height: 50%;
+
+    width: 94%;
+    background: url(/statics/templates/yungou/images/mobile/wbresult.png) no-repeat;
+    background-size: contain;
+
+    padding-top: 17%;
+}
+.result img{
+    max-height: 48px;
+    width: 20%;
+}
+.result p{
+    width: 40%;
+    margin:6% auto;
+}
+.result a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.wbshow{
+    display: none;
+}
+.mask{
+    background: #000;
+    filter: alpha(Opacity=30);
+    -moz-opacity: 0.3;
+    opacity: 0.3;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.option h1{
+    margin: 0 auto;
+   background:rgba(255,255,255,0.8);
+    height: 40px;
+    padding: 0 10px;
+    position: relative;
+    line-height: 26px;
+    text-align: center;
+}
+.option h1 a{
+    border:1px solid #1960ef;
+    color: #1960ef;
+    font-size: 16px;
+    height: 30px;
+    margin: 0 20px;
+    padding: 3px 14px;
+}
+.option-List{
+    position: fixed;
+    z-index: 3;
+    background: rgba(0,0,0,0.86);
+    width: 100%;
+    height: 100%;
+    padding: 3em;
+    top: 0;
+}
+.option-List>a{
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url(http://m.xxx.com/statics/templates/yungou/images/mobile/close.png) no-repeat;
+    background-size: contain;
+    margin: 10px auto;
+}
+.option-List *{
+    color: #fff;
+    line-height: 26px;
+}
+.option-List table{
+    width: 100%;
+    text-align: center;
+}
+.option-List table tr{
+    border:1px solid #fff;
+}
+#ruleList{
+    left: -110%;
+}
+#recordList{
+    right: -110%;
+}
+@media only screen and (max-width: 479px) {
+    /*.box .box-content{ padding: 10px; }*/
+}
+@media only screen and (min-width: 400px) {
+    .result {
+        padding-top: 18%;
+    }
+}
+@media only screen and (max-width: 360px) {
+    .result img{
+        height: 40px;
+    }
+    .result p{
+        font-size: 10px;
+    }
+}

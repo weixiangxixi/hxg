@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" /><link href="{G_TEMPLATES_CSS}/mobile/member.css" rel="stylesheet" type="text/css" /><script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+    <link href="{G_TEMPLATES_CSS}/mobile/vipStyle.css" rel="stylesheet" type="text/css" />
+    <!-- <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/userbuylist1.js" language="javascript" type="text/javascript"></script> -->
+    <style type="text/css">
+      #kk a{
+        color: #fff;
+        border: 1px solid #f60;
+        background: #f60;
+        padding: 7px;
+        width: 100%;
+        border-radius: 0.2rem;
+      }
+      #kk {
+        padding-top: 15px;
+        padding-bottom: 5px;
+      }
+      #pp{
+        padding-bottom: 15px;
+      }
+    </style>
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+   <header class="header" style="position: fixed;width: 100%;z-index: 99999999;">
+
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">
+                尊贵的{wc:php:start}echo $this->user;{wc:php:end},您好
+            </a>
+        </span>
+
+        <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+        -->
+        <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 6px;top: 10px;">
+
+        <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+    -->
+    <a href="{WEB_PATH}/mobile/abcd/logout" class="z-shop" style="background-position: 2px -73px;"></a>
+
+</div>
+
+</header>
+
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+ 
+</div>
+
+<div class="navbar">
+	<!--导航-->
+	
+	<div class="item">
+    <p><a><span>可用金额</span></a><a>￥{wc:php:start}echo $this->money;{wc:php:end}元</a><a href="/index.php/mobile/abcd/html10">订单真伪</a></p>
+  </div>
+  <div class="item">
+    <p><a href="/index.php/mobile/abcd/html8">vip充值</a><a href="/index.php/mobile/abcd/html3">vip明细</a><a href="">待开发</a></p>
+  </div>
+  <div class="item">
+    <p><a href="/index.php/mobile/abcd/html7">会员转账</a><a href="/index.php/mobile/abcd/html5">充值明细</a><a href="/index.php/mobile/abcd/html4">撤销充值</a></p>
+    <p><a href="/index.php/mobile/abcd/html6">会员明细</a><a href="/index.php/mobile/abcd/html2">修改密码</a><a href="/index.php/mobile/abcd/html1">撤销明细</a></p>
+    <p><a href="/index.php/mobile/abcd/html9">订单查询</a><!-- <a href="/index.php/mobile/home/recharge_vip">充值(送2%)</a> --><a href="">待开发</a><a href="">待开发</a></p>
+  </div>
+</div>
+
+<div class="subject">
+	<table style="" class="page3">
+		<tbody id="tttt">
+		<tr>
+			<th>手机</th>
+			<th>金额</th>
+			<th>时间</th>
+			<th>操作</th>
+		</tr>
+		<!-- {wc:php:start}foreach($data as $key=>$val){{wc:php:end}
+		<tr>
+			<td>{wc:php:start}echo substr($val['content'],9,11);{wc:php:end}</td>
+			<td><a href="/index.php/mobile/abcd/zhuanzhang_success/{wc:php:start}echo $val['yh_uid'].'/'.$val['money'].'/'.$val['time'];{wc:php:end}">{wc:php:start}echo $val['money']{wc:php:end}</a></td>
+			<td>{wc:php:start}echo date('Y-m-d H:i:s',$val['time']);{wc:php:end}</td>
+			<td><a href="/index.php/mobile/abcd/html7/{wc:php:start}echo substr($val['content'],9,11);{wc:php:end}">操作</a></td>
+		</tr>
+		{wc:php:start}}{wc:php:end}-->
+		</tbody>
+	</table>
+</div>
+<div id="divGoodsLoading" class="loading" style="display:none;height: 80px;">
+      <b></b>
+      正在加载...
+    </div>
+    <a id="btnLoadMore" class="loading" href="javascript:;" style="display:none;height: 120px;">
+      <i class="jiazai"></i>
+      点击加载更多
+    </a>
+    <a id="btnLoadMore2" class="loading"  style="display:none; padding-top: 0px;height: 120px;">没有了</a>
+    <a id="btnLoadMore3" class="loading"  style="display:none; padding-top: 0px;height: 120px;">已经到底了</a>
+
+<input id="urladdress" value="" type="hidden" />
+<input id="pagenum" value="" type="hidden" />
+<script type="text/javascript">
+window.onload=function(){
+  glist_json("20"); 
+}
+function glist_json(parm){
+  $("#urladdress").val('');
+  $("#pagenum").val('');
+  $.getJSON('{WEB_PATH}/mobile/abcd/html6_ajax/'+parm,function(data){
+    $("#divGoodsLoading").css('display','none');   
+    if(data[0]){
+      var fg=parm.split("/");
+      $("#urladdress").val(fg[0]);
+      $("#pagenum").val(data[0].page);
+      if(data[0].mobile){
+        for(var i=0;i<data.length;i++){ 
+        var ul='<tr>';
+          ul+='<td>'+data[i].mobile+'</td>';
+          ul+='<td><a href="/index.php/mobile/abcd/zhuanzhang_success/'+data[i].yh_uid+'/'+data[i].money+'/'+data[i].time+'">'+data[i].money+'</a></td>';
+          ul+='<td>'+data[i]['time2']+'</td>';
+          ul+='<td><a href="/index.php/mobile/abcd/html7/'+data[i]['yh_uid']+'">操作</a></td>';
+          ul+='</tr>';       
+          $("#tttt").append(ul);     
+        }
+      }
+      if(data[0].sum > 0){
+        $("#btnLoadMore").css('display','block');
+        $("#btnLoadMore2").css('display','none');
+        $("#btnLoadMore3").css('display','none');
+      }else{
+        $("#btnLoadMore").css('display','none');
+        $("#btnLoadMore2").css('display','none');
+        $("#btnLoadMore3").css('display','block');
+      }
+    }else{
+      $("#btnLoadMore").css('display','none');
+      $("#btnLoadMore2").css('display','block');  
+      $("#btnLoadMore3").css('display','none');     
+    }
+  });
+}
+$("#btnLoadMore").click(function(){   
+    var url=$("#urladdress").val(),
+      page=$("#pagenum").val();
+    glist_json(url+'/'+page);
+  });
+</script>
+</div>
+</body>
+</html>

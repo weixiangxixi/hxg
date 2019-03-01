@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html>
+<!-- <head>
+<meta charset="UTF-8">
+<title>个人中心</title>
+<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/mobile/new/new_file.css"/>
+<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/mobile/new/iconfont.css"/>
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+<script src="{G_TEMPLATES_JS}/mobile/jquery.js"></script>
+<script src="{G_TEMPLATES_JS}/mobile/jquery-ui.min.js"></script>
+<style type="text/css">
+    .h-icon {
+        background: url(/statics/templates/yungou/images/mobile/vip.png) no-repeat;
+        background-size: 125px auto;
+        display: block;
+        height: 85px;
+        position: absolute;
+        right: 20px;
+        top: 300px;
+        width: 165px;
+    }
+</style>
+
+</head> -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" href="http://f.weimicm.com/photo/member.jpg@!thumb_200_200" type="image/x-icon">
+    <title>会员中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png?v=123456">
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css">
+    <link href="{G_TEMPLATES_CSS}/mobile/comm3.css" rel="stylesheet" type="text/css">
+    <script src="{G_TEMPLATES_JS}/mobile/jquery.js"></script>
+    <script type="text/javascript" src="/statics/templates/yungou/js/clipboard.min.js"></script>
+    <script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+<style type="text/css">
+
+    * {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        outline: none 0
+    }
+
+    .gray3 {
+        color: #333;
+    }
+
+    .index-mem {
+        max-width: 640px;
+        margin: 0 auto;
+        background-color: #F4F4F4;
+    }
+
+    body {
+        min-width: 320px;
+        font-size: 12px;
+        font-family: 'microsoft yahei', Verdana, Arial, Helvetica, sans-serif;
+        -webkit-text-size-adjust: none;
+    }
+
+    body,
+    button,
+    dd,
+    dl,
+    dt,
+    fieldset,
+    form,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    input,
+    legend,
+    li,
+    ol,
+    p,
+    select,
+    table,
+    td,
+    textarea,
+    th,
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .m_myInfo {
+        /*margin-bottom: 5px;*/
+        background: transparent url('/statics/templates/yungou/images/mobile/notice_bg.jpg') no-repeat fixed center top / cover;
+    }
+    .m_myInfo dt {
+        padding: 15px 10px;
+        position: relative;
+        min-height: 60px;
+    }
+
+    .m_myInfo .bottom {
+        width: 100%;
+        height: 3rem;
+        line-height: 3rem;
+        font-size: 1rem;
+    }
+
+    .m_myInfo .bottom li:not(:last-child)::before {
+        /*border-right: 1px solid #FFF;*/
+        content: '';
+        display: block;
+        position: absolute;
+        width: 1px;
+        height: 1rem;
+        right: 0;
+        top: 1rem;
+        background: rgba(255,255,255,.5);
+        overflow: hidden;
+    }
+
+    .m_myInfo .bottom li {
+        position: relative;
+        float: left;
+        width: calc(100% / 3);
+        letter-spacing: 1px;
+        background: transparent;
+        box-sizing: border-box;
+        cursor: pointer;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .m_myInfo .bottom li::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: -5rem;
+        background: transparent url('/statics/templates/yungou/images/mobile/notice_bg.jpg') no-repeat fixed center top / cover;
+        -webkit-filter: blur(30px);
+        z-index: -1;
+    }
+
+    .m_myInfo .bottom li a {
+        display: block;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .m_myInfo dt img {
+        float: left;
+        width: 70px;
+        height: 70px;
+        border-radius: 70px;
+        overflow: hidden;
+        margin-top: 8px;
+    }
+
+    fieldset,
+    img {
+        border: 0;
+    }
+
+    .m_myInfo dt p {
+        font-size: 18px;
+        line-height: 22px;
+        padding-top: 3px;
+        display: inline-block;
+        margin-left:6px;
+        color: #fff;
+    }
+
+    .m_myInfo dt em.gray9 {
+        word-wrap: break-word;
+        word-break: normal;
+    }
+
+    .m_myInfo dt em {
+        display: inline-block;
+        font-size: 12px;
+    }
+    .m_myInfo .exchange{
+        width: 60px;
+        height: 30px;
+        background: #f60;
+        border: none;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        border-radius: 6px;
+        float: right;
+        margin-top: 16px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .gray9 {
+        color: #999;
+    }
+
+    address,
+    em,
+    i,
+    cite,
+    s {
+        font-style: normal;
+    }
+
+    .m_myInfo dt cite {
+        display: block;
+        font-size: 12px;
+    }
+
+    .m_myInfo dt span {
+        color: #333;
+    }
+    .m_myInfo .info {
+        font-size: 14px;
+        color: #fff;
+    }
+    .m_myInfo .info:first-child {
+        padding-right: 4px;
+    }
+    .m_myInfo .info em {
+        color: #fff;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .z-class-icon01 s,
+    .z-class-icon02 s,
+    .z-class-icon03 s,
+    .z-class-icon04 s,
+    .z-class-icon05 s,
+    .z-class-icon06 s,
+    .z-class-icon07 s {
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        display: inline-block;
+        top: 4px;
+        left: 0;
+    }
+
+    .z-class-icon01 s,
+    .z-class-icon02 s,
+    .z-class-icon03 s,
+    .z-class-icon04 s,
+    .z-class-icon05 s,
+    .z-class-icon06 s,
+    .z-class-icon07 s,
+    .binSuccess span.grade em {
+        background: url(/statics/templates/yungou/images/mobile/new-class-icon.png?v=130823);
+        background-size: 102px auto;
+    }
+
+    .z-class-icon01,
+    .z-class-icon02,
+    .z-class-icon03,
+    .z-class-icon04,
+    .z-class-icon05,
+    .z-class-icon06,
+    .z-class-icon07 {
+        line-height: 20px !important;
+        color: #666;
+    }
+    .z-class-icon01 s {
+        background-position: 0 0;
+    }
+    .z-class-icon02 s {
+        background-position: -17px 0;
+    }
+    .z-class-icon03 s {
+        background-position: -34px 0;
+    }
+    .z-class-icon04 s {
+        background-position: -51px 0;
+    }
+    .z-class-icon05 s {
+        background-position: -68px 0;
+    }
+    .z-class-icon06 s {
+        background-position: -84px 0;
+    }
+
+    .m_myInfo dd {
+        background-color: #fff;
+        padding: 0 10px 0 0;
+    }
+
+    .m_myInfo dd b {
+        float: left;
+        text-align: center;
+        line-height: 11px;
+        width: 26%;
+        margin-left: 6%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    b {
+        font-weight: normal;
+    }
+
+    .m_myInfo dd b a {
+        display: block;
+        color: #bbb;
+        font-size: 11px;
+        padding-top: 8px;
+    }
+
+    .clearfix::after {
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+    }
+    .m_myInfo dd em {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .orange {
+        color: #f60;
+    }
+
+    .m_myInfo dd em i {
+        font-family: "微软雅黑";
+    }
+
+    .m_myInfo dd .orangeBtn {
+        width: 70px;
+        height: 30px;
+        line-height: 30px;
+        display: inline-block;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        margin: 5px;
+        border-radius: 6px;
+        letter-spacing: .1rem;
+    }
+
+    .orangeBtn {
+        background: #f60;
+        color: #fff;
+    }
+
+    .orangeBtn,
+    .grayBtn,
+    .whiteBtn {
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    /*导航菜单开始*/
+    .sub_nav s.m_s1 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_01.png);
+    }
+
+    .sub_nav s {
+        width: 22px;
+        height: 22px;
+        background-size: 22px auto;
+        margin-right: 6px;
+    }
+    .sub_nav i,
+    .g-Recharge li s,
+    .z-pay-mentsel,
+    .shareCon p s,
+    .pro_nav_wrap i,
+    .edit-wrapper .s-icon,
+    .m-set {
+        background: url(/statics/templates/yungou/images/mobile/m_set.png?v=150119);
+        background-size: 20px auto;
+    }
+
+    .m_myInfo dt .h-icon em{
+        display: block;
+        background: #f60;
+        padding: 1px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 50%;
+        color: #fff;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        font-family: Arial;
+        text-align: center;
+        font-size: 10px;
+        overflow: hidden;
+        display: none;
+    }
+    .m_myInfo .btngroup a {
+        padding: 0;
+    }
+
+    .sub_nav i {
+        float: right;
+        background-position: 0 -70px;
+        width: 7px;
+        height: 13px;
+        top: 18px;
+    }
+
+    .sub_nav s.m_s2 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_03.png);
+    }
+
+    .sub_nav s.m_s3 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_02.png);
+    }
+
+    .sub_nav s.m_s4 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_07.png);
+    }
+
+    .sub_nav s.m_s5 {
+        background-position: 0 -229px;
+    }
+
+    .sub_nav s.m_s6 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_05.png);
+    }
+
+    .sub_nav s.m_s7 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_06.png);
+    }
+
+    .sub_nav s.m_s8 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_08.png);
+    }
+
+    .sub_nav s.m_s9 {
+        background: url(/statics/templates/yungou/images/mobile/icon_09.png) no-repeat;
+        background-position: 0 3px;
+        background-size: 22px auto;
+    }
+    .sub_nav s.m_s11 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_11.png);
+    }
+    .sub_nav s.m_s10 {
+        background-image: url(/statics/templates/yungou/images/mobile/icon_04.png);
+    }
+    .sub_nav s.m_s12 {
+        background-image: url(/statics/templates/yungou/images/mobile/apply.png);
+    }
+    .sub_nav s.m_s13 {
+        background: url(/statics/templates/yungou/images/mobile/icon_13.png) no-repeat;
+        background-position: 0 0px;
+        background-size: 22px auto;
+    }
+    .sub_nav s.m_s14 {
+        background-image: url();
+    }
+
+    .sub_nav a .orange {
+        font-size: 12px;
+        padding-left: 4px;
+        position: relative;
+        top: -1px;
+    }
+
+    .sub_nav em {
+        float: right;
+        color: #ff7c7e;
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin-right: .5rem;
+        border-radius: 50%;
+    }
+
+    .orange {
+        color: #f60;
+    }
+
+    .sub_nav .colorbbb {
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    .colorbbb {
+        color: #bbb;
+    }
+    .foot-copyright {
+        color: #999;
+        text-align: center;
+    }
+
+    .useroutm a {
+        width: 85%;
+        display: block;
+        overflow: hidden;
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+        background: #F60;
+        margin: 5px auto 20px;
+        letter-spacing: .05rem;
+        border-radius: 5px;
+    }
+
+    /*极验3.0*/
+    #embed-captcha {
+        width: 100%;
+    }
+    .geetest_holder.geetest_wind {
+        width: 100% !important;
+        height: 3rem !important;
+        min-width: 256px !important;
+    }
+    .geetest_logo, .geetest_success_logo { /*隐藏极验官网链接*/
+        display: none;
+    }
+    #wait {
+        color: #F60;
+        font-size: .8rem;
+    }
+    .show {
+        display: block;
+    }
+    .hide {
+        display: none;
+    }
+    /*end*/
+
+    /*提示元素*/
+    #notice, #notice * {
+        box-sizing: border-box;
+    }
+
+    #notice {
+        display: none;
+        position: fixed;
+        width: calc(100% - 4rem);
+        height: auto;
+        top: calc(50% - 3rem);
+        left: 2rem;
+        background: #FFF;
+        text-align: center;
+        letter-spacing: 1px;
+        box-shadow: 0 0 15px #F60;
+        border-radius: 3px;
+        z-index: 111;
+        overflow: hidden;
+    }
+
+    #notice dt, #notice dd {
+        height: 3rem;
+        line-height: 3rem;
+        font-size: 1rem;
+    }
+
+    #notice dt {
+        width: 100%;
+        color: #F60;
+    }
+
+    #notice dd {
+        float: left;
+        width: 50%;
+        border-top: 1px solid #F60;
+    }
+
+    #notice dd:first-of-type {
+        border-right: 1px solid #F80;
+    }
+
+    #notice dd a {
+        display: block;
+        color: #F60;
+    }
+
+    #notice dd:first-of-type a {
+        color: #666;
+    }
+    /*end*/
+    .msg-num{
+        float: right;
+        display: none;
+        background: #f60;
+        padding: 1px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 50%;
+        color: #fff;
+        font-family: Arial;
+        text-align: center;
+        font-size: 10px;
+        overflow: hidden;
+        margin-top: 14px;
+        margin-right: 12px;
+    }
+    .vip{
+        text-align: center;
+        position: relative;
+    }
+    .vip:before{
+        content: '';
+        position: absolute;
+        width: 18%;
+        height: 1px;
+        background: #f3e23f;
+        left: 20%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .vip:after{
+        content: '';
+        position: absolute;
+        width: 18%;
+        height: 1px;
+        background: #f3e23f;
+        right: 20%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .vip img{
+        width: 16%;
+    }
+    /*修改密码弹出层*/
+    .showDanger .layui-layer-btn{
+        display: flex;
+        justify-content: space-between;
+    }
+    .showDanger .layui-layer-content{
+        box-sizing: border-box;padding: 10px;
+    }
+    .showDanger .layui-layer-content p{
+        font-weight: bold;
+        font-size: 16px;
+        text-indent:20px;
+        color: #989898;
+    }
+    /*end*/
+
+    .table_a{
+        width: 100%;
+    }
+    .table_a td{
+        width: 50%;
+        text-align: center;
+    }
+
+    .box{
+        display: flex;
+        flex-direction: column;
+    }
+    .box .row{
+        display: flex;
+        border-bottom: 1px solid #e3e3e3;
+    }
+    .box .row a{
+        flex-grow: 1;
+        height: 48px;
+        line-height: 48px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 14px;
+        width: 50%;
+        color: #4e4444;
+        box-sizing: border-box;
+        padding-left: 10%;
+    }
+    .box .row a:nth-child(1){
+        border-right:1px solid #e4e3e3;;
+    }
+    .foot-service{
+        font-size: 14px;
+        color: #444444;
+        text-align: center;
+        height: 48px;
+        line-height: 48px;
+    }
+    .foot-service a{
+        color: #444444;
+    }
+    #copyUrl{
+        display: block;
+        width: 100%;
+        text-align: center;
+        height: 48px;
+        line-height: 48px;
+        border-bottom: 1px solid #e4e4e4;
+        font-size: 13px;
+        color: #444444;
+    }
+    .userinfo{
+        margin:4px 0;
+    }
+    .h-icon {
+        background: url(/statics/templates/yungou/images/mobile/vip.png) no-repeat;
+        background-size: 65px auto;
+        display: block;
+        height: 85px;
+        position: absolute;
+        right: -80px;
+        top: 60px;
+        width: 165px;
+    }
+</style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+</head>
+<body class="index-mem">
+<div class="m_myInfo">
+    <dl>
+        <dt>
+            <a href="/index.php/mobile/mobile/userindex/{wc:$member['uid']}">
+                <img src="http://f.weimicm.com/{wc:$member['img']}@!thumb_110_110">
+            </a>
+            <p>{wc:fun:get_user_name($member['uid'])}
+                <cite class="userinfo">
+                    <span class="info">账号: <em class="gray6">{wc:$member['mobile']}</em></span>
+                    <span class="info">ID: <em class="gray6">{wc:$member['uid']}</em></span>
+                </cite>
+                <cite class="userinfo">
+                    <span class="info">余额：<em>{wc:$member['money']}</em>元</span>
+                    <span class="info">福分：<em>{wc:$member['score']}</em></span>
+                </cite>
+            </p>
+            {wc:if $member['vip'] == '1'}
+            <a href="/index.php/mobile/abcd/login"><i class="h-icon"></i></a>
+            {wc:if:end}
+           <!--  <a href="/index.php/mobile/message/getCateMsg"><i class="h-icon"><em id="message"></em></i></a> -->
+        </dt>
+
+        <div class="bottom">
+            <ul>
+                <li><a id="duihuan" href="javascript:;">兑换</a></li>
+                <li><a href="{WEB_PATH}/mobile/home/recharge">充值</a></li>
+              	<!-- <li><a href="{WEB_PATH}/mobile/home/userrecharge">充值</a></li> -->
+                <li id="qiandao"><a href="javascript:;">签到</a></li>
+            </ul>
+        </div>
+    </dl>
+</div>
+<!--获得的商品-->
+
+<!--导航菜单-->
+<a id="copyUrl" href="javascript:;">官网:<span style="color: #F60;"> m.weimicm.com </span>请点击<span id="name_click"  data-clipboard-text="m.weimicm.com" style="padding: 2px;border: 1px solid #F60;border-radius: 4px;color: #F60;margin: 0 4px;cursor: pointer;font-size: 14px;">复制</span>保存</a>
+<div class="sub_nav box">
+    <div class="row">
+        <a href="{WEB_PATH}/mobile/home/invite"><s class="m_s6"></s><p>分享赚钱<span style="color: #f04900;font-size: 12px;">({wc:$yongjin}%)</span></p></a>
+        <a href="{WEB_PATH}/mobile/home/collectlist"><s class="m_s3"></s>我的收藏</a>
+    </div>
+    <div class="row">
+        <a id="huode_shop" href="javascript:;"><s class="m_s2"></s>获得商品</a>
+        <a href="{WEB_PATH}/mobile/home/userbuylist"><s class="m_s1"></s>购买记录</a>
+    </div>
+    <div class="row">
+        <a href="{WEB_PATH}/mobile/home/userbalance" class="always-set"><s class="m_s1"></s>账户明细</a>
+        <a href="{WEB_PATH}/mobile/home/singlelist"><s class="m_s4"></s>我的晒单</a>
+    </div>
+    <div class="row">
+        <a href="javascript:service_pic2();" class="always-set"><s class="m_s7"></s>客服咨询</a>
+        <a href="{WEB_PATH}/mobile/home/accountset" class="always-set"><s class="m_s10"></s>账号设置</a>
+    </div>
+    <div class="row">
+        <a href="{WEB_PATH}/mobile/home/voucher" class="always-set"><s class="m_s8"></s>我的抵用券</a>
+        <a href="javascript:service_pic3();" class="always-set"><s class="m_s9"></s>物流客服</a>
+    </div>
+    <div class="row">
+        <a href="{WEB_PATH}/mobile/home/act_share" class="always-set"><s class="m_s11"></s>邀请奖励</a>
+        <!-- <a href="javascript:service_pic3();" class="always-set"><s class="m_s9"></s>物流客服</a> -->
+    </div>
+    </div>
+
+<!-- <div class="foot-service">客服:<span style="color:#F60">00000000</span><span style="font-size: 12px;color: #444444">(工作时间9:00-18:00)</span></div> -->
+
+<div class="useroutm"><a id="btnLogout" href="{WEB_PATH}/mobile/user/cook_end">退出登录</a></div>
+<div id="notice"></div>
+<style type="text/css">
+    #mybg {
+        background: rgb(0, 0, 0); 
+        width: 100%; 
+        height: 100%; 
+        position: fixed; 
+        top: 0px; 
+        left: 0px; 
+        z-index: 500; 
+        opacity: 0.6;
+    }
+    #mybg2 {
+        background: rgb(255, 255, 255); 
+        width: 70%; 
+        height: 200px; 
+        position: fixed; 
+        top: 30%; 
+        left: 15%; 
+        z-index: 600;
+    }
+    #mybg2 p:nth-child(2) {
+        margin: 30px 15px;
+        height: 50px;
+        border-bottom: 1px solid #ccc;
+    }
+    #mybg2 p:nth-child(1) {
+        font-size: 16px;
+        text-align: center;
+        color: #757575;
+        margin-top: 10px;
+    }
+    #yanzhengs {
+        background: url(/statics/templates/yungou/images/mobile/loginSet1.png) 7px 11px no-repeat;
+        background-color: #fff;
+        background-size: 30px auto;
+        height: 50px;
+        font-size: 16px;
+    }
+    #mybg2 button{
+        font-size: 18px;
+        margin-left: 35%;
+        letter-spacing: 15px;
+        padding-left: 15px;
+        border-radius: 5px;
+        line-height: 30px;
+    }
+    #close {
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        background: url(/statics/templates/yungou/images/close.fw.png) 0 0/100%;
+        top: 5px;
+        right: 5px;
+    }
+</style>
+<div id="mybg" style="display: none"></div>
+<div id="mybg2" style="display: none">
+    <p>输入验证码<span id="close"></span></p>
+    <p>
+        <input id="yanzhengs" type="text" maxlength="6" placeholder="验证码" class="inputxt" name="captcha" type="text" style="padding-left: 48px;width: 45%;float: left;" />
+        <span class="fog" style="display: block;width: 20%;float: left;height: 45px;"><img style="border-radius: 5px; margin-left: 5px;margin-top: 12px;" id="checkcode" src="{WEB_PATH}/api/checkcode/image/80_27/"/></span>
+    </p>
+    <button>确定</button>
+</div>
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/layer.css" rel="stylesheet" type="text/css">
+<link href="/statics/templates/yungou/css/mobile/message.css" rel="stylesheet" type="text/css">
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript" type="text/javascript"></script>
+{wc:templates "mobile/index","footer"}
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_personal > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+<script language="javascript" type="text/javascript">
+    function forNotice() {
+        $('#notice').hide();
+        $('#qdShadow ul').css('opacity', '1');
+    }
+    function notice (message, url, auto) {
+        var htmlText = "<dt>" + message + "</dt>";
+        if (url && !auto)
+            htmlText += "<dd><a onclick=javascript:forNotice();>取消</a></dd><dd><a href='" + url + "'>确定</a></dd>";
+
+        $("#notice").html(htmlText);
+        $("#notice").fadeIn();
+        $("#qdShadow ul").css('opacity', '0');
+
+        if (auto)
+            setTimeout(function () {
+                window.location.href = url;
+            }, 1500);
+
+        if (!url)
+            setTimeout(function () {
+                $("#notice").hide();
+                $('#qdShadow ul').css('opacity', '1');
+            }, 1500);
+    }
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        var name = document.getElementById('name_click');
+        var clipboard = new Clipboard(name);
+
+        clipboard.on('success', function(e) {
+            $.PageDialog.ok("复制成功");return false;
+        });
+
+        clipboard.on('error', function(e) {
+            $.PageDialog.fail("复制失败");return false;
+        });
+
+    });
+</script>
+
+<div id="bg"></div>
+<script src="/geetest/static/gt.js"></script>
+<script type="text/javascript">
+    (function($) {
+        var Path = new Object();
+        Path.Skin = "{G_TEMPLATES_STYLE}";
+        Path.Webpath = "{WEB_PATH}";
+
+        $.fn.extend({
+            aiiUpload: function(obj) {
+                if (typeof obj != "object") {
+                    alert('参数错误');
+                    return;
+                }
+                var imageWidth, imageHeight;
+                var base64;
+                var file_num = 0;
+                var fileInput = $(this);
+                var fileInputId = fileInput.attr('id');
+                createDoc('#' + fileInputId);
+                $('#touimg').change(function() {
+                    if (test(this.value) == false) {
+                        alert('格式错误');
+                        return;
+                    }
+                    var objUrl = getObjectURL(this.files[0]);
+                    if (objUrl) {
+                        render(objUrl, obj.max_h, obj.max_w, file_num);
+                        file_num++;
+                    }
+                });
+            }
+        });
+
+        function createDoc(objID) {
+            var element = $(objID);
+            element.append('<canvas id="canvas" style="display:none;"></canvas>');
+        }
+
+        function test(value) {
+            var regexp = new RegExp("(.JPEG|.jpeg|.JPG|.jpg|.GIF|.gif|.BMP|.bmp|.PNG|.png)$", 'g');
+            return regexp.test(value);
+        }
+
+        function render(src, MaximgW, MaximgH, idnum) {
+            var image = new Image();
+            image.onload = function() {
+                var canvas = document.getElementById('canvas');
+                if (image.width > image.height) {
+                    imageWidth = MaximgW;
+                    imageHeight = MaximgH * (image.height / image.width);
+                } else if (image.width < image.height) {
+                    imageHeight = MaximgH;
+                    imageWidth = MaximgW * (image.width / image.height);
+                } else {
+                    imageWidth = MaximgW;
+                    imageHeight = MaximgH;
+                }
+                canvas.width = imageWidth;
+                canvas.height = imageHeight;
+                var con = canvas.getContext('2d');
+                con.clearRect(0, 0, canvas.width, canvas.height);
+                con.drawImage(image, 0, 0, imageWidth, imageHeight);
+                base64 = canvas.toDataURL();
+                $("#userimg").attr("src", base64);
+                showdiv();
+                $.post("/index.php/mobile/ajax/userimg/", {
+                    img: base64
+                }, function(data) {
+                    hidediv();
+                    if (data != 1) {
+                        alert("修改失败！");
+                    }
+                });
+            }
+            image.src = src;
+        };
+
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+
+    })(jQuery);
+
+    $("#duihuan").click(function(){
+        $.post("/index.php/mobile/home/save_code_status",function(data){
+            data = eval("(" + data + ")");
+            if(data.success){
+                window.location.href = "/index.php/mobile/home/exchange";
+            }else{
+                notice(data.status, data.redirect);
+            }
+        })  
+    })
+
+    $("#huode_shop").click(function(){
+        $.post("/index.php/mobile/home/save_code_status",function(data){
+            data = eval("(" + data + ")");
+            if(data.success){
+                window.location.href = "/index.php/mobile/home/orderlist";
+            }else{
+                notice(data.status, data.redirect);
+            }
+        }) 
+    })
+
+    function coverDiv(){
+        $.post("/index.php/mobile/home/qiandao_status",function(data){
+            data = eval("(" + data + ")");
+            if(data.success){
+                var validata = captchaObj.getValidate();
+                if (!validata) {
+                    captchaObj.verify();
+                    return;
+                }else{
+                     qiandao();
+                }
+            }else{
+                notice(data.status,  false);
+            }
+        })    
+    } 
+    $("#qiandao").click(function () {
+            coverDiv();
+        });
+    $("#mybg2 button").click(function(){
+        checkcode = $("#yanzhengs").val();
+        if(checkcode != ''){
+            $.ajax({
+                data: {'param':checkcode},
+                type: 'POST',
+                url: '/index.php/member/user/codeCheck',
+                async: false,
+                success:function(data){
+                    data = eval("(" + data + ")");
+                    if(data.status == 'y'){
+                        qiandao();
+                    }else{
+                        $("#mybg").hide();
+                        $("#mybg2").hide();
+                        $("#yanzhengs").val("");
+                        notice(data.info,  false);
+                    }
+                }
+            })
+        }else{
+            $("#mybg2 input").focus();
+        }
+    })
+    $("#close").click(function(){
+        $("#mybg").hide();
+        $("#mybg2").hide();
+    })
+    function qiandao() {
+        $.post("/index.php/mobile/home/qiandao2",function(data){
+            data = eval("(" + data + ")");
+            if(data.success){
+                notice(data.status,  false);
+            }else{
+                notice(data.status,  false);
+            }
+            $("#mybg").hide();
+            $("#mybg2").hide();
+        })    
+    }
+
+    var handlerEmbed = function (captchaObj) {
+        window.captchaObj=captchaObj;
+        captchaObj.onSuccess(function () {
+            var validata = captchaObj.getValidate();
+            if (!validata) {
+                captchaObj.reset();
+                $.PageDialog.fail("安全验证失败，请重新验证")
+            } else {
+               qiandao();
+            }
+        });
+        
+        captchaObj.appendTo('#btnSendCode');
+    };
+
+    $.ajax({
+        // 获取id，challenge，success（是否启用failback）
+        url: "/geetest/web/StartCaptchaServlet.php?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                new_captcha: data.new_captcha,
+                product: "bind", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+
+                // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+            }, handlerEmbed);
+        }
+    });
+
+</script>
+
+<div id="box"><canvas id="canvas" style="display:none;"></canvas></div>
+<script type="text/javascript">
+    $('#box').aiiUpload({
+        max_h: 100,
+        max_w: 100
+    });
+</script>
+
+<script>
+    $(".toexchange").click(function(){
+        window.location.href="/index.php/mobile/home/coinExchange/";
+    })
+
+
+</script>
+<script language="javascript" type="text/javascript">
+    var Path = new Object();
+    Path.Skin = "{G_TEMPLATES_STYLE}";
+    Path.Webpath = "{WEB_PATH}";
+
+    var Base = {
+        head: document.getElementsByTagName("head")[0] || document.documentElement,
+        Myload: function (B, A) {
+            this.done = false;
+            B.onload = B.onreadystatechange = function () {
+                if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                    this.done = true;
+                    A();
+                    B.onload = B.onreadystatechange = null;
+                    if (this.head && B.parentNode) {
+                        this.head.removeChild(B)
+                    }
+                }
+            }
+        },
+        getScript: function (A, C) {
+            var B = function () {
+            };
+            if (C != undefined) {
+                B = C
+            }
+            var D = document.createElement("script");
+            D.setAttribute("language", "javascript");
+            D.setAttribute("type", "text/javascript");
+            D.setAttribute("src", A);
+            this.head.appendChild(D);
+            this.Myload(D, B)
+        },
+        getStyle: function (A, B) {
+            var B = function () {
+            };
+            if (callBack != undefined) {
+                B = callBack
+            }
+            var C = document.createElement("link");
+            C.setAttribute("type", "text/css");
+            C.setAttribute("rel", "stylesheet");
+            C.setAttribute("href", A);
+            this.head.appendChild(C);
+            this.Myload(C, B)
+        }
+    }
+
+    function GetVerNum() {
+        var D = new Date();
+        return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0' : D.getMinutes().toString().substring(0, 1))
+    }
+
+    Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v=' + GetVerNum());
+</script>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>
+
+<div id="service_bg">
+    <div id="service_info" style="display: block;">
+        <div id="service_code">
+          <!-- <p class="server_title">长按二维码，收藏惠享购</p> -->
+            <img src="/statics/templates/yungou/images/mobile/w5.jpg" data-src="/statics/templates/yungou/images/mobile/w5.jpg">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<style type="text/css">             
+#service_bg {
+    top: 0;
+    bottom: 0;
+    z-index: 1200;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 999999;
+}
+#service_info {
+    top: 23%;
+    z-index: 140;
+    margin: auto;
+    width: 85%;
+    border-radius: 8px;
+    /*background: #f7ffff;*/
+    z-index: 9999999;
+}
+ #service_bg, #service_info {
+    position: fixed;
+    right: 0;
+    left: 0;
+    display: none;
+    z-index: 999999999;
+}
+#service_code p {
+    color: #5c5c5c;
+    text-align: center;
+    font-size: 14px;
+    line-height: 45px;
+}
+#service_code img {
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+}
+#service_code {
+    margin-bottom: 20px;
+}
+img {
+    border: 0;
+}
+ </style> 
+<script type="text/javascript">
+    function service_pic1(){
+        var _secode = '/statics/templates/yungou/images/mobile/w5.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };
+
+    function service_pic2(){
+        $('.server_title').html('长按二维码，收藏惠享购');
+        var _secode = '/statics/templates/yungou/images/mobile/w5.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };  
+    function service_pic3(){
+        $('.server_title').html('长按二维码，添加物流客服');
+        var _secode = '/statics/templates/yungou/images/mobile/w5.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };  
+    $(function(){
+        $('#service_bg').click(function(){
+            $('.server_title').html('长按二维码，添加惠享购客服微信');
+            $('#service_bg').css('display','none');
+        });
+    });
+</script>

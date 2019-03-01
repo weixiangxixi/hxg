@@ -1,0 +1,59 @@
+
+	<div id="loadingPicBlock" class="share_list">
+
+		<div class="goods_share_listC">
+			<h1>商城购物券*自动充值程序</h1>
+			<ul style="margin-top:100px; font-size:16px;">				
+				<li style="width:50%;" id="kaishi">执行时间:</li>				
+				<li id="suijishu">已完成充值次数:0</li>
+		
+
+			</ul>				
+
+		</div>
+
+	</div>
+
+
+<script src="http://jq22.qiniudn.com/masonry-docs.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+	
+	var sb = 0;
+	var count = 0;
+	var rand = selectfrom(1,60);	
+	var timer = setInterval(time_rand,1000);
+	document.getElementById("kaishi").innerHTML="执行时间:"+rand+"秒";
+	function ajax(){
+		if (sb==1) {return ;}
+		sb = 1;
+	    $.ajax({
+	    	url:"/index.php/mobile/test/get_auto_recharge",
+	        type : 'post',
+	        data : {sn:123}, 
+	        success:function(data){
+	        	//console.log(data);
+	        	time_rand();
+	        	sb = 0;
+	          	     
+	        }
+	    })
+	    count = count+1;
+		document.getElementById("suijishu").innerHTML="已完成充值次数:"+count+"次";
+	}
+	function time_rand(){			
+		rand = rand-1
+		document.getElementById("kaishi").innerHTML="执行时间:"+rand+"秒";
+		if(rand <= 0){
+			ajax();
+			rand = selectfrom(1,60);
+		}
+	}
+	function selectfrom (lowValue,highValue){
+		var choice=highValue-lowValue+1;
+		return Math.floor(Math.random()*choice+lowValue);
+	}
+
+</script>
+

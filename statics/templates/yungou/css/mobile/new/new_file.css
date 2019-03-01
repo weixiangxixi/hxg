@@ -1,0 +1,112 @@
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+.container{
+	height: 100%;
+}
+.header{
+	background: url(/statics/templates/yungou/images/mobile/new/background.jpg) no-repeat bottom center;
+	background-size:cover;
+	height: 506px;
+}
+.header img{
+	width: 12rem;
+	height: 12rem;
+	border-radius: 6rem;
+	float: left;
+	vertical-align: middle;
+	margin:12% 6%;
+}
+.header * {
+	color: #1f2951;
+}
+.header .item{
+	height: 70%;
+	vertical-align: middle;
+}
+.header .item p:first-of-type{
+	font-size:3.4rem;
+	padding-top: 4.4rem;
+	line-height: 4rem;
+}
+.header .item p,.header .item small{
+	font-size: 2.2rem;
+	line-height: 3.2rem;
+}
+.header .item small{
+	line-height: 3.6rem;
+}
+.header .item-nav{
+	width: 100%;
+	/*background: hsla(0,0%,60%,.8);*/
+	background: #fff;
+	color: #fff;
+	overflow: hidden;
+	position: relative;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.header .item-nav::before{
+	position: absolute;
+	background: url(../images/background.jpg);
+	background-position:bottom;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	filter: blur(20px);
+}
+.header .item-nav a{
+	font-size: 2.4rem;
+	vertical-align: middle;
+	position: relative;
+	width: 32.8%;
+	display: inline-block;
+	text-align: center;
+	padding: 14px 0;
+	color: #000;
+	font-weight: 200;
+	letter-spacing: 0.4rem;
+	border-right: 1px solid #ddd;
+}
+.header .item-nav a:last-of-type{
+	border: none;
+}
+.content{
+	margin-top: 1.4rem;
+	padding-bottom: 120px;
+}
+.content h1{
+	text-align: center;
+	font-weight: 300;
+	color: #c1c1c1;
+	line-height: 4rem;
+}
+.content h1 span{
+	color: #4943a0;
+}
+.content ul li{
+	line-height: 6.5rem;
+	padding:0 1rem;
+	border-bottom: 0.01rem solid #ddd;
+}
+.content ul li a{
+	font-size: 2.4rem;
+	color: #1F2951;
+}
+.content ul li a span{
+	margin-left: 1.4rem;
+	position: relative;
+	top: -0.01rem;
+    font-size:2.6rem;
+}
+.content ul li a .icon:last-of-type{
+	float: right;
+}

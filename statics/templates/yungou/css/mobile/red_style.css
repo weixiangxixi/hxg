@@ -1,0 +1,89 @@
+/*-----------手机公共样式-----------*/
+*{font-family:'Open Sans','Helvetica Neue',Arial,"Hiragino Sans GB",sans-serif;padding:0;margin:0;border:0;list-style-type:none;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+html{min-height:100%;border:none;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+body{word-wrap:break-word;word-break:break-all;background:#efece5;min-height:100%; max-width:750px; margin:0 auto;}
+ul,ol{list-style-type:none;}
+button,submit,input,select,textarea{outline:none;}
+button,submit,input,select{vertical-align:middle;}
+button,submit,input[type="button"]{cursor:pointer; -webkit-appearance: none;}
+textarea{resize:none;outline:none;}
+button::-moz-focus-inner,
+submit::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner{padding:0;border:none;}
+table{border-collapse:separate;border-spacing:0;}
+th,td{text-align:left;}
+address,cite,dfn,em,var{font-style:normal;}
+img{border:none;vertical-align:middle;}
+a{outline:none;}
+a:link,a:visited{text-decoration:none;outline:none;}
+a:hover,a:active{outline:none;}
+iframe{vertical-align:top;}
+*html{zoom:expression(function(ele){ele.style.zoom = "1";document.execCommand("BackgroundImageCache",false,true)}(this))}
+.clearfix{*zoom:1}
+.clearfix:after{content:'\20';display:block;clear:both;height:0;overflow:hidden;}
+.hide{display:none;}
+/*浮动*/
+.left{float:left;}
+.right{float:right;}
+.align_c{ text-align:center;}
+.dw{ position:relative;}
+.wall img{ width:100%;}
+
+
+.banner{ position:relative; z-index:9;}
+.main{ position:relative; top:-2px; z-index:1;}
+.content{ position:absolute; top:11%; left:0; width:100%; z-index:2;}
+.act_date{ color:#000; font-size:14px; text-align:center; margin-left:12px;}
+.act_des{ color:#efece5; font-size:12px; width:50%; margin-left:27%; text-align:center; line-height:16px; margin-top:10px; word-break:break-word; margin-bottom:10px;}
+.act_des span{ color:#fbe6b8;}
+.rule_btn,.coopera_btn{ font-size:14px; border-bottom:1px dashed #000; color:#000; padding-bottom:2px; margin-bottom:10px; display:inline-block;}
+.coopera_btn{ margin-top:20px;}
+.coopera_div{ position:fixed; bottom:10px; width:100%;}
+.start_btn{ width:40%; display:inline-block;}
+.voucher_group{ text-align:center; margin-bottom:8px;}
+.voucher_group img{ margin-right:5px; width:24%; display:inline-block;}
+
+.pop{ background:rgba(0,0,0,0.7) !important; position:fixed; width:100%; height:100%; top:0; left:0; z-index:99;}
+.pop_bg{ width:90%; margin:0 auto; position: relative;  top: 50%;  transform: translateY(-50%); -webkit-transform: translateY(-50%);  -mos-transform: translateY(-50%); padding:20% 0;}
+.rule_pop,.voucher_pop,.fd_pop{ background: url(/statics/templates/yungou/images/mobile/boxc.png) center center repeat; background-size:100%; }
+.rule_title{ width:26%; margin:0 auto; margin-bottom:10px; margin-top:-5%; position:relative; z-index:99;}
+.rule,.voucher{ width:74%; margin:0 auto; word-break:break-word;}
+.rule p{ position:relative; padding-left:30px; color:#000; font-size:12px; line-height:18px; margin-top:5px;}
+.rule p span,.voucher dl dd span{ position:absolute; left:0; top:0;}
+.boxbt{margin-top:-8%;}
+.voucher_title{width:34%; margin:0 auto; margin-bottom:10px; margin-top:-5%; position:relative; z-index:99;}
+.voucher{ height:300px; overflow:auto; padding-right:10px;}
+.voucher dl{ margin-top:25px;}
+.voucher dl dt{ font-size:13px; margin-bottom:5px; font-weight:bold;}
+.voucher dl dd{position:relative; padding-left:20px; color:#000; font-size:12px; line-height:18px; margin-top:5px;}
+.pop_close{ width:26px; height:26px; position:absolute; right:7%; top:32%; text-align:center; border-radius:50%; background:url(/statics/templates/yungou/images/mobile/close.png) center center no-repeat #890007; background-size:50%;}
+.share{ position:fixed; width:100%; height:100%; z-index:999; top:0; left:0;}
+
+/*游戏页面*/
+.countdown{position:relative;  margin-top: 45%; text-align:center; font-size:24px; font-weight:bold;}
+.countdown span{ position:absolute; width:100%; top:36%; left: -4px;}
+.game_bg{ background:url(/statics/templates/yungou/images/mobile/pic1.png) center top no-repeat, url(/statics/templates/yungou/images/mobile/pic2.png) center bottom no-repeat #fbe6b8; background-size:100%;overflow:hidden;}
+.rain-wrap{ position:fixed; width:100%; height:100%; top:0; left:0; overflow:hidden;}
+.envelope{ width:40px; height:auto; overflow: hidden; position: absolute; -webkit-user-select: none; border:none; }
+.over_date{ background:url(/statics/templates/yungou/images/mobile/pic4.png); position:fixed; top:5px; left:50%; width:110px; height:36px; line-height:36px; margin-left:-55px; text-align:center; background-size:100% 100%; font-size:12px; color:#000;}
+.over_date span{ font-weight:bold; color:#890007;}
+.fd_title{width:33%; margin:0 auto; margin-bottom:10px; margin-top:-5%; position:relative; z-index:99; padding-left:5%;}
+.fd_con{width:74%; margin:0 auto; word-break:break-word; color:#000; font-size:12px; margin-left:15%; text-align:center; position:relative; z-index:99;}
+.fd_font{ padding:15% 0;}
+.wd_font{ margin-top:20px; margin-bottom:15px;line-height: 18px;}
+.wd_font span{ color:#890007;}
+.pop_pic{ width:44%; margin:0 auto;}
+.red_box .wd_font{margin-bottom:30px;}
+.pop_btn{ width:52%; display:inline-block;}
+.pop_btn img{ width:100%;}
+.win_btn{ position:relative; z-index:99; margin-top:20px;}
+@media only screen and (max-width: 330px) {
+	.act_date{font-size:12px;}
+	.rule_btn,.coopera_btn{font-size:12px;}
+	.voucher_group img{ width:22%;}
+	.countdown span{ position:absolute; width:100%; top:36%; left: -4px;}
+}

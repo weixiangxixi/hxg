@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>我的奖品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css" />
+    <script src="/statics/templates/yungou/js/mobile/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script><script src="/statics/templates/yungou/js/mobile/jquery-1.10.2.js" language="javascript" type="text/javascript"></script>
+<script src= "/statics/templates/yungou/js/mobile/layer.js"></script>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        background:#fff;
+    }
+    .lotteryList{
+        width: 100%;
+        max-width: 640px;
+        margin:0 auto;
+    }
+    .lotteryList .header{
+        color: #fff;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        margin-bottom: 2px;
+    }
+    .lotteryList .main{
+        width: 98%;
+        margin:0 auto;
+    }
+    .lotteryList .main .rol{
+        width: 100%;
+        display: flex;
+        border-bottom: 1px solid #d2d2d2;
+    }
+    .lotteryList .main .rol div{
+        width: 33%;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        overflow: hidden;
+        border-right: 1px solid #d2d2d2;
+    }
+    .lotteryList .main .rol div:last-child{
+        border:none;
+    }
+    .lotteryList .status button,.lotteryList .status a{
+        background: #f04900;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        width: 60px;
+        height: 20px;
+        line-height: 20px;
+        cursor: pointer;
+        display: inline-block;
+    }
+    .lotteryList .main .rol .check_card{
+        text-decoration: underline;
+        color: #ff0303;
+        cursor: pointer;
+    }
+    .layui-layer-content img{
+        width: 100%;
+        heigh: auto;
+    }
+</style>
+</head>
+<body>
+<div class="lotteryList">
+    <div class="header">
+        <h1>您的获奖记录</h1>
+    </div>
+    <div class="main">
+        <div class="rol">
+            <div class="name">奖品</div>
+            <div class="time">获奖时间</div>
+            <div class="status">奖品状态</div>
+        </div>
+                <div class="rol">
+                        <div class="name">88福分</div>
+                        <div class="time">2018.09.21 16:09:30</div>
+                                                                                                <div class="status"><button data-id="53706" class="check" type="button">已充值</button></div>
+                                </div>
+                <div class="rol">
+                        <div class="name">888福分</div>
+                        <div class="time">2018.09.21 14:37:04</div>
+                                                                                                <div class="status"><button data-id="53148" class="check" type="button">已充值</button></div>
+                                </div>
+            </div>
+</div>
+<script src="https://s11.cnzz.com/z_stat.php?id=1259931418&web_id=1259931418" language="JavaScript" type="hidden"></script>
+<style>
+    .footer .u-ft-nav{
+        z-index:100009;
+    }
+</style>
+{wc:templates "mobile/index","footer"}
+
+<!--开启全站微信分享自定义-->
+<!--<script type="text/javascript" src="http://game.dyyyyg.net/statics/templates/ffxiang/js/jquery.cookie.js"></script>
+-->
+<!--end--></body>
+<script>
+    $(".check").click(function(){
+        var orderid=$(this).data('id');
+        var content="";
+        $.getJSON("http://game.dyyyyg.net/index.php/mobile/luckyicon/prizeInfo",{"orderid":orderid},function(json){
+            if(json.text.type==5||json.text.type==6){
+                content+='<div><p>卡密:</p><p>'+json.text.card+'</p></div>';
+            }else if(json.text.type==1){
+                if(json.text.logistic){
+                    content+='<div><p>快递信息:</p><p>'+json.text.logistic.cp_code+":"+json.text.logistic.waybillCode+'</p></div>';
+                }
+                content+='<div><p>地址信息:</p><p>'+json.text.address.sheng+json.text.address.shi+json.text.address.xian+json.text.address.jiedao+'</p></div>';
+            }else{
+                return false;
+            }
+            showMsg(content);
+        });
+    });
+
+    $(".check_card").click(function(){
+        var orderid=$(this).data('id');
+        var content="";
+        $.getJSON("http://game.dyyyyg.net/index.php/mobile/luckyicon/prizeInfo",{"orderid":orderid},function(json){
+            if(json.text.type==5||json.text.type==6){
+                content+='<div><p>卡密:</p><p>'+json.text.card+'</p></div>';
+            }else if(json.text.type==1){
+                content+='<div><p>快递信息:</p><p>'+json.text.logistic.cp_code+":"+json.text.logistic.waybillCode+'</p></div>';
+            }else{
+                return false;
+            }
+            showMsg(content);
+        });
+    });
+
+    function showMsg(content){
+        layer.open({
+            style:"border:none;background:#fff;color:#000",
+            content:content,
+            className:"district",
+            anim:"up"
+//            yes:function(index){
+//            }
+        });
+    }
+
+    $(".confirm").click(function(){
+        var orderid=$(this).data('id');
+        confrim(orderid);
+    });
+
+    function confrim(oid) {
+        $.post("http://game.dyyyyg.net/index.php/mobile/luckyicon/confirmsend",{orderid:oid},function(json){
+            var json=eval('(' + json + ')');
+            if(json.success==true)
+            {
+                window.location.reload();
+            }
+        })
+    }
+
+    function getInviImg() {
+        layer.open({
+            title:"保存图片分享领奖品",
+            type: 1,
+            skin: 'layui-layer-rim', //加上边框
+            area: ['300px', '448px'], //宽高
+            content:"<img src='http://game.dyyyyg.net/index.php/mobile/luckyicon/invi_img'/>"
+        });
+    }
+</script>
+</html>

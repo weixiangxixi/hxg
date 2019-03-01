@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html class=""><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>透明购</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png?v=123456">
+    <link href="/statics/templates/yungou/css/mobile/comm.css" rel="stylesheet" type="text/css">
+    <script src="/statics/templates/yungou/js/mobile/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript" src="/statics/templates/yungou/js/mobile/jquery.cookie.js"></script>
+	<link href="/statics/templates/yungou/css/mobile/index.css" rel="stylesheet" type="text/css">
+	<link href="/statics/templates/yungou/css/mobile/swiper.min.css" rel="stylesheet" type="text/css">
+	<script src="/statics/templates/yungou/js/mobile/swiper.min.js" language="javascript" type="text/javascript"></script>
+	<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/jquery.fancybox.css" type="text/css" media="screen">
+	<script type="text/javascript" src="/statics/templates/yungou/js/mobile/jquery.fancybox.pack.js"></script>
+	<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/ssc.js" language="javascript" type="text/javascript"></script> 
+	<script src="{G_TEMPLATES_JS}/mobile/pageDialog.js" language="javascript" type="text/javascript"></script>
+<style>
+
+    .app-icon-wrapper {
+        background-color: #373B3E;
+        padding: 8px;
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .app-icon-wrapper a {
+        display: block;
+    }
+
+    .app-icon-wrapper a.info-icon {
+        width: 100%;
+    }
+
+    .app-icon-wrapper .info-content {
+        width: 240px;
+        margin: 0 auto;
+    }
+
+    .app-icon-wrapper .info-icon .set-icon {
+        border-radius: 20px;
+        display: block;
+        height: 30px;
+        width: 30px;
+        background: rgba(0, 0, 0, 0) url("http://dyyyyg-static.oss-cn-shenzhen.aliyuncs.com/images/mobile/tmyg_weixin_logo.jpg") no-repeat scroll 0 0 / 30px auto;
+        float: left;
+    }
+
+    .app-icon-wrapper .info-icon .info {
+        float: left;
+        line-height: 30px;
+        color: #fff;
+        padding-left: 6px;
+        font-size: 18px;
+    }
+
+    .app-icon-wrapper .close-icon {
+        position: absolute;
+        width: 50px;
+        height: 30px;
+        right: 10px;
+        z-index: 1;
+    }
+
+    .app-icon-wrapper .close-icon:before {
+        content: "\2715";
+        font-size: 20px;
+        line-height: 30px;
+        color: #eee;
+        padding-left: 20px;
+    }
+
+    .btn-wrap {
+        position: relative;
+        margin: 10px 0 0;
+        width: 100%;
+    }
+
+    .btn-wrap .buy-btn {
+        display: block;
+        width: 50%;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        border: 1px solid #f60;
+        color: #f60;
+        border-radius: 16px;
+        margin: 0 20%;
+    }
+
+    .btn-wrap .gRate {
+        display: block;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        background-color: #f60;
+        border-radius: 15px;
+        right: 5%;
+    }
+
+    .btn-wrap .gRate s {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        margin: 4px 0 0 -7px;
+        background: url(/statics/templates/yungou/images/mobile/setIcon.png);
+        background-size: 80px auto;
+        background-position: -58px -29px;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .swiper-slide img {
+        height: auto;
+        width: 100%;
+        display: block;
+    }
+
+    .swiper-slide .swiper-lazy-preloader {
+        margin-top: 50px;
+    }
+
+    .rolling-number {
+        background: #fff;
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #CCC;
+        font-size: 16px;
+        clear: both;
+    }
+
+    .rolling-number .rolling-content ul {
+        margin-top: 8px;
+        color: #F60;
+    }
+
+    .rolling-number .rolling-content ul li {
+        display: inline-block;
+    }
+
+    .rolling-number .rolling-content ul li.rolling-title {
+        color: #999;
+    }
+
+    .rolling-number .rolling-content ul li.num {
+        position: relative;
+        border: 1px solid #CCC;
+        display: inline-block;
+        width: 18px;
+        font-size: 16px;
+        overflow: hidden;
+        height: 22px;
+        line-height: 22px;
+    }
+
+    .rolling-number .rolling-content ul li cite {
+        width: 18px;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+    }
+
+    .rolling-number .rolling-content ul li cite em {
+        width: 18px;
+        display: block;
+    }
+
+    .rolling-number li i {
+        border-top: 1px solid #ededed;
+        height: 0;
+        left: 0;
+        position: absolute;
+        top: 11px;
+        width: 100%;
+        z-index: 0;
+    }
+
+    #published .m-round {
+        border: none;
+        border-radius: 0;
+        background: #fff;
+        box-shadow: none;
+    }
+
+    .m-tt1 {
+        margin: 0;
+        background: #FFF;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(246,246,246,0.8);
+    }
+
+    .m-tt1 a {
+        width: 100%;
+        display: block;
+        color: #999;
+        padding-left: 5px;
+    }
+
+    .m-tt1 h2 {
+        width: 100%;
+        margin: 0;
+        line-height: 32px;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .m-tt1 .z-arrow {
+        width: 8px;
+        height: 8px;
+        border-width: 1px 1px 0 0;
+        float: right;
+        margin-top: 10px;
+        margin-right: 30px;
+    }
+
+    .m-lott-list {
+        overflow: hidden;
+    }
+
+    .m-lott-list li {
+        width: 50%;
+        float: left;
+        border-bottom: 1px solid #f5f5f5;
+        border-right: 1px solid #f5f5f5;
+        padding: 0 5px 5px;
+        box-sizing: border-box;
+    }
+
+    .m-lott-list li:nth-child(n+3) {
+        border-bottom: none;
+    }
+
+    .m-lott-list li .m-lott-text {
+        float: left;
+        width: 53%;
+        margin: 1% 2%;
+    }
+
+    .m-lott-list li .m-lott-text p {
+        color: #F60;
+    }
+
+    .m-lott-list li .m-lott-text a {
+        color: #666;
+        font-size: 12px;
+        display: block;
+        height: 32px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .m-lott-list li .m-lott-pic {
+        float: right;
+        width: 42%;
+        display: block;
+    }
+
+    .m-lott-list li .m-lott-pic a {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .m-lott-list li .m-lott-pic img {
+        width: 200px;
+        max-width: 100%;
+        height: auto;
+        float: right;
+    }
+
+    .m-lott-list .m-lott-state {
+        clear: left;
+        padding: 2px 0 0 1px;
+    }
+
+    .m-lott-list .m-lott-state .u-time {
+        color: #F60;
+        padding: 3px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .m-lott-list .m-lott-state .u-time em {
+        padding-right: 3px;
+    }
+
+    .m-lott-list .m-lott-state .u-user {
+        display: block;
+        margin-top: 18px;
+        width: 53%;
+        white-space: nowrap;
+        overflow: hidden;
+        line-height: 12px;
+    }
+
+    /*.m-lott-list .m-lott-item {*/
+    /*border: 1px solid #F4F4F4;*/
+    /*border-bottom: 1px solid #F4F4F4 !important;*/
+    /*}*/
+
+    .m-lott-list .m-lott-item:nth-child(even) {
+        border-left: none;
+    }
+
+    .m-lott-list .m-lott-item:nth-child(n+3) {
+        border-top: none;
+    }
+    #published .lott-list{
+        overflow: hidden;
+    }
+    #divLottery{
+        background: #fff;
+    }
+    #divLottery::after{
+        content: "";
+        width: 100%;
+        height:0px;
+        clear: both;
+        display: block;
+    }
+    #divLottery li {
+        float: left;
+        height: 124px;
+        box-sizing: border-box;
+        border-right:1px solid rgba(246,246,246,.7);
+        overflow: hidden;
+    }
+    #divLottery li img{
+        width: 70px;
+        height: 70px;
+        display: block;
+        margin:0 auto;
+        box-sizing: border-box;
+        padding:4px;
+    }
+    #divLottery li p{
+        color:#c9c0c0;
+        text-align: center;
+        margin:0 auto;
+    }
+    #divLottery .u-user a{
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    #divLottery .m-lott-state{
+        margin:4px 0 10px;
+    }
+    #divLottery .m-lott-state .u-time{
+        padding: 4px;
+        border: 1px solid #eee;
+        border-radius: 10px;
+    }
+    #divLottery .m-lott-state{
+        text-align: center;
+    }
+    #divLottery .m-lott-pic{
+        margin: 4px 0 2px;
+    }
+    ul {
+        list-style-type: none;
+    }
+
+    #partner { /*战略合作伙伴*/
+        border: none;
+        border-radius: 0;
+        background: #fff;
+        box-shadow: none;
+        border-bottom: 1px solid rgba(246,246,246,0.8);
+    }
+
+    li.ptn {
+        width: 25%;
+        display: inline-block;
+        box-sizing: border-box;
+        border: none;
+    }
+
+    li.ptn > a {
+        display: block;
+        padding: .2rem 0;
+        color: #999;
+        text-align: center;
+        text-decoration: none;
+        outline: 0;
+    }
+
+    li.ptn a img {
+        display: block;
+        margin: auto;
+        width: 60%;
+        height: 60%;
+    }
+
+    li.ptn a span {
+        text-align: center;
+        font-size: .72rem
+    }
+
+    #notice { /*首页公告*/
+        position: relative;
+        margin-bottom: 5px;
+        background: #FFF;
+    }
+
+    #notice:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        right: 15px;
+        top: 14px;
+        border-width: 1px 1px 0 0;
+        border-style: solid;
+        border-color: #BBB;
+        -webkit-transform: rotate(45deg);
+    }
+
+    .anouncement {
+        height: 40px;
+        width: calc(100% - 40px);
+        overflow: hidden;
+        margin: 0 0 0 15px;
+    }
+
+    .anouncement::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        margin: 11px 0 0;
+        border-right: 4px solid #FFF;
+        background: #FFF url("/statics/templates/yungou/images/mobile/nt.png") center center / contain;
+    }
+
+    #anMarquee {
+        color: #0581fb;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    .nav-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 640px;
+        height: 40px;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+    }
+    .nav-wrapper .nav-wrapper {
+        border-bottom: 1px solid #eee;
+        left: 0;
+        position: fixed;
+        top: 0;
+        z-index: 99;
+    }
+    .nav-wrapper .nav-inner {
+        box-sizing: border-box;
+        float: left;
+        height: 40px;
+        width: 100%;
+    }
+
+    .nav-wrapper .nav-inner li {
+        float: left;
+        height: 44px;
+        text-align: center;
+        /*width: 22%;*/
+        width: 50%;
+    }
+
+    .nav-wrapper .nav-list {
+        width: 100%;
+    }
+    .nav-wrapper .nav-inner a {
+        display: block;
+        font-size: 14px;
+    }
+
+    .nav-wrapper .nav-inner li.current span {
+        border-color: #f60;
+        color: #f60;
+    }
+
+    .nav-wrapper .nav-inner span {
+        border-bottom: 2px solid transparent;
+        color: #999;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 6px;
+    }
+
+    .nav-wrapper .select-btn::before {
+        border-bottom-color: #dedede;
+        border-style: solid;
+        top: 30px;
+        z-index: 3;
+    }
+
+    .nav-wrapper .select-btn::before, .nav-wrapper .select-btn::after {
+        border-color: transparent;
+        border-width: 7px 6px;
+        content: "";
+        display: none;
+        height: 0;
+        left: 50%;
+        margin-left: -6px;
+        position: absolute;
+        width: 0;
+    }
+
+    .nav-wrapper .select-btn::after {
+        border-bottom-color: #fff;
+        border-style: solid;
+        top: 31px;
+        z-index: 4;
+    }
+
+    .nav-wrapper .select-btn::before, .nav-wrapper .select-btn::after {
+        border-color: transparent;
+        border-width: 7px 6px;
+        content: "";
+        display: none;
+        height: 0;
+        left: 50%;
+        margin-left: -6px;
+        position: absolute;
+        width: 0;
+    }
+
+    .nav-wrapper .select-btn {
+        float: left;
+        position: relative;
+        width: 20%;
+        height: 40px;
+        color: #999;
+        font-size: 14px;
+        line-height: 42px;
+        border-left: 1px solid #eee;
+        border-right: 1px solid #eee;
+        text-align: center;
+        box-sizing: border-box;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .nav-wrapper .select-btn.current {
+        color: #f60;
+        border-bottom: 2px solid #f60;
+    }
+
+    .nav-wrapper .select-icon {
+        background-color: #fff;
+        display: inline-block;
+        height: 12px;
+        overflow: hidden;
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+        width: 13px;
+    }
+
+    .nav-wrapper .select-icon i:first-child {
+        margin-top: 0;
+    }
+
+    .nav-wrapper .select-icon i {
+        background-color: #bbb;
+        display: block;
+        height: 2px;
+        margin-top: 3px;
+        width: 13px;
+    }
+
+    .nav-wrapper .select-btn.current .select-icon i {
+        background-color: #f60;
+    }
+
+    .nav-wrapper .select-total {
+        background-color: #fff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.19);
+        position: absolute;
+        right: 0;
+        top: 41px;
+        width: 100%;
+        z-index: 4;
+    }
+    .sort_list::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+    .sort_list {
+        width: 100%;
+    }
+    .sort_list li {
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        box-sizing: border-box;
+        float: left;
+        height: 44px;
+        line-height: 42px;
+        width: 33.3%;
+    }
+    .sort_list a {
+        color: #666;
+        display: block;
+        font-size: 14px;
+        padding: 0 20px;
+        text-align: center;
+    }
+    #divGoodsLoading {
+        min-height: 45px;
+        border-top:1px solid #ccc;
+    }
+    #ulRecommend > li {
+        position: relative;
+        padding: 10px 0;
+        overflow: hidden;
+    }
+    #btnsearch {
+        cursor: pointer;
+    }
+    #btnsearch .select-icon
+    {
+        width: 11px;
+        height: 11px;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        background-color: #fff;
+        top: -2px;
+        border: 1px solid #999;
+        border-radius: 50%;
+        overflow: visible;
+    }
+    #btnsearch .select-icon::before
+    {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 1px;
+        background-color: #999;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        top: 11px;
+        left: 9px;
+        z-index:2;
+    }
+
+    /*商品分类导航栏添加商品选择框*/
+    .sort_list li {
+        position: relative;
+        overflow: hidden;
+    }
+    .sort_list li > input {
+        display: none;
+    }
+    .sort_list li em {
+        color: #F60;
+    }
+    .cateChk + label {
+        position: absolute;
+        height: 44px;
+        width: 44px;
+        top: 0;
+        right: -6px;
+        box-sizing: border-box;
+        cursor: pointer;
+        z-index: 1;
+        background: transparent url("/statics/templates/yungou/images/mobile/check_.png") center 51px / 130% 390%;
+        text-align: center;
+        line-height: 44px;
+        color: #CCC;
+    }
+    .cateChk:checked + label, .cateChk.red:checked + label {
+        background-position-y: -7px;
+        color: #F60;
+    }
+    li:first-child .cateChk:checked + label {
+        background-image: url("/statics/templates/yungou/images/mobile/check_bak.png");
+    }
+    /*.cateChk.disabled:checked + label { //disabled类暂不删除，留待使用
+        background-position-y: 51px;
+        color: #CCC;
+    }*/
+    .cateChk.red + label {
+        background-position: center;
+        color: #000;
+    }
+    #addAll {
+        position: relative;
+        width: 100%;
+        height: 44px;
+        text-align: center;
+        border-top: 1px solid #eee;
+        margin-top: -1px;
+    }
+
+    #addAll p {
+        border: 1px solid #F60;
+        border-radius: 3px;
+        width: 33%;
+        margin: 7px auto;
+        height: 28px;
+        color: #FFF;
+        font-size: 15px;
+        line-height: 28px;
+        letter-spacing: 5px;
+        cursor: pointer;
+        background: #F60;
+    }
+
+    #addAll em {
+        position: absolute;
+        top: 0;
+        left: 70%;
+        height: 44px;
+        line-height: 44px;
+        color: #CCC;
+        font-size: 12px
+    }
+
+    #addAll em.num {
+        color: #F60;
+        text-shadow: 0 0 3px #F60;
+    }
+
+    .special a {
+        color: #1A9DEC !important;
+    }
+    /*添加“我的收藏”到分类列表*/
+    #myCollect a {
+        color: #1A9DEC;
+    }
+
+    #myCollect a::after {
+        content: '\279C';
+        font-size: 1.1rem;
+        display: block;
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        right: -6px;
+        top: 0;
+        text-align: center
+    }
+    .check_more{
+        text-align: center;
+        color: #999;
+        display: none;
+        height: 90px;
+        line-height: 30px;
+        font-size: 12px;
+    }
+    .star{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 8px;
+        background-image: url("/images/star.png");
+        background-size: 100% 100%;
+        top: 5px;
+        cursor: pointer;
+    }
+    .stars {
+        background-image: url("/images/stars.png");
+        background-size: 100% 100%;
+        top: 5px;
+        cursor: pointer;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 8px;
+    }
+    /*添加到购物车动画*/
+    img#forFun {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        z-index: 111;
+        -webkit-animation: forFun .65s ease-in-out;
+        -webkit-animation-fill-mode: backwards;
+    }
+    .lott-list2{
+        overflow: hidden;
+    }
+    #rol_content li{
+        box-sizing: border-box;
+        width:100%;
+        height: 100%;
+        text-align: center;
+        line-height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 10%;
+    }
+    #header{
+        width: 100%;
+        height: auto;
+        background-image: url('http://csth.oss-cn-shenzhen.aliyuncs.com/statics/templates/yungou/images/mobile/transparent_0.png@!222');
+        background-size: 100% 100%;
+        background-position: center top;
+        background-repeat: no-repeat;
+        max-width: 640px;
+        padding-bottom: calc(300/640*100%);
+    }
+    #header a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    #addAll{
+        position: fixed;
+        width: 3.2rem;
+        height: 3.2rem;
+        left: calc(50% - 1.6rem);
+        bottom: 58px;
+        background: #F60;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #F60;
+        -webkit-animation-fill-mode: forwards;
+        z-index: 111;
+    }
+    #addAll p{
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        padding: .3rem;
+        margin: calc(0.3rem - 1px) auto;
+        line-height: 1rem;
+        color: #FFF;
+        font-size: .9rem;
+        background: #F60;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid #FFF;
+        letter-spacing: 1px;
+    }
+    #catUp {
+        width: 100%;
+        height: 44px;
+        background: #FFF;
+        overflow: hidden;
+    }
+    #catUp::after {
+        color: #F60;
+        content: '\00AB';
+        width: 44px;
+        height: 44px;
+        font-size: 2rem;
+        line-height: 44px;
+        -webkit-transform: rotate(90deg);
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .active{
+        background: #f60;
+    }
+    .nav-wrapper .active span{
+        color: #fff;
+    }
+    #anMarquee p{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 10%;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    a.u-lott-pic::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 52px;
+        height: 50px;
+        right: 0;
+        bottom: 0;
+        background: transparent url("/images/cat_mark.png?180118") no-repeat 2px -152px / 50px 202px;
+    }
+
+    /*分类按钮*/
+    .t_box{
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: initial;
+        background: #fff;
+        width: 100%;
+        float: left;
+    }
+    .t_box .t_btn{
+        text-align: center;
+        color: #8c8c8c;
+        line-height: 40px;
+        cursor: pointer;
+        flex-grow: 1;
+    }
+    ul.t_box li:first-child {
+        flex-grow: 1
+    }
+
+    ul.t_box li:nth-child(2) {
+        position: relative;
+        flex-grow: 3;
+    }
+    ul.t_box li:nth-child(2) span::after {
+        content: '\21C5';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: calc(50% + 25px);
+    }
+    ul.t_box li:nth-child(3) {
+        flex-grow: 3
+    }
+
+    ul.t_box li:last-child {
+        flex-grow: 3;
+        border-left:none;
+    }
+    .t_box .t_btn span{
+        padding:4px;
+    }
+    .current{
+        border-bottom:1px solid #f60;
+        color: #f60;
+    }
+    .current::after {
+        color: #F60;
+    }
+    /*end*/
+
+    #goodsNav {
+        z-index: 111;
+    }
+
+    .g-main > article {
+        width: 100%;
+    }
+    /*转盘跳转*/
+    #rotate {
+        display: block;
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        top: 50%;
+        left: calc(50% - 30px);
+        z-index: 111;
+    }
+    #rotate img {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+        -webkit-animation: rotate 3s infinite linear;
+        -webkit-animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes rotate {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    /*界面改版*/
+    #ulRecommend li{
+        float:none;
+        width: 100%;
+    }
+    #ulRecommend li .m-tj-pic{
+        float: left;
+        width: 80px;
+        height: 80px;
+    }
+    .m-tj-li li .m-tj-pic img{
+        width: 100%;
+        height: 100%;
+    }
+    .m-tj-li .g-name{
+        text-align: left;
+    }
+    #ulRecommend .m-ti-content{
+        float: left;
+        width: calc( 100% - 80px);
+        position: relative;
+    }
+    #ulRecommend .m-ti-content .Progress-bar{
+        margin: 18px 60px 8px 18px;
+    }
+    #ulRecommend .Progress-bar li{
+        float:left;
+        width: 33.3%;
+    }
+    .gRate{
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: #f60;
+        border-radius: 25px;
+        position: absolute;
+        bottom: 10px;
+        right:6px;
+    }
+    .gRate s{
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        margin: 8px 0 0 -7px;
+        background: url("/statics/templates/yungou/images/mobile/setIcon.png");
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto auto;
+        background-size: 80px auto;
+        background-position: -58px -29px;
+    }
+    .m-tj-li .g-name {
+	    height: 18px;
+	    line-height: 18px;
+	    font-size: 12px;
+	    color: #666;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    word-break: break-all;
+	    margin: 7px 14px 2px;
+	}
+	.m-tj-li li{
+		margin-bottom: -12px!important;
+	}
+	a.u-lott-pic::after {
+	    content: '';
+	    display: block;
+	    position: absolute;
+	    width: 52px;
+	    height: 50px;
+	    right: 0;
+	    bottom: 0;
+	    background: transparent url(/statics/templates/yungou/images/mobile/cat_mark.png) no-repeat 2px -152px / 50px 202px;
+	}
+    /*end*/
+</style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+<style type="text/css">
+.fancybox-margin{
+	margin-right:0px;
+}
+</style>
+</head>
+<body>
+<a href="/index.php/mobile/mobile/guizessc"><div id="header"></div></a>
+<div class="h5-1yyg-v1" id="loadingPicBlock" style="margin-top: 0;">
+    <!-- 滑动最新揭晓 -->
+    <section class="nva-list">
+        <article id="notice" class="m-lott-list">
+            <div class="anouncement">
+                <div id="anMarquee" style="height: 40px;">
+                	<p></p>
+                   
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!--菜单切换-->
+    <div style="height: 40px;">
+        <div class="nav_box">
+
+            <nav class="nav-wrapper" id="goodsNav">
+                <input id="parm_order" value="10" type="hidden">
+                <input id="parm_sortid" value="0" type="hidden">
+                <!--点击添加或移除current-->
+                <ul class="t_box">
+                    <li class="t_btn"><span order="20">人气</span></li>
+                    <li class="t_btn"><span class="current" order="11">即将揭晓</span></li>
+                    <li id="divSort" class="select-btn">
+                    <span class="select-icon">
+                        <i></i><i></i><i></i><i></i>
+                    </span>
+                        分类
+                    </li><li class="t_btn collect" isnow="no"><span>收藏</span></li>
+                    <li class="select-btn" id="publishing">最新揭晓</li>
+                </ul>
+                <!--分类-->
+                <div style="display: none;" class="select-total">
+                    <ul class="sort_list">
+                    	{wc:php:start}foreach($data as $key=>$val){{wc:php:end}
+                        <li sortid="{wc:$val['id']}">
+                            <a href="javascript:;">{wc:$val['name']}</a>
+                        </li>
+                        {wc:php:start}}{wc:php:end}                        
+                    </ul>
+                    <div id="catUp"></div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <section class="g-main">
+        <article class="clearfix h5-1yyg-w310 m-round m-tj-li">
+        	<ul id="ulRecommend" class="clearfix" style="position: relative; display: block;">
+            
+            </ul>	
+        	<div id="divGoodsLoading" data-page="1" data-isload="yes" style="display: none" class=""><s></s></div>
+        </article>
+    </section>
+    <div id="addAll">
+        <p>一键添加</p>
+    </div>
+    <span class="check_more">亲，真的没有了~</span>
+    <script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js?v=20171007"></script>
+<link href="/statics/templates/yungou/css/mobile/message.css?18060601" rel="stylesheet" type="text/css">
+
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/mobile/jquery.cookie.js"></script>
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js" language="javascript" type="text/javascript"></script>
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_ > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" language="javascript" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript">
+        var Path = new Object();
+		Path.Skin="{G_TEMPLATES_STYLE}";  
+		Path.Webpath = "{WEB_PATH}";
+		Path.path = "{G_WEB_PATH}";
+		Path.imgpath = "{G_WEB_PATH}/statics";
+		  
+		var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+		function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+		Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+
+        $(function () {
+            var div_subscribe = $("#div_subscribe");
+            var index_show = $.cookie('div_subscribe_show');
+            if (!index_show) {
+                div_subscribe.show();
+            }
+
+            $(".popimage").fancybox({
+                openEffect: 'none',
+                closeEffect: 'none',
+                closeClick: true,
+            });
+            div_subscribe.find(".close-icon").click(function () {
+                $("#div_subscribe").hide();
+                $.cookie('div_subscribe_show', '1', {expires: 1});
+            });
+
+            //立即云购
+            $(document).on("click", '.buy-btn[codeid]', function (o) {
+                addCar(1, $(this).attr('codeid'));
+            });
+            // //添加到购物车
+            // $(document).on("click", '.gRate[codeid]', function (o) {
+            //     addCar(0, $(this).attr('codeid'));
+            // });
+
+            //添加到购物车
+			$(document).on("click",'.gRate[codeid]',function(){
+				var codeid=$(this).attr('codeid');
+			
+				$.getJSON('{WEB_PATH}/mobile/ajax/addShopCart/'+codeid+'/1',function(data){
+					if(data.code==1){
+						addsuccess('添加失败');
+					}else if(data.code==0){
+						addsuccess('添加成功');				
+					}return false;
+				});
+			});
+
+            
+            function addsuccess(dat) {
+                $("#pageDialogBG .Prompt").text("");
+                var w = ($(window).width() - 255) / 2, h = ($(window).height() - 45) / 2;
+                $("#pageDialogBG").css({top: h, left: w, opacity: 0.8});
+                $("#pageDialogBG").stop().fadeIn(1000);
+                $("#pageDialogBG .Prompt").append('<s></s>' + dat);
+                setTimeout(function () {
+                    $("#pageDialogBG").fadeOut(1000);
+                }, 1000);
+                $.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+					$("#btnCart").append('<em>'+data.num+'</em>');
+				});
+            }
+
+            var nav = $("#goodsNav");
+            var nav_top = 0;
+            var elm = $("#divGoodsLoading");
+            var remove = false;
+            var dl = $("#goodsNav .select-total");
+            $("#divSort").click(function () {
+                dl.toggle(); //改用toggle切换显示状态
+            });
+
+            $(".sort_list li[sortid]").click(function () {/*分类跳转*/
+                var sortid = parseInt($(this).attr("sortid"));
+                $("#divSort").text($(this).find("a").html());
+                $("#divSort").attr("sortid",sortid);
+                $("#parm_sortid").val(sortid);
+                $("#parm_order").val(0);//order
+                $(".collect").attr("isnow","no");
+                $(".t_box").find(".t_btn > span").removeClass("current");
+                $("#divSort").addClass("current");
+                $("#divGoodsLoading").attr("data-isload","yes").attr("data-page","1");
+                remove = true;
+                var re = $("#ulRecommend");
+                re.parent().css("height", re.height());
+                re.css("position", "absolute").fadeOut(200);
+                $(".check_more").css("display","none");
+                dl.toggle();
+                glist_json();
+            });
+
+            function glist_json() {/*异步加载后台商品数据*/
+                if(elm.attr("data-isload") == "yes" && !elm.hasClass("loading")) {
+                    elm.addClass("loading");
+                    var order = $("#parm_order").val();
+                    var page = elm.attr("data-page");
+                    var sortid=$("#parm_sortid").val();
+                    var url = '/index.php/mobile/ajax/sscajax/'+ order +"/" + page + "/" + sortid +"?num=20";
+                    $.getJSON(url, function (data) {
+                        var re = $("#ulRecommend");
+              
+                        if(remove) {
+                            re.children().remove();
+                        }
+
+                        //判断特殊商品
+                        var cat_mark, cust = "";
+
+                        /*普通商品*/
+                        var ul = "";
+                        var shop = data.shoplist;
+
+                        for (var i = 0; i < shop.length; i++) {
+                            cat_mark = "";
+                            // if (shop[i].cateid == 59) { //二人云购
+                            //     cat_mark = " cat-double";
+                            // } else if (shop[i].cateid ==  60) { //限购商品
+                            //     cat_mark =" cat-limit";
+                            // }
+                            ul += '<li id="' + shop[i].id + '"><div class="f_bor_tr"><div class="m-tj-pic">';
+                            ul += '<a href="/index.php/mobile/mobile/item/' + shop[i].id + '" class="u-lott-pic">'
+                            ul += '<img src="/statics/templates/yungou/images/loading.gif?171209" src2="http://csth.oss-cn-shenzhen.aliyuncs.com/statics/uploads/' + shop[i].thumb + '@!111" style="width:80px;height:80px;" border=0 alt=""/>';
+                            ul += '</a>';
+                            ul += '</div>';
+                            ul += '<div class="m-ti-content"><p class="g-name">(第<em>' + shop[i].qishu + '</em>期)' + shop[i].title + '</p>';
+                            ul += '<div class="Progress-bar">';
+                            ul += '<p class="u-progress"><span class="pgbar" style="width:' + (1 - shop[i].shenyurenshu / shop[i].zongrenshu) * 100 + '%;"><span class="pging"></span></span></p>';
+                            ul += '<ul class="Pro-bar-li">';
+                            ul += '<li class="P-bar01"><em>' + (shop[i].zongrenshu - shop[i].shenyurenshu) + '</em>已参与</li>';
+                            ul += '<li class="P-bar02"><em>' + shop[i].zongrenshu + '</em>总需人次</li>';
+                            ul += '<li class="P-bar03"><em>' + shop[i].shenyurenshu + '</em>剩余</li>';
+                            ul += '</ul>';
+                            ul += '</div>';
+                      
+                            ul += '<a href="javascript:;" class="gRate" codeid="' + shop[i].id + '"><s></s></a>';
+                            ul += '</div></div></div></li>';
+                        }
+                        /*普通商品end*/
+
+                        re.append(ul);
+                        if(remove) {
+                            remove = false;
+                            re.css("position", "relative").fadeIn(300);
+                            re.parent().css("height", "auto");
+                            $(window).scrollTop(nav_top);
+                        }
+                        if (shop.length < 20) {
+                            elm.removeClass("loading").attr("data-isload", "no");
+                            $(".check_more").css("display","block");
+                        } else {
+                            elm.removeClass("loading").attr("data-page", parseInt(page) + 1);
+                        }
+
+          
+                        loadImgFun(0);
+                    });
+                }
+            }
+
+
+            var i = false;
+            var bodyScroll = function () {
+                var cHeight = document.documentElement.clientHeight;
+                var sTop = $(document).scrollTop();
+                var height = cHeight + sTop;
+                var eTop = elm.offset().top;
+                if (height >= eTop) {
+                    glist_json();
+                }
+
+
+                if(nav_top == 0) nav_top = $("#goodsNav").offset().top;
+                if (sTop > nav_top) {
+                    if (i) {
+                        return
+                    }
+                    i = true;
+                    $("#goodsNav").css({"position":"fixed","top":'0px'});
+                } else {
+                    i = false;
+	                $("#goodsNav").css({"position":"relative","top":'0'});
+	            }
+            };
+
+            window.onload = function () {
+                $(window).bind("scroll", bodyScroll);
+                glist_json();
+                $.getJSON('{WEB_PATH}/mobile/ajax/cartnum',function(data){
+					if(data.num){
+						$("#btnCart").append('<em>'+data.num+'</em>');
+					}
+				});
+            };
+
+            /*收起商品分类列表*/
+            $("#catUp").click(function () {
+                dl.slideUp();
+            });
+
+            /*商品分类栏check事件*/
+            $(".sort_list label").click(function (e) {
+                if (e && e.stopPropagation) {//非IE浏览器
+                    e.stopPropagation();
+                } else {//IE浏览器
+                    window.event.cancelBubble = true;
+                }
+            });
+
+            $(".sort_list input").click(function (e) {
+                if (e && e.stopPropagation) {//非IE浏览器
+                    e.stopPropagation();
+                } else {//IE浏览器
+                    window.event.cancelBubble = true;
+                }
+            });
+
+            $(".t_btn").click(function(){
+                var neworder=$(this).find("span").attr("order");/*点击新的按钮*/
+                if(typeof neworder=='undefined'){/*判断是否是点击分类 */
+                    return;
+                }else{
+                    var order=$("#parm_order").val();
+
+                    if(neworder==order){/*判断是否是点击新的分类*/
+                        return;
+                    }else{
+                        if(neworder==10){
+                            $(this).find("span").attr("order",11);
+                        }else if(neworder==11){
+                            $(this).find("span").attr("order",10);
+                        }
+                        $(".collect").attr("isnow","no");
+                        $(this).parent().find(".current").removeClass("current");/*移除样式*/
+                        $(this).find("span").addClass("current");/*当前按钮移除样式*/
+                        $("#parm_order").val(neworder);//order
+                        $("#parm_sortid").val(0);
+                        $("#divSort").html('<span class="select-icon"><i></i><i></i><i></i><i></i></span> 分类');
+                        $("#divGoodsLoading").attr("data-isload","yes").attr("data-page","1");
+                        remove = true;
+                        var re = $("#ulRecommend");
+                        re.parent().css("height", re.height());
+                        re.css("position", "absolute").fadeOut(200);
+                        $(".check_more").css("display","none");
+                        glist_json();
+                    }
+                }
+            })
+
+
+            $(".collect").click(function() {
+                if($(this).attr("isnow")=='yes'){
+                    return;
+                }
+                $(this).attr("isnow","yes");
+                $("#parm_order").val("");
+                $(this).parent().find(".current").removeClass("current");
+                $(this).find("span").addClass("current");
+                $("#divSort").html('<span class="select-icon"><i></i><i></i><i></i><i></i></span> 分类');
+                $("#divGoodsLoading").attr("data-isload", "no").attr("data-page", "1");
+                remove = true;
+                var re = $("#ulRecommend");
+                re.parent().css("height", re.height());
+                re.css("position", "absolute").fadeOut(200);
+
+                var url = "/index.php/mobile/mobile/clistajax_ssc";
+                $.getJSON(url, function (data) {
+                    var re = $("#ulRecommend");
+
+                    if(remove) {
+                        re.children().remove();
+                    }
+
+                    var ul = "";
+                    var shop = data;
+                    for (var i = 0; i < shop.length; i++) {
+                        cat_mark = "";
+                        if (shop[i].cateid == 59) { //二人云购
+                            cat_mark = " cat-double";
+                        } else if (shop[i].cateid ==  60) { //限购商品
+                            cat_mark =" cat-limit";
+                        }
+
+                        ul += '<li id="' + shop[i].sid + '"><div class="f_bor_tr"><div class="m-tj-pic">';
+                        ul += '<a href="/index.php/mobile/mobile/item/' + shop[i].sid + '" class="u-lott-pic' + cat_mark + '">'
+                        ul += '<img src2="/statics/templates/yungou/images/loading.gif?171209" src="http://csth.oss-cn-shenzhen.aliyuncs.com/statics/uploads/' + shop[i].thumb + '@!111" border=0 alt=""/>';
+                        ul += '</a>';
+                        ul += '</div>';
+                        ul += '<div class="m-ti-content"><p class="g-name">(第<em>' + shop[i].qishu + '</em>期)' + shop[i].title + '</p>';
+                        ul += '<div class="Progress-bar">';
+                        ul += '<p class="u-progress"><span class="pgbar" style="width:' + (1 - shop[i].shenyurenshu / shop[i].zongrenshu) * 100 + '%;"><span class="pging"></span></span></p>';
+                        ul += '<ul class="Pro-bar-li">';
+                        ul += '<li class="P-bar01"><em>' + (shop[i].zongrenshu - shop[i].shenyurenshu) + '</em>已参与</li>';
+                        ul += '<li class="P-bar02"><em>' + shop[i].zongrenshu + '</em>总需人次</li>';
+                        ul += '<li class="P-bar03"><em>' + shop[i].shenyurenshu + '</em>剩余</li>';
+                        ul += '</ul>';
+                        ul += '</div>';
+                        // ul += '<div class="btn-wrap"><div class="stars" iscollect="yes" codeid="' + shop[i].sid + '"></div><a href="javascript:;" class="buy-btn" codeid="' + shop[i].sid + '"">立即一元云购</a>';
+                        ul += '<a href="javascript:;" class="gRate" codeid="' + shop[i].sid + '"><s></s></a>';
+                        ul += '</div></div></div></li>';
+                    }
+
+                    re.append(ul);
+                    if(remove) {
+                        remove = false;
+                        re.css("position", "relative").fadeIn(300);
+                        re.parent().css("height", "auto");
+                        $(window).scrollTop(nav_top);
+                        $(".check_more").css("display","block");
+                    }
+                })
+            })
+        });
+
+        $(document).ready(function(){
+            $("#publishing").click(function(){
+                window.location.href="/index.php/mobile/mobile/ssclottery";
+            })
+
+            $("#anMarquee").click(function(){
+                window.location.href="/index.php/mobile/mobile/ssclottery";
+            })
+
+            /*收藏*/
+            $(document).on("click", '.star', function (o) {
+                var codeid=$(this).attr("codeid");
+                $(this).addClass("stars").removeClass('star');
+                addCollect(codeid);
+            })
+
+            function addCollect(codeid)
+            {
+                $.getJSON("/index.php/mobile/mobile/addcollect",{codeid:codeid},function(json){
+                    addsuccess(json.tip);
+                })
+            }
+
+
+            $(document).on('click','.stars',function(o){
+                var codeid=$(this).attr("codeid");
+                var iscollect=$(this).attr("iscollect");
+                delecollect(codeid,iscollect);
+            })
+
+
+            function delecollect(codeid,iscollect){
+                $.getJSON("/index.php/mobile/mobile/deletecollect",{sid:codeid},function(json){
+                    if(json.success){
+                        if(iscollect=='yes'){
+                            $("#"+codeid).append("<div class='shade' style='background: #000;opacity: 0;position: absolute;width: 100%;height: 100%;top: 0;left: 0;transition: all 1s'></div>");
+                            setTimeout(function(){
+                                $("#"+codeid).append("<p style='position: absolute;transform: rotateZ(320deg);color: #fff;top: 10%;left: -30%;width: 100%;text-align: center;background: #f00;'>已删除</p>");
+                                $("#"+codeid).find(".shade").css("opacity","0.6");
+                                $("#"+codeid).attr("ismove",1);
+                            },500);
+                        }else{
+                            $("#"+codeid).find(".stars").addClass('star').removeClass('stars');
+                        }
+                    }
+                    addsuccess(json.tip);
+                })
+            }
+
+            /*收藏end*/
+
+
+            //一键添加‘人气推荐’商品
+            $("#addAll p").click(function() {
+            	var order = $("#parm_order").val();
+            	var sortid = $("#parm_sortid").val();
+            	$(this).html('正在添加');
+                $(this).css('-webkit-animation', 'light 1s infinite linear');
+       
+                $.ajax({
+                    type: 'post',
+                    url: '/index.php/mobile/ajax/addShopCartAll2',
+                    data: {order: order,sortid: sortid},
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.error==0) {
+                            $.PageDialog.fail("成功添加"+data.count+"件商品,跳转中...");
+                            setTimeout(function () {
+                                window.location.href = "/index.php/mobile/cart/cartlist";
+                            },2000);
+   
+                        }         
+                    }
+                });
+              
+            });
+        });
+
+        function addAll(cateid) {
+            $.getJSON("/index.php/mobile/cart/addAllToCart", {"cid": cateid}, function (json) {
+                var successNum=json.successNum;
+                if (json.success == true) {
+                    addsuccess("成功添加" + successNum + "件商品，跳转中");
+                    setTimeout(function () {
+                        window.location.href = "/index.php/mobile/cart/cartlist";
+                    }, 2000);
+                } else {
+                    var message = json.message;
+                    addsuccess(message);
+                }
+            });
+        }
+
+        function caddAll(i, len) {//添加所有收藏
+            var codeid = $("#ulRecommend > li[ismove!='1']").eq(i).attr("id");
+            $.getJSON('/index.php/mobile/cart/addShopCart/' + codeid + '/1', function(data) {
+                i++;
+                if(i < len) {
+                    caddAll(i, len);
+                } else {
+                    location.href = "/index.php/mobile/cart/cartlist";
+                }
+            });
+        }
+
+        function addsuccess(dat) {
+            $("#pageDialogBG .Prompt").text("");
+            var w = ($(window).width() - 255) / 2, h = ($(window).height() - 45) / 2;
+            $("#pageDialogBG").css({top: h, left: w, opacity: 0.8});
+            $("#pageDialogBG").stop().fadeIn(1000);
+            $("#pageDialogBG .Prompt").append('<s></s>' + dat);
+            setTimeout(function () {
+                $("#pageDialogBG").fadeOut(1000);
+            }, 1000);
+        }
+    </script>
+</div>
+<style>
+    #pageDialogBG {
+        -webkit-border-radius: 5px;
+        width: 255px;
+        height: 45px;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        line-height: 45px;
+    }
+</style>
+<div id="pageDialogBG" class="pageDialogBG">
+    <div class="Prompt"></div>
+</div>
+
+
+</body></html>
+<style>
+#pageDialogBG{-webkit-border-radius:5px; width:255px;height:45px;color:#fff;font-size:16px;text-align:center;line-height:45px;}
+.Prompt s {
+    width: 23px;
+    height: 23px;
+    background-repeat: no-repeat;
+    background-position: 0 -74px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+}
+</style>
+<div id="pageDialogBG" class="pageDialogBG">
+<div class="Prompt"></div>
+</div>

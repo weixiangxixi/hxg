@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><title>
+	帐户充值 - {wc:$webname}
+</title>
+<meta content="app-id=518966501" name="apple-itunes-app" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" />
+      <link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile/member1.css?v=130726" rel="stylesheet" type="text/css" />
+<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/recharge9.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript" src="/statics/templates/yungou/js/mobile/new/clipboard.js"></script>
+<script type="text/javascript" src="/statics/templates/yungou/js/clipboard.min.js"></script>
+</head>
+<body style="background: #fff;">
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+
+<!-- 栏目页面顶部 -->
+{wc:php:start}if(!$bound_bank_name){{wc:php:end}
+<header class="header" style="position: fixed;width: 100%;z-index: 99999999;">
+
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">
+                绑定银行卡转账姓名
+            </a>
+        </span>
+
+        <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+        -->
+        <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 0px;top: 9px;">
+
+        <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+    -->
+
+</div>
+
+</header>
+
+    <div class="g-Total gray9" style="padding-top: 55px;"> 
+ <div>
+    
+    <style type="text/css">
+        .song{
+            font-size: 8px;
+        }
+    </style>
+     
+    <section class="clearfix g-member">
+            <style>
+                #zhifubao i, #weixin i, #yinlian i{
+                    float: right;
+                    margin-right: 10px;
+                    margin-top: 17px;
+
+                }
+                .tishi .p1{font-size: 14px;color: #333;}
+                .tishi .p2{font-size: 12px;color: #999;}
+                .tishi{
+                    line-height: 14px;
+                    margin-top: 12px;
+                    margin-left: 40px;
+                    width: 70%;
+                    float: left;
+                    overflow: hidden;
+                }
+                .z-bank-Round{
+                    box-shadow: none;
+                }
+                .z-bank-Roundsel{
+                    border: 1px solid #22AAFF;
+                }
+                #zhifubao{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/zhifubao.png) 10px 10px no-repeat;
+                    background-size: 30px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+                #weixin{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/weixin.png) 10px 10px no-repeat;
+                    background-size: 30px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+                #yinlian{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/yinlian.png) 8px 9px no-repeat;
+                    background-size: 35px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+                .details p input{
+                	border: 1px solid #DCDCDC;
+				    border-radius: 5px;
+				    background: #FFF none repeat scroll 0% 0%;
+				    box-shadow: 1px 1px 1px #E7E7E7;
+				    width: 86%;
+				    padding: 0px 5%;
+                }
+                .details p span:first-child{
+				    width: 18%;
+				    margin-left: 2%;
+				    text-align: right;
+				    line-height: 40px;
+                }
+                .details p span:nth-child(2){
+				    width: 47%;
+				    margin-left: 1%;
+                }
+                .details {
+                	width: 100%;
+                }
+                .details p span:nth-child(3) {
+                	background: #c00;
+				    width: 26%;
+				    box-sizing: border-box;
+				    height: 36px;
+				    text-align: center;
+				    font-size: 14px;
+				    margin-right: 10px;
+				    color: rgb(255, 255, 255);
+				    border-radius: 5px;
+				    padding: 4px 5px;
+                }
+                .details p span {
+                	display: block;
+                	float: left;
+                }
+                .details p {
+                	margin-top: 5px;
+                	display: inline-block;
+                	width: 100%;
+                }
+                .write_money {
+                	margin-top: 20px;
+                }
+                .write_money input{
+                	border: 1px solid #DCDCDC;
+				    border-radius: 5px;
+				    background: #FFF none repeat scroll 0% 0%;
+				    box-shadow: 1px 1px 1px #E7E7E7;
+				    width: 92%;
+				    padding: 0px 10px;
+				    font-size: 16px;
+				    padding: 10px 10px;
+				    display: block;
+                }
+                .zhushi p {
+                	font-size: 16px;
+                	color: red;
+                	float: left;
+                	display: block;
+                }
+                .zhushi p:first-child {
+                	width: 10%;
+                	margin-left: 5%;
+                }
+                .zhushi p:nth-child(2) {
+                	width: 80%;
+                }
+            </style>
+	     <div class="details">
+            	<p><span>姓&nbsp;&nbsp;&nbsp;名：</span><span><input id="name" class="gray6" value=""  style="height:36px;" ></span><span id="bound_name">点击绑定姓名</span></p>
+        </div>
+    </section>
+        <section class="clearfix g-member" style="margin-top: 50px">
+    	<div class="zhushi">
+    		<p>注：</p>
+    		<p>银行卡绑定姓名必须与转账时所用银行卡的姓名一致，否则转账不成功！</p>
+    	</div>
+    </section>
+    <script type="text/javascript">
+    	$("#bound_name").click(function(){
+    		var name = $('#name').val();
+    		if(name.length < 2 || name.length > 4){
+    			alert("请填写正确的名字！");
+    			return false;
+    		}
+    		window.location.href = "/index.php/mobile/home/bank_recharge/"+name;
+    	})
+    </script>
+{wc:php:start}}else{{wc:php:end}
+<header class="header" style="position: fixed;width: 100%;z-index: 99999999;">
+
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">
+                银行卡支付
+            </a>
+        </span>
+
+        <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+        -->
+        <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 0px;top: 9px;">
+
+        <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+    -->
+    <a href="{WEB_PATH}/mobile/home/userbalance" class="z-RCornerBtn" style="color: #fff;background: none;font-size: 14px;">帐户明细</a>
+
+</div>
+
+</header>
+
+    <div class="g-Total gray9" style="padding-top: 55px;">您的当前余额：<span class="orange arial">{wc:$member['money']}</span>元 
+ <div>
+    
+    <style type="text/css">
+        .song{
+            font-size: 8px;
+        }
+    </style>
+     
+    <section class="clearfix g-member">
+            <style>
+                #zhifubao i, #weixin i, #yinlian i{
+                    float: right;
+                    margin-right: 10px;
+                    margin-top: 17px;
+
+                }
+                .tishi .p1{font-size: 14px;color: #333;}
+                .tishi .p2{font-size: 12px;color: #999;}
+                .tishi{
+                    line-height: 14px;
+                    margin-top: 12px;
+                    margin-left: 40px;
+                    width: 70%;
+                    float: left;
+                    overflow: hidden;
+                }
+                .z-bank-Round{
+                    box-shadow: none;
+                }
+                .z-bank-Roundsel{
+                    border: 1px solid #22AAFF;
+                }
+                #zhifubao{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/zhifubao.png) 10px 10px no-repeat;
+                    background-size: 30px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+                #weixin{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/weixin.png) 10px 10px no-repeat;
+                    background-size: 30px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+                #yinlian{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/yinlian.png) 8px 9px no-repeat;
+                    background-size: 35px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+                .details p input{
+                	border: 1px solid #DCDCDC;
+				    border-radius: 5px;
+				    background: #FFF none repeat scroll 0% 0%;
+				    box-shadow: 1px 1px 1px #E7E7E7;
+				    width: 89%;
+				    padding: 0px 3%;
+                }
+                .details p span:first-child{
+				    width: 18%;
+				    margin-left: 1%;
+				    text-align: right;
+				    line-height: 40px;
+                }
+                .details p span:nth-child(2){
+				    width: 48%;
+				    margin-left: 1%;
+                }
+                .details {
+                	width: 100%;
+                }
+                .details p span:nth-child(3) {
+                	background: #c00;
+				    width: 28%;
+				    box-sizing: border-box;
+				    height: 36px;
+				    text-align: center;
+				    font-size: 14px;
+				    margin-right: 10px;
+				    color: rgb(255, 255, 255);
+				    border-radius: 5px;
+				    padding: 4px 3px;
+                }
+                .details p span {
+                	display: block;
+                	float: left;
+                }
+                .details p {
+                	margin-top: 5px;
+                	display: inline-block;
+                	width: 100%;
+                }
+                .write_money {
+                	margin-top: 20px;
+                }
+                .write_money input{
+                	border: 1px solid #DCDCDC;
+				    border-radius: 5px;
+				    background: #FFF none repeat scroll 0% 0%;
+				    box-shadow: 1px 1px 1px #E7E7E7;
+				    width: 92%;
+				    padding: 0px 10px;
+				    font-size: 16px;
+				    padding: 10px 10px;
+				    display: block;
+                }
+                .zhushi p {
+                	font-size: 16px;
+                	color: red;
+                	float: left;
+                	display: block;
+                }
+                .zhushi p:first-child {
+                	width: 10%;
+                	margin-left: 5%;
+                }
+                .zhushi p:nth-child(2) {
+                	width: 80%;
+                }
+            </style>
+	     <div class="details">
+            	<p><span>姓&nbsp;&nbsp;&nbsp;名：</span><span><input id="name" class="gray6" value="{wc:$str['name']}"  style="height:36px;" readonly="readonly"></span><span id="name_click"  data-clipboard-text="{wc:$str['name']}">点击复制姓名</span></p>
+                <p><span>银行卡：</span><span><input class="gray6" id="card" style="height:36px;" value="{wc:$str['card_number']}" readonly="readonly"></span><span id="card_click" data-clipboard-text="{wc:$str['card_number']}">点击复制卡号</span></p>
+                <p><span>开户行：</span><span><input class="gray6" id="card" style="height:36px;" value="{wc:$str['bank_from']}" readonly="readonly"></span></p>
+        </div>
+        <div class="write_money">
+        	<input type="text" name="money" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="请输入转账金额">
+        </div>
+	    <div class="mt10 f-Recharge-btn">
+		    <a id="btnSubmit" href="javascript:;" class="orgBtn1">确认充值</a>
+            <a href="javascript:service_pic1();" class="orgBtn2">咨询客服</a>
+            <a href="/index.php/mobile/home/edit_bank_name" class="orgBtn3">改绑转账姓名(已绑:{wc:php:start}echo $bound_bank_name;{wc:php:end})</a>
+	    </div>
+    </section>
+    <section class="clearfix g-member" style="margin-top: 50px">
+    	<div class="zhushi">
+    		<p>注：</p>
+    		<p>先转账后填写充值金额,金额必须一致,银行卡绑定姓名必须与转账时所用银行卡的姓名一致，否则充值不成功，谢谢合作！</p>
+    	</div>
+    </section>
+<script>
+	$(function(){
+		var name = document.getElementById('name_click');
+	    var clipboard = new Clipboard(name);
+
+	    var card = document.getElementById('card_click');
+	    var clipboard2 = new Clipboard(card);
+
+	    clipboard.on('success', function(e) {
+	        alert("姓名复制成功");
+	    });
+
+	    clipboard.on('error', function(e) {
+	        alert("姓名复制失败");
+	    });
+
+	    clipboard2.on('success', function(e) {
+	        alert("卡号复制成功");
+	    });
+
+	    clipboard2.on('error', function(e) {
+	        alert("卡号复制失败");
+	    });
+	});
+
+	$('#btnSubmit').click(function(){
+		var money = $("input[name='money']").val();
+		if(money == ''){
+			alert("请填写金额");return false;
+		}
+		$.ajax({
+			data: {'money':money},
+			type: 'POST',
+			url: '/index.php/mobile/home/add_bank_money',
+			success:function(msg){
+				if(msg == 1){
+					alert("充值已提交");
+					location.reload()
+				}else{
+					alert("提交充值失败");
+					location.reload()
+				}
+			}
+		})
+	})
+ </script>
+
+<style type="text/css">
+a.orgBtn1, a.orgBtn2 {
+    background: #c00;
+}
+
+.grayBtn, .orgBtn1, .orgBtn2 {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 35px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 10px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}  
+a.orgBtn3 {
+    background: #609700;
+}
+
+.grayBtn, .orgBtn3 {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 35px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 10px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}              
+#service_bg {
+    top: 0;
+    bottom: 0;
+    z-index: 1200;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 999999;
+}
+#service_bg1 {
+    top: 0;
+    bottom: 0;
+    z-index: 1200;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 999999;
+}
+#service_info {
+    top: 23%;
+    z-index: 140;
+    margin: auto;
+    width: 85%;
+    border-radius: 8px;
+    background: #f7ffff;
+    z-index: 9999999;
+}
+#service_info1 {
+    top: 60%;
+    z-index: 140;
+    margin: auto;
+    width: 85%;
+    border-radius: 8px;
+    background: #f7ffff;
+    z-index: 9999999;
+}
+ #service_bg, #service_info {
+    position: fixed;
+    right: 0;
+    left: 0;
+    display: none;
+    z-index: 9999999;
+}
+
+ #service_bg1, #service_info1 {
+    position: fixed;
+    right: 0;
+    left: 0;
+    display: none;
+    z-index: 9999999;
+}
+#service_code p {
+    color: #5c5c5c;
+    text-align: center;
+    font-size: 14px;
+    line-height: 45px;
+}
+#service_code img {
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+}
+#service_code {
+    margin-bottom: 20px;
+}
+#service_code1 p {
+    color: #5c5c5c;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+#service_code1 p:first-of-type{
+	border-bottom: 1px solid #e2e2e2;
+	padding-bottom: 14px;
+}
+#service_code1 p:last-of-type{
+	padding-top: 14px;
+}
+#service_code1 img {
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+}
+#service_code1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+img {
+    border: 0;
+}
+</style>
+<script type="text/javascript">
+    function service_pic1(){
+        var _secode = '/statics/templates/yungou/images/mobile/w1.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };
+
+    function service_pic2(){
+        $('.server_title').html('长按二维码，关注惠享购');
+        var _secode = '/statics/templates/yungou/images/mobile/w2.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };  
+    $(function(){
+        $('#service_bg').click(function(){
+            $('.server_title').html('长按二维码，添加惠享购科技客服微信');
+            $('#service_bg').css('display','none');
+        });
+    });
+</script>
+<div id="service_bg">
+    <div id="service_info" style="display: block;">
+        <div id="service_code">
+            <p class="server_title">长按二维码，添加惠享购科技客服微信,充值送1%</p>
+            <img src="/statics/templates/yungou/images/mobile/w1.jpg" data-src="/statics/templates/yungou/images/mobile/w2.jpg">
+        </div>
+    </div>
+</div>
+<div id="mask" class="mask"></div>   
+<div id="mask1" class="mask1"></div>  
+<style type="text/css">
+    .mask {       
+        position: absolute; 
+        display: none;
+        top: 0px; 
+        filter: alpha(opacity=60); 
+        background-color: #777;     
+        z-index: 1002; 
+        left: 0px;     
+        opacity:0.5; 
+        -moz-opacity:0.5;   
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        z-index: 9999999999999999999;  
+    }
+     .mask img{
+        margin: 80% auto;
+        width: 15%;
+     }  
+    .mask1 {       
+        position: absolute; 
+        top: 0px; 
+        width: 100%;
+        height: 100%;
+        left: 0px;     
+        display: none;
+        /*filter: alpha(opacity=60);
+        opacity:0.9;*/
+       /* background: url(/statics/templates/yungou/images/mobile/money_qrcode/10.jpg) top center;*/  
+        z-index: 9999999999999999999; 
+        overflow:hidden;
+    } 
+    .mask1 img{ width:100%;}
+	.copy{
+		border: none;
+		background: #efefef;
+		width: 100px;
+		border-radius: 30px;
+		height: 26px;
+		color: #1879db;
+		margin-top: 14px;
+	}
+</style>
+<script type="text/javascript">
+  
+</script>
+{wc:templates "mobile/index","footer"}
+
+<script language="javascript" type="text/javascript">
+    var Path = new Object();
+    Path.Skin="{G_TEMPLATES_STYLE}";
+    Path.Webpath = "{WEB_PATH}";
+
+    var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+    function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+    Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+
+</div>
+    </div>
+{wc:php:start}}{wc:php:end}
+</body>
+</html>

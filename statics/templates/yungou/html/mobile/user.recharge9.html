@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><title>
+	帐户充值 - {wc:$webname}
+</title>
+<meta content="app-id=518966501" name="apple-itunes-app" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" />
+      <link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" />
+<link href="{G_TEMPLATES_CSS}/mobile/member1.css?v=130726" rel="stylesheet" type="text/css" />
+<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+<script>document.write("<script id='pageJS' language='javascript' type='text/javascript' data='{G_TEMPLATES_JS}/mobile/recharge9.js?v=" + Date.now() + "'><\/script>");</script>
+
+<script type="text/javascript" src="/statics/templates/yungou/js/mobile/new/clipboard.js"></script>
+</head>
+<body style="background: #fff;">
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+
+<!-- 栏目页面顶部 -->
+
+<header class="header" style="position: fixed;width: 100%;z-index: 99999999;">
+
+    <h1 style="width: 100%;text-align: center;float: none;top: 0px;left: 0px;font-size: 25px;" class="fl">
+        <span style="display: block;height: 49px;line-height: 49px;">
+            <a style="font-size: 20px;line-height: 49px;" href="{WEB_PATH}/mobile/mobile">
+                支付宝支付
+            </a>
+        </span>
+
+        <!--<img src="{G_UPLOAD_PATH}/{wc:fun:Getlogo()}"/>
+        -->
+        <!--<img src="/statics/templates/yungou/images/sjlogo.png"/>
+        -->
+    </h1>
+
+    <a id="fanhui" class="cefenlei" onclick="history.go(-1)" href="javascript:;">
+        
+        <img width="30" height="30" src="/statics/templates/yungou/images/mobile/fanhui.png">
+    </a>
+
+    <div class="fr head-r" style="position: absolute;right: 0px;top: 9px;">
+
+        <!--<a href="{WEB_PATH}/mobile/user/login" class="z-Member"></a>
+    -->
+    <a href="{WEB_PATH}/mobile/home/userbalance" class="z-RCornerBtn" style="color: #fff;background: none;font-size: 14px;">帐户明细</a>
+
+</div>
+
+</header>
+
+    <div class="g-Total gray9" style="padding-top: 55px;">您的当前余额：<span class="orange arial">{wc:$member['money']}</span>元 <a style="float: right;" href="/mobile/home/bandalipay" class="orange">支付宝绑定</a></div>
+ <div>
+    
+            <!--section>
+                <div class="registerCon">
+                    <form action="{WEB_PATH}/member/cart/card_addmoney" method="post">
+                        <ul>
+                            <li class="accAndPwd">
+                                <dl><input id="txtAccount" type="text" placeholder="请输入卡号" class="lEmail" name="czknum" maxlength="20"><s class="rs4"></s></dl>
+                                <dl>
+                                    <input type="password" id="txtPassword" class="lPwd" placeholder="请输入卡密" name="password" maxlength="20">
+                                    <s class="rs3"></s>
+                                </dl>
+                            </li>
+                            <li><input type="submit" value=" 确认充值" /></li>
+                    </form>
+                    <li class="rSelect" style="width: 40%;">淘宝充值卡购买</li>
+                    <li class="rSelect" style="width: 80%;"> 
+                        <a href="http://item.taobao.com" hidefocus="true" target="_blank">1元充值卡购买</a> | 
+                        <a href="http://item.taobao.com" hidefocus="true" target="_blank">10元充值卡购买</a>
+                    </li><li class="rSelect" style="width: 80%;">
+                        <a href="http://item.taobao.com" hidefocus="true" target="_blank">50元充值卡购买</a>  | 
+                        <a href="http://item.taobao.com" hidefocus="true" target="_blank">100元充值卡购买</a>  
+                    </li><li class="rSelect" style="width: 80%;">
+                        <a href="http://item.taobao.com" hidefocus="true" target="_blank">500元充值卡购买</a></li>
+                    </ul>
+                </div>
+            </section-->
+    <style type="text/css">
+        .song{
+            font-size: 8px;
+        }
+    </style>
+     
+    <section class="clearfix g-member">
+        <div class="g-Recharge">
+	        <ul id="ulOption">
+		        <!-- <li money="10"><a href="javascript:;" class="z-sel">10元<s></s></a></li> -->
+                <li money="20"><a href="javascript:;" class="z-sel">20元<s></s></a></li>
+                <li money="30"><a href="javascript:;">30元<s></s></a></li>
+		        <li money="50"><a href="javascript:;">50元<s></s></a></li>
+		        <li money="100"><a href="javascript:;">100元<!-- <span class="song">(送1元)</span> --><s></s></a></li>
+                <li money="200"><a href="javascript:;">200元<!-- <span class="song">(送2元)</span> --><s></s></a></li>
+                <li money="300"><a href="javascript:;">300元<!-- <span class="song">(送3元)</span> --><s></s></a></li>
+		        <li money="500"><a href="javascript:;">500元<!-- <span class="song">(送8元)</span> --><s></s></a></li>
+		        <li money="1000"><a href="javascript:;">1000元<!-- <span class="song">(送20元)</span> --><s></s></a></li>
+                <li money="2000"><a href="javascript:;">2000元<!-- <span class="song">(送40元)</span> --><s></s></a></li>
+                <li money="5000"><a href="javascript:;">5000元<!-- <span class="song">(送125元)</span> --><s></s></a></li>
+		        <!-- <li >
+		            <b>
+		                <input type="text" class="z-init" placeholder="最低10元" maxlength="8" />
+		                <s></s>
+		            </b>
+		        </li> -->
+	        </ul>
+	    </div>
+            <style>
+                #zhifubao i, #weixin i, #yinlian i{
+                    float: right;
+                    margin-right: 10px;
+                    margin-top: 17px;
+
+                }
+                .tishi .p1{font-size: 14px;color: #333;}
+                .tishi .p2{font-size: 12px;color: #999;}
+                .tishi{
+                    line-height: 14px;
+                    margin-top: 12px;
+                    margin-left: 40px;
+                    width: 70%;
+                    float: left;
+                    overflow: hidden;
+                }
+                .z-bank-Round{
+                    box-shadow: none;
+                }
+                .z-bank-Roundsel{
+                    border: 1px solid #22AAFF;
+                }
+                #zhifubao{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/zhifubao.png) 10px 10px no-repeat;
+                    background-size: 30px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+                #weixin{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/weixin.png) 10px 10px no-repeat;
+                    background-size: 30px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+                #yinlian{
+                    background: url({G_WEB_PATH}//statics/templates/yungou/images/mobile/yinlian.png) 8px 9px no-repeat;
+                    background-size: 35px auto;
+                    max-height: 50px;
+                    height: 50px;
+                }
+            </style>
+	     <article class="clearfix mt10 m-round g-pay-ment g-bank-ct">
+            <ul id="ulBankList">
+                 <li class="gray6"  style="height:36px;">充值<em class="orange">20.00</em>元</li>
+            
+                <!-- <li class="gray9" data-urm="ICBC-WAP"><i class="z-bank-Round"><s></s></i>工商银行</li>ICBC-WAP
+                <li class="gray9" data-urm="CCB-WAP"><i class="z-bank-Round"><s></s></i>建设银行</li>CCB-WAP -->
+            </ul>
+        </article>
+	    <div class="mt10 f-Recharge-btn">
+		    <a id="btnSubmit" href="javascript:;" class="orgBtn1">确认充值</a>
+            <a  href="javascript:service_pic1();" class="orgBtn2">咨询客服</a>
+	    </div>
+    </section>
+<style type="text/css">
+a.orgBtn1 {
+    background: #c00;
+}
+
+.grayBtn, .orgBtn1 {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 35px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 10px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}  
+a.orgBtn2 {
+    background: #609700;
+}
+
+.grayBtn, .orgBtn2 {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 35px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 10px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}              
+#service_bg {
+    top: 0;
+    bottom: 0;
+    z-index: 1200;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 999999;
+}
+#service_bg1 {
+    top: 0;
+    bottom: 0;
+    z-index: 1200;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 999999;
+}
+#service_info {
+    top: 23%;
+    z-index: 140;
+    margin: auto;
+    width: 85%;
+    border-radius: 8px;
+    background: #f7ffff;
+    z-index: 9999999;
+}
+#service_info1 {
+    top: 60%;
+    z-index: 140;
+    margin: auto;
+    width: 85%;
+    border-radius: 8px;
+    background: #f7ffff;
+    z-index: 9999999;
+}
+ #service_bg, #service_info {
+    position: fixed;
+    right: 0;
+    left: 0;
+    display: none;
+    z-index: 9999999;
+}
+
+ #service_bg1, #service_info1 {
+    position: fixed;
+    right: 0;
+    left: 0;
+    display: none;
+    z-index: 9999999;
+}
+#service_code p {
+    color: #5c5c5c;
+    text-align: center;
+    font-size: 14px;
+    line-height: 45px;
+}
+#service_code img {
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+}
+#service_code {
+    margin-bottom: 20px;
+}
+#service_code1 p {
+    color: #5c5c5c;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+#service_code1 p:first-of-type{
+	border-bottom: 1px solid #e2e2e2;
+	padding-bottom: 14px;
+}
+#service_code1 p:last-of-type{
+	padding-top: 14px;
+}
+#service_code1 img {
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+}
+#service_code1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+img {
+    border: 0;
+}
+
+</style>
+<script type="text/javascript">
+    function service_pic1(){
+        var _secode = '/statics/templates/yungou/images/mobile/w5.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };
+
+    function service_pic2(){
+        $('.server_title').html('长按二维码，关注惠享购');
+        var _secode = '/statics/templates/yungou/images/mobile/w2.jpg';
+        $('#service_code').find('img').attr('src', _secode).removeAttr("data-src");
+        $('#service_bg').css('display','block');
+    };  
+    $(function(){
+        $('#service_bg').click(function(){
+            $('.server_title').html('长按二维码，添加惠享购科技客服微信');
+            $('#service_bg').css('display','none');
+        });
+    });
+</script>
+<div id="service_bg">
+    <div id="service_info" style="display: block;">
+        <div id="service_code">
+            <p class="server_title">长按二维码，添加惠享购科技客服微信</p>
+            <img src="/statics/templates/yungou/images/mobile/w1.jpg" data-src="/statics/templates/yungou/images/mobile/w2.jpg">
+        </div>
+    </div>
+</div>
+<div id="service_bg1">
+    <div style="margin: 15% 5%;"><img style="top: 30%;width:100%;border-radius: 8px;" src="/statics/templates/yungou/images/daoxiang.jpg" border="0"></div>
+    <div id="service_info1" style="display: block; ">
+        <div id="service_code1" >
+            <p class="server_title1" style="color:#f33;"></p>
+           <p class="server_content1" style="color: #fff;padding-top: 0px;"></p>
+            <button class="copy" data-clipboard-action="copy" data-clipboard-target=".server_content1" style="margin-top: -0.2rem;font-size: 18px">确 认</button>
+        </div>
+    </div>
+</div>
+<div id="mask" class="mask"><img src="/statics/templates/yungou/images/mobile/loading.gif" /></div>   
+<div id="mask1" class="mask1"><img id="qrcodeId" /></div>  
+<style type="text/css">
+    .mask {       
+        position: absolute; 
+        display: none;
+        top: 0px; 
+        filter: alpha(opacity=60); 
+        background-color: #777;     
+        z-index: 1002; 
+        left: 0px;     
+        opacity:0.5; 
+        -moz-opacity:0.5;   
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        z-index: 9999999999999999999;  
+    }
+     .mask img{
+        margin: 80% auto;
+        width: 15%;
+     }  
+    .mask1 {       
+        position: absolute; 
+        top: 0px; 
+        width: 100%;
+        height: 100%;
+        left: 0px;     
+        display: none;
+        /*filter: alpha(opacity=60);
+        opacity:0.9;*/
+       /* background: url(/statics/templates/yungou/images/mobile/money_qrcode/10.jpg) top center;*/  
+        z-index: 9999999999999999999; 
+        overflow:hidden;
+    } 
+    .mask1 img{ width:100%;}
+	.copy{
+		border: none;
+		background: #efefef;
+		width: 100px;
+		border-radius: 30px;
+		height: 26px;
+		color: #1879db;
+		margin-top: 14px;
+	}
+</style>
+<script type="text/javascript">
+   /*
+   $(function(){
+        $('#mask1').click(function(){
+            $('#mask1').css('display','none');
+        });
+    });*/
+   
+var serbg = document.querySelector("#service_bg1");
+serbg.addEventListener("touchstart",function(e){
+		$(this).css('display','none');
+})
+   
+
+var copy = document.querySelector('.copy');
+copy.addEventListener("touchstart",function(e){
+	e.stopPropagation();
+});
+copy.addEventListener("click",function(e){
+	copytxt();
+});
+
+var serinfo = document.querySelector('#service_info1');
+serinfo.addEventListener('touchstart',function(e){
+	stopevent(event);
+});
+function stopevent(e){
+	e.stopPropagation();
+}
+function copytxt(){
+	var clipboard = new Clipboard('.copy');
+	clipboard.on('success', function(e) {
+	  e.clearSelection();
+      alert('已确认，请前往支付宝');
+      $("#service_bg1").hide();
+	});
+	 
+	clipboard.on('error', function(e) {
+	});
+}
+	
+
+</script>
+{wc:templates "mobile/index","footer"}
+
+<script language="javascript" type="text/javascript">
+    var Path = new Object();
+    Path.Skin="{G_TEMPLATES_STYLE}";
+    Path.Webpath = "{WEB_PATH}";
+
+    var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+    function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+    Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+
+</div>
+    </div>
+</body>
+</html>

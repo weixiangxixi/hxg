@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>全民世界杯瓜分百万-惠享购</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/mobile/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="/statics/templates/yungou/css/mobile/worldcup.css">
+<script src="/statics/templates/yungou/js/mobile/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<style type="text/css">
+.swiper-container {
+    width: 100%;
+    height:240px;
+}
+
+</style>
+</head>
+<body>
+	<div class="wc-container">
+      <div class="fifalogo" style="display:inline-block;">
+      	
+      </div>
+		<div class="rule"><a href="/"><img src="/statics/templates/yungou/images/mobile/fifa/fifalogo.png" style="width:90px;" /></a><a href="/index.php/mobile/fifa/rule"></a></div>
+
+		<div class="situation">
+          	{wc:if $member}
+			<p>已猜对<span>{wc:$guess_true}</span>场，总奖金<span>{wc:$money}</span>元<a href="/index.php/mobile/fifa/info/{wc:$uid}">查看></a></p>
+          	{wc:if:end}
+		</div>
+
+		<div class="winning">
+			<div class="schedule">
+				
+            <div class="gameoverflow swiper-pagination-clickable swiper-pagination-bullets swiper-pagination"></div>
+			
+			<div class="addgof">
+              	{wc:loop $match $mh}
+				<div class="item ">
+					<p>{wc:php:start}if(date('d',$mh['match_time']) == date('d',time())){echo "今日";}else if((date('d',$mh['match_time'])-1) == date('d',time())){echo "明日";}else if((date('d',$mh['match_time'])+1) == date('d',time())){echo "昨日";}else{echo date("Y-m-d",$mh['match_time'])." ";}{wc:php:end}{wc:fun:date('H:i',$mh['match_time'])}</p>
+					<em></em>
+					<p>{wc:$mh['host_name']}vs{wc:$mh['guest_name']}</p>
+				</div>
+              	{wc:loop:end}
+			</div>
+			
+			
+			<div class="swiper-container swiper-container-horizontal">
+				
+				<div class="swiper-wrapper swtranslate">
+                  
+                  	{wc:loop $match $mh}
+                  	{wc:php:start}$cc = $this->db->getOne("SELECT * FROM `@#_fifa_guess_list` WHERE `match_id`='$mh[match_id]' AND `uid`='$uid'");{wc:php:end}
+                  	{wc:if $cc}
+                  		<div class="content swiper-slide">
+							<div class="fbteam">
+								<h3>本场奖金<span>{wc:php:start} echo $mh['money'] / 10000;{wc:php:end}万</span></h3>
+								<div class="home country result">
+									<img src="/statics/templates/yungou/images/mobile/fifa/{wc:$mh['host_id']}.png">
+									<a class="{wc:php:start}if($cc['guess']==1){echo 'checked';}{wc:php:end}" style="pointer-events: none;">{wc:$mh['host_name']}胜</a>
+									<span class="participants"><span>{wc:fun:number_format($mh['host_num'])}</span><span>人</span></span>
+								</div>
+								
+								<div class="draw result">
+									<div class="countdown" id="{wc:$mh['match_time']}" name="{wc:$mh['match_status']}">
+										<p>距竞猜结束</p>
+										<span>09</span>:<span>40</span>:<span>44</span>
+									</div>
+									<a class="{wc:php:start}if($cc['guess']==3){echo 'checked';}{wc:php:end}" style="pointer-events: none;">平局</a>
+									<span class="participants"><span>{wc:fun:number_format($mh['ping_num'])}</span><span>人</span></span>
+								</div>
+								
+								<div class="away country result">
+									<img src="/statics/templates/yungou/images/mobile/fifa/{wc:$mh['guest_id']}.png">
+									<a class="{wc:php:start}if($cc['guess']==2){echo 'checked';}{wc:php:end}" style="pointer-events: none;">{wc:$mh['guest_name']}胜</a>
+									<span class="participants"><span>{wc:fun:number_format($mh['guest_num'])}</span><span>人</span></span>
+								</div>
+							</div>
+						</div>
+                  	{wc:else}
+	                  	<div class="content swiper-slide">
+							<div class="fbteam">
+								<h3>本场奖金<span>{wc:php:start} echo $mh['money'] / 10000;{wc:php:end}万</span></h3>
+								<div class="home country result">
+									<img src="/statics/templates/yungou/images/mobile/fifa/{wc:$mh['host_id']}.png">
+									<a name="{wc:$mh['match_id']}" id="1">{wc:$mh['host_name']}胜</a>
+									<span class="participants"><span>{wc:fun:number_format($mh['host_num'])}</span><span>人</span></span>
+								</div>
+								
+								<div class="draw result">
+									<div class="countdown" id="{wc:$mh['match_time']}" name="{wc:$mh['match_status']}">
+										<p>距竞猜结束</p>
+										<span>09</span>:<span>40</span>:<span>44</span>
+									</div>
+									<a name="{wc:$mh['match_id']}" id="3">平局</a>
+									<span class="participants"><span>{wc:fun:number_format($mh['ping_num'])}</span><span>人</span></span>
+								</div>
+								
+								<div class="away country result">
+									<img src="/statics/templates/yungou/images/mobile/fifa/{wc:$mh['guest_id']}.png">
+									<a name="{wc:$mh['match_id']}" id="2">{wc:$mh['guest_name']}胜</a>
+									<span class="participants"><span>{wc:fun:number_format($mh['guest_num'])}</span><span>人</span></span>
+								</div>
+							</div>
+						</div>
+					{wc:if:end}
+					{wc:loop:end}
+					{wc:if empty($match)}
+						<div class="content swiper-slide">
+							<p style="position: absolute;top: 45%;left: 40%;font-size: 18px;color: #efe3db;">比赛已结束</p>
+						</div>
+					{wc:if:end}	
+					
+				</div>
+				
+				<!-- 导航按钮-->
+			    <div class="swiper-button-prev"></div>
+			    <div class="swiper-button-next"></div> 
+			</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				show_time();
+			})
+			function show_time(){
+				var time_start =Date.parse(new Date())/1000;
+				$('.countdown').each(function(){
+					var time_end = $(this).attr('id');
+					var flag = $(this).attr('name');
+					// 计算时间差 
+				    var time_distance = time_end - time_start; 
+				    // 时
+				    var int_hour = Math.floor(time_distance/3600) 
+				    time_distance -= int_hour * 3600; 
+				    // 分
+				    var int_minute = Math.floor(time_distance/60) 
+				    time_distance -= int_minute * 60; 
+				    // 秒 
+				    var int_second = Math.floor(time_distance); 
+				    // 时分秒为单数时、前面加零 
+				    
+				    if(int_hour < 10){ 
+				        int_hour = "0" + int_hour; 
+				    } 
+				    if(int_minute < 10){ 
+				        int_minute = "0" + int_minute; 
+				    } 
+				    if(int_second < 10){
+				        int_second = "0" + int_second; 
+				    } 
+
+					if(flag == "-1"){
+						$(this).html('<p>已结束</p>');
+					}else{
+						if(time_start > time_end){
+							$(this).html('<p>进行中</p>');
+						}else{
+							$(this).html("<p>距竞猜结束</p><span>"+int_hour+"</span>:<span>"+int_minute+"</span>:<span>"+int_second+"</span>");
+						}
+						
+					}
+				})
+				setTimeout("show_time()",1000);
+				
+			}
+		</script>
+		<div class="guess-share">
+				<div class="guess-share-content">
+					<div></div>
+					<div>
+						<p>邀请好友,总奖金翻倍</p>
+						<p>拉好友,最高翻10倍</p>
+					</div>
+					
+					<div class="guess-share-btn"><span>去邀请</span></div>
+				</div>
+				
+			</div>
+			
+			<div class="guess-home-rank"><i class="guess-home-rank-title"></i>
+				<div class="guess-home-rank-info">
+					<!--<p>活动结束时,前100名获得爱奇艺10年VIP<span>（我的排名:100+）</span>
+					
+					</p>-->
+				</div>
+				<ul class="guess-rank">
+                  	{wc:loop $user_list $key $ul}
+                  		<li>
+                          	{wc:if $key==0}
+                      		<span class="guess-rank-item"><i class="guess-rank-item-0"></i></span>
+                          	{wc:elseif $key==1}
+                          	<span class="guess-rank-item"><i class="guess-rank-item-1"></i></span>
+                          	{wc:elseif $key==2}
+                          	<span class="guess-rank-item"><i class="guess-rank-item-2"></i></span>
+                          	{wc:else}
+                          	<span>{wc:$key}</span>
+                          	{wc:if:end}	
+						<img src="/statics/uploads/photo/member.jpg">
+						<div>
+							<p>{wc:php:start}$num = $this->db->GetOne("SELECT * FROM `@#_fifa_user` WHERE `uid` = '$ul[uid]'");$xx = $this->db->GetOne("SELECT * FROM `@#_fifa_times` WHERE `num` <= '$num[num]' order by `id` desc");
+					      $n = $xx['times'];if(empty($ul['username'])){echo substr_replace($ul['mobile'],'****',3,4);}else{echo $ul['username'];}{wc:php:end}</p>
+							<p>猜对{wc:php:start}$cd = $this->db->GetList("SELECT * FROM `@#_fifa_guess_list` WHERE `uid` = '$ul[uid]' AND `status` = '1' AND `results` = '1'");echo count($cd);{wc:php:end}场,总奖金x{wc:$n}</p>
+						</div><span>￥
+                          {wc:php:start}
+                          
+
+                   
+                          	if(empty($n)){
+                          	echo $ul['money'];
+                          }else{
+                          	echo $ul['money'] * $n;
+                          }
+                          
+                          {wc:php:end}</span>
+                  		</li>
+                  	{wc:loop:end}
+                  	<!--
+					<li>
+                      <span class="guess-rank-item"><i class="guess-rank-item-0"></i></span>
+						<img src="./全民世界杯竞猜_files/924f476d65726379367cb7.jpg">
+						<div>
+							<p>Gmer**</p>
+							<p>猜对9场,总奖金x10</p>
+						</div><span>￥210.20</span></li>
+					<li>
+                      <span class="guess-rank-item"><i class="guess-rank-item-1"></i></span>
+						<img src="./全民世界杯竞猜_files/cd36e5b08fe68991e5aea29336.jpg">
+						<div>
+							<p>小扑**</p>
+							<p>猜对4场,总奖金x10</p>
+						</div><span>￥168.10</span></li>
+					<li>
+                      <span class="guess-rank-item"><i class="guess-rank-item-2"></i></span>
+						<img src="./全民世界杯竞猜_files/a4013ed2.jpg">
+						<div>
+							<p>134******01</p>
+							<p>猜对8场,总奖金x9</p>
+						</div><span>￥166.14</span>
+                  	</li>
+					<li>
+                      <span>4</span>
+						<img src="./全民世界杯竞猜_files/b544e8bf87e69da5e4babae5aea26562.jpg">
+						<div>
+							<p>过来**</p>
+							<p>猜对8场,总奖金x9</p>
+						</div><span>￥163.62</span></li>
+					<li>
+					-->
+				
+				</ul>
+				<a data-click="{type: &#39;talent_clk&#39;}" class=" LOG_BTN guess-rank-more">
+只显示最新10条&gt;</a>
+			</div>
+			<div class="bottom">
+				<p class="icon"></p>
+			</div><span></span>
+      <div class="fifashare" style="display:none;width:100%;height:100%;position:fixed;z-index:3;top:0;left:0;background:rgba(0,0,0,0.8);text-align:right;">
+      	<img src="/statics/templates/yungou/images/mobile/fifa/fifashare.png" style="position:relative;top:50px;left:-20px;width:50%;" />
+      </div>
+	</div>
+<script src="/statics/templates/yungou/js/mobile/fifa/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script>    
+	
+   
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      keyboard: {
+        enabled: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  
+   $('.guess-share-btn').click(function(){
+   		$('.fifashare').css('display','block');
+   });
+  $('.fifashare').click(function(){
+  	$(this).css('display','none');
+  })
+  	$(function(){
+  		$('.addgof').appendTo('.gameoverflow');
+  		
+  	});
+  	
+  	$('.gameoverflow .swiper-pagination-bullet').click(function(){
+  		var index = $(this).index();
+  		$('.addgof .item').eq(index).siblings('.item').removeClass('active');
+  		$('.addgof .item').eq(index).addClass('active');
+  	});
+  	
+  	function funcTest(){
+	    window.setInterval("timelyFun()",200);
+	}
+  	window.onload = funcTest;
+	function timelyFun(){
+		//if($('.swiper-wrapper .content').hasClass("swiper-slide-active")){
+			//console.log($(this).index());
+		//}
+		var widscreen =  window.screen.width;
+		var index = $('.swiper-slide-active').index();
+		if(index > 11){
+			$('.gameoverflow').scrollLeft(widscreen * 4);
+		}else if(index > 8){
+			$('.gameoverflow').scrollLeft(widscreen * 3);
+		}else if(index > 5 ){
+			$('.gameoverflow').scrollLeft(widscreen * 2);
+		}else if(index > 2){
+			$('.gameoverflow').scrollLeft(widscreen);
+		}else if(index < 3){
+			$('.gameoverflow').scrollLeft(0);
+		}
+		$('.addgof .item').eq(index).siblings('.item').removeClass('active');
+  		$('.addgof .item').eq(index).addClass('active');
+	}
+	$('.swiper-slide-active').find('a').click(function(even){
+		$(this).addClass('checked');
+		$(this).parents('.content').css("pointer-events","none");
+	});
+  	//竞猜点击
+    $('.result').find('a').click(function(){
+		$(this).addClass('checked');
+		$(this).parents('.fbteam').find('a').css("pointer-events","none");
+		var match_id = $(this).attr('name');
+		var guess = $(this).attr('id');
+		var x = $(this).next().children('span:eq(0)').text();
+		x = parseInt(x.replace(/,/g,'')) + parseInt(1);
+		x = addCommas(x);
+		$(this).next().children('span:eq(0)').text(x);
+		
+		$.ajax({
+			data: {'match_id':match_id,'guess':guess},
+			type: 'POST',
+			url: '/index.php/mobile/fifa/buy',
+			success:function(msg){
+				if(msg == 0){
+					window.location.href = "/index.php/mobile/user/login";
+				}else if(msg == 4){
+					alert("3天内没有充值，请您前往个人中心进行充值");
+					window.location.href = "/index.php/mobile/home/recharge";
+				}else if(msg == 9){
+					alert("同一微信充值账号下的用户最多有2人参加该活动");
+					window.location.reload();
+				}else if(msg == 5){
+					alert("该账户已被禁止参与足球竞猜活动");
+					window.location.reload();
+				}
+				console.log(msg);
+			}
+		})
+	});
+
+	function addCommas(nStr){
+		 nStr += '';
+		 x = nStr.split('.');
+		 x1 = x[0];
+		 x2 = x.length > 1 ? '.' + x[1] : '';
+		 var rgx = /(\d+)(\d{3})/;
+		 while (rgx.test(x1)) {
+		  x1 = x1.replace(rgx, '$1' + ',' + '$2');
+		 }
+		 return x1 + x2;
+	}
+	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE HTML>
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>透明购最新揭晓-{wc:$webname}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png?v=123456">
+    <link href="/statics/templates/yungou/css/mobile/comm3.css" rel="stylesheet" type="text/css">
+    <script src="/statics/templates/yungou/js/mobile/jquery-1.9.1.min.js" language="javascript" type="text/javascript"></script>
+    <link href="/statics/templates/yungou/css/mobile/lottery.css?v=20170603" rel="stylesheet" type="text/css">
+ 	<link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+ 	 <script id="pageJS" data="{G_TEMPLATES_JS}/mobile/sscLottery.js" language="javascript" type="text/javascript"></script> 
+<style>
+    .rolling-number {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 32px;
+        z-index: 10;
+        background: rgba(250, 250, 250, 0.9);
+        padding: 4px;
+        text-align: center;
+        border-bottom: 1px solid #CCC;
+        font-size: 16px;
+        clear: both;
+    }
+    .rolling-number .rolling-content {
+        margin: 4px auto;
+        width: 280px;
+    }
+    .rolling-number .rolling-content ul {
+        float: left;
+        color: #F60;
+    }
+    .rolling-number .rolling-title {
+        height: 22px;
+        line-height: 22px;
+        padding: 0 5px;
+        float: left;
+        color: #999;
+    }
+    .rolling-number .rolling-content ul li.num {
+        position: relative;
+        border: 1px solid #CCC;
+        display: inline-block;
+        width: 18px;
+        font-size: 16px;
+        overflow: hidden;
+        height: 22px;
+        line-height: 22px;
+    }
+    .rolling-number .rolling-content ul li cite {
+        width: 18px;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+    }
+    .rolling-number .rolling-content ul li cite em {
+        width: 18px;
+        display: block;
+    }
+    .rolling-number li i {
+        border-top: 1px solid #ededed;
+        height: 0;
+        left: 0;
+        position: absolute;
+        top: 11px;
+        width: 100%;
+        z-index: 0;
+    }
+    .nav-wrapper {
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+        height: 40px;
+        position: relative;
+        width: 100%;
+    }
+    .nav-wrapper .nav-wrapper {
+        border-bottom: 1px solid #eee;
+        left: 0;
+        position: fixed;
+        top: 0;
+        z-index: 99;
+    }
+    .nav-wrapper .nav-inner {
+        box-sizing: border-box;
+        float: left;
+        height: 40px;
+        /*        padding-left: 6px;*/
+        /*width: 60%;*/
+        width: 100%;
+    }
+
+    .nav-wrapper .nav-inner li {
+        float: left;
+        height: 40px;
+        text-align: center;
+        /*width: 22%;*/
+        width: 50%;
+    }
+
+    .nav-wrapper .nav-list {
+        width: 100%;
+    }
+    .nav-wrapper .nav-inner a {
+        display: block;
+        font-size: 14px;
+    }
+
+    .nav-wrapper .nav-inner li.current span {
+        border-color: #f60;
+        color: #f60;
+    }
+
+    .nav-wrapper .nav-inner span {
+        border-bottom: 2px solid transparent;
+        color: #999;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 6px;
+    }
+
+    .nav-wrapper .select-btn::before {
+        border-bottom-color: #dedede;
+        border-style: solid;
+        top: 30px;
+        z-index: 3;
+    }
+
+    .nav-wrapper .select-btn::before, .nav-wrapper .select-btn::after {
+        border-color: transparent;
+        border-width: 7px 6px;
+        content: "";
+        display: none;
+        height: 0;
+        left: 50%;
+        margin-left: -6px;
+        position: absolute;
+        width: 0;
+    }
+
+    .nav-wrapper .select-btn::after {
+        border-bottom-color: #fff;
+        border-style: solid;
+        top: 31px;
+        z-index: 4;
+    }
+
+    .nav-wrapper .select-btn::before, .nav-wrapper .select-btn::after {
+        border-color: transparent;
+        border-width: 7px 6px;
+        content: "";
+        display: none;
+        height: 0;
+        left: 50%;
+        margin-left: -6px;
+        position: absolute;
+        width: 0;
+    }
+
+    .nav-wrapper .select-btn {
+        border-left: 1px solid #eee;
+        box-sizing: border-box;
+        color: #999;
+        float: left;
+        font-size: 14px;
+        height: 40px;
+        line-height: 42px;
+        position: relative;
+        text-align: center;
+        width: 50%;
+        cursor: pointer;
+    }
+
+    .nav-wrapper .select-btn.current {
+        color: #f60;
+        border-bottom: 2px solid #f60;
+    }
+
+    .nav-wrapper .select-icon {
+        background-color: #fff;
+        display: inline-block;
+        height: 12px;
+        overflow: hidden;
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+        width: 13px;
+    }
+
+    .nav-wrapper .select-icon i:first-child {
+        margin-top: 0;
+    }
+
+    .nav-wrapper .select-icon i {
+        background-color: #bbb;
+        display: block;
+        height: 2px;
+        margin-top: 3px;
+        width: 13px;
+    }
+
+    .nav-wrapper .select-btn.current .select-icon i {
+        background-color: #f60;
+    }
+
+    .nav-wrapper .select-total {
+        background-color: #fff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.19);
+        position: absolute;
+        right: 0;
+        top: 45px;
+        width: 100%;
+        z-index: 4;
+    }
+    .revCon ul.rFirst{
+        margin-top: 0px;
+        border-top:none !important;
+    }
+
+    /*new style*/
+    .revCon, .revCon * {
+        box-sizing: border-box;
+    }
+
+    .revCon ul {
+        float: left;
+        width: 50%;
+        height: auto;
+        /*min-height: 270px;*/
+        box-sizing: border-box;
+        /*margin-top: 0;*/
+        border-left: none !important;
+        border-bottom: 1px solid #EEE !important;
+    }
+
+    .revCon ul.rNow {
+        margin: 0 !important;
+    }
+
+    .revCon ul:nth-child(2n) {
+        border-right: none;
+        border-right: 1px solid #FFF;
+    }
+
+    .revCon ul:nth-child(2n-1) {
+        border-right: 1px solid #EEE;
+    }
+
+    .revCon li dd {
+        font-size: 12px;
+    }
+
+    .revCon li p {
+        display: block;
+        width: 70%;
+        min-width: 115px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .revCon .revConL {
+        float: none !important;
+        width: 100%;
+        padding: 0 20px
+    }
+
+    .revCon .revConL::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 52px;
+        height: 52px;
+        right: -1px;
+        bottom: -2px;
+        background: transparent url("/statics/templates/yungou/images/mobile/cat_mark.png") no-repeat 2px -152px / 50px 202px;
+    }
+
+    .revCon li.revConL img {
+        width: 100%;
+        height: 9rem;
+        border: none
+    }
+
+    .revCon li.revConL span {
+        border-radius: 0;
+        z-index: 1;
+    }
+
+    .revCon .revConR {
+        width: 100%;
+        padding-top: 10px;
+        margin-left: 0 !important;
+    }
+
+    .revCon li.revConR b {
+        display: none;
+    }
+
+    .revCon li s {
+        margin: 0;
+    }
+
+    .revCon li p strong {
+        margin-left: 5px;
+    }
+
+    .revCon li p[name="pTime"] {
+        margin: 6px auto;
+        height: 29px;
+        line-height: 25px;
+        width: 100%;
+    }
+
+    .revCon li p[name="pTime"] em, .revCon li p[name="pTime"] s {
+        font-size: 14px;
+    }
+
+    .revCon li p[name="pTime"] s {
+        background-size: 16px auto;
+        width: 16px;
+        height: 16px;
+    }
+
+    .revCon ul.rNow h4, .revCon li dd em, em.blue {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    em.blue {
+        max-width: 32%;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .revCon li dt {
+        height: 36px;
+        overflow: hidden;
+    }
+    #divLotteryLoading {
+        margin: 10px 0;
+        clear: both;
+    }
+    .revCon ul.rNow .rNowTitle {
+        display: none;
+    }
+    /*end*/
+    .tip{
+        clear: both;
+        width: 100%;
+        display: none;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #bcb4b4;
+        font-size: 12px;
+    }
+    .revCon li.revConL span {
+	    position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    width: 100%;
+	    text-align: center;
+	    background: rgba(0, 0, 0, 0.4);
+	    color: white;
+	    border-radius: 0 0 3px 3px;
+	}
+</style>
+<link rel="stylesheet" href="/statics/templates/yungou/css/mobile/layer.css" id="layuicss-layer">
+<script language="javascript" type="text/javascript" src="/statics/templates/yungou/js/mobile/Comm.js"></script>
+<script language="javascript" type="text/javascript" src="/statics/templates/yungou/js/mobile/LotteryTimeFunssc.js"></script>
+</head>
+
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    <!--菜单切换-->
+    <div style="">
+        <nav class="nav-wrapper" id="goodsNav" style="position: relative; z-index: 0;">
+            <input type="hidden" id="parm_order" value="">
+            <input type="hidden" id="parm_cate" value="">
+            <!--点击添加或移除current-->
+            <div class="select-btn" id="divSort">普通商品</div>
+            <div class="select-btn current" id="publishing">透明购</div>
+            
+        </nav>
+    </div>
+    <section class="revealed">
+	    <div id="divLottery" class="revCon">
+	    	<div id="divLotteryLoading" class="loading" style="margin: 10px 0px; display: none;"><s></s></div>
+            <a id="btnLoadMore" is_data="yes" class="loading" href="javascript:;" style="opacity: 0; display: block;"></a>
+        </div>
+    </section>
+    <input id="search" value="" type="hidden">
+
+<script type="text/javascript" src="/statics/templates/yungou/js/layer/layer.js"></script>
+<link href="/statics/templates/yungou/css/mobile/layer.css" rel="stylesheet" type="text/css">
+<link href="/statics/templates/yungou/css/mobile/message.css" rel="stylesheet" type="text/css">
+{wc:templates "mobile/index","footer"}
+<script type="text/javascript" src="/statics/templates/yungou/js/jquery.cookie.js?1.0"></script>
+<script src="/statics/templates/yungou/js/mobile/topHovertree.js?180118" language="javascript" type="text/javascript"></script>
+<!--<script src="/statics/templates/yungou/js/mobile/message.js?0605" language="javascript" type="text/javascript"></script>-->
+<script>
+    /*置顶按钮滚动特效*/
+    $(".f_announced > a").addClass("hover");
+    initTopHoverTree("btnTop");
+
+    /*永久网址弹出层*/
+    var for_url_hide = $.cookie("for_url_hide");
+    $("#for_url_close").click(function () {
+        $("#forever_url").hide();
+        $.cookie("for_url_hide", 1, {path: '/', expires: 1}) // cookie有效期1天
+    });
+    $("#i_img").click(function (e) {
+        e.stopPropagation();
+    });
+    $("#forever_url").click(function () {
+        $("#forever_url").hide();
+        $.cookie("for_url_hide", 1, {path: '/', expires: 1}) // cookie有效期1天
+    });
+    if (!for_url_hide) {
+        $("#forever_url").show();
+    }
+    /*end*/
+
+    /*浮动球*/
+    $('.float-ball').on("touchmove", function (e) {
+        e.preventDefault();
+        var elm = $(this);
+
+        var x = (e.originalEvent.touches[0].clientX - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientX - 26);
+        x = (x + 52) > $(window).outerWidth() ? ($(window).outerWidth() - 52) : x;
+
+        var y = (e.originalEvent.touches[0].clientY - 26) < 0 ? 0 : (e.originalEvent.touches[0].clientY - 26);
+        y = (y + 52) > $(window).outerHeight() ? ($(window).outerHeight() - 52) : y;
+
+        elm.css({'left' : x, 'top' : y});
+    });
+    /*end*/
+</script>
+<!--开启全站微信分享自定义-->
+<!--end-->
+    <script src="/statics/templates/yungou/js/mobile/jquery.rolling.js" language="javascript" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript">
+
+  // 远添加了自动加载功能
+//  $("#rolling").rolling({ajax: Path.Webpath + "/api/ajax/getPartakeCount"});
+    $(document).ready(function(){
+        $("#divSort").click(function(){
+            window.location.href="/index.php/mobile/mobile/lottery";
+        })
+
+        $(window).scroll(function () {
+            var cHeight = document.documentElement.clientHeight;
+            var sTop = $(window).scrollTop();
+            var height = cHeight + sTop;
+            var eTop = $("#btnLoadMore").offset().top - 300;
+            if (height >= eTop) {
+                if ($("#btnLoadMore").text() == "正在加载...")return;
+                $("#btnLoadMore").click()
+            }
+
+
+            var limitheight=$(".nav-wrapper").height();
+            if(limitheight<=sTop){
+                $("#goodsNav").parent().css("height",limitheight+"px");
+                $(".nav-wrapper").css("position","fixed").css("z-index",99);
+            }else{
+                $("#goodsNav").parent().css("height","");
+                $(".nav-wrapper").css("position","relative").css("z-index",0);
+            }
+        });
+    })
+    </script>
+
+
+
+</div>
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  Path.path = "{G_WEB_PATH}";
+  Path.imgpath = "{G_WEB_PATH}/statics";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+
+</body></html>
